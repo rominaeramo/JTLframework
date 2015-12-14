@@ -1,0 +1,66 @@
+#maxint=20.
+
+%------------- Command line options ---------------
+% -nofdcheck -filter=tape
+%--------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%
+% initial situation
+
+position(0,0).
+
+state(s0,0).
+
+% first example: it halts!
+%tape(0,i,0). tape(1,1,0). tape(2,1,0). tape(3,0,0).
+%tape(4,1,0). tape(5,1,0).
+%lastUsedPos(5,0).
+
+% second example: it does not halt!
+tape(0,i,0). tape(1,1,0). tape(2,1,0).
+lastUsedPos(2,0).
+
+
+%%%%%%%%%%%%%%%%%%%%%
+% transition function
+
+% first example: it halts!
+delta(s0,i,s0,i,right). delta(s0,0,s0,0,right). delta(s0,1,s0,1,right). delta(s0,blank,s1,blank,left).
+delta(s1,i,f,i,right). delta(s1,0,f,1,nomove). delta(s1,1,s1,0,left).
+
+% second example: it does not halt!
+%delta(s0,i,s0,i,right). delta(s0,0,s1,0,left). delta(s0,1,s0,1,right). delta(s0,blank,s0,1,right). 
+%delta(s1,0,f,0,nomove). delta(s1,1,f,1,nomove). delta(s1,i,f,i,nomove).
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+% position description
+
+position(#prec(P),#succ(T)) :- position(P,T), state(St,T), tape(P,Sym,T),
+                               delta(St,Sym,_,_,left), P!=0.
+position(#succ(P),#succ(T)) :- position(P,T), state(St,T), tape(P,Sym,T),
+                               delta(St,Sym,_,_,right).
+position(P,#succ(T))        :- position(P,T), state(St,T), tape(P,Sym,T),
+                               delta(St,Sym,_,_,nomove).
+
+lastUsedPos(L,#succ(T)) :- lastUsedPos(L,T), position(P,T), P<=L.
+lastUsedPos(P,#succ(T)) :- lastUsedPos(L,T), position(P,T), P>L.
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+% state description
+
+state(St1,#succ(T)) :- position(P,T), state(St,T), tape(P,Sym,T), 
+                       delta(St,Sym,St1,_,_).
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+% tape description
+
+tape(P,Sym1,#succ(T)) :- position(P,T), state(St,T), tape(P,Sym,T),
+                         delta(St,Sym,_,Sym1,_).
+tape(P,Sym,#succ(T))  :- position(P1,T), tape(P,Sym,T), P!=P1.
+tape(P,blank,T)       :- position(P,T), lastUsedPos(L,T), P>L.
+
+
+

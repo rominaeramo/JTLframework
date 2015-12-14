@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<JTL:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http:///imperativeocl.ecore" xmlns:JTL="http:///jtl.ecore" xmlns:_1="http:///template.ecore"
+    xmlns:essentialocl="http:///essentialocl.ecore" xmi:id="o424" name="UML2RDBMS">
+  <modelParameter name="UML"/>
+  <modelParameter name="RDBMS"/>
+  <relation name="class2table">
+    <domain name="UML" isEnforceable="true" model="#//@modelParameter.0">
+      <pattern domain="#//@relation.0/@domain.0">
+        <predicate>
+          <conditionExpression xsi:type="AssignExp" name="is_persistent=true">
+            <value xsi:type="essentialocl:BooleanLiteralExp" name="boolean_name" booleanSymbol="true"/>
+            <left xsi:type="essentialocl:PropertyCallExp" name="is_persistent"/>
+          </conditionExpression>
+        </predicate>
+        <predicate>
+          <conditionExpression xsi:type="AssignExp" name="name=cn">
+            <value xsi:type="essentialocl:VariableExp" name="cn" referredVariable="#//@relation.0/@variable.0"/>
+            <left xsi:type="essentialocl:PropertyCallExp" name="name"/>
+          </conditionExpression>
+        </predicate>
+        <predicate>
+          <conditionExpression xsi:type="AssignExp" name="attrs=at">
+            <value xsi:type="_1:ObjectTemplateExp" name="at" referredClass="Attribute">
+              <where xsi:type="BlockExp" name="attrs_block">
+                <body xsi:type="AssignExp" name="name = an">
+                  <value xsi:type="essentialocl:VariableExp" name="an" referredVariable="#//@relation.0/@variable.1"/>
+                  <left xsi:type="essentialocl:PropertyCallExp" name="name"/>
+                </body>
+                <body xsi:type="AssignExp">
+                  <value xsi:type="essentialocl:IntegerLiteralExp" name="int"/>
+                  <left xsi:type="essentialocl:PropertyCallExp" name="dataType"/>
+                </body>
+              </where>
+            </value>
+            <left xsi:type="essentialocl:PropertyCallExp" name="attrs"/>
+          </conditionExpression>
+        </predicate>
+        <templateExpression xsi:type="_1:ObjectTemplateExp" name="c" referredClass="Class"/>
+      </pattern>
+    </domain>
+    <domain name="RDBMS" isEnforceable="true" model="#//@modelParameter.1">
+      <pattern domain="#//@relation.0/@domain.1">
+        <predicate>
+          <conditionExpression xsi:type="AssignExp" name="col=cl">
+            <value xsi:type="_1:ObjectTemplateExp" name="cl" referredClass="Column"/>
+            <left xsi:type="essentialocl:PropertyCallExp" name="col"/>
+          </conditionExpression>
+        </predicate>
+        <predicate>
+          <conditionExpression xsi:type="AssignExp" name="pKey=k">
+            <value xsi:type="_1:ObjectTemplateExp" name="k" referredClass="Column"/>
+            <left xsi:type="essentialocl:PropertyCallExp" name="pKey"/>
+          </conditionExpression>
+        </predicate>
+        <predicate>
+          <conditionExpression xsi:type="AssignExp" name="name=cn">
+            <value xsi:type="essentialocl:VariableExp" name="cn" referredVariable="#//@relation.0/@variable.0"/>
+            <left xsi:type="essentialocl:PropertyCallExp" name="name"/>
+          </conditionExpression>
+        </predicate>
+        <templateExpression xsi:type="_1:ObjectTemplateExp" name="t" referredClass="Table"/>
+      </pattern>
+    </domain>
+    <variable name="cn"/>
+    <variable name="an"/>
+  </relation>
+  <relation name="attribute2column">
+    <domain name="UML" isEnforceable="true" model="#//@modelParameter.0">
+      <pattern domain="#//@relation.1/@domain.0">
+        <predicate>
+          <conditionExpression xsi:type="AssignExp" name="name=atn">
+            <value xsi:type="essentialocl:VariableExp" name="atn" referredVariable="#//@relation.1/@variable.0"/>
+            <left xsi:type="essentialocl:PropertyCallExp" name="name"/>
+          </conditionExpression>
+        </predicate>
+        <templateExpression xsi:type="_1:ObjectTemplateExp" name="a" referredClass="Attribute"/>
+      </pattern>
+    </domain>
+    <domain name="RDBMS" isEnforceable="true" model="#//@modelParameter.1">
+      <pattern domain="#//@relation.1/@domain.1">
+        <predicate>
+          <conditionExpression xsi:type="AssignExp" name="name=atn">
+            <value xsi:type="essentialocl:VariableExp" name="atn" referredVariable="#//@relation.1/@variable.0"/>
+            <left xsi:type="essentialocl:PropertyCallExp" name="name"/>
+          </conditionExpression>
+        </predicate>
+        <templateExpression xsi:type="_1:ObjectTemplateExp" name="c" referredClass="Column"/>
+      </pattern>
+    </domain>
+    <when domain="#//@relation.0/@domain.0">
+      <predicate>
+        <conditionExpression xsi:type="essentialocl:OperationCallExp" name="class2table"
+            referredOperation="#//@relation.0">
+          <argument xsi:type="_1:ObjectTemplateExp" name="c" referredClass="Class"/>
+          <argument xsi:type="_1:ObjectTemplateExp" name="t" referredClass="Table"/>
+        </conditionExpression>
+      </predicate>
+    </when>
+    <variable name="atn"/>
+  </relation>
+</JTL:Transformation>

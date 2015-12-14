@@ -1,0 +1,60 @@
+-- @name		ASPmm
+-- @version		1.0
+-- @authors		Romina
+-- @date		2009/09/18
+-- @description	${description}
+package ASPmm {
+
+	-- Every class should extend LocatedElement, directly or indirectly.
+	-- This is a technical constraint to support text-to-model traceability.
+	abstract class LocatedElement {
+		attribute location[0-1] : String;
+		attribute commentsBefore[*] ordered : String;
+		attribute commentsAfter[*] ordered : String;
+	}
+
+-- BEGIN Language-specific classes (replace sample contents)
+
+	class Metamodel extends LocatedElement {
+		attribute name: String;
+		reference metanodes[*] container  : Metanode oppositeOf metamodel;
+		reference metaedges[*] container  : Metaedge oppositeOf metamodel;
+		reference metaprops[*] container  : Metaprop oppositeOf metamodel;
+	}
+
+	class Metanode extends LocatedElement {
+		attribute name : String;
+		reference metamodel[1-1] : Metamodel oppositeOf metanodes;
+		--reference metaprops[*]   : Metaprop oppositeOf metanode;
+	}
+	
+	class Metaprop extends LocatedElement {
+		attribute name : String;
+		reference metamodel[1-1]  : Metamodel oppositeOf metaprops;
+		reference metanode[1-1]   : Metanode;
+	}
+	
+	class Metaedge extends LocatedElement{
+		attribute name: String;
+		attribute type: MetaedgeType;
+		reference source[1-1] : Metanode;
+		reference target[1-1] : Metanode;
+		reference metamodel[1-1]  :  Metamodel oppositeOf metaedges;
+	}
+	
+	enumeration MetaedgeType{
+		literal association; 
+		literal generalization;
+		literal composition;
+	}
+	
+	
+-- END Language-specific classes
+}
+
+package PrimitiveTypes {
+	datatype Boolean;
+	datatype Double;
+	datatype Integer;
+	datatype String;
+}

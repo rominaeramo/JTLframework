@@ -1,0 +1,39 @@
+
+<project name="MM2asp_M" default="transform">
+	<property name="MMuri" value="//metamodels/RDBMS.ecore"/>
+	<property name="MMname" value="RDBMS"/>
+	<property name="Muri" value="/ASPecore/models/rdbms1.xmi"/>
+	<property name="Turi" value="/ASPecore/transformations/generated/RDBMS2ASPm.atl"/>
+
+	<target name="transform">
+		<!-- Loading ASPmm metamodel -->
+		<am3.loadModel modelHandler="EMF" name="ASPm" metamodel="MOF" path="/ASPm/Metamodel/ASPm.ecore"/>
+
+		<!-- Loading TCS metamodel -->
+		<am3.loadModel modelHandler="EMF" name="TCS" metamodel="MOF" path="/ASPm/Metamodel/TCS.ecore"/>
+
+		<!-- Loading ASPmm.tcs model -->
+		<am3.loadModel modelHandler="EMF" name="ASPm.tcs" metamodel="TCS" path="/ASPm/Syntax/ASPm.tcs.xmi"/>
+		
+		<!-- Loading the metamodel -->
+		<am3.loadModel modelHandler="EMF" name="MM" metamodel="MOF" path="${MMuri}"/>
+		
+		<!-- Loading the model -->
+		<am3.loadModel modelHandler="EMF" name="M" metamodel="MM" path="${Muri}"/>
+
+		<am3.atl path="${Turi}">
+		 <inmodel name="ASPm" model="ASPm"/>
+		 <inmodel name="IN" model="M"/>			
+		 <inmodel name="${MMname}" model="MM"/>
+		 <outmodel name="OUT" model="result" metamodel="ASPm"/>
+		</am3.atl>
+
+		<!-- Saving ASPmm model --> 
+		<am3.saveModel model="result" path="${Muri}.aspm">
+			<extractor name="ebnf">
+				<param name="format" value="ASPm.tcs"/>
+			</extractor>
+		</am3.saveModel> 
+	</target>
+
+</project>

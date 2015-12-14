@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EMFText Parser Plugin: ASP
+Bundle-SymbolicName: ASP.resource.ASP;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Vendor: Software Technology Group - TU Dresden Germany
+Require-Bundle: org.eclipse.core.runtime;resolution:=optional,
+  org.eclipse.emf.ecore,
+  org.eclipse.emf.ecore.change,
+  org.eclipse.emf.validation;resolution:=optional,
+  org.emftext.access;resolution:=optional,
+  org.eclipse.debug.core;resolution:=optional,
+  org.emftext.commons.antlr3_4_0,
+  ASPemftext
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: ASP.resource.ASP,
+  ASP.resource.ASP.analysis,
+  ASP.resource.ASP.mopp,
+  ASP.resource.ASP.debug,
+  ASP.resource.ASP.launch,
+  ASP.resource.ASP.grammar,
+  ASP.resource.ASP.util
+Bundle-Activator: ASP.resource.ASP.mopp.ASPPlugin

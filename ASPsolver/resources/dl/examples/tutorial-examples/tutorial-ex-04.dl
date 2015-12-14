@@ -1,0 +1,3 @@
+number(1..4).
+orderedLists([X]) :- number(X).
+orderedLists([X|[Y|L]]) :- orderedLists([Y|L]), number(X), X < Y.

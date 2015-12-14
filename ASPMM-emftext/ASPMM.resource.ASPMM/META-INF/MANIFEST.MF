@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EMFText Parser Plugin: ASPMM
+Bundle-SymbolicName: ASPMM.resource.ASPMM;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Vendor: Software Technology Group - TU Dresden Germany
+Require-Bundle: org.eclipse.core.runtime;resolution:=optional,
+  org.eclipse.emf.ecore,
+  org.eclipse.emf.ecore.change,
+  org.eclipse.emf.validation;resolution:=optional,
+  org.emftext.access;resolution:=optional,
+  org.eclipse.debug.core;resolution:=optional,
+  org.emftext.commons.antlr3_4_0,
+  ASPMMemftext
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: ASPMM.resource.ASPMM,
+  ASPMM.resource.ASPMM.analysis,
+  ASPMM.resource.ASPMM.mopp,
+  ASPMM.resource.ASPMM.debug,
+  ASPMM.resource.ASPMM.launch,
+  ASPMM.resource.ASPMM.grammar,
+  ASPMM.resource.ASPMM.util
+Bundle-Activator: ASPMM.resource.ASPMM.mopp.ASPMMPlugin

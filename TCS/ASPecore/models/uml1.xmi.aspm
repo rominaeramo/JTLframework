@@ -1,0 +1,35 @@
+model("_x_m/", _x_UML).
+  node(_x_UML, 1, "_x_/", _x_Package).
+  node(_x_UML, 15, "_x_//@classifiers.0", _x_Class).
+  node(_x_UML, 20, "_x_//@classifiers.1", _x_Class).
+  node(_x_UML, 28, "_x_//@classifiers.2", _x_Class).
+  node(_x_UML, 37, "_x_//@classifiers.3", _x_Class).
+  node(_x_UML, 46, "_x_//@classifiers.0/@attrs.0", _x_Attribute).
+  node(_x_UML, 49, "_x_//@classifiers.1/@attrs.0", _x_Attribute).
+  node(_x_UML, 51, "_x_//@classifiers.2/@attrs.0", _x_Attribute).
+  node(_x_UML, 53, "_x_//@classifiers.3/@attrs.0", _x_Attribute).
+
+  edge(_x_UML, 34, "_x_/2", _x_classifiers, 1, "_x_/", 15, "_x_//@classifiers.0").
+  edge(_x_UML, 67, "_x_/5", _x_classifiers, 1, "_x_/", 20, "_x_//@classifiers.1").
+  edge(_x_UML, 910, "_x_/8", _x_classifiers, 1, "_x_/", 28, "_x_//@classifiers.2").
+  edge(_x_UML, 1213, "_x_/11", _x_classifiers, 1, "_x_/", 37, "_x_//@classifiers.3").
+  edge(_x_UML, 1718, "_x_//@classifiers.016", _x_attrs, 15, "_x_//@classifiers.0", 46, "_x_//@classifiers.0/@attrs.0").
+  edge(_x_UML, 2223, "_x_//@classifiers.121", _x_attrs, 20, "_x_//@classifiers.1", 49, "_x_//@classifiers.1/@attrs.0").
+  edge(_x_UML, 2526, "_x_//@classifiers.124", _x_parent, 20, "_x_//@classifiers.1", 15, "_x_//@classifiers.0").
+  edge(_x_UML, 3031, "_x_//@classifiers.229", _x_attrs, 28, "_x_//@classifiers.2", 51, "_x_//@classifiers.2/@attrs.0").
+  edge(_x_UML, 3334, "_x_//@classifiers.232", _x_parent, 28, "_x_//@classifiers.2", 20, "_x_//@classifiers.1").
+  edge(_x_UML, 3940, "_x_//@classifiers.338", _x_attrs, 37, "_x_//@classifiers.3", 53, "_x_//@classifiers.3/@attrs.0").
+  edge(_x_UML, 4243, "_x_//@classifiers.341", _x_parent, 37, "_x_//@classifiers.3", 28, "_x_//@classifiers.2").
+
+  prop(_x_UML, 141, "_x_/1", 1, "_x_/", _x_name, _x_university).
+  prop(_x_UML, 191, "_x_//@classifiers.01", 15, "_x_//@classifiers.0", _x_name, _x_person).
+  prop(_x_UML, 271, "_x_//@classifiers.11", 20, "_x_//@classifiers.1", _x_name, _x_worker).
+  prop(_x_UML, 351, "_x_//@classifiers.21", 28, "_x_//@classifiers.2", _x_name, _x_employer).
+  prop(_x_UML, 362, "_x_//@classifiers.22", 28, "_x_//@classifiers.2", _x_is_persistent, _x_true).
+  prop(_x_UML, 441, "_x_//@classifiers.31", 37, "_x_//@classifiers.3", _x_name, _x_professor).
+  prop(_x_UML, 452, "_x_//@classifiers.32", 37, "_x_//@classifiers.3", _x_is_persistent, _x_true).
+  prop(_x_UML, 471, "_x_//@classifiers.0/@attrs.01", 46, "_x_//@classifiers.0/@attrs.0", _x_name, _x_name).
+  prop(_x_UML, 482, "_x_//@classifiers.0/@attrs.02", 46, "_x_//@classifiers.0/@attrs.0", _x_is_primary, _x_true).
+  prop(_x_UML, 501, "_x_//@classifiers.1/@attrs.01", 49, "_x_//@classifiers.1/@attrs.0", _x_name, _x_working_address).
+  prop(_x_UML, 521, "_x_//@classifiers.2/@attrs.01", 51, "_x_//@classifiers.2/@attrs.0", _x_name, _x_department).
+  prop(_x_UML, 541, "_x_//@classifiers.3/@attrs.01", 53, "_x_//@classifiers.3/@attrs.0", _x_name, _x_number_of_publications).

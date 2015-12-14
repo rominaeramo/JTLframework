@@ -1,0 +1,839 @@
+%%%%%%%%%%%%%%%%%%%
+%%%% UML_RDBMS %%%%
+%%%%%%%%%%%%%%%%%%%
+
+#const mmt = rdbms.
+
+%%%%%%%%%%%%% UML Metamodel Coding %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+metanode(uml,classifier).
+metaprop(uml,name,string,classifier).
+
+metanode(uml,primitiveDataType).
+metaprop(uml,name,string,primitiveDataType).
+
+metanode(uml,class).
+metaprop(uml,name,string,class).
+metaprop(uml,is_persistent,boolean,class).
+
+metanode(uml,attribute).
+metaprop(uml,name,string,attribute).
+metaprop(uml,is_primary,boolean,attribute).
+
+metanode(uml,association).
+metaprop(uml,name,string,association).
+
+metaedge(uml,generalization,general,classifier,primitiveDataType).
+metaedge(uml,generalization,general,classifier,class).
+
+metaedge(uml,normalassociation,parents,class,class).
+
+metaedge(uml,normalassociation,type,attribute,primitiveDataType).
+metaedge(uml,normalassociation,attrs,attribute,class).
+metaedge(uml,normalassociation,src,association,class).
+metaedge(uml,normalassociation,dest,association,class).
+
+
+%%%%%%%%%%%%%% RDBMS Metamodel Coding %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+metanode(rdbms,table).
+metaprop(rdbms,name,string,table).
+
+metanode(rdbms,column).
+metaprop(rdbms,name,string,column).
+metaprop(rdbms,dataType,string,column).
+
+metanode(rdbms,foreignKey).
+metaprop(rdbms,name,string,foreignKey).
+
+metaedge(rdbms,normalassociation,col,column,table).
+metaedge(rdbms,normalassociation,pkey,column,table).
+metaedge(rdbms,normalassociation,fcol,foreignKey,column).
+metaedge(rdbms,normalassociation,fkey,foreignKey,table).
+metaedge(rdbms,normalassociation,references,foreignKey,table).
+
+%%%%%%%%%%%%% UML Model Coding %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+node(uml,"cl1",class).
+prop(uml,"cl1",name,"order").
+prop(uml,"cl1",is_persistent,"true").
+
+node(uml,"at1",attribute).
+prop(uml,"at1",name,"order_no").
+prop(uml,"at1",is_primary,"true").
+
+edge(uml,"ats1",attrs,"at1","cl1").
+
+%node(uml,"int",primitiveDataType).
+%prop(uml,"int",name,"int").
+
+%edge(uml,"ty1",type,"at1","int").
+
+%node(uml,"at2",attribute).
+%prop(uml,"at2",name,"order_name").
+%prop(uml,"at2",is_primary,"false").
+
+%edge(uml,"ats2",attrs,"at2","cl1").
+
+%node(uml,"string",primitiveDataType).
+%prop(uml,"string",name,"string").
+
+%edge(uml,"ty2",type,"at2","string").
+
+node(uml,"cl2",class).
+prop(uml,"cl2",name,"customer").
+prop(uml,"cl2",is_persistent,"true").
+
+node(uml,"at3",attribute).
+prop(uml,"at3",name,"customer_name").
+prop(uml,"at3",is_primary,"true").
+
+edge(uml,"ats3",attrs,"at3","cl2").
+
+%node(uml,"at4",attribute).
+%prop(uml,"at4",name,"customer_tel").
+%prop(uml,"at4",is_primary,"false").
+
+%edge(uml,"ats4",attrs,"at4","cl2").
+
+node(uml,"as1",association).
+prop(uml,"as1",name,"order_customer").
+
+edge(uml,"src1",src,"as1","cl1").
+edge(uml,"dest1",dest,"as1","cl2").
+
+
+
+
+
+
+
+%%%%%%%%%% Relations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%R1%%%%
+relation(r1,uml,class).
+relation(r1,rdbms,table).
+
+%In corrispondenza di una classe persistente creo la corrispettiva tabella
+:- node(MMS,ID,class), prop(MMS,ID,is_persistent,"true"), not node'(MMT,ID,table), MMT=mmt, MMT==rdbms, MMS!=MMT.
+:- node(MMS,ID,class), not prop(MMS,ID,is_persistent,"true"), node'(MMT,ID,table), MMT=mmt, MMT==rdbms, MMS!=MMT.
+
+%In corrispondenza di una tabella creo la corrispettiva classe persistente
+:- node(MMS,ID,table), not node'(MMT,ID,class), MMT=mmt, MMT==uml, MMS!=MMT.
+:- nodet(tl,ID,sourceModelElement), node(uml,ID,class), not node'(uml,ID,class), mmt==uml.
+
+
+%%%%R2%%%%
+relation(r2,uml,is_persistent,class).
+relation(r2,rdbms,table).
+
+%In corrispondenza di una tabella creo la corrispettiva classe persistente
+:- node(MMS,ID,table), node'(MMT,ID,class), not prop'(uml,ID,is_persistent,"true"), MMT=mmt, MMT==uml.
+:- node(MMS,ID,table), node'(MMT,ID,class), prop'(uml,ID,is_persistent,"false"), MMT=mmt, MMT==uml.
+:- node(MMS,ID,column), prop'(uml,ID,is_persistent,"true"), MMT=mmt, MMT==uml.
+:- node(MMS,ID,column), prop'(uml,ID,is_persistent,"false"), MMT=mmt, MMT==uml.
+ 
+:- nodet(tl,ID,traceLink), nodet(tl,ID,sourceModelElement), node(uml,ID,class), prop(uml,ID,is_persistent,"false"),
+   node'(MMT,ID,class), not prop'(uml,ID,is_persistent,"false"), MMT=mmt, MMT==uml.
+
+:- node(MMS,ID,class), node'(MMT,Value,table), prop(MMS,ID,is_persistent,Value), MMS!=MMT, MMT=mmt, MMT==rdbms, MMS!=MMT.
+
+
+%%%%R3%%%%
+relation(r3,uml,name,class).
+relation(r3,rdbms,name,table).
+
+:- not prop'(MMT,ID,PropT,Value), prop(MMS,ID,PropS,Value), metaprop(MMT,PropT,TypeT,NodeT), metaprop(MMS,PropS,TypeS,NodeS), 
+node'(MMT,ID,NodeT), relation(r3,MMT,PropT,NodeT), relation(r3,MMS,PropS,NodeS), MMS!=MMT, MMT=mmt.
+
+
+
+:- prop'(MMT,ID,PropT,Value), prop(MMS,ID,PropS,Value), metaprop(MMT,PropT,TypeT,NodeT), metaprop(MMS,PropS,TypeS,NodeS), 
+not node'(MMT,ID,NodeT), relation(r3,MMT,PropT,NodeT), relation(r3,MMS,PropS,NodeS), MMS!=MMT, MMT=mmt.
+
+
+%%%%R4%%%%
+relation(r4,uml,attribute).
+relation(r4,rdbms,column).
+
+:- not node'(MMT,ID,NodeT), node(MMS,ID,NodeS), metanode(MMT,NodeT), metanode(MMS,NodeS), 
+relation(r4,MMT,NodeT), relation(r4,MMS,NodeS), MMS!=MMT, MMT=mmt.
+
+%%%%R5%%%%
+%relation(r5,uml,name,attribute).
+%relation(r5,rdbms,name,column).
+
+%:- not prop'(MMT,ID,name,Value), prop(MMS,ID,name,Value), metaprop(MMT,name,TypeT,NodeT), metaprop(MMS,PropS,TypeS,NodeS), 
+%node'(MMT,ID,NodeT), relation(r5,MMT,PropT,NodeT), relation(r5,MMS,PropS,NodeS), MMS!=MMT, MMT=mmt.
+
+%%%%R6%%%%
+relation(r6,uml,is_primary,attribute).
+relation(r6,rdbms,column).
+
+%In corrispondenza di una colonna pkey creo 
+:- node(MMS,ID,column), edge(MMS,ID2,pkey,ID,ID3), not prop'(MMT,ID,is_primary,"true"), MMS!=MMT, MMT=mmt, MMT==uml.
+
+:- node(MMS,ID,column), not edge(MMS,ID2,pkey,ID,ID3), edge(MMS,ID2,col,ID,ID3), 
+   not prop'(MMT,ID,is_primary,"false"), MMS!=MMT, MMT=mmt, MMT==uml.
+   
+:- node(MMS,ID,column), edge(MMS,ID2,pkey,ID,ID3), prop'(uml,ID,is_primary,"false"), MMS!=MMT, MMT=mmt, MMT==uml.
+
+:- node(MMS,ID,column), edge(MMS,ID2,col,ID,ID3), prop'(MMT,ID,is_primary,"true"),
+    prop'(uml,ID,is_primary,"false"), MMS!=MMT, MMT=mmt, MMT==uml.
+
+:- node(MMS,ID,table), prop'(uml,ID,is_primary,"true"), MMS!=MMT, MMT=mmt, MMT==uml.
+:- node(MMS,ID,table), prop'(uml,ID,is_primary,"false"), MMS!=MMT, MMT=mmt, MMT==uml.
+
+:- node(MMS,ID,attribute), node'(MMT,Value,column), prop(MMS,ID,Prop,Value), MMS!=MMT, MMT=mmt, MMT==rdbms, MMS!=MMT.
+
+%%%%R7%%%%
+relation(r7,uml,attrs,attribute,class).
+relation(r7,rdbms,col,column,table).
+
+:- check_edge_a(r7). 
+:- check_edge_b(r7). 
+:- check_edge_c(r7). 
+:- check_edge_d(r7).
+:- check_edge_e(r7). 
+:- check_edge_f(r7). 
+
+:- check_node_a(r7). 
+:- check_node_b(r7).
+:- check_node_c(r7).
+:- check_node_d(r7). 
+
+:- check_kind_node_a(r7). 
+:- check_kind_node_b(r7). 
+:- check_kind_node_c(r7). 
+:- check_kind_node_d(r7). 
+:- check_kind_node_e(r7). 
+
+% in corrispondenza di tl genero tutti gli attrs
+:- nodet(tl,ID2,traceLink), nodet(tl,ID,sourceModelElement), edget(tl,ID3,sourceElements,ID2,ID),
+edge(uml,ID,attrs,ID1,ID2), not edge'(uml,ID,attrs,ID1,ID2), 
+mmt==uml.
+
+% in corrispondenza di tl genero tutti gli attrs dei tl e nn quelli dal sorgente
+:- nodet(tl,ID2,traceLink), nodet(tl,ID,sourceModelElement), edget(tl,ID3,sourceElements,ID2,ID),
+edge(uml,ID,attrs,ID1,ID2), edge'(uml,ID,attrs,ID1,IDX), node(rdbms,IDX,table), IDX!=ID2,
+mmt==uml.
+
+
+%%%%R8%%%%
+relation(r8,uml,type,attribute,primitiveDataType).
+relation(r8,rdbms,dataType,column).
+
+:- edge(uml,ID,type,ID1,ID2), node(uml,ID1,attribute), node(uml,ID2,primitiveDataType), not prop'(rdbms,ID1,dataType,ID2).
+
+:- prop'(MMT,ID1,dataType,ID2), edge(MMS,ID,type,ID1,ID3), metaprop(MMT,dataType,Type,column), metaedge(MMS,association,type,attribute,primitiveDataType), 
+MMS!=MMT, node(MMS,ID1,attribute), node(MMS,ID2,primitiveDataType), node(MMS,ID3,primitiveDataType), ID2!=ID3.
+%edge sorgente ed edge target con stessi nodi di attacco
+
+:- prop'(MMT,ID1,dataType,ID2), edge(MMS,ID,type,ID3,ID2), metaprop(MMT,dataType,Type,column), metaedge(MMS,association,type,attribute,primitiveDataType), 
+MMS!=MMT, node(MMS,ID1,attribute), node(MMS,ID2,primitiveDataType), node(MMS,ID3,attribute), ID1!=ID3.
+%edge sorgente ed edge target con stessi nodi di attacco
+
+
+%%%%R9%%%%
+relation(r9,uml,primitiveDataType).
+relation(r9,rdbms,dataType,column).
+
+%%%%R10%%%%
+relation(r10,uml,attrs,attribute,class).
+relation(r10,rdbms,pkey,column,table).
+
+:- check_edge_g(r10). 
+:- check_edge_h(r10).
+:- check_edge_i(r10).  
+:- check_edge_l(r10). 
+
+:- check_node_c(r10). 
+:- check_node_d(r10). 
+:- check_node_e(r10). 
+
+:- check_kind_node_a(r10). 
+:- check_kind_node_b(r10). 
+:- check_kind_node_c(r10). 
+:- check_kind_node_d(r10). 
+:- check_kind_node_e(r10). 
+
+%Ho pkey solo se ho col corrispettivo
+:- edge(MMS,ID,attrs,ID2,ID1), edge'(MMT,ID,pkey,ID2,ID1), 
+not edge'(MMT,ID,col,ID2,ID1), MMT=mmt, MMT==rdbms, MMS!=MMT.
+
+:- edge'(rdbms,ID,pkey,ID2,ID1),  
+edge(uml,ID,attrs,ID2,IDX), node(uml,ID2,attribute), not prop(uml,ID2,is_primary,"true"),
+node(uml,ID1,class), node(uml,IDX,class).
+
+
+%%%%R11%%%%
+relation(r11,uml,association).
+relation(r11,rdbms,foreignKey).
+
+%In corrispondenza di una associazioni su classi persistenti ho la foreignKey
+:- not node'(rdbms,ID,foreignKey),
+node(uml,ID,association), 
+edge(uml,IDS,src,ID,IDC1), node(uml,IDC1,class), prop(uml,IDC1,is_persistent,"true"),
+edge(uml,IDT,dest,ID,IDC2), node(uml,IDC2,class), prop(uml,IDC2,is_persistent,"true"), mmt==rdbms.
+
+:- node'(rdbms,ID,foreignKey),
+node(uml,ID,association), 
+edge(uml,IDS,src,ID,IDC1), node(uml,IDC1,class), prop(uml,IDC1,is_persistent,"false"),
+edge(uml,IDT,dest,ID,IDC2), node(uml,IDC2,class), prop(uml,IDC2,is_persistent,"true"), mmt==rdbms.
+
+:- node'(rdbms,ID,foreignKey),
+node(uml,ID,association), 
+edge(uml,IDS,src,ID,IDC1), node(uml,IDC1,class), prop(uml,IDC1,is_persistent,"true"),
+edge(uml,IDT,dest,ID,IDC2), node(uml,IDC2,class), prop(uml,IDC2,is_persistent,"false"), mmt==rdbms.
+
+:- node(rdbms,ID,foreignKey), not node'(uml,ID,association), mmt==uml.
+:- not node(rdbms,ID,foreignKey), nodet(tl,ID,sourceModelElement), node(uml,ID,association), 
+not node'(uml,ID,association), mmt==uml.
+
+
+
+%%%%R12%%%%
+relation(r12,uml,src,association,class).
+relation(r12,rdbms,fkey,foreignKey,table).
+
+:- check_node_c(r12). 
+:- check_node_d(r12). 
+:- check_node_f(r12). 
+
+:- check_kind_node_a(r12).
+:- check_kind_node_b(r12).
+:- check_kind_node_c(r12).
+:- check_kind_node_d(r12).
+:- check_kind_node_e(r12).
+
+%In corrispondenza di un attributo primario creo la corrispettiva relazione pkey altrimenti no
+:- edge(MMS,ID,src,ID1,ID2), node(MMS,ID1,association), node'(MMT,ID1,foreignKey),
+not edge'(MMT,ID,fkey,ID1,ID2), MMT=mmt, MMT==rdbms, MMS!=MMT.
+
+:- edge(MMS,ID,src,ID1,ID2), node(MMS,ID1,association),not node'(MMT,ID1,foreignKey),
+edge'(MMT,ID,fkey,ID1,ID2), MMT=mmt, MMT==rdbms, MMS!=MMT.
+
+:- edge(rdbms,ID,fkey,ID1,ID2), not edge'(uml,ID,src,ID1,ID2), mmt==uml.
+:- not edge(rdbms,ID,fkey,ID1,ID2), nodet(tl,ID,sourceModelElement), edge(uml,ID,src,ID1,ID2), 
+not edge'(uml,ID,src,ID1,ID2), mmt==uml.
+
+
+%%%%R13%%%%
+relation(r13,uml,dest,association,class).
+relation(r13,rdbms,references,foreignKey,table).
+
+:- check_node_c(r13). 
+:- check_node_d(r13). 
+:- check_node_f(r13). 
+
+:- check_kind_node_a(r13).
+:- check_kind_node_b(r13).
+:- check_kind_node_c(r13).
+:- check_kind_node_d(r13).
+:- check_kind_node_e(r13).
+
+%In corrispondenza di un attributo primario creo la corrispettiva relazione pkey altrimenti no
+:- edge(MMS,ID,dest,ID1,ID2), node(MMS,ID1,association), node'(MMT,ID1,foreignKey),
+   not edge'(MMT,ID,references,ID1,ID2), MMT=mmt, MMT==rdbms, MMS!=MMT.
+
+:- edge(MMS,ID,dest,ID1,ID2), node(MMS,ID1,association),not node'(MMT,ID1,foreignKey),
+   edge'(MMT,ID,references,ID1,ID2), MMT=mmt, MMT==rdbms, MMS!=MMT.
+   
+:- edge(rdbms,ID,references,ID1,ID2), not edge'(uml,ID,dest,ID1,ID2), mmt==uml.
+:- not edge(rdbms,ID,references,ID1,ID2), nodet(tl,ID,sourceModelElement), 
+   edge(uml,ID,dest,ID1,ID2), not edge'(uml,ID,dest,ID1,ID2), mmt==uml.
+
+
+
+   
+%%%%R14%%%%
+relation(r14,uml,dest,association,class).
+relation(r14,rdbms,fcol,foreignKey,column).
+
+:- check_node_c(r14). 
+:- check_node_d(r14). 
+
+:- check_kind_node_b(r14). 
+:- check_kind_node_c(r14). 
+:- check_kind_node_e(r14). 
+:- check_kind_node_f(r14). 
+
+%In corrispondenza di un attributo primario creo la corrispettiva relazione pkey altrimenti no
+:- edge(uml,ID,dest,ID1,ID2), node(uml,ID1,association), node(uml,ID3,attribute), 
+edge'(rdbms,ID,fcol,ID1,ID3), not node'(rdbms,ID1,foreignKey), mmt==rdbms.
+
+%In corrispondenza di un attributo primario creo la corrispettiva relazione fcol altrimenti no
+% se non ho un fcol in corrispondenza di un dest e attributo primario della classe->elimino
+:- not edge'(rdbms,ID,fcol,ID1,ID3), node'(rdbms,ID1,foreignKey), edge(uml,ID,dest,ID1,ID2), 
+node(uml,ID1,association), node(uml,ID2,class), node(uml,ID3,attribute), 
+edge(uml,IDA,attrs,ID3,ID2), edge'(rdbms,IDA,pkey,ID3,ID2), mmt==rdbms.
+
+:- edge'(rdbms,ID,fcol,ID1,IDX), edge(uml,ID,dest,ID1,ID2), node(uml,ID1,association), 
+node(uml,ID2,class), node(uml,ID3,attribute), edge(uml,IDA,attrs,ID3,ID2),
+node(uml,IDX,class), edge'(rdbms,IDA,pkey,ID3,IDY), node(uml,IDY,class), mmt==rdbms.
+
+:- edge'(rdbms,ID,fcol,ID1,ID3), not edge(uml,ID,dest,ID1,ID2), edge(uml,ID,dest,IDW,IDQ), 
+node(uml,ID1,association), node(uml,ID2,class), node(uml,ID3,attribute), edge(uml,IDA,attrs,ID3,ID2),
+ID1 != IDW, mmt==rdbms.
+
+%elimino se creo fcol con un attributo non corrispondente al dest
+:- edge'(rdbms,ID,fcol,ID1,ID3), not edge(uml,ID,dest,ID1,ID2), edge(uml,ID,dest,ID1,IDQ), 
+node(uml,ID1,association), node(uml,ID2,class), node(uml,ID3,attribute),
+edge(uml,IDA,attrs,ID3,IDX), edge'(rdbms,IDA,col,ID3,ID2), IDQ != ID2, mmt==rdbms.
+
+%elimino se creo fcol con un attributo non pkey
+:- edge'(rdbms,ID,fcol,ID1,ID3), edge(uml,ID,dest,ID1,IDQ), node(uml,ID1,association), 
+node(uml,ID2,class), node(uml,ID3,attribute), edge(uml,IDA,attrs,ID3,IDX),
+prop(uml,ID3,is_primary,"false"), edge'(rdbms,IDA,col,ID3,ID2), not edge'(rdbms,IDA,pkey,ID3,ID2),
+ct_association(IDX,ID2), mmt==rdbms.
+
+:- edge(uml,D1,dest,A1,C2), edge(uml,D2,dest,A2,C3), node(uml,C3,class), ct_association(C3,C2),
+node(uml,AT5,attribute),  prop(uml,AT5,is_primary,"true"), edge(uml,ATS1,attrs,AT5,C3),
+not edge'(rdbms,D1,fcol,A1,AT5), mmt==rdbms.
+
+:- edge'(rdbms,ID,fcol,ID1,IDX), edge(uml,ID,dest,ID3,ID2), edge(uml,ID4,dest,ID1,ID5),
+node(uml,IDX,association), mmt==rdbms.
+
+%%%%%%%%%%%%% Relation Constraints %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%ho l'edge ma non edge'
+check_edge_a(R) :- not edge'(MMT,ID,EdgeT,ID1,ID2),
+%not nodet(tl,ID,sourceModelElement),
+edge(MMS,ID,EdgeS,ID1,ID2),
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+node(MMS,ID1,NodeS1), node(MMS,ID2,NodeS2), 
+node'(MMT,ID1,NodeT1), node'(MMT,ID2,NodeT2), 
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt, mmt==rdbms.
+
+%ho edge, non edge' , 
+check_edge_g(R) :- not edge'(MMT,ID,EdgeT,ID1,ID2), 
+edge(MMS,ID,EdgeS,ID1,ID2), 
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+node(MMS,ID1,NodeS1), node(MMS,ID2,NodeS2), 
+node'(MMT,ID1,NodeT1), prop(MMS,ID1,is_primary,"true"), node'(MMT,ID2,NodeT2), 
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt.
+
+%ho l'edge ma non edge' nè il trace del nodo source --_--
+check_edge_b(R) :- not edge'(MMT,ID,EdgeT,ID1,ID2), 
+not nodet(tl,ID,sourceModelElement),
+edge(MMS,ID,EdgeS,ID1,ID2), 
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+node(MMS,ID1,NodeS1), node(MMS,ID2,NodeS2), 
+node'(MMT,ID1,NodeT1), node'(MMT,ID2,NodeT2), 
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt, mmt==uml.
+
+%ho edge, edge', 
+check_edge_c(R) :- edge'(MMT,ID,EdgeT,ID1,ID2), 
+nodet(tl,ID,sourceModelElement), edge(uml,ID,attrs,ID1,IDX), IDX!=ID2,
+edge(MMS,ID,EdgeS,ID1,ID2), 
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+node(MMS,ID1,NodeS1), node(MMS,ID2,NodeS2), 
+node'(MMT,ID1,NodeT1), node'(MMT,ID2,NodeT2), 
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt, mmt==uml.
+
+
+% ho edge, edge', non ho node' T2
+check_edge_d(R) :- edge'(MMT,ID,EdgeT,ID1,ID2), 
+edge(MMS,ID,EdgeS,ID1,ID2), 
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+node(MMS,ID1,NodeS1), node(MMS,ID2,NodeS2), 
+node'(MMT,ID1,NodeT1), not node'(MMT,ID2,NodeT2), 
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt.
+
+% ho edge, edge', 
+check_edge_e(R) :- edge'(MMT,ID,EdgeT,ID1,IDX), 
+not ct_association(ID2,IDX),
+node(MMS,IDX,NodeS2), 
+edge(MMS,ID,EdgeS,ID1,ID2), 
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+node(MMS,ID1,NodeS1), node(MMS,ID2,NodeS2), 
+node'(MMT,ID1,NodeT1), 
+not node'(MMT,ID2,NodeT2), 
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt.
+
+%ho 
+check_edge_f(R) :- not edge'(MMT,ID,EdgeT,ID1,IDX), ct_association(ID2,IDX),
+node(MMS,IDX,NodeS2), 
+edge(MMS,ID,EdgeS,ID1,ID2), 
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+node(MMS,ID1,NodeS1), node(MMS,ID2,NodeS2), 
+node'(MMT,ID1,NodeT1), not node'(MMT,ID2,NodeT2), 
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt.
+
+
+%ho edge, edge', 
+check_edge_h(R) :- edge'(MMT,ID,EdgeT,ID1,ID2), 
+edge(MMS,ID,EdgeS,ID1,ID2), 
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+node(MMS,ID1,NodeS1), node(MMS,ID2,NodeS2), 
+node'(MMT,ID1,NodeT1), prop(MMS,ID1,is_primary,"true"), not node'(MMT,ID2,NodeT2), 
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt.
+
+
+check_edge_i(R) :- edge'(MMT,ID,EdgeT,ID1,IDX), 
+not ct_association(ID2,IDX),
+node(MMS,IDX,NodeS2), 
+edge(MMS,ID,EdgeS,ID1,ID2), 
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+node(MMS,ID1,NodeS1), node(MMS,ID2,NodeS2), 
+node'(MMT,ID1,NodeT1), prop(MMS,ID1,is_primary,"true"),
+not node'(MMT,ID2,NodeT2), 
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt.
+
+
+check_edge_l(R) :- not edge'(MMT,ID,EdgeT,ID1,IDX), ct_association(ID2,IDX),
+node(MMS,IDX,NodeS2), 
+edge(MMS,ID,EdgeS,ID1,ID2), 
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+node(MMS,ID1,NodeS1), node(MMS,ID2,NodeS2), 
+node'(MMT,ID1,NodeT1), prop(MMS,ID1,is_primary,"true"), not node'(MMT,ID2,NodeT2), 
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+check_node_a(R) :- edge'(MMT,ID,EdgeT,IDS,IDT), edge(MMS,ID,EdgeS,IDS,IDT2), 
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+node(MMS,IDS,NodeS1), node(MMS,IDT,NodeS2), node(MMS,IDT2,NodeS2), 
+IDT!=IDT2, 
+node'(MMT,IDT2,table),
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt, mmt==rdbms.
+%edge sorgente ed edge target con stessi nodi di attacco
+
+check_node_b(R) :- edge'(MMT,ID,EdgeT,IDS,IDT), edge(MMS,ID,EdgeS,IDS,IDT2), 
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+node(MMS,IDS,NodeS1), node(MMS,IDT,NodeS2), node(MMS,IDT2,NodeS2), 
+IDT!=IDT2, 
+%node'(MMT,IDT2,table),
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt, mmt==uml.
+%edge sorgente ed edge target con stessi nodi di attacco
+
+check_node_c(R) :- edge'(MMT,ID,EdgeT,IDS,IDT), edge(MMS,ID,EdgeS,IDS2,IDT), 
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+MMS!=MMT, node(MMS,IDS,NodeS1), node(MMS,IDT,NodeS2), node(MMS,IDS2,NodeS1), IDS!=IDS2, 
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt.
+%edge sorgente ed edge target con stessi nodi di attacco
+
+check_node_d(R) :- 1{edge'(MMT,ID,EdgeT,IDX,IDY): edge(MMS,ID,EdgeS,IDS,IDT)}, 
+node(MMS,IDX,NodeS1), node(MMS,IDY,NodeS2), node(MMS,IDS,NodeS1), node(MMS,IDT,NodeS2), 
+metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), edge(MM2,ID,EdgeS,IDS,IDT), 
+IDS!=IDX, 
+relation(R,MMS,EdgeS,NodeS1,NodeS2),relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt.
+%edge sorgente ed edge target con stessi nodi di attacco
+
+check_node_e(R) :- edge'(MMT,ID,EdgeT,IDS,IDT), edge(MMS,ID,EdgeS,IDS,IDT2), 
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+MMS!=MMT, 
+node(MMS,IDS,NodeS1), node(MMS,IDT,NodeS2), node(MMS,IDT2,NodeS2), 
+IDT!=IDT2, node'(MMT,IDT2,table),
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt.
+%edge sorgente ed edge target con stessi nodi di attacco
+
+check_node_f(R) :- edge'(MMT,ID,EdgeT,IDS,IDT), edge(MMS,ID,EdgeS,IDS,IDT2), 
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+MMS!=MMT, node(MMS,IDS,NodeS1), node(MMS,IDT,NodeS2), node(MMS,IDT2,NodeS2), IDT!=IDT2, 
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2).
+%edge sorgente ed edge target con stessi nodi di attacco
+
+check_kind_node_a(R) :- edge'(MMT,ID,EdgeT,IDS,IDT), edge(MMS,ID,EdgeS,IDS,IDT2), 
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+node(MMS,IDS,NodeS1), node(MMS,IDT,Node), node(MMS,IDT2,NodeS2), 
+Node!=NodeS2,
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt.
+%edge sorgente ed edge target con stessi nodi di attacco
+
+check_kind_node_b(R) :- edge'(MMT,ID,EdgeT,IDS,IDT), edge(MMS,ID,EdgeS,IDS2,IDT), 
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+MMS!=MMT, node(MMS,IDS,Node), node(MMS,IDT,NodeS2), node(MMS,IDS2,NodeS1), 
+Node!=NodeS1,
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt.
+%edge sorgente ed edge target con stessi nodi di attacco
+
+check_kind_node_c(R):- 1{edge'(MMT,ID,EdgeT,IDX,IDY): edge(MMS,ID,EdgeS,IDS,IDT)}, 
+node(MMS,IDX,Node1), node(MMS,IDY,Node2), node(MMS,IDS,NodeS1), node(MMS,IDT,NodeS2), 
+metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), metaedge(MM2,MetaEdgeS,ID,EdgeS,IDS,IDT), 
+Node1!= NodeS1, Node2!= NodeS2, 
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt.
+%edge sorgente ed edge target con stessi nodi di attacco
+
+check_kind_node_d(R) :- 1{edge'(MMT,ID,EdgeT,IDX,IDY): edge(MMS,ID,EdgeS,IDS,IDT)}, 
+node(MMS,IDX,NodeS1), node(MMS,IDY,Node2), node(MMS,IDS,NodeS1), node(MMS,IDT,NodeS2), 
+metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), edge(MM2,ID,EdgeS,IDS,IDT), 
+Node2!= NodeS2, 
+relation(R,MMS,EdgeS,NodeS1,NodeS2),relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt.
+
+check_kind_node_e(R):- 1{edge'(MMT,ID,EdgeT,IDX,IDY): edge(MMS,ID,EdgeS,IDS,IDT)}, 
+node(MMS,IDX,Node1), node(MMS,IDY,NodeS2), node(MMS,IDS,NodeS1), node(MMS,IDT,NodeS2), 
+metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), edge(MMS,ID,EdgeS,IDS,IDT), 
+Node1!= NodeS1, 
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2), 
+MMS!=MMT, MMT=mmt.
+
+check_kind_node_f(R) :- edge'(MMT,ID,EdgeT,IDS,IDT), edge(MMS,ID,EdgeS,IDS2,IDT2), 
+metaedge(MMT,MetaEdgeT,EdgeT,NodeT1,NodeT2), metaedge(MMS,MetaEdgeS,EdgeS,NodeS1,NodeS2), 
+MMS!=MMT, node(MMS,IDS,Node), node(MMS,IDT,NodeS2), node(MMS,IDS2,NodeS1), 
+node(MMS,IDT2,Node2), Node!=NodeS1, Node2!= NodeS2, 
+relation(R,MMS,EdgeS,NodeS1,NodeS2), relation(R,MMT,EdgeT,NodeT1,NodeT2),
+MMT=mmt, MMS!=MMT.
+%edge sorgente ed edge target con stessi nodi di attacco
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ct_association(IDCNP,IDCP) :- node(uml,IDCP,class), prop(uml,IDCP,is_persistent,"true"),
+							node(uml,IDCNP,class), prop(uml,IDCNP,is_persistent,"false"),
+							node(uml,IDA,association),
+							edge(uml,IDS,src,IDA,IDCP),
+							edge(uml,IDD,dest,IDA,IDCNP).				
+
+ct_association(IDCNP2,IDCP) :- node(uml,IDCNP1,class), prop(uml,IDCNP1,is_persistent,"false"),
+							node(uml,IDCNP2,class), prop(uml,IDCNP2,is_persistent,"false"),
+							node(uml,IDA,association),
+							edge(uml,IDS,src,IDA,IDCP1),
+							edge(uml,IDD,dest,IDA,IDCNP2),
+							ct_association(IDCNP1,IDCP),
+							node(uml,IDCP,class), prop(uml,IDCP,is_persistent,"true").
+							
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%% Trace Link %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Trace Link Metamodel coding %%
+
+node(tl,traceLink).
+prop(tl,name,traceLink).%mi serve il nome?
+
+node(tl,sourceModelElement).
+prop(tl,name,sourceModelElement).
+
+node(tl,targetModelElement).
+prop(tl,name,targetModelElement).
+
+edge(tl,sourceElements,traceLink,sourceModelElement).
+edge(tl,targetElements,traceLink,targetModelElement).
+
+
+%% Trace Link Rules %%
+
+%% class not persistent, column %%
+
+nodet(tl,ID,traceLink) :- node(uml,ID,class), prop(uml,ID,is_persistent,"false"), mmt==rdbms.
+nodet(tl,ID,sourceModelElement) :- node(uml,ID,class), prop(uml,ID,is_persistent,"false"), mmt==rdbms.
+nodet(tl,ID,sourceModelElement) :- node(uml,ID2,class), prop(uml,ID2,is_persistent,"false"), 
+								   edge(uml,ID3,attrs,ID,ID2), node(uml,ID,attribute), mmt==rdbms.
+nodet(tl,ID,sourceModelElement) :- node(uml,ID2,class), prop(uml,ID2,is_persistent,"false"), 
+								   edge(uml,ID,attrs,ID3,ID2), node(uml,ID3,attribute), mmt==rdbms.
+nodet(tl,ID,targetModelElement) :- node(uml,ID2,class), prop(uml,ID2,is_persistent,"false"), 
+								   edge(uml,ID3,attrs,ID,ID2), node(uml,ID,attribute), mmt==rdbms.
+
+edget(tl,ID,sourceElements,ID,ID1) :- node(uml,ID,class), prop(uml,ID,is_persistent,"false"),
+									  nodet(tl,ID,traceLink), nodet(tl,ID1,sourceModelElement), mmt==rdbms.
+edget(tl,ID,sourceElements,ID,ID1) :- node(uml,ID,class), prop(uml,ID,is_persistent,"false"), 
+									  edge(uml,ID3,attrs,ID1,ID), node(uml,ID1,attribute),
+									  nodet(tl,ID,traceLink), nodet(tl,ID1,sourceModelElement), mmt==rdbms.
+edget(tl,ID,sourceElements,ID,ID1) :- node(uml,ID,class), prop(uml,ID,is_persistent,"false"), 
+									  edge(uml,ID1,attrs,ID2,ID), node(uml,ID2,attribute),
+									  nodet(tl,ID,traceLink), nodet(tl,ID1,sourceModelElement), mmt==rdbms.																	
+edget(tl,ID,targetElements,ID,ID1) :- nodet(tl,ID,traceLink), nodet(tl,ID1,targetModelElement),
+									  node(uml,ID,class), prop(uml,ID,is_persistent,"false"), 
+									  edge(uml,ID2,attrs,ID1,ID), node(uml,ID1,attribute),
+									  nodet(tl,ID1,sourceModelElement), mmt==rdbms.
+
+%% association with dest not persistent, column %%
+
+nodet(tl,IDAS,traceLink) :- node(uml,IDAS,association), edge(uml,IDD,dest,IDAS,IDCL), 
+				            node(uml,IDCL,class), prop(uml,IDCL,is_persistent,"false"), mmt==rdbms.
+nodet(tl,IDAS,sourceModelElement) :- node(uml,IDAS,association), edge(uml,IDD,dest,IDAS,IDCL), 
+						             node(uml,IDCL,class), prop(uml,IDCL,is_persistent,"false"), mmt==rdbms.
+nodet(tl,ID,sourceModelElement) :- node(uml,IDAS,association), edge(uml,ID,dest,IDAS,IDCL), 
+					               node(uml,IDCL,class), prop(uml,IDCL,is_persistent,"false"), mmt==rdbms.							
+nodet(tl,ID,sourceModelElement) :- node(uml,IDAS,association), edge(uml,ID,src,IDAS,IDCL), 
+					               node(uml,IDCL,class), nodet(tl,IDAS,sourceModelElement), mmt==rdbms.		 
+nodet(tl,IDAT,targetModelElement) :- node(uml,IDAS,association), edge(uml,IDD,dest,IDAS,IDCL), 
+						             node(uml,IDCL,class), prop(uml,IDCL,is_persistent,"false"), 
+						             edge(uml,IDATS,attrs,IDAT,IDCL), mmt==rdbms.
+edget(tl,IDAS,sourceElements,IDAS,IDAS):- node(uml,IDAS,association), edge(uml,IDD,dest,IDAS,IDCL), 
+									      node(uml,IDCL,class), prop(uml,IDCL,is_persistent,"false"), mmt==rdbms.
+edget(tl,IDAS,targetElements,IDAS,IDAT) :-	node(uml,IDAS,association), edge(uml,IDD,dest,IDAS,IDCL), 
+									 		node(uml,IDCL,class), prop(uml,IDCL,is_persistent,"false"), 
+											edge(uml,IDATS,attrs,IDAT,IDCL), mmt==rdbms.								 
+									 
+														
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%% Metamodel Source Conformance Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+is_source_metamodel_conform(MM,ID,Node) :- node(MM,ID,Node), metanode(MM,Node).
+is_source_metamodel_conform(MM,ID,Prop) :- prop(MM,ID,Prop,Value), metaprop(MM,Prop,Type,Node), node(MM,ID,Node).
+is_source_metamodel_conform(MM,ID,Edge) :- edge(MM,ID,Edge,IDNodeSource,IDNodeTarget), metaedge(MM,MetaEdge,Edge,NodeSource,NodeTarget),
+							 			   node(MM,IDNodeSource,NodeSource), node(MM,IDNodeTarget,NodeTarget).
+							 				
+bad_source :- node(MM,ID,Node), not is_source_metamodel_conform(MM,ID,Node).
+bad_source :- prop(MM,ID,Prop,Value), not is_source_metamodel_conform(MM,ID,Prop).
+bad_source :- edge(MM,ID,Edge,IDNodeSource,IDNodeTarget), not is_source_metamodel_conform(MM,ID,Edge).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%% Metamodel Target Conformance Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+is_target_metamodel_conform(MM,Node) :- metanode(MM,Node).
+is_target_metamodel_conform(MM,Prop) :- metaprop(MM,Prop,Type,Node).
+is_target_metamodel_conform(MM,Edge) :- metaedge(MM,MetaEdge,Edge,NodeSource,NodeTarget).
+
+%%%% Constraint %%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% Relations Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+is_related(MM,Node) :- relation(R,MM,Node), relation(R,MM2,Node2).
+is_related(MM,Prop) :- relation(R,MM,Prop,Node), relation(R,MM2,Prop2,Node2).
+is_related(MM,Edge) :- relation(R,MM,Edge,NodeSource,NodeTarget), relation(R,MM2,Edge2,NodeSource2,NodeTarget2).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%% Mapping Rules %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%node from node
+mapping(MM,ID,Node) :- relation(R,MM,Node), relation(R,MM2,Node2), node(MM2,ID,Node2), MM!=MM2.
+
+%prop from prop
+mapping(MM,ID,Prop,Value) :- relation(R,MM,Prop,Node), relation(R,MM2,Prop2,Node2), 
+							 prop(MM2,ID,Prop2,Value), node(MM2,IDNode,Node2), MM!=MM2.
+						 
+%edge from edge								 
+mapping(MM,ID,Edge,IDNodeSource,IDNodeTarget) :- relation(R,MM,Edge,NodeSource,NodeTarget), 
+												relation(R,MM2,Edge2,NodeSource2,NodeTarget2), 
+												edge(MM2,ID,Edge2,IDNodeSource,IDNodeTarget),
+												node(MM2,IDNodeSource,NodeSource2), 
+												node(MM2,IDNodeTarget,NodeTarget2),
+												MM!=MM2.
+												
+%edge from edge												
+mapping(MM,ID,Edge,IDNodeSource,IDNodeTarget) :- relation(R,MM,Edge,NodeSource,NodeTarget), 
+												 relation(R,MM2,Edge2,NodeSource2,NodeTarget2), 
+												edge(MM2,ID,Edge2,IDNodeSource3,IDNodeTarget3),
+												node(MM2,IDNodeSource,NodeSource4), 
+												node(MM2,IDNodeTarget,NodeTarget4),
+												metaedge(MM,MetaEdge,Edge,NodeSource4,NodeTarget4),
+												MM!=MM2.
+											   										
+%prop from edge												
+mapping(MMT,ID,Prop,Value) :- relation(R,MMT,Prop,NodeT), relation(R,MMS,Edge,NodeS1,NodeS2),
+							edge(MMS,IDE,Edge,IDS,Value),
+							node(MMS,ID,NodeS1), node(MMS,Value,NodeS2).
+
+%prop from node
+mapping(MMT,ID,Prop,Value) :- relation(R,MMT,Prop,NodeT), relation(R,MMS,Node),
+							node(MMS,ID,Node), Value="true".
+mapping(MMT,ID,Prop,Value) :- relation(R,MMT,Prop,NodeT), relation(R,MMS,Node),
+							node(MMS,ID,Node), Value="false".
+							
+													
+%edge from prop
+mapping(MMT,IDS,EdgeT,IDS,IDT) :- relation(R,MMT,EdgeT,NodeT1,NodeT2), relation(R,MMS,EdgeS,NodeS1,NodeS2), 
+								prop(MMS,IDS,Prop,IDT), node(MMS,IDT,NodeT2),
+								metaprop(MMT,Prop,Type,NodeT1).
+
+%node from prop
+mapping(MMT,ID,Node) :- relation(R,MMT,Node), relation(R,MMS,Prop,NodeS), prop(MMS,IDP,Prop,ID), metaprop(MMS,Prop,Type,NodeS).
+
+%node from tl
+mapping(MM,ID,Node) :- nodet(tl,ID,sourceModelElement), node(MM,ID,Node),MM=mmt,mmt==uml.											
+
+%edge from tl 	
+mapping(MM,ID,Edge,IDNodeSource,IDNodeTarget) :- nodet(tl,ID,sourceModelElement), 
+											     edge(MM,ID,Edge,IDNodeSource,IDNodeTarget), MM=mmt,mmt==uml.
+
+%prop from tl
+mapping(MMT,ID,Prop,Value) :- nodet(tl,ID,traceLink), nodet(tl,ID,sourceModelElement), node(MMT,ID,Node),
+							  prop(MMT,ID,Prop,Value), 	MMT=mmt, MMT==uml.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%% Generability Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+												
+{is_generable(MM,ID,Node)} :- not bad_source, mapping(MM,ID,Node), is_related(MM,Node), is_target_metamodel_conform(MM,Node), 
+							  MM=mmt.
+{is_generable(MM,ID,Prop,Value)} :- not bad_source, mapping(MM,ID,Prop,Value), is_related(MM,Prop), 
+									is_target_metamodel_conform(MM,Prop), MM=mmt.
+									
+{is_generable(MM,ID,Edge,IDNodeSource,IDNodeTarget)} :- not bad_source, mapping(MM,ID,Edge,IDNodeSource,IDNodeTarget), 
+														is_related(MM,Edge), is_target_metamodel_conform(MM,Edge), MM=mmt.
+
+%%tl%%
+
+{is_generable(MM,IDS,Node)} :- not bad_source,
+nodet(tl,ID,traceLink), nodet(tl,IDS,sourceModelElement), nodet(tl,ID,targetModelElement),
+edge(tl,ID,sourceElements,ID,IDS), edge(tl,ID,targetElements,ID,ID),
+node(MM,IDS,Node), metanode(MM,Node), MM=mmt, mmt==uml.
+
+%{is_generable(MM,IDS,Edge,IDNodeSource,IDNodeTarget)} :- not bad_source,
+%nodet(tl,ID,traceLink), nodet(tl,IDS,sourceModelElement), nodet(tl,ID,targetModelElement),
+%edge(tl,ID,sourceElements,ID,IDS), edge(tl,ID,targetElements,ID,ID),
+%edge(MM,IDS,Edge,IDNodeSource,IDNodeTarget), edge(MM,Edge,Node,Node).
+
+{is_generable(MM,ID,Edge,IDNodeSource,IDNodeTarget)}:- not bad_source,
+nodet(tl,ID,sourceModelElement),
+edge(uml,ID,Edge,IDNodeSource,IDNodeTarget), MM=mmt, mmt==uml.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%% Transformation Rule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+node'(MM,ID,Node) :- is_generable(MM,ID,Node), mapping(MM,ID,Node), MM=mmt.
+prop'(MM,ID,Prop,Value) :- is_generable(MM,ID,Prop,Value), mapping(MM,ID,Prop,Value), MM=mmt.
+edge'(MM,ID,Edge,IDNodeSource,IDNodeTarget) :- is_generable(MM,ID,Edge,IDNodeSource,IDNodeTarget), 
+											   mapping(MM,ID,Edge,IDNodeSource,IDNodeTarget), MM=mmt.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%												
+
+
+#hide.
+show bad3_source.
+%show is_source_metamodel_conform(MM,ID,Elem).
+show node'(MM,ID,Node).
+show prop'(MM,ID,Prop,Value).
+show edge'(MM,ID,Edge,ID1,ID2).
+
+%show node(MM,ID,Node).
+%show prop(MM,ID,Prop,Value).
+%show edge(MM,ID,Edge,ID1,ID2).
+
+%show is_related(MM,Node).
+%show is_meta_conforms(MM,Node).
+%show mapping(MM,ID,Node).
+%show parents(MM,ID1).
+
+%show nodet(tl,ID,Elem).
+%show edget(tl,ID,Elem,ID1,ID2).
+show vero.
+show pippo.
+%show ct_association(IDCNP2,IDCP).

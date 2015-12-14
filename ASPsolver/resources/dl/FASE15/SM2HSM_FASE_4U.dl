@@ -1,0 +1,545 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  SM 2 HSM  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%  STATE MACHINE METAMODEL  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  metamodel(x_SM).
+  metanode(x_SM, x_State).
+  metanode(x_SM, x_Transition).
+  metanode(x_SM, x_StateMachine).
+  metanode(x_SM, x_InitialState).
+  metanode(x_SM, x_FinalState).
+
+  metaedge(x_SM, association, x_incoming, x_State, x_Transition).
+  metaedge(x_SM, association, x_owningStateMachine, x_State, x_StateMachine).
+  metaedge(x_SM, association, x_target, x_Transition, x_State).
+  metaedge(x_SM, association, x_target, x_Transition, x_InitialState).
+  metaedge(x_SM, association, x_target, x_Transition, x_FinalState).
+  metaedge(x_SM, association, x_source, x_Transition, x_State).
+  metaedge(x_SM, association, x_source, x_Transition, x_InitialState).
+  metaedge(x_SM, association, x_source, x_Transition, x_FinalState).
+  metaedge(x_SM, composition, x_ownedState, x_StateMachine, x_State).
+  metaedge(x_SM, composition, x_ownedState, x_StateMachine, x_InitialState).
+  metaedge(x_SM, composition, x_ownedState, x_StateMachine, x_FinalState).
+  metaedge(x_SM, composition, x_ownedTransition, x_StateMachine, x_Transition).
+  metaedge(x_SM, association, x_incoming, x_InitialState, x_Transition).
+  metaedge(x_SM, association, x_owningStateMachine, x_InitialState, x_StateMachine).
+  metaedge(x_SM, association, x_EReference0, x_InitialState, x_State).
+  metaedge(x_SM, association, x_EReference0, x_InitialState, x_InitialState).
+  metaedge(x_SM, association, x_EReference0, x_InitialState, x_FinalState).
+  metaedge(x_SM, generalization, x_general, x_InitialState, x_State).
+  metaedge(x_SM, association, x_incoming, x_FinalState, x_Transition).
+  metaedge(x_SM, association, x_owningStateMachine, x_FinalState, x_StateMachine).
+  metaedge(x_SM, generalization, x_general, x_FinalState, x_State).
+
+  metaprop(x_SM, x_name, x_State).
+  metaprop(x_SM, x_trigger, x_Transition).
+  metaprop(x_SM, x_effect, x_Transition).
+  metaprop(x_SM, x_name, x_InitialState).
+  metaprop(x_SM, x_name, x_FinalState).
+  
+%%%%%%%%%%%%%%%%%%%%%%   HIERARCHICAL STATE MACHINE METAMODEL  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  metamodel(x_HSM).
+  metanode(x_HSM, x_State).
+  metanode(x_HSM, x_Transition).
+  metanode(x_HSM, x_CompositeState).
+  metanode(x_HSM, x_StateMachine).
+  metanode(x_HSM, x_InitialState).
+  metanode(x_HSM, x_FinalState).
+
+  metaedge(x_HSM, association, x_owningCompositeState, x_State, x_CompositeState).
+  metaedge(x_HSM, association, x_target, x_Transition, x_State).
+  metaedge(x_HSM, association, x_target, x_Transition, x_CompositeState).
+  metaedge(x_HSM, association, x_target, x_Transition, x_InitialState).
+  metaedge(x_HSM, association, x_target, x_Transition, x_FinalState).
+  metaedge(x_HSM, association, x_source, x_Transition, x_State).
+  metaedge(x_HSM, association, x_source, x_Transition, x_CompositeState).
+  metaedge(x_HSM, association, x_source, x_Transition, x_InitialState).
+  metaedge(x_HSM, association, x_source, x_Transition, x_FinalState).
+  metaedge(x_HSM, association, x_owningCompositeState, x_CompositeState, x_CompositeState).
+  metaedge(x_HSM, composition, x_ownedSubState, x_CompositeState, x_State).
+  metaedge(x_HSM, composition, x_ownedSubState, x_CompositeState, x_CompositeState).
+  metaedge(x_HSM, composition, x_ownedSubState, x_CompositeState, x_InitialState).
+  metaedge(x_HSM, composition, x_ownedSubState, x_CompositeState, x_FinalState).
+  metaedge(x_HSM, generalization, x_general, x_CompositeState, x_State).
+  metaedge(x_HSM, composition, x_ownedState, x_StateMachine, x_State).
+  metaedge(x_HSM, composition, x_ownedState, x_StateMachine, x_CompositeState).
+  metaedge(x_HSM, composition, x_ownedState, x_StateMachine, x_InitialState).
+  metaedge(x_HSM, composition, x_ownedState, x_StateMachine, x_FinalState).
+  metaedge(x_HSM, composition, x_ownedTransition, x_StateMachine, x_Transition).
+  metaedge(x_HSM, association, x_owningCompositeState, x_InitialState, x_CompositeState).
+  metaedge(x_HSM, generalization, x_general, x_InitialState, x_State).
+  metaedge(x_HSM, association, x_owningCompositeState, x_FinalState, x_CompositeState).
+  metaedge(x_HSM, generalization, x_general, x_FinalState, x_State).
+
+  metaprop(x_HSM, x_name, x_State).
+  metaprop(x_HSM, x_trigger, x_Transition).
+  metaprop(x_HSM, x_effect, x_Transition).
+  metaprop(x_HSM, x_name, x_CompositeState).
+  metaprop(x_HSM, x_name, x_InitialState).
+  metaprop(x_HSM, x_name, x_FinalState).
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%  STATE MACHINE MODEL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+model(m2,x_SM).
+node(x_SM,1,"x/1",x_StateMachine).
+node(x_SM,53,"x/53",x_Transition).
+node(x_SM,49,"x/49",x_Transition).
+node(x_SM,45,"x/45",x_Transition).
+node(x_SM,41,"x/41",x_Transition).
+node(x_SM,37,"x/37",x_Transition).
+node(x_SM,29,"x/29",x_Transition).
+node(x_SM,25,"x/25",x_Transition).
+node(x_SM,14,"x/14",x_State).
+node(x_SM,12,"x/12",x_State).
+node(x_SM,4,"x/4",x_State).
+node(x_SM,2,"x/2",x_InitialState).
+%edge(x_SM,27,"x/27",x_source,25,"x/25",2,"x/2").
+edge(x_SM,56,"x/56",x_target,53,"x/53",12,"x/12").
+edge(x_SM,55,"x/55",x_source,53,"x/53",14,"x/14").
+%edge(x_SM,52,"x/52",x_target,49,"x/49",14,"x/14").
+%edge(x_SM,51,"x/51",x_source,49,"x/49",12,"x/12").
+%edge(x_SM,48,"x/48",x_target,45,"x/45",12,"x/12").
+%edge(x_SM,47,"x/47",x_source,45,"x/45",14,"x/14").
+%edge(x_SM,44,"x/44",x_target,41,"x/41",4,"x/4").
+%edge(x_SM,43,"x/43",x_source,41,"x/41",14,"x/14").
+%edge(x_SM,40,"x/40",x_target,37,"x/37",12,"x/12").
+%edge(x_SM,39,"x/39",x_source,37,"x/37",4,"x/4").
+%edge(x_SM,32,"x/32",x_target,29,"x/29",2,"x/2").
+%edge(x_SM,31,"x/31",x_source,29,"x/29",12,"x/12").
+%edge(x_SM,28,"x/28",x_target,25,"x/25",4,"x/4").
+%% delta
+node(x_SM,100,"x/100",x_State). %printing
+node(x_SM,101,"x/101",x_Transition). %print
+edge(x_SM,102,"x/102",x_source,101,"x/101",14,"x/14").
+edge(x_SM,103,"x/103",x_target,101,"x/101",100,"x/100").
+%% delta 2
+node(x_SM,104,"x/104",x_Transition). %completed
+edge(x_SM,105,"x/105",x_source,104,"x/104",14,"x/14").
+edge(x_SM,106,"x/106",x_target,104,"x/104",12,"x/12").
+
+%%%%%%%%%%%%%%%%%%%%%%%%% TRACE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%trace_node(x_HSM,1,"x/1",x_StateMachine).
+%%trace_node(x_HSM,2,"x/2",x_InitialState).
+trace_node(x_HSM,4,"x/4",x_CompositeState).
+trace_node(x_HSM,6,"x/6",x_State).
+trace_node(x_HSM,9,"x/9",x_State).
+trace_node(x_HSM,12,"x/12",x_State).
+trace_node(x_HSM,14,"x/14",x_CompositeState).
+trace_node(x_HSM,16,"x/16",x_State).
+trace_node(x_HSM,19,"x/19",x_State).
+trace_node(x_HSM,22,"x/22",x_State).
+%%trace_node(x_HSM,25,"x/25",x_Transition).
+%%trace_node(x_HSM,29,"x/29",x_Transition).
+trace_node(x_HSM,33,"x/33",x_Transition).
+%%trace_node(x_HSM,37,"x/37",x_Transition).
+%%trace_node(x_HSM,41,"x/41",x_Transition).
+%%trace_node(x_HSM,45,"x/45",x_Transition).
+%%trace_node(x_HSM,49,"x/49",x_Transition).
+%%trace_node(x_HSM,53,"x/53",x_Transition).
+trace_node(x_HSM,57,"x/57",x_Transition).
+trace_node(x_HSM,61,"x/61",x_Transition).
+trace_edge(x_HSM,8,"x/8",x_ownedSubState,4,"x/4",6,"x/6").
+trace_edge(x_HSM,11,"x/11",x_ownedSubState,4,"x/4",9,"x/9").
+trace_edge(x_HSM,18,"x/18",x_ownedSubState,14,"x/14",16,"x/16").
+trace_edge(x_HSM,21,"x/21",x_ownedSubState,14,"x/14",19,"x/19").
+trace_edge(x_HSM,24,"x/24",x_ownedSubState,14,"x/14",22,"x/22").
+
+
+
+%trace_edge(x_HSM,28,"x/28",x_target,25,"x/25",6,"x/6").
+
+%trace_edge(x_HSM,35,"x/35",x_source,33,"x/33",6,"x/6").
+%trace_edge(x_HSM,36,"x/36",x_target,33,"x/33",9,"x/9").
+%trace_edge(x_HSM,39,"x/39",x_source,37,"x/37",4,"x/4").
+
+%trace_edge(x_HSM,43,"x/43",x_source,41,"x/41",14,"x/14").
+%trace_edge(x_HSM,44,"x/44",x_target,41,"x/41",4,"x/4").
+%trace_edge(x_HSM,47,"x/47",x_source,45,"x/45",14,"x/14").
+
+%trace_edge(x_HSM,52,"x/52",x_target,49,"x/49",16,"x/16").
+trace_edge(x_HSM,55,"x/55",x_source,53,"x/53",22,"x/22").
+
+%trace_edge(x_HSM,59,"x/59",x_source,57,"x/57",16,"x/16").
+%trace_edge(x_HSM,60,"x/60",x_target,57,"x/57",19,"x/19").
+%trace_edge(x_HSM,63,"x/63",x_source,61,"x/61",19,"x/19").
+%trace_edge(x_HSM,64,"x/64",x_target,61,"x/61",22,"x/22").
+
+
+
+
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+%%%%%%%%%%%%%%%%%%%%%%     RELATIONS   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#const mmt = x_HSM.
+
+
+relation_node("x_r1", x_SM, x_StateMachine, 0).
+relation_node("x_r1", x_HSM, x_StateMachine, 0).
+:- node(x_HSM, ID, IDx, x_StateMachine), not nodex(x_SM, ID, IDx, x_StateMachine), mmt = x_SM.
+:- node(x_SM, ID, IDx, x_StateMachine), not nodex(x_HSM, ID, IDx, x_StateMachine), mmt = x_HSM.
+
+
+relation_node("x_r2", x_HSM, x_InitialState, 0).
+relation_node("x_r2", x_SM, x_InitialState, 0).
+:- node(x_HSM, ID, IDx, x_InitialState), not nodex(x_SM, ID, IDx, x_InitialState), mmt = x_SM.
+:- node(x_SM, ID, IDx, x_InitialState), not nodex(x_HSM, ID, IDx, x_InitialState), mmt = x_HSM.
+
+
+relation_node("x_r3",  x_HSM, x_FinalState, 0).
+relation_node("x_r3", x_SM, x_FinalState, 0).
+:- node(x_HSM, ID, IDx, x_FinalState), not nodex(x_SM, ID, IDx, x_FinalState), mmt = x_SM.
+:- node(x_SM, ID, IDx, x_FinalState), not nodex(x_HSM, ID, IDx, x_FinalState), mmt = x_HSM.
+
+	
+relation_node("x_r5", x_SM, x_State, 0).
+relation_node("x_r5", x_HSM, x_State, 0).
+:- node(x_SM, ID, IDx, x_State), not nodex(x_HSM, ID, IDx, x_CompositeState), not nodex(x_HSM, ID, IDx, x_State), mmt = x_HSM.
+:- node(x_SM, ID, IDx, x_State), nodex(x_HSM, ID, IDx, x_State), nodex(x_HSM, ID, IDx, x_CompositeState), mmt = x_HSM.
+
+:- node(x_HSM, ID, IDx, x_State), is_sub_state(x_HSM, ID, IDx, x_State), nodex(x_SM, ID, IDx, x_State), mmt = x_SM.
+:- node(x_HSM, ID, IDx, x_State), not is_sub_state(x_HSM, ID, IDx, x_State),  not nodex(x_SM, ID, IDx, x_State), mmt = x_SM. 
+
+is_sub_state(x_HSM, ID, IDx, x_State) :- node(x_HSM, ID, IDx, x_State), edge(x_HSM, IDe, IDex, x_ownedSubState, IDC, IDCx, ID, IDx).
+
+
+relation_node("x_r51", x_SM, x_State, 0).
+relation_node("x_r51",  x_HSM, x_CompositeState, 0).
+%:- node(x_SM, ID, IDx, x_State), not nodex(x_HSM, ID, IDx, x_CompositeState), mmt = x_HSM.
+:- node(x_HSM, ID, IDx, x_CompositeState), not nodex(x_SM, ID, IDx, x_State), mmt = x_SM.
+:- nodex(x_HSM, ID, IDx, x_CompositeState), not is_composite(x_HSM, ID, IDx, x_CompositeState).
+is_composite(x_HSM, ID, IDx, x_CompositeState) :- nodex(x_HSM, ID, IDx, x_CompositeState), 
+												  edgex(x_HSM, IDb, IDbx, x_ownedSubState, ID, IDx, IDs, IDsx), 
+												  nodex(x_HSM, IDs, IDsx, x_State).
+
+
+relation_node("x_r6", x_HSM, x_Transition, 0).
+relation_node("x_r6", x_SM, x_Transition, 0).
+%:- node(x_HSM, ID, IDx, x_Transition), not nodex(x_SM, ID, IDx, x_Transition), mmt = x_SM.
+:- node(x_SM, ID, IDx, x_Transition), not nodex(x_HSM, ID, IDx, x_Transition), mmt = x_HSM.
+%elimino le transition che coinvolgono due sottostati
+:- node(x_HSM, ID, IDx, x_Transition), not has_sub_state(x_HSM, ID, IDx, x_Transition), not nodex(x_SM, ID, IDx, x_Transition), mmt = x_SM.
+:- node(x_HSM, ID, IDx, x_Transition), has_sub_state(x_HSM, ID, IDx, x_Transition), nodex(x_SM, ID, IDx, x_Transition),  mmt = x_SM.
+
+is_sub_transition_source(x_HSM, ID, IDx, x_Transition):- node(x_HSM, ID, IDx, x_Transition), 
+												edge(x_HSM, IDa, IDax, x_source, ID, IDx, IDs, IDsx),
+												is_sub_state(x_HSM, IDs, IDsx, x_State).
+												%node(x_HSM, IDs, IDsx, x_State),
+												%edge(x_HSM, IDb, IDbx, x_ownedSubState, IDc, IDcx, IDs, IDsx).
+is_sub_transition_target(x_HSM, ID, IDx, x_Transition):- node(x_HSM, ID, IDx, x_Transition), 
+												edge(x_HSM, IDa, IDax, x_target, ID, IDx, IDs, IDsx),
+												is_sub_state(x_HSM, IDs, IDsx, x_State).
+												%node(x_HSM, IDs, IDsx, x_State),
+												%edge(x_HSM, IDb, IDbx, x_ownedSubState, IDc, IDcx, IDs, IDsx).
+has_sub_state(x_HSM, ID, IDx, x_Transition):-is_sub_transition_source(x_HSM, ID, IDx, x_Transition), is_sub_transition_target(x_HSM, ID, IDx, x_Transition).
+
+%elimino gli archi che si riferiscono a nodi source e target inesistenti
+%:- metaedge(MM, Type, Edge, NodeS, NodeT), edgex(MM, IDE, IDEx, Egde, IDS, IDSx, IDT, IDTx), not nodex(MM, IDS, IDSx, NodeS).
+%:- metaedge(MM, Type, Edge, NodeS, NodeT), edgex(MM, IDE, IDEx, Egde, IDS, IDSx, IDT, IDTx), not nodex(MM, IDT, IDTx, NodeT).
+:- edgex(x_SM, IDE, IDEx, x_source, IDS, IDSx, IDT, IDTx), not nodex(x_SM, IDS, IDSx, x_Transition).													
+:- edgex(x_SM, IDE, IDEx, x_target, IDS, IDSx, IDT, IDTx), not nodex(x_SM, IDS, IDSx, x_Transition).
+
+
+taglio_edgex(x_SM, IDE, IDEx, x_source, IDS, IDSx, IDT, IDTx) 
+:- edgex(x_SM, IDE, IDEx, x_source, IDS, IDSx, IDT, IDTx), not exists(x_SM, IDT, IDTx).	
+exists(x_SM, IDT, IDTx) :- nodex(x_SM, IDT, IDTx, Node),metaedge(x_SM, association, x_source, x_Transition, Node).	
+
+taglio_edgex(x_SM, IDE, IDEx, x_target, IDS, IDSx, IDT, IDTx) :- edgex(x_SM, IDE, IDEx, x_target, IDS, IDSx, IDT, IDTx), not exists(x_SM, IDT, IDTx).	
+exists(x_SM, IDT, IDTx) :- nodex(x_SM, IDT, IDTx, Node),metaedge(x_SM, association, x_target, x_Transition, Node).													
+
+
+relation_edge("x_r11",  x_SM, x_source, x_Transition, x_InitialState, 0).
+relation_edge("x_r11", x_HSM, x_source, x_Transition, x_InitialState, 0).
+
+relation_edge("x_r7",  x_SM, x_source, x_Transition, x_State, 0).
+relation_edge("x_r7", x_HSM, x_source, x_Transition, x_CompositeState, 0).
+
+relation_edge("x_r8",  x_SM, x_source, x_Transition, x_State, 0).
+relation_edge("x_r8", x_HSM, x_source, x_Transition, x_State, 0).
+%%%%%:- edge(x_HSM, IDE, IDEx, x_source, IDS, IDSx, IDT, IDTx), not edgex(x_SM, IDE, IDEx, x_source, IDS, IDSx, IDT, IDTx), not has_sub_state(x_HSM, IDS, IDSx, x_Transition).
+:- edge(x_HSM, IDE, IDEx, x_source, IDS, IDSx, IDT, IDTx), not edgex(x_SM, IDE, IDEx, x_source, IDS, IDSx, IDT, IDTx), not has_sub_state(x_HSM, IDS, IDSx, x_Transition).
+:- edge(x_HSM, IDE, IDEx, x_source, IDS, IDSx, IDT, IDTx), edgex(x_SM, IDE, IDEx, x_source, IDS, IDSx, IDT, IDTx), has_sub_state(x_HSM, IDS, IDSx, x_Transition).
+:- edge(x_SM, IDE, IDEx, x_source, IDS, IDSx, IDT, IDTx), not edgex(x_HSM, IDE, IDEx, x_source, IDS, IDSx, IDT, IDTx), 
+   trace_edge(x_HSM, IDE, IDEx, x_source, IDS, IDSx, IDT, IDTx).
+
+%non serve per U
+%:- %edge(x_SM, IDE, IDEx, x_source, IDS, IDSx, IDT, IDTx), 
+%   edgex(x_HSM, IDE, IDEx, x_source, IDS, IDSx, IDT, IDTx), 
+%   edgex(x_HSM, IDE, IDEx, x_source, IDS, IDSx, IDT2, IDT2x), IDT != IDT2, IDTx != IDT2x .   
+
+
+
+
+% ogni transition deve avere un source e un target
+:-  not_is_correct_transition(x_HSM,IDS,IDSx,x_Transition).
+not_is_correct_transition(x_HSM,IDS,IDSx,x_Transition):- nodex(x_HSM,IDS,IDSx,x_Transition),
+   has_source_transition(x_HSM,IDS,IDSx,x_Transition), 
+   not has_target_transition(x_HSM,IDS,IDSx,x_Transition). 
+not_is_correct_transition(x_HSM,IDS,IDSx,x_Transition):- nodex(x_HSM,IDS,IDSx,x_Transition),
+   not has_source_transition(x_HSM,IDS,IDSx,x_Transition), 
+   has_target_transition(x_HSM,IDS,IDSx,x_Transition).    
+has_source_transition(x_HSM,IDS,IDSx,x_Transition):- nodex(x_HSM,IDS,IDSx,x_Transition),edgex(x_HSM, IDE2, IDE2x, x_source, IDS, IDSx, IDT2, IDT2x).
+has_target_transition(x_HSM,IDS,IDSx,x_Transition):- nodex(x_HSM,IDS,IDSx,x_Transition),edgex(x_HSM, IDE2, IDE2x, x_target, IDS, IDSx, IDT2, IDT2x).
+
+
+
+relation_edge("x_r12",  x_SM, x_target, x_Transition, x_InitialState, 0).
+relation_edge("x_r12", x_HSM, x_target, x_Transition, x_InitialState, 0).
+
+relation_edge("x_r9",  x_SM, x_target, x_Transition, x_State, 0).
+relation_edge("x_r9", x_HSM, x_target, x_Transition, x_CompositeState, 0).
+
+relation_edge("x_r10",  x_SM, x_target, x_Transition, x_State, 0).
+relation_edge("x_r10", x_HSM, x_target, x_Transition, x_State, 0).
+%%%%%%:- edge(x_HSM, IDE, IDEx, x_target, IDS, IDSx, IDT, IDTx), not edgex(x_SM, IDE, IDEx, x_target, IDS, IDSx, IDT, IDTx), not has_sub_state(x_HSM, IDS, IDSx, x_Transition).
+:- edge(x_HSM, IDE, IDEx, x_target, IDS, IDSx, IDT, IDTx), not edgex(x_SM, IDE, IDEx, x_target, IDS, IDSx, IDT, IDTx), not has_sub_state(x_HSM, IDS, IDSx, x_Transition).
+:- edge(x_HSM, IDE, IDEx, x_target, IDS, IDSx, IDT, IDTx), edgex(x_SM, IDE, IDEx, x_target, IDS, IDSx, IDT, IDTx), has_sub_state(x_HSM, IDS, IDSx, x_Transition).
+%:- edge(x_SM, IDE, IDEx, x_target, IDS, IDSx, IDT, IDTx), not edgex(x_HSM, IDE, IDEx, x_target, IDS, IDSx, IDT, IDTx).
+:- edge(x_SM, IDE, IDEx, x_target, IDS, IDSx, IDT, IDTx), not edgex(x_HSM, IDE, IDEx, x_target, IDS, IDSx, IDT, IDTx), 
+   trace_edge(x_HSM, IDE, IDEx, x_target, IDS, IDSx, IDT, IDTx).
+%non serve per U
+%:- %edge(x_SM, IDE, IDEx, x_target, IDS, IDSx, IDT, IDTx), 
+%   edgex(x_HSM, IDE, IDEx, x_target, IDS, IDSx, IDT, IDTx), 
+%   edgex(x_HSM, IDE, IDEx, x_target, IDS, IDSx, IDT2, IDT2x), IDT != IDT2, IDTx != IDT2x .   
+   
+:- edge(x_SM, ID, IDx, x_target, IDS, IDSx, IDT, IDTx), not there_is_edge_id(x_HSM, ID, IDx, x_target).
+there_is_edge_id(MM, ID, IDx, Type):-edgex(MM, ID, IDx, Type, IDS, IDSx, IDT, IDTx). 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%     CONCRETIZATION/UNCERTAINTY RULES   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+%elimino le soluzioni con x_source con id non duplicati (ottengo may model)
+%:- edge(x_SM, ID, IDx, x_source, IDS, IDSx, IDT, IDTx), 
+%  not is_multiple_edge_id(x_HSM, ID, IDx), mmt = x_HSM.
+
+%elimino le soluzioni con x_target con id non duplicati (ottengo may model)
+%:- edge(x_SM, ID, IDx, x_target, IDS, IDSx, IDT, IDTx), 
+%   not is_multiple_edge_id(x_HSM, ID, IDx), mmt = x_HSM.
+
+%elimino le soluzioni con edge con id duplicati (ottengo concretizzazioni)
+%:- edge(x_SM, ID, IDx, Edge, IDS, IDSx, IDT, IDTx), 
+%   is_multiple_edge_id(x_HSM, ID, IDx), mmt = x_HSM.
+
+%elimino le soluzioni che hanno edge con id non duplicati e edge senza id duplicati (ottengo may model + concretizzazioni)
+%:- edge(x_SM, ID, IDx, Edge, IDS, IDSx, IDT, IDTx), 
+%   not is_multiple_edge_id(x_HSM, ID, IDx),   
+%   edge(x_SM, ID2, IDx2, Edge2, IDS, IDSx, IDT2, IDTx2), 
+%   is_multiple_edge_id(x_HSM, ID2, IDx2), 
+%   mmt = x_HSM.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% garbage %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%elimino le soluzioni con x_source con id duplicati (ottengo concretizzazioni)
+%%:- edge(x_SM, ID, IDx, x_source, IDS, IDSx, IDT, IDTx), 
+%%   is_multiple_edge_id(x_HSM, ID, IDx), mmt = x_HSM.
+
+%%elimino le soluzioni con x_target con id duplicati (ottengo concretizzazioni)
+%%:- edge(x_SM, ID, IDx, x_target, IDS, IDSx, IDT, IDTx), 
+%%  is_multiple_edge_id(x_HSM, ID, IDx), mmt = x_HSM.
+
+%%elimino le soluzioni con edge con id non duplicati (ottengo may model)
+%%:- edge(x_SM, ID, IDx, Edge, IDS, IDSx, IDT, IDTx), 
+%%   not is_multiple_edge_id(x_HSM, ID, IDx), mmt = x_HSM.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%        AUXILIARY RULES     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+is_edge_id(MM, ID, IDx) :- edgex(MM, ID, IDx, Edge, IDS, IDSx,  IDT, IDTx).
+
+is_multiple_edge_id(MM, ID, IDx) :- edgex(MM, ID, IDx, Edge, IDS, IDSx, IDT, IDTx), 
+                                    edgex(MM, ID, IDx, Edge, IDS, IDSx, IDT2, IDTx), IDT != IDT2.
+                                    
+is_edge_id_s(MM, ID, IDx) :- edge(MM, ID, IDx, Edge, IDS, IDSx,  IDT, IDTx).                                 
+                                  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%    TRANSFORMATION ENGINE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+%%%%%%%%%%%%%%%%%%%%%%   TRACES GENERATION    %s%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+is_metanode_related(MMS,MCS) :- relation_node(R, MMS, MCS, X), not relation_direction(R,mmt,MMS), MMS!=mmt.
+
+trace_node(MMS,IDx,ID,MCS) :- node(MMS,IDx,ID,MCS), not is_metanode_related(MMS,MCS),MMS!=mmt.
+
+trace_node(MMS,IDx,ID,MCS) :- node(MMS,IDx,ID,MCS), is_metanode_related(MMS,MCS), not condition(MMS,IDx,ID,MCS), MMS!=mmt.
+
+is_metaedge_related(MMS,Name,NodeSource,NodeTarget) :- relation_edge(R,MMS,Name,NodeSource,NodeTarget, X), not relation_direction(R,mmt,MMS), MMS!=mmt.
+
+trace_edge(MMS,IDx,ID,Name,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget) :- 
+	edge(MMS,IDx,ID,Name,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget), not is_metaedge_related(MMS,Name,NodeSource,NodeTarget),
+	node(MMS,IDNodeSourcex,IDNodeSource,NodeSource),node(MMS,IDNodeTargetx,IDNodeTarget,NodeTarget),MMS!=mmt.
+
+is_metaprop_related(MMS,Name,MCS) :- relation_prop(R,MMS,Name,MCS), not relation_direction(R,mmt,MMS), MMS!=mmt.
+
+trace_prop(MMS,IDx,ID,IDmcx,IDmc,Name,MCS) :- prop(MMS,IDx,ID,IDmcx,IDmc,Name,Value), not is_metaprop_related(MMS,Name,MCS),
+node(MMS,IDmcx,IDmc,MCS),MMS!=mmt.
+
+:- node(MMT,IDx,ID,Node1), nodex(MMT,IDx,ID,Node2), metanode(MMT,Node2),  Node1!=Node2, MMT=mmt.
+
+%%%%%%%%%%% Metamodel Target Conformance Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+is_target_metamodel_conform(MM,Node) :- metanode(MM,Node).
+is_target_metamodel_conform(MM,Prop) :- metaprop(MM,Prop,Node).
+is_target_metamodel_conform(MM,Edge) :- metaedge(MM,MetaEdge,Edge,NodeSource,NodeTarget).
+
+%%%%%%%%%% Relations Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+is_related(MM,Node) :- relation_node(R,MM,Node,X), relation_node(R,MM2,Node2,Y).
+is_related(MM,Prop) :- relation_prop(R,MM,Prop,Node), relation_prop(R,MM2,Prop2,Node2).
+is_related(MM,Edge) :- relation_edge(R,MM,Edge,NodeSource,NodeTarget,X), relation_edge(R,MM2,Edge2,NodeSource2,NodeTarget2,Y).
+
+%%%%%%%%%% Mapping Rules %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%node from node
+%mapping_node(MM,ID,IDx,Node) :- relation_node(R,MM,Node,X), relation_node(R,MM2,Node2,Y),node(MM2,ID,IDx,Node2), MM!=MM2.
+mapping_node(MM,ID + X,IDx, Node) :- relation_node(R,MM,Node,X), relation_node(R,MM2,Node2,Y),node(MM2,ID,IDx,Node2), MM!=MM2.
+
+%prop from prop        
+%mapping_prop(MM,ID,IDmc,Prop,Value) :- relation_prop(R,MM,Prop,Node), relation_prop(R,MM2,Prop2,Node2), 
+%              prop(MM2,ID,IDmc2,Prop2,Value2), setting_prop(R,ID,IDmc,Value), MM!=MM2.
+       
+%edge from edge         
+mapping_edge(MM,ID + X,IDx,Edge,IDS,IDSx,IDT,IDTx) :- 
+			relation_edge(R,MM,Edge,NodeSource,NodeTarget,X),relation_edge(R,MM2,Edge2,NodeSource2,NodeTarget2,Y), 
+            edge(MM2,ID,IDx,Edge2,IDS,IDSx,IDT,IDTx), MM!=MM2.
+            
+mapping_edge(MM,ID + X,IDx,Edge,IDS,IDSx,IDT + Z,IDTx) :- 
+			relation_edge(R,MM,Edge,NodeSource,NodeTarget,X),relation_edge(R,MM2,Edge2,NodeSource2,NodeTarget2,Y), 
+            edge(MM2,ID,IDx,Edge2,IDS,IDSx,IDT,IDTx), 
+            relation_node(R1,MM,Node,Z), relation_node(R1,MM2,Node2,W),node(MM2,IDT,IDTx,Node2),
+            MM!=MM2.
+            
+%generazione edge in cui gli id sorgenti e target non sono uguali
+%mapping_edge(MM,ID + X,IDx,Edge,IDS,IDSx,IDT,IDTx) :- 
+%			relation_edge(R,MM,Edge,NodeSource,NodeTarget,X),relation_edge(R,MM2,Edge2,NodeSource2,NodeTarget2,Y), 
+%           edge(MM2,ID,IDx,Edge2,IDS,IDSx,IDT2,IDT2x), node(MM2,IDT,IDTx,NodeTarget2), metaedge(MM2,Type,Edge2,NodeSource2,NodeTarget2), MM!=MM2.
+            
+%generazione edge con id diversi             
+%mapping_edge(x_SM,ID + X,IDx,x_source,IDS,IDSx,IDT,IDTx) :- 
+%			relation_edge(R,x_SM,x_source,x_Transition,x_State,X),relation_edge(R,x_HSM,x_source,x_Transition,x_State,Y), 
+%            edge(x_HSM,ID,IDx,x_source,IDS,IDSx,IDT2,IDT2x), is_sub_state(x_HSM,IDT2,IDT2x,x_State), 
+%            edge(x_HSM,IDe,IDex,x_ownedSubState,IDT,IDTx,IDT2,IDT2x), node(x_HSM,IDT,IDTx,x_CompositeState), 
+%           nodex(x_SM,IDT,IDTx,x_State).            
+
+%mapping_edge(x_SM,ID + X,IDx,x_target,IDS,IDSx,IDT,IDTx) :- 
+%			relation_edge(R,x_SM,x_target,x_Transition,x_State,X),relation_edge(R,x_HSM,x_target,x_Transition,x_State,Y), 
+%           edge(x_HSM,ID,IDx,x_target,IDS,IDSx,IDT2,IDT2x), is_sub_state(x_HSM,IDT2,IDT2x,x_State), 
+%            edge(x_HSM,IDe,IDex,x_ownedSubState,IDT,IDTx,IDT2,IDT2x), node(x_HSM,IDT,IDTx,x_CompositeState), 
+%           nodex(x_SM,IDT,IDTx,x_State).     
+
+
+%is_metaedge_related(MMS,Name,NodeSource,NodeTarget) :- relation_edge(R,MMS,Name,NodeSource,NodeTarget, X), not relation_direction(R,mmt,MMS), MMS!=mmt.
+%relation_edge(RS, MM, x_target, x_Transition, x_InitialState, X),
+%relation_edge(RS, MM2, x_target, x_Transition, x_InitialState, X),
+%relation_edge("x_r11",  x_SM, x_source, x_Transition, x_InitialState, 0).
+%relation_edge("x_r11", x_HSM, x_source, x_Transition, x_InitialState, 0).
+
+%relation_edge("x_r10",  x_SM, x_target, x_Transition, x_State, 0).
+%relation_edge("x_r10", x_HSM, x_target, x_Transition, x_State, 0).
+
+
+%:-is_sub_state(x_HSM, ID, IDx, x_State), edge(x_HSM, IDe, IDex, x_ownedSubState, IDC, IDCx, ID, IDx),
+%edge(x_HSM, IDES, IDESx, x_source,IDT, IDTx, ID, IDx),  
+%not edgex(x_SM, IDES, IDESx, x_source,IDT, IDTx, IDC, IDCx).
+
+%:-not is_sub_state(x_HSM, ID, IDx, x_State), edge(x_HSM, IDe, IDex, x_ownedSubState, IDC, IDCx, ID, IDx),
+%edge(x_HSM, IDES, IDESx, x_source,IDT, IDTx, ID, IDx),  
+%edgex(x_SM, IDES, IDESx, x_source,IDT, IDTx, IDC, IDCx).
+
+%%%%multipli edge from sm to hsm
+%multiplo_
+mapping_edge(x_HSM,ID + X,IDx,x_source,IDS,IDSx,IDT,IDTx) :- 
+			relation_edge(R,x_SM,x_source,x_Transition,x_State,X),relation_edge(R,x_HSM,x_source,x_Transition,x_State,Y), 
+            edge(x_SM,ID,IDx,x_source,IDS,IDSx,IDT2,IDT2x), 
+            nodex(x_HSM,IDT2,IDT2x,x_CompositeState), 
+            edgex(x_HSM,IDe,IDex,x_ownedSubState,IDT2,IDT2x,IDT,IDTx), nodex(x_HSM,IDT,IDTx,x_State). 
+
+
+            
+            
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%% Generability Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+												
+is_generable_node(MM,ID,IDx,Node) v -is_generable_node(MM,ID,IDx,Node) :- mapping_node(MM,ID,IDx,Node), is_related(MM,Node), 
+														is_target_metamodel_conform(MM,Node), MM=mmt.
+
+
+%is_generable_prop(MM,ID,Prop,Value) v -is_generable_prop(MM,ID,Prop,Value) :- mapping_prop(MM,ID,IDmc,Prop,Value), is_related(MM,Prop), 
+%													is_target_metamodel_conform(MM,Prop), MM=mmt.
+
+									
+is_generable_edge(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx) :- mapping_edge(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx), 
+														is_related(MM,Edge), is_target_metamodel_conform(MM,Edge),
+														MM=mmt.														
+
+is_traced_edge(MM,ID,IDx) :-  trace_edge(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx).
+														
+is_not_traced_edge(MM,ID,IDx) :- is_generable_edge(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx), not is_traced_edge(MM,ID,IDx).
+
+
+
+		
+%%%%%%%%% Element Generation by Transformation Rule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+nodex(MM,ID,IDx,Node) :- is_generable_node(MM,ID,IDx,Node), mapping_node(MM,ID,IDx,Node), MM=mmt.
+
+%propx(MM,ID,IDmc,Prop,Value) :- is_generable_prop(MM,ID,Prop,Value), mapping_prop(MM,ID,IDmc,Prop,Value), MM=mmt.
+
+edgex(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx) :- is_generable_edge(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx), 
+										   mapping_edge(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx), 
+										   is_not_traced_edge(MM,ID,IDx),
+										   MM=mmt.	
+
+
+%%%%%%%%% Element Generation by Traces %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+              
+              
+nodex(MM,IDx,ID,Node) :- trace_node(MM,IDx,ID,Node),MM=mmt.
+:- nodex(MM,IDx,ID,Node2), trace_node(MM,IDx,ID,Node), Node != Node2.
+:- is_generable_node(MM,IDx,ID,Node), trace_node(MM,IDx,ID,Node).
+
+propx(MM,IDx,ID,IDmcx,IDmc,Prop,Value) :-  trace_prop(MM,IDx,ID,IDmcx,IDmc,Name,MCS), prop(MM,IDx,ID,IDmcx,IDmc,Prop,Value), 
+										   nodex(MM,IDmcx,IDmc,MCS),node(MM,IDmcx,IDmc,MCS),MM=mmt.
+
+edgex(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget) :-  
+											trace_edge(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget), 
+											%edge(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget), 
+											nodex(MM,IDNodeSourcex,IDNodeSource,NodeSource), nodex(MM,IDNodeTargetx,IDNodeTarget,NodeTarget),
+											%node(MM,IDNodeSourcex,IDNodeSource,NodeSource), node(MM,IDNodeTargetx,IDNodeTarget,NodeTarget), 
+											MM=mmt.    
+											
+    
+
+											
+%:- edgex(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget), 
+%   trace_edge(MM,IDx,ID,Edge2,IDNodeSourcex2,IDNodeSource2,IDNodeTargetx2,IDNodeTarget2), Edge!=Edge2.
+%:- is_generable_edge(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx), trace_edge(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx).           
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%						
+
+           
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%						
+
+uncertainty_point_node(MM,ID,IDx,Node) :- is_generable_node(MM,ID,IDx,Node), is_generable_node(MM,ID,IDx,Node2), Node != Node2.
+uncertainty_point_edge(MM,ID,IDx,Edge) :- is_generable_edge(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx), edgex(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx), 
+										  is_generable_edge(MM,ID,IDx,Edge,IDS,IDSx,IDT2,IDT2x), edgex(MM,ID,IDx,Edge,IDS,IDSx,IDT2,IDT2x),
+										  IDT != IDT2 ,IDTx != IDT2x.	
+
+

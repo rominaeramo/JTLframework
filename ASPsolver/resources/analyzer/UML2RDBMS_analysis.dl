@@ -1,0 +1,306 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  UML to RDBMS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%   UML METAMODEL   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+metamodel(uml).
+metanode(uml, classifier).
+metanode(uml, class).
+metanode(uml, primitiveDataType).
+metanode(uml, association).
+metanode(uml, attribute).
+
+metaprop(uml, name, classifier).
+metaprop(uml, name, class).
+metaprop(uml, is_persistent, class).
+metaprop(uml, name, primitiveDataType).
+metaprop(uml, name, association).
+metaprop(uml, name, attribute).
+metaprop(uml, is_primary, attribute).
+
+metaedge(uml, association, parent, class, class).
+metaedge(uml, composition, attrs, class, attribute).
+metaedge(uml, generalization, general, class, classifier).
+metaedge(uml, generalization, general, primitiveDataType, classifier).
+metaedge(uml, association, src, association, class).
+metaedge(uml, association, dest, association, class).
+metaedge(uml, association, type, attribute, classifier).
+metaedge(uml, association, type, attribute, class).
+metaedge(uml, association, type, attribute, primitiveDataType).
+
+
+%%%%%%%%%%%%%%%%%%%%%%  RDBMS METAMODEL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+metamodel(rdbms).
+metanode(rdbms, table).
+metanode(rdbms, column).
+metanode(rdbms, fKey).
+
+metaprop(rdbms, name, table).
+metaprop(rdbms, name, column).
+metaprop(rdbms, type, column).
+
+metaedge(rdbms, composition, fkeys, table, fKey).
+metaedge(rdbms, association, pkey, table, column).
+metaedge(rdbms, composition, cols, table, column).
+metaedge(rdbms, association, references, fKey, table).
+metaedge(rdbms, association, cols, fKey, column).
+  
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+%%%%%%%%%%%%%%%%%%%%%%     RELATIONS   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%  transformation
+tranformation_name(uml2rdbmb).
+tranformation_model(uml).
+tranformation_model(rdbms).
+
+
+%%%% relation class2table
+relation_name(1, class2table).
+relation_top(1, true).
+
+relation_domain(1, uml).
+
+	relation_pattern(1, uml, c, class). 
+
+		relation_predicate(1, uml, c, is_persistent, true). 
+		relation_predicate(1, uml, c, name, cn).
+		relation_predicate(1, uml, c, attrs, attr).
+
+	relation_pattern(1, uml, attr, attribute). 
+
+		relation_predicate(1, uml, attr, name, an).
+		relation_predicate(1, uml, attr, owner, c). % added from where
+		relation_predicate(1, uml, attr, is_primary, false). % added from where
+
+relation_domain(1, rdbms).
+
+	relation_pattern(1, rdbms, t, table). 
+
+		relation_predicate(1, rdbms, t, name, cn).
+		relation_predicate(1, rdbms, t, cols, col). 
+		
+	relation_pattern(1, rdbms, col, column). 
+
+		relation_predicate(1, rdbms, col, name, an).
+		relation_predicate(1, rdbms, col, owner, t). % added from where 
+		
+relation_where(1, 2).
+
+		
+
+%%%% relation attribute2column
+relation_name(2, attribute2column).
+relation_top(2, false).
+
+relation_domain(2, uml).
+
+	relation_pattern(2, uml, c, class). 
+	
+		relation_predicate(2, uml, c, attrs, attr).
+	
+	relation_pattern(2, uml, attr, attribute). 
+	
+		relation_predicate(2, uml, attr, name, an).
+		relation_predicate(2, uml, attr, owner, c).
+		relation_predicate(2, uml, attr, is_primary, false).
+		
+relation_domain(2, rdbms).
+
+	relation_pattern(2, rdbms, t, table). 
+		
+		relation_predicate(2, rdbms, t, name, cn).
+		relation_predicate(2, rdbms, t, cols, col).
+	
+	relation_pattern(2, rdbms, col, column). 
+	
+		relation_predicate(2, rdbms, col, name, an).
+		relation_predicate(2, rdbms, col, owner, t).
+	
+	
+
+%%%% relation superAttribute2column
+relation_name(3, superAttribute2column).
+relation_top(3, true).
+
+relation_domain(3, uml).
+
+	relation_pattern(3, uml, c, class). 
+	
+		relation_predicate(3, uml, c, name, cn).
+		relation_predicate(3, uml, c, attrs, attr).
+
+	relation_pattern(3, uml, attr, attribute). 
+
+		relation_predicate(3, uml, attr, name, an).
+		relation_predicate(3, uml, attr, owner, sc).
+		relation_predicate(3, uml, attr, is_primary, false).
+		
+	relation_pattern(3, uml, sc, class). 
+
+		relation_predicate(3, uml, sc, name, scn).
+		relation_predicate(3, uml, sc, attrs, attr).
+			
+		
+relation_domain(3, rdbms).
+
+	relation_pattern(3, rdbms, t, table). 
+
+		relation_predicate(3, rdbms, t, name, cn).
+		relation_predicate(3, rdbms, t, cols, col).
+		
+	relation_pattern(3, rdbms, col, column). 
+
+		relation_predicate(3, rdbms, col, name, an).
+		relation_predicate(3, rdbms, col, owner, t).
+		
+relation_where(3, 4).
+
+
+%%%% relation attribute2column
+relation_name(4, attribute2column).
+relation_top(4, false).
+
+relation_domain(4, uml).
+
+	relation_pattern(4, uml, sc, class). 
+	
+		relation_predicate(4, uml, sc, attrs, attr).
+	
+	relation_pattern(4, uml, attr, attribute). 
+	
+		relation_predicate(4, uml, attr, name, an).
+		relation_predicate(4, uml, attr, owner, sc).
+		relation_predicate(4, uml, attr, is_primary, false).
+		
+relation_domain(4, rdbms).
+
+	relation_pattern(4, rdbms, t, table). 
+	
+		relation_predicate(4, rdbms, t, cols, col).
+	
+	relation_pattern(4, rdbms, col, column). 
+	
+		relation_predicate(4, rdbms, col, name, an).
+		relation_predicate(4, rdbms, col, owner, t).
+	
+
+
+%%%% relation superAttribute2column
+relation_name(5, superAttribute2column).
+relation_top(5, true).
+
+relation_domain(5, uml).
+
+	relation_pattern(5, uml, c, class). 
+	
+		relation_predicate(5, uml, c, name, cn).
+		relation_predicate(5, uml, c, attrs, attr).
+		relation_predicate(5, uml, c, parent, cc).
+		
+	relation_pattern(5, uml, attr, attribute). 
+
+		relation_predicate(5, uml, attr, name, an).
+		relation_predicate(5, uml, attr, owner, sc).
+		relation_predicate(5, uml, attr, is_primary, false).
+		
+	relation_pattern(5, uml, sc, class). 
+
+		relation_predicate(5, uml, sc, name, scn).
+		relation_predicate(5, uml, sc, attrs, attr).
+	
+	relation_pattern(5, uml, cc, class). 
+	
+		relation_predicate(5, uml, cc, name, ccn).	
+		relation_predicate(5, uml, cc, attrs, attr).
+		
+	relation_pattern(5, uml, attr, attribute). 
+
+		relation_predicate(5, uml, attr, name, an).
+		relation_predicate(5, uml, attr, owner, cc).
+		relation_predicate(5, uml, attr, is_primary, false).
+		
+relation_domain(5, rdbms).
+
+	relation_pattern(5, rdbms, t, table). 
+
+		relation_predicate(5, rdbms, t, name, cn).
+		relation_predicate(5, rdbms, t, cols, col).
+		
+	relation_pattern(5, rdbms, col, column). 
+
+		relation_predicate(5, rdbms, col, name, an).
+		relation_predicate(4, rdbms, col, owner, t).
+
+relation_where(5, 4).
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Analyzer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Is a top relation
+is_top_relation(ID) :- relation_name(ID, RelName), relation_top(ID, true). 
+
+%%% Finds a pair of equals predicate of equal patterns in different relations
+are_equal_predicates(ID1, ID2, Dom, MCpattern, NamePredicate, ValuePredicate) :-
+	is_top_relation(ID1), is_top_relation(ID2),
+	relation_predicate(ID1, Dom, MCpattern, NamePredicate, ValuePredicate),
+	relation_predicate(ID2, Dom, MCpattern, NamePredicate, ValuePredicate),
+	ID1 != ID2.
+
+%%% Verifies if there is a different predicate in equal patterns in the to relations
+are_different_predicates(ID1, ID2, Dom, MCpattern, NamePredicate, ValuePredicate):- 
+	is_top_relation(ID1), is_top_relation(ID2),
+	relation_pattern(ID1, Dom, MCpattern, MCName), relation_pattern(ID2, Dom, MCpattern, MCName),
+	relation_predicate(ID1, Dom, MCpattern, NamePredicate, ValuePredicate),
+	not relation_predicate(ID2, Dom, MCpattern, NamePredicate, ValuePredicate).
+are_different_predicates(ID1, ID2, Dom,  MCpattern, NamePredicate, ValuePredicate):- 
+	are_different_predicates(ID2, ID1, Dom, MCpattern, NamePredicate, ValuePredicate).
+
+%%% Finds a pair of relation patterns with the same predicates
+have_equal_predicates(ID1, ID2, Dom, MCpattern, MCName):- 
+	have_equal_patterns(ID1, ID2, Dom, MCpattern, MCName),
+	are_equal_predicates(ID1, ID2, Dom, MCpattern, NamePredicate, ValuePredicate), 
+	not are_different_predicates(ID1, ID2, Dom, MCpattern, NamePredicate, ValuePredicate).
+have_equal_predicates(ID1, ID2, Dom, MC, MCName):- have_equal_predicates(ID2, ID1, Dom, MC, MCName).
+
+%%% Finds pairs of equal patterns 
+have_equal_patterns(ID1, ID2, Dom, MC, MCName):-
+	is_top_relation(ID1), is_top_relation(ID2),
+	relation_pattern(ID1, Dom, MC, MCName),
+	relation_pattern(ID2, Dom, MC, MCName),
+	%have_equal_predicates(ID1, ID2, Dom, MC, MCName),
+	ID1 != ID2.
+
+%%% Finds pairs of different patterns 
+have_different_patterns(ID1, ID2, Dom) :- 
+	relation_pattern(ID1, Dom, MC, MCName),
+	not relation_pattern(ID2, Dom, MC, MCName),
+	is_top_relation(ID2).
+have_different_patterns(ID2, ID1, Dom) :- have_different_patterns(ID1, ID2, Dom).
+	
+%%% Finds pairs of equal domains with the same patterns 	
+are_equal_domains(ID1, ID2, Dom) :- 	
+	have_equal_patterns(ID1, ID2, Dom, MC, MCName),
+	have_equal_predicates(ID1, ID2, Dom, MC, MCName),
+	not have_different_patterns(ID1, ID2, Dom).
+	
+%%% non-deterministic relation with execution direction right to left
+non_deterministic_relation(ID, RelName, DomLeft) :- 
+	are_equal_domains(ID, ID2, DomRight), 
+	relation_name(ID, RelName), 
+	tranformation_model(DomRight), tranformation_model(DomLeft), DomRight != DomLeft.
+	
+%%% ambiguous relations in right to left direction
+are_ambiguous_relations(ID1, ID2, DomLeft) :- 
+	are_equal_domains(ID1, ID2, DomRight), 
+	tranformation_model(DomRight), tranformation_model(DomLeft), DomRight != DomLeft.	
+
+	

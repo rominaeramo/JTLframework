@@ -1,0 +1,44 @@
+
+<project name="asp2MM_M" default="transform">
+	<property name="MMuri" value="/ASPecore/metamodels/A0.ecore"/>
+	<property name="MMname" value="A0"/>
+	<property name="Muri" value="/ASPecore/models/acc.A0"/>
+	<property name="Turi" value="/ASPecore/transformations/generated/ASPm2A0.atl"/>
+
+	<target name="transform">
+		<!-- Loading ASPmm metamodel -->
+		<am3.loadModel modelHandler="EMF" name="ASPm" metamodel="MOF" path="/ASPm/Metamodel/ASPm.ecore"/>
+
+		<!-- Loading TCS metamodel -->
+		<am3.loadModel modelHandler="EMF" name="TCS" metamodel="MOF" path="/ASPm/Metamodel/TCS.ecore"/>
+
+		<!-- Loading ASPmm.tcs model -->
+		<am3.loadModel modelHandler="EMF" name="ASPm.tcs" metamodel="TCS" path="/ASPm/Syntax/ASPm.tcs.xmi"/>
+		
+		<!-- Loading the metamodel -->
+		<am3.loadModel modelHandler="AMW" name="MM" metamodel="MOF" path="${MMuri}"/>
+		
+		<!-- Loading the model -->
+		<am3.loadModel modelHandler="EMF" name="M" metamodel="ASPm" path="${Muri}.aspm">
+			<injector name="ebnf">
+				<param name="name" value="ASPm"/>
+				<param name="parserGenerator" value="antlr3"/>
+				<classpath>
+					<pathelement location="/ASPm/Syntax/ASPm-parser.jar"/>
+				</classpath>
+			</injector>
+		</am3.loadModel>
+
+		<am3.atl path="${Turi}">
+		 <inmodel name="ASPm" model="ASPm"/>
+		 <inmodel name="IN" model="M"/>			
+		 <inmodel name="${MMname}" model="MM"/>
+		 <outmodel name="OUT" model="result" metamodel="MM"/>
+		</am3.atl>
+
+		<!-- Saving ASPmm model --> 
+		<am3.saveModel model="result" path="${Muri}">
+		</am3.saveModel> 
+	</target>
+
+</project>

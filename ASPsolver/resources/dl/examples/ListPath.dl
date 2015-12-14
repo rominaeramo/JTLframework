@@ -1,0 +1,27 @@
+#include<ListAndSet>
+#maxint=100.
+
+%------------- Command line options ---------------
+% -nofdcheck -filter=path,cycle 
+%--------------------------------------------------
+
+%----------------- EDB -----------------
+
+% An input graph
+edge(0,1).
+edge(1,2).
+edge(0,3).
+edge(3,1).
+edge(2,5).
+edge(5,0).
+
+%------- All simple (i.e. with no repeated vertices)  paths -------
+
+path([X,Y]) :- edge(X,Y).
+path([X|[Y|W]]) :- edge(X,Y), path([Y|W]), not #member(X,[Y|W]).
+
+
+%------------------------ All simple cycles ------------------------
+
+cycle([X]) :- edge(X,X).
+cycle([X|L]) :- path([X|L]), #last(L) == Y, edge(Y,X).

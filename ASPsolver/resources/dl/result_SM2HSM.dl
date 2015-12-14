@@ -1,0 +1,8 @@
+
+%%%% Target Model 1
+model(m2,x_HSM).
+
+%%%% Source Model 
+model(source,x_SM).
+
+%%%% Traces

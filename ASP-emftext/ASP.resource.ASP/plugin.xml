@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.emftext.access.syntax">
+		<metaInformationProvider class="ASP.resource.ASP.mopp.ASPMetaInformation" id="ASP.resource.ASP.mopp.ASPMetaInformation">
+		</metaInformationProvider>
+	</extension>
+	
+	<extension id="ASP.resource.ASP.problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="org.eclipse.core.resources.problemmarker">
+		</super>
+		<super type="org.eclipse.core.resources.textmarker">
+		</super>
+		<super type="org.eclipse.emf.ecore.diagnostic">
+		</super>
+	</extension>
+	
+	<extension id="ASP.resource.ASP.problem.syntax_error" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="ASP.resource.ASP.problem">
+		</super>
+	</extension>
+	
+	<extension id="ASP.resource.ASP.problem.print_problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="ASP.resource.ASP.problem">
+		</super>
+	</extension>
+	
+	<extension id="ASP.resource.ASP.problem.unresolved_reference" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="ASP.resource.ASP.problem">
+		</super>
+	</extension>
+	
+	<extension id="ASP.resource.ASP.problem.analysis_problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="ASP.resource.ASP.problem">
+		</super>
+	</extension>
+	
+	<extension id="ASP.resource.ASP.problem.builder_error" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="ASP.resource.ASP.problem">
+		</super>
+	</extension>
+	
+	<extension id="ASP.resource.ASP.nature" name="ASP nature" point="org.eclipse.core.resources.natures">
+		<runtime>
+			<run class="ASP.resource.ASP.mopp.ASPNature">
+			</run>
+		</runtime>
+		<builder id="ASP.resource.ASP.builder">
+		</builder>
+	</extension>
+	
+	<extension point="org.eclipse.core.resources.builders" id="ASP.resource.ASP.builder" name="ASP Builder">
+		<builder hasNature="true">
+			<run class="ASP.resource.ASP.mopp.ASPBuilderAdapter">
+			</run>
+		</builder>
+	</extension>
+	
+	<extension-point id="ASP.resource.ASP.default_load_options" name="Default Load Options" schema="schema/default_load_options.exsd">
+	</extension-point>
+	
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser class="ASP.resource.ASP.mopp.ASPResourceFactoryDelegator" type="ASP">
+		</parser>
+	</extension>
+	
+	<extension-point id="ASP.resource.ASP.additional_extension_parser" name="Additional Extension Parser" schema="schema/additional_extension_parser.exsd">
+	</extension-point>
+	
+	<extension point="org.eclipse.debug.core.breakpoints">
+		<breakpoint class="ASP.resource.ASP.debug.ASPLineBreakpoint" id="ASP.resource.ASP.debug.breakpoint" markerType="ASP.resource.ASP.debug.lineBreakpoint.marker" name="ASP Breakpoint">
+		</breakpoint>
+	</extension>
+	
+	<extension id="ASP.resource.ASP.debug.lineBreakpoint.marker" point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.debug.core.lineBreakpointMarker">
+		</super>
+		<super type="org.eclipse.core.resources.textmarker">
+		</super>
+		<persistent value="true">
+		</persistent>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.launchConfigurationTypes">
+		<launchConfigurationType id="ASP.resource.ASP.ui.launchConfigurationType" delegate="ASP.resource.ASP.launch.ASPLaunchConfigurationDelegate" modes="run,debug" name="ASP Application" sourceLocatorId="ASP.resource.ASP.ui.sourceLocator" sourcePathComputerId="ASP.resource.ASP.ui.sourcePathComputer" delegateName="ASP Launch Tooling" delegateDescription="This will run or debug .ASP files.">
+		</launchConfigurationType>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.sourcePathComputers">
+		<sourcePathComputer class="ASP.resource.ASP.debug.ASPSourcePathComputerDelegate" id="ASP.resource.ASP.ui.sourcePathComputer">
+		</sourcePathComputer>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.sourceLocators">
+		<sourceLocator id="ASP.resource.ASP.ui.sourceLocator" class="ASP.resource.ASP.debug.ASPSourceLocator" name="ASP Source Locator">
+		</sourceLocator>
+	</extension>
+	
+</plugin>

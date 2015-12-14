@@ -1,0 +1,5 @@
+#include<ListAndSet>
+
+element(a). element(b). element(c). element(d).
+Lists([X]) :- element(X).
+Lists([X|[Y|L]]) :- Lists([Y|L]), element(X), #length(L) < 2, not #member(X,[Y|L]).

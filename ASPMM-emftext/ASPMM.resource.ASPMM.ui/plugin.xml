@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.emftext.access.syntax.ui">
+		<metaInformationProvider class="ASPMM.resource.ASPMM.ui.ASPMMUIMetaInformation" id="ASPMM.resource.ASPMM.ui.ASPMMUIMetaInformation">
+		</metaInformationProvider>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors">
+		<editor class="ASPMM.resource.ASPMM.ui.ASPMMEditor" contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor" extensions="ASPMM" icon="icons/editor_icon.gif" id="ASPMM.resource.ASPMM.ui.ASPMMEditor" name="EMFText ASPMM Editor">
+			<contentTypeBinding contentTypeId="ASPMM.resource.ASPMM">
+			</contentTypeBinding>
+		</editor>
+	</extension>
+	
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer class="ASPMM.resource.ASPMM.ui.ASPMMPreferenceInitializer">
+		</initializer>
+	</extension>
+	
+	<extension point="org.eclipse.ui.preferencePages">
+		<page name="ASPMM Text Editor" id="ASPMM.resource.ASPMM.ui.ASPMMPreferencePage" class="ASPMM.resource.ASPMM.ui.ASPMMPreferencePage" category="org.eclipse.ui.preferencePages.GeneralTextEditor">
+		</page>
+		<page name="Syntax Coloring" id="ASPMM.resource.ASPMM.ui.ASPMMSyntaxColoringPreferencePage" class="ASPMM.resource.ASPMM.ui.ASPMMSyntaxColoringPreferencePage" category="ASPMM.resource.ASPMM.ui.ASPMMPreferencePage">
+		</page>
+		<page name="Brackets" id="ASPMM.resource.ASPMM.ui.ASPMMBracketPreferencePage" class="ASPMM.resource.ASPMM.ui.ASPMMBracketPreferencePage" category="ASPMM.resource.ASPMM.ui.ASPMMPreferencePage">
+		</page>
+	</extension>
+	
+	<extension point="org.eclipse.ui.newWizards">
+		<category id="org.emftext.runtime.ui.EMFTextFileCategory" name="EMFText File">
+		</category>
+		<wizard category="org.emftext.runtime.ui.EMFTextFileCategory" icon="/icons/default_new_icon.gif" class="ASPMM.resource.ASPMM.ui.ASPMMNewFileWizard" id="ASPMM.resource.ASPMM.ui.ASPMMNewFileWizard" name="EMFText .ASPMM file">
+		</wizard>
+		<category id="org.emftext.runtime.ui.EMFTextProjectCategory" name="EMFText Project">
+		</category>
+		<wizard category="org.emftext.runtime.ui.EMFTextProjectCategory" icon="/icons/default_new_icon.gif" class="ASPMM.resource.ASPMM.ui.ASPMMNewProjectWizard" id="ASPMM.resource.ASPMM.ui.ASPMMNewProjectWizard" name="EMFText ASPMM project" project="true">
+		</wizard>
+	</extension>
+	
+	<extension point="org.eclipse.ui.ide.markerResolution">
+		<markerResolutionGenerator class="ASPMM.resource.ASPMM.ui.ASPMMMarkerResolutionGenerator" markerType="ASPMM.resource.ASPMM.problem">
+		</markerResolutionGenerator>
+	</extension>
+	
+	<extension point="org.eclipse.core.filebuffers.annotationModelCreation">
+		<factory class="ASPMM.resource.ASPMM.ui.ASPMMAnnotationModelFactory" extensions="ASPMM">
+		</factory>
+	</extension>
+	
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type id="ASPMM.resource.ASPMM" name=".ASPMM File" base-type="org.eclipse.core.runtime.text" file-extensions="ASPMM">
+		</content-type>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.documentProviders">
+		<provider class="org.eclipse.ui.editors.text.TextFileDocumentProvider" extensions="ASPMM" id="ASPMM.resource.ASPMM.ui.provider">
+		</provider>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.annotationTypes">
+		<type name="ASPMM.resource.ASPMM.ui.occurences">
+		</type>
+		<type name="ASPMM.resource.ASPMM.ui.occurences.declaration" super="ASPMM.resource.ASPMM.ui.occurences">
+		</type>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+		<specification annotationType="ASPMM.resource.ASPMM.ui.occurences" label="Occurrences (in .ASPMM files)" icon="/icons/occurrence_icon.gif" textPreferenceKey="ASPMM.occurrenceIndication" textPreferenceValue="false" highlightPreferenceKey="ASPMM.occurrenceHighlighting" highlightPreferenceValue="true" contributesToHeader="false" overviewRulerPreferenceKey="ASPMM.occurrenceIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="ASPMM.occurrenceIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="ASPMM.occurrenceIndicationColor" colorPreferenceValue="212,212,212" presentationLayer="4" showInNextPrevDropdownToolbarActionKey="ASPMM.showOccurrenceInNextPrevDropdownToolbarAction" showInNextPrevDropdownToolbarAction="true" isGoToNextNavigationTargetKey="ASPMM.isOccurrenceGoToNextNavigationTarget" isGoToNextNavigationTarget="false" isGoToPreviousNavigationTargetKey="ASPMM.isOccurrenceGoToPreviousNavigationTarget" isGoToPreviousNavigationTarget="false" textStylePreferenceKey="ASPMM.occurrenceTextStyle" textStylePreferenceValue="NONE">
+		</specification>
+		<specification annotationType="ASPMM.resource.ASPMM.ui.occurences.declaration" label="Declarations (in .ASPMM files)" textPreferenceKey="ASPMM.declarationIndication" textPreferenceValue="false" highlightPreferenceKey="ASPMM.declarationHighlighting" highlightPreferenceValue="true" overviewRulerPreferenceKey="ASPMM.declarationIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="ASPMM.declarationIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="ASPMM.declarationIndicationColor" colorPreferenceValue="240,216,168" presentationLayer="4" textStylePreferenceKey="ASPMM.declarationTextStyle" textStylePreferenceValue="NONE">
+		</specification>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+		<launchConfigurationTypeImage icon="/icons/launch_type_icon.gif" configTypeID="ASPMM.resource.ASPMM.ui.launchConfigurationType" id="ASPMM.launchImage">
+		</launchConfigurationTypeImage>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+		<launchConfigurationTabGroup type="ASPMM.resource.ASPMM.ui.launchConfigurationType" class="ASPMM.resource.ASPMM.ui.launch.ASPMMLaunchConfigurationTabGroup" id="ASPMM.launchConfigurationTabGroup" helpContextId="ASPMM.launchConfigHelpContext">
+			<launchMode mode="debug" perspective="org.eclipse.debug.ui.DebugPerspective" description="Debug ASPMM model.">
+			</launchMode>
+			<launchMode mode="run" description="Run ASPMM model.">
+			</launchMode>
+		</launchConfigurationTabGroup>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchShortcuts">
+		<shortcut label="ASPMM Application" icon="/icons/launch_shortcut_icon.gif" helpContextId="ASPMM.launch" modes="run,debug" class="ASPMM.resource.ASPMM.ui.launch.ASPMMLaunchShortcut" description="Launch a ASPMM model" id="ASPMM.launchShortcut">
+			<description description="Run ASPMM model" mode="run">
+			</description>
+			<description description="Debug ASPMM model" mode="debug">
+			</description>
+			<contextualLaunch>
+				<enablement>
+					<with variable="selection">
+						<count value="1">
+						</count>
+						<iterate>
+							<test property="ASPMM.isLaunchable">
+							</test>
+						</iterate>
+					</with>
+				</enablement>
+			</contextualLaunch>
+			<configurationType id="ASPMM.resource.ASPMM.ui.launchConfigurationType">
+			</configurationType>
+		</shortcut>
+	</extension>
+	
+	<extension point="org.eclipse.core.expressions.propertyTesters">
+		<propertyTester id="ASPMM.PropertyTester" type="java.lang.Object" namespace="ASPMM" properties="isLaunchable" class="ASPMM.resource.ASPMM.ui.ASPMMPropertyTester">
+		</propertyTester>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.annotationTypes">
+		<type name="ASPMM.resource.ASPMM.ui.debug.lineBreakpoint" markerType="ASPMM.resource.ASPMM.debug.lineBreakpoint.marker" super="org.eclipse.debug.core.breakpoint">
+		</type>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+		<specification annotationType="ASPMM.resource.ASPMM.ui.debug.lineBreakpoint" label="Breakpoints (in .ASPMM files)" icon="/icons/breakpoint_icon.gif" textPreferenceKey="ASPMM.resource.ASPMM.ui.lineBreakpoint" textPreferenceValue="false" highlightPreferenceKey="ASPMM.resource.ASPMM.ui.lineBreakpointHighlighting" highlightPreferenceValue="true" contributesToHeader="false" overviewRulerPreferenceKey="ASPMM.resource.ASPMM.ui.lineBreakpointIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="ASPMM.resource.ASPMM.ui.lineBreakpointIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="ASPMM.resource.ASPMM.ui.lineBreakpointColor" colorPreferenceValue="212,212,212" presentationLayer="4" showInNextPrevDropdownToolbarActionKey="ASPMM.resource.ASPMM.ui.showLineBreakpointInNextPrevDropdownToolbarAction" showInNextPrevDropdownToolbarAction="true" isGoToNextNavigationTargetKey="ASPMM.resource.ASPMM.ui.isLineBreakpointGoToNextNavigationTarget" isGoToNextNavigationTarget="false" isGoToPreviousNavigationTargetKey="ASPMM.resource.ASPMM.ui.isLineBreakpointGoToPreviousNavigationTarget" isGoToPreviousNavigationTarget="false" textStylePreferenceKey="ASPMM.resource.ASPMM.ui.lineBreakpointTextStyle" textStylePreferenceValue="NONE">
+		</specification>
+	</extension>
+	
+	<extension point="org.eclipse.core.runtime.adapters">
+		<factory adaptableType="ASPMM.resource.ASPMM.ui.ASPMMEditor" class="ASPMM.resource.ASPMM.ui.debug.ASPMMAdapterFactory">
+			<adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget">
+			</adapter>
+		</factory>
+		<factory adaptableType="ASPMM.resource.ASPMM.debug.ASPMMDebugVariable" class="ASPMM.resource.ASPMM.ui.debug.ASPMMAdapterFactory">
+			<adapter type="org.eclipse.debug.internal.ui.viewers.model.provisional.IElementLabelProvider">
+			</adapter>
+		</factory>
+		<factory adaptableType="ASPMM.resource.ASPMM.debug.ASPMMDebugVariable" class="ASPMM.resource.ASPMM.ui.debug.ASPMMAdapterFactory">
+			<adapter type="org.eclipse.debug.internal.ui.viewers.model.provisional.IElementContentProvider">
+			</adapter>
+		</factory>
+	</extension>
+	
+	<extension point="org.eclipse.ui.popupMenus">
+		<viewerContribution id="ASPMM.resource.ASPMM.ui.RulerPopupActions" targetID="ASPMM.resource.ASPMM.EditorRuler">
+			<action id="ASPMM.resource.ASPMM.ui.toggleBreakpointAction" icon="icons/breakpoint_icon.gif" label="Toggle Breakpoint" class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate" menubarPath="debug">
+			</action>
+		</viewerContribution>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editorActions">
+		<editorContribution targetID="ASPMM.resource.ASPMM.ui.ASPMMEditor" id="ASPMM.resource.ASPMM.ui.BreakpointRulerActions">
+			<action id="ASPMM.resource.ASPMM.ui.debug.RulerToggleBreakpointAction" label="Add breakpoint" class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate" actionID="RulerDoubleClick">
+			</action>
+		</editorContribution>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.debugModelPresentations">
+		<debugModelPresentation id="ASPMM.resource.ASPMM.debugModel" class="ASPMM.resource.ASPMM.ui.debug.ASPMMDebugModelPresentation">
+		</debugModelPresentation>
+	</extension>
+	
+</plugin>

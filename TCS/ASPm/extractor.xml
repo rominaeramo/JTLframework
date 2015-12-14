@@ -1,0 +1,27 @@
+
+<project name="ASPmExtractor" default="extraction">
+	<property name="MUri" value="/ASPm/Samples/acc.aspm.xmi"/>
+
+	<target name="extraction">
+		<!-- Loading ASPmm metamodel -->
+		<am3.loadModel modelHandler="EMF" name="ASPm" metamodel="MOF" path="/ASPm/Metamodel/ASPm.ecore"/>
+
+		<!-- Loading ASPmm model -->
+		<am3.loadModel modelHandler="EMF" name="myASPm" metamodel="ASPm" path="${MUri}"/>
+
+		<!-- Loading TCS metamodel -->
+		<am3.loadModel modelHandler="EMF" name="TCS" metamodel="MOF" path="/ASPm/Metamodel/TCS.ecore"/>
+
+		<!-- Loading ASPmm.tcs model -->
+		<am3.loadModel modelHandler="EMF" name="ASPm.tcs" metamodel="TCS" path="/ASPm/Syntax/ASPm.tcs.xmi"/>
+
+
+		<!-- Saving ASPmm model -->
+		<am3.saveModel model="myASPm" path="${MUri}.aspm">
+			<extractor name="ebnf">
+				<param name="format" value="ASPm.tcs"/>
+			</extractor>
+		</am3.saveModel>
+	</target>
+
+</project>

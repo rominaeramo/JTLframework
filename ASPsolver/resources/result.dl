@@ -1,0 +1,86 @@
+
+%%%% Target Model 1
+
+  model("x_m/", x_RDBMS).
+  node(x_RDBMS, "x_/", x_Schema).
+  node(x_RDBMS, "x_//@tables.0", x_Table).
+  node(x_RDBMS, "x_//@tables.1", x_Table).
+  node(x_RDBMS, "x_//@tables.0/@cols.0", x_Column).
+  node(x_RDBMS, "x_//@tables.0/@cols.1", x_Column).
+  node(x_RDBMS, "x_//@tables.0/@cols.2", x_Column).
+  node(x_RDBMS, "x_//@tables.1/@cols.0", x_Column).
+  node(x_RDBMS, "x_//@tables.1/@cols.1", x_Column).
+  node(x_RDBMS, "x_//@tables.1/@cols.2", x_Column).
+  node(x_RDBMS, "x_//@tables.1/@cols.3", x_Column).
+
+  edge(x_RDBMS, "x_/2", x_tables, "x_/", "x_//@tables.0").
+  edge(x_RDBMS, "x_/5", x_tables, "x_/", "x_//@tables.1").
+  edge(x_RDBMS, "x_//@tables.010", x_cols, "x_//@tables.0", "x_//@tables.0/@cols.0").
+  edge(x_RDBMS, "x_//@tables.013", x_cols, "x_//@tables.0", "x_//@tables.0/@cols.1").
+  edge(x_RDBMS, "x_//@tables.016", x_cols, "x_//@tables.0", "x_//@tables.0/@cols.2").
+  edge(x_RDBMS, "x_//@tables.019", x_pkey, "x_//@tables.0", "x_//@tables.0/@cols.0").
+  edge(x_RDBMS, "x_//@tables.124", x_cols, "x_//@tables.1", "x_//@tables.1/@cols.0").
+  edge(x_RDBMS, "x_//@tables.127", x_cols, "x_//@tables.1", "x_//@tables.1/@cols.1").
+  edge(x_RDBMS, "x_//@tables.130", x_cols, "x_//@tables.1", "x_//@tables.1/@cols.2").
+  edge(x_RDBMS, "x_//@tables.133", x_cols, "x_//@tables.1", "x_//@tables.1/@cols.3").
+  edge(x_RDBMS, "x_//@tables.136", x_pkey, "x_//@tables.1", "x_//@tables.0/@cols.0").
+
+  prop(x_RDBMS, "x_/1", "x_/", x_name, x_university).
+  prop(x_RDBMS, "x_//@tables.01", "x_//@tables.0", x_name, x_employer).
+  prop(x_RDBMS, "x_//@tables.11", "x_//@tables.1", x_name, x_professor).
+  prop(x_RDBMS, "x_//@tables.0/@cols.02", "x_//@tables.0/@cols.0", x_name, x_name).
+  prop(x_RDBMS, "x_//@tables.0/@cols.12", "x_//@tables.0/@cols.1", x_name, x_working_address).
+  prop(x_RDBMS, "x_//@tables.0/@cols.22", "x_//@tables.0/@cols.2", x_name, x_department).
+  prop(x_RDBMS, "x_//@tables.1/@cols.02", "x_//@tables.1/@cols.0", x_name, x_name).
+  prop(x_RDBMS, "x_//@tables.1/@cols.12", "x_//@tables.1/@cols.1", x_name, x_working_address).
+  prop(x_RDBMS, "x_//@tables.1/@cols.22", "x_//@tables.1/@cols.2", x_name, x_department).
+  prop(x_RDBMS, "x_//@tables.1/@cols.32", "x_//@tables.1/@cols.3", x_name, x_number_of_pubblications).
+
+
+%%%% Source Model 
+  
+  model("x_m/", x_UML).
+  node(x_UML, "x_/", x_Package).
+  node(x_UML, "x_//@classifiers.0", x_Class).
+  node(x_UML, "x_//@classifiers.1", x_Class).
+  node(x_UML, "x_//@classifiers.2", x_Class).
+  node(x_UML, "x_//@classifiers.3", x_Class).
+  node(x_UML, "x_//@classifiers.0/@attrs.0", x_Attribute).
+  node(x_UML, "x_//@classifiers.1/@attrs.0", x_Attribute).
+  node(x_UML, "x_//@classifiers.2/@attrs.0", x_Attribute).
+  node(x_UML, "x_//@classifiers.3/@attrs.0", x_Attribute).
+
+  edge(x_UML, "x_/2", x_classifiers, "x_/", "x_//@classifiers.0").
+  edge(x_UML, "x_/5", x_classifiers, "x_/", "x_//@classifiers.1").
+  edge(x_UML, "x_/8", x_classifiers, "x_/", "x_//@classifiers.2").
+  edge(x_UML, "x_/11", x_classifiers, "x_/", "x_//@classifiers.3").
+  edge(x_UML, "x_//@classifiers.016", x_attrs, "x_//@classifiers.0", "x_//@classifiers.0/@attrs.0").
+  edge(x_UML, "x_//@classifiers.121", x_attrs, "x_//@classifiers.1", "x_//@classifiers.1/@attrs.0").
+  edge(x_UML, "x_//@classifiers.124", x_parent, "x_//@classifiers.1", "x_//@classifiers.0").
+  edge(x_UML, "x_//@classifiers.229", x_attrs, "x_//@classifiers.2", "x_//@classifiers.2/@attrs.0").
+  edge(x_UML, "x_//@classifiers.232", x_parent, "x_//@classifiers.2", "x_//@classifiers.1").
+  edge(x_UML, "x_//@classifiers.338", x_attrs, "x_//@classifiers.3", "x_//@classifiers.3/@attrs.0").
+  edge(x_UML, "x_//@classifiers.341", x_parent, "x_//@classifiers.3", "x_//@classifiers.2").
+
+  prop(x_UML, "x_/1", 1, "x_/", x_name, x_university).
+  prop(x_UML, "x_//@classifiers.01", "x_//@classifiers.0", x_name, x_person).
+  prop(x_UML, "x_//@classifiers.11", "x_//@classifiers.1", x_name, x_worker).
+  prop(x_UML, "x_//@classifiers.21", "x_//@classifiers.2", x_name, x_employer).
+  prop(x_UML, "x_//@classifiers.22", "x_//@classifiers.2", x_is_persistent, x_true).
+  prop(x_UML, "x_//@classifiers.31", "x_//@classifiers.3", x_name, x_professor).
+  prop(x_UML, "x_//@classifiers.32", "x_//@classifiers.3", x_is_persistent, x_true).
+  prop(x_UML, "x_//@classifiers.0/@attrs.01", "x_//@classifiers.0/@attrs.0", x_name, x_name).
+  prop(x_UML, "x_//@classifiers.0/@attrs.02", "x_//@classifiers.0/@attrs.0", x_is_primary, x_true).
+  prop(x_UML, "x_//@classifiers.1/@attrs.01", "x_//@classifiers.1/@attrs.0", x_name, x_working_address).
+  prop(x_UML, "x_//@classifiers.2/@attrs.01", "x_//@classifiers.2/@attrs.0", x_name, x_department).
+  prop(x_UML, "x_//@classifiers.3/@attrs.01", "x_//@classifiers.3/@attrs.0", x_name, x_number_of_publications).
+
+%%%% Traces
+
+  node(x_UML, "x_//@classifiers.0", x_Class).
+  node(x_UML, "x_//@classifiers.1", x_Class).
+  edge(x_UML, "x_//@classifiers.016", x_attrs, "x_//@classifiers.0", "x_//@classifiers.0/@attrs.0").
+  edge(x_UML, "x_//@classifiers.121", x_attrs, "x_//@classifiers.1", "x_//@classifiers.1/@attrs.0").
+  prop(x_UML, "x_//@classifiers.01", "x_//@classifiers.0", x_name, x_person).
+  prop(x_UML, "x_//@classifiers.11", "x_//@classifiers.1", x_name, x_worker).
+

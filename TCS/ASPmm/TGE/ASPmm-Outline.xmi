@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<otl:Outline xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:otl="http://www.eclipse.org/gmt/tcs/2007/Outline">
+  <nodes name="LocatedElement" icon="dummy">
+    <label label="LocatedElement"/>
+    <mapping mapString="LocatedElement"/>
+  </nodes>
+  <nodes name="Metamodel" icon="dummy">
+    <label label="Metamodel">
+      <labelSuite label=" : "/>
+      <labelSuite methodCall="name"/>
+    </label>
+    <mapping mapString="Metamodel"/>
+  </nodes>
+  <nodes name="Metanode" icon="dummy">
+    <label label="Metanode">
+      <labelSuite label=" : "/>
+      <labelSuite methodCall="name"/>
+    </label>
+    <mapping mapString="Metanode"/>
+  </nodes>
+  <nodes name="Metaprop" icon="dummy">
+    <label label="Metaprop">
+      <labelSuite label=" : "/>
+      <labelSuite methodCall="name"/>
+    </label>
+    <mapping mapString="Metaprop"/>
+  </nodes>
+  <nodes name="Metaedge" icon="dummy">
+    <label label="Metaedge">
+      <labelSuite label=" : "/>
+      <labelSuite methodCall="name"/>
+    </label>
+    <mapping mapString="Metaedge"/>
+  </nodes>
+</otl:Outline>

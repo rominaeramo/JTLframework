@@ -1,0 +1,1710 @@
+%%%%%%%%%%%%%%%%%%%
+%%%% A02DarwinFSP                %%%%
+%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%% RELATIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#const mmt = _x_DarwinFSP.
+
+
+%%%% node 2 node (Right2LeftCorrespondence) %%%%
+relation("_x_Right2LeftCorrespondence41",_x_A0,_x_DarwinFSP).
+relation("_x_Right2LeftCorrespondence41", _x_DarwinFSP, _x_ComponentDeclaration, -1).
+relation("_x_Right2LeftCorrespondence41", _x_A0, _x_SAcomponent, 1).
+:- node(_x_A0, IDx, ID, _x_SAcomponent), not node'(_x_DarwinFSP,IDx - 1, ID, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+
+	%%%% prop 2 prop %%%%
+	relation("_x_FeatureEquivalence4",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence4", _x_DarwinFSP, _x_name, _x_ComponentDeclaration, - 1).
+	relation("_x_FeatureEquivalence4", _x_A0, _x_name, _x_SAcomponent, 1).
+	%% for each prop, prop' must be generated
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_SAcomponent),
+	not prop'(_x_DarwinFSP, IDx - 1, ID, IDmcx - 1, IDmc, _x_name, Value), node'(_x_DarwinFSP, IDmcx - 1, IDmc, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_SAcomponent),
+	prop'(_x_DarwinFSP, IDx - 1, ID, IDmcx - 1, IDmc, _x_name, Value), not node'(_x_DarwinFSP, IDmcx - 1, IDmc, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_DarwinFSP, IDmcx, IDmc, _x_ComponentDeclaration),
+	prop'(_x_A0, IDx + 1, ID, IDmcx + 1, IDmc, _x_name, Value), not node'(_x_A0, IDmcx + 1, IDmc, _x_SAcomponent), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence711",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence711", _x_DarwinFSP, _x_portals, _x_ComponentDeclaration, _x_Portal, - 1).
+	relation("_x_FeatureEquivalence711", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface, 1).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 1, ID, _x_portals, IDSx - 1, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_points, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	metaedge(_x_DarwinFSP, composition, _x_portals, _x_ComponentDeclaration, _x_Portal),
+	node(_x_A0, IDSx, IDS, _x_SAcomponent), node(_x_A0, IDTx, IDT, _x_SAinterface),
+	node'(_x_DarwinFSP,IDSx - 1, IDS, _x_ComponentDeclaration), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_Portal), mmt==_x_DarwinFSP.
+
+%%%% node 2 node (Right2LeftCorrespondence) %%%%
+relation("_x_Right2LeftCorrespondence42",_x_A0,_x_DarwinFSP).
+relation("_x_Right2LeftCorrespondence42", _x_DarwinFSP, _x_ComponentInstance, -7).
+relation("_x_Right2LeftCorrespondence42", _x_A0, _x_SAcomponent, 7).
+:- node(_x_A0, IDx, ID, _x_SAcomponent), not node'(_x_DarwinFSP,IDx - 7, ID, _x_ComponentInstance), mmt==_x_DarwinFSP.
+
+	%%%% prop 2 prop %%%%
+	relation("_x_FeatureEquivalence10",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence10", _x_DarwinFSP, _x_identifier, _x_ComponentInstance, - 7).
+	relation("_x_FeatureEquivalence10", _x_A0, _x_name, _x_SAcomponent, 7).
+	%% for each prop, prop' must be generated
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_SAcomponent),
+	not prop'(_x_DarwinFSP, IDx - 7, ID, IDmcx - 7, IDmc, _x_identifier, Value), node'(_x_DarwinFSP, IDmcx - 7, IDmc, _x_ComponentInstance), mmt==_x_DarwinFSP.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_SAcomponent),
+	prop'(_x_DarwinFSP, IDx - 7, ID, IDmcx - 7, IDmc, _x_identifier, Value), not node'(_x_DarwinFSP, IDmcx - 7, IDmc, _x_ComponentInstance), mmt==_x_DarwinFSP.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_identifier, Value),
+	node(_x_DarwinFSP, IDmcx, IDmc, _x_ComponentInstance),
+	prop'(_x_A0, IDx + 7, ID, IDmcx + 7, IDmc, _x_name, Value), not node'(_x_A0, IDmcx + 7, IDmc, _x_SAcomponent), mmt==_x_A0.
+	%%%% node 2 edge right2left %%%%
+	relation("_x_FeatureEquivalence51",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence51", _x_A0, _x_SAcomponent, 7).
+	relation("_x_FeatureEquivalence51", _x_DarwinFSP, _x_declaration, _x_ComponentInstance, _x_ComponentDeclaration, -7).
+	%% for each node, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 7, IDS, _x_declaration, IDx - 7, IDS, IDx - 1, IDS),
+	node(_x_A0, IDx, IDS, _x_SAcomponent),
+	metaedge(_x_DarwinFSP, association, _x_declaration, _x_ComponentInstance, _x_ComponentDeclaration),
+	node'(_x_DarwinFSP, IDx - 7, IDS, _x_ComponentInstance), node'(_x_DarwinFSP, IDx - 1, IDS, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+
+
+%%%% node 2 node (Right2LeftCorrespondence) %%%%
+relation("_x_Right2LeftCorrespondence11",_x_A0,_x_DarwinFSP).
+relation("_x_Right2LeftCorrespondence11", _x_DarwinFSP, _x_FspSpecification, -1).
+relation("_x_Right2LeftCorrespondence11", _x_A0, _x_A0Spec, 1).
+:- node(_x_A0, IDx, ID, _x_A0Spec), not node'(_x_DarwinFSP,IDx - 1, ID, _x_FspSpecification), mmt==_x_DarwinFSP.
+
+	%%%% prop 2 prop %%%%
+	relation("_x_FeatureEquivalence1",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence1", _x_DarwinFSP, _x_name, _x_FspSpecification, - 1).
+	relation("_x_FeatureEquivalence1", _x_A0, _x_name, _x_A0Spec, 1).
+	%% for each prop, prop' must be generated
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_A0Spec),
+	not prop'(_x_DarwinFSP, IDx - 1, ID, IDmcx - 1, IDmc, _x_name, Value), node'(_x_DarwinFSP, IDmcx - 1, IDmc, _x_FspSpecification), mmt==_x_DarwinFSP.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_A0Spec),
+	prop'(_x_DarwinFSP, IDx - 1, ID, IDmcx - 1, IDmc, _x_name, Value), not node'(_x_DarwinFSP, IDmcx - 1, IDmc, _x_FspSpecification), mmt==_x_DarwinFSP.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_DarwinFSP, IDmcx, IDmc, _x_FspSpecification),
+	prop'(_x_A0, IDx + 1, ID, IDmcx + 1, IDmc, _x_name, Value), not node'(_x_A0, IDmcx + 1, IDmc, _x_A0Spec), mmt==_x_A0.
+
+%%%% node 2 node (Right2LeftCorrespondence) %%%%
+relation("_x_Right2LeftCorrespondence12",_x_A0,_x_DarwinFSP).
+relation("_x_Right2LeftCorrespondence12", _x_DarwinFSP, _x_DarwinSpecification, -2).
+relation("_x_Right2LeftCorrespondence12", _x_A0, _x_A0Spec, 2).
+:- node(_x_A0, IDx, ID, _x_A0Spec), not node'(_x_DarwinFSP,IDx - 2, ID, _x_DarwinSpecification), mmt==_x_DarwinFSP.
+
+	%%%% prop 2 prop %%%%
+	relation("_x_FeatureEquivalence2",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence2", _x_DarwinFSP, _x_name, _x_DarwinSpecification, - 2).
+	relation("_x_FeatureEquivalence2", _x_A0, _x_name, _x_A0Spec, 2).
+	%% for each prop, prop' must be generated
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_A0Spec),
+	not prop'(_x_DarwinFSP, IDx - 2, ID, IDmcx - 2, IDmc, _x_name, Value), node'(_x_DarwinFSP, IDmcx - 2, IDmc, _x_DarwinSpecification), mmt==_x_DarwinFSP.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_A0Spec),
+	prop'(_x_DarwinFSP, IDx - 2, ID, IDmcx - 2, IDmc, _x_name, Value), not node'(_x_DarwinFSP, IDmcx - 2, IDmc, _x_DarwinSpecification), mmt==_x_DarwinFSP.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_DarwinFSP, IDmcx, IDmc, _x_DarwinSpecification),
+	prop'(_x_A0, IDx + 2, ID, IDmcx + 2, IDmc, _x_name, Value), not node'(_x_A0, IDmcx + 2, IDmc, _x_A0Spec), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence1611",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence1611", _x_DarwinFSP, _x_componentDeclarations, _x_DarwinSpecification, _x_ComponentDeclaration, - 2).
+	relation("_x_FeatureEquivalence1611", _x_A0, _x_architectures, _x_A0Spec, _x_SoftwareArchitecture, 2).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 2, ID, _x_componentDeclarations, IDSx - 2, IDS, IDTx - 2, IDT),
+	edge(_x_A0, IDx, ID, _x_architectures, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, composition, _x_architectures, _x_A0Spec, _x_SoftwareArchitecture),
+	metaedge(_x_DarwinFSP, composition, _x_componentDeclarations, _x_DarwinSpecification, _x_ComponentDeclaration),
+	node(_x_A0, IDSx, IDS, _x_A0Spec), node(_x_A0, IDTx, IDT, _x_SoftwareArchitecture),
+	node'(_x_DarwinFSP,IDSx - 2, IDS, _x_DarwinSpecification), node'(_x_DarwinFSP, IDTx - 2, IDT, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+
+
+%%%% node 2 node (Right2LeftCorrespondence) %%%%
+relation("_x_Right2LeftCorrespondence21",_x_A0,_x_DarwinFSP).
+relation("_x_Right2LeftCorrespondence21", _x_DarwinFSP, _x_ComponentDeclaration, -2).
+relation("_x_Right2LeftCorrespondence21", _x_A0, _x_SoftwareArchitecture, 2).
+:- node(_x_A0, IDx, ID, _x_SoftwareArchitecture), not node'(_x_DarwinFSP,IDx - 2, ID, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+:- node(_x_DarwinFSP, IDx, ID, _x_ComponentDeclaration), node'(_x_A0,IDx + 2, ID, _x_SoftwareArchitecture), mmt==_x_A0.
+
+	%%%% prop 2 prop %%%%
+	relation("_x_FeatureEquivalence6",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence6", _x_DarwinFSP, _x_name, _x_ComponentDeclaration, - 2).
+	relation("_x_FeatureEquivalence6", _x_A0, _x_name, _x_SoftwareArchitecture, 2).
+	%% for each prop, prop' must be generated
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_SoftwareArchitecture),
+	not prop'(_x_DarwinFSP, IDx - 2, ID, IDmcx - 2, IDmc, _x_name, Value), node'(_x_DarwinFSP, IDmcx - 2, IDmc, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_SoftwareArchitecture),
+	prop'(_x_DarwinFSP, IDx - 2, ID, IDmcx - 2, IDmc, _x_name, Value), not node'(_x_DarwinFSP, IDmcx - 2, IDmc, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+	%% for each prop, prop' must not exist
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_DarwinFSP, IDmcx, IDmc, _x_ComponentDeclaration),
+	prop'(_x_A0, IDx + 2, ID, IDmcx + 2, IDmc, _x_name, Value), node'(_x_A0, IDmcx + 2, IDmc, _x_SoftwareArchitecture), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_DarwinFSP, IDmcx, IDmc, _x_ComponentDeclaration),
+	prop'(_x_A0, IDx + 2, ID, IDmcx + 2, IDmc, _x_name, Value), not node'(_x_A0, IDmcx + 2, IDmc, _x_SoftwareArchitecture), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence311",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence311", _x_DarwinFSP, _x_componentDeclarations, _x_ComponentDeclaration, _x_ComponentDeclaration, - 2).
+	relation("_x_FeatureEquivalence311", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship, 2).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 2, ID, _x_componentDeclarations, IDSx - 2, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_subElement, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship),
+	metaedge(_x_DarwinFSP, composition, _x_componentDeclarations, _x_ComponentDeclaration, _x_ComponentDeclaration),
+	node(_x_A0, IDSx, IDS, _x_SoftwareArchitecture), node(_x_A0, IDTx, IDT, _x_SArelationship),
+	node'(_x_DarwinFSP,IDSx - 2, IDS, _x_ComponentDeclaration), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 2, ID, _x_subElement, IDSx + 2, IDS, IDTx + 1, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_componentDeclarations, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_ComponentDeclaration), node(_x_DarwinFSP, IDTx, IDT, _x_ComponentDeclaration),
+	node'(_x_A0, IDSx + 2, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDTx + 1, IDT, _x_SArelationship), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence312",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence312", _x_DarwinFSP, _x_componentDeclarations, _x_ComponentDeclaration, _x_ComponentDeclaration, - 2).
+	relation("_x_FeatureEquivalence312", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface, 2).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 2, ID, _x_componentDeclarations, IDSx - 2, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_subElement, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface),
+	metaedge(_x_DarwinFSP, composition, _x_componentDeclarations, _x_ComponentDeclaration, _x_ComponentDeclaration),
+	node(_x_A0, IDSx, IDS, _x_SoftwareArchitecture), node(_x_A0, IDTx, IDT, _x_SAinterface),
+	node'(_x_DarwinFSP,IDSx - 2, IDS, _x_ComponentDeclaration), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 2, ID, _x_subElement, IDSx + 2, IDS, IDTx + 1, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_componentDeclarations, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_ComponentDeclaration), node(_x_DarwinFSP, IDTx, IDT, _x_ComponentDeclaration),
+	node'(_x_A0, IDSx + 2, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDTx + 1, IDT, _x_SAinterface), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence313",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence313", _x_DarwinFSP, _x_componentDeclarations, _x_ComponentDeclaration, _x_ComponentDeclaration, - 2).
+	relation("_x_FeatureEquivalence313", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SABinding, 2).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 2, ID, _x_componentDeclarations, IDSx - 2, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_subElement, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SABinding),
+	metaedge(_x_DarwinFSP, composition, _x_componentDeclarations, _x_ComponentDeclaration, _x_ComponentDeclaration),
+	node(_x_A0, IDSx, IDS, _x_SoftwareArchitecture), node(_x_A0, IDTx, IDT, _x_SABinding),
+	node'(_x_DarwinFSP,IDSx - 2, IDS, _x_ComponentDeclaration), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 2, ID, _x_subElement, IDSx + 2, IDS, IDTx + 1, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_componentDeclarations, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_ComponentDeclaration), node(_x_DarwinFSP, IDTx, IDT, _x_ComponentDeclaration),
+	node'(_x_A0, IDSx + 2, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDTx + 1, IDT, _x_SABinding), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence314",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence314", _x_DarwinFSP, _x_componentDeclarations, _x_ComponentDeclaration, _x_ComponentDeclaration, - 2).
+	relation("_x_FeatureEquivalence314", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel, 2).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 2, ID, _x_componentDeclarations, IDSx - 2, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_subElement, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel),
+	metaedge(_x_DarwinFSP, composition, _x_componentDeclarations, _x_ComponentDeclaration, _x_ComponentDeclaration),
+	node(_x_A0, IDSx, IDS, _x_SoftwareArchitecture), node(_x_A0, IDTx, IDT, _x_SAchannel),
+	node'(_x_DarwinFSP,IDSx - 2, IDS, _x_ComponentDeclaration), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 2, ID, _x_subElement, IDSx + 2, IDS, IDTx + 1, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_componentDeclarations, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_ComponentDeclaration), node(_x_DarwinFSP, IDTx, IDT, _x_ComponentDeclaration),
+	node'(_x_A0, IDSx + 2, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDTx + 1, IDT, _x_SAchannel), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence315",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence315", _x_DarwinFSP, _x_componentDeclarations, _x_ComponentDeclaration, _x_ComponentDeclaration, - 2).
+	relation("_x_FeatureEquivalence315", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector, 2).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 2, ID, _x_componentDeclarations, IDSx - 2, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_subElement, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector),
+	metaedge(_x_DarwinFSP, composition, _x_componentDeclarations, _x_ComponentDeclaration, _x_ComponentDeclaration),
+	node(_x_A0, IDSx, IDS, _x_SoftwareArchitecture), node(_x_A0, IDTx, IDT, _x_SAconnector),
+	node'(_x_DarwinFSP,IDSx - 2, IDS, _x_ComponentDeclaration), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 2, ID, _x_subElement, IDSx + 2, IDS, IDTx + 1, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_componentDeclarations, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_ComponentDeclaration), node(_x_DarwinFSP, IDTx, IDT, _x_ComponentDeclaration),
+	node'(_x_A0, IDSx + 2, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDTx + 1, IDT, _x_SAconnector), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence316",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence316", _x_DarwinFSP, _x_componentDeclarations, _x_ComponentDeclaration, _x_ComponentDeclaration, - 2).
+	relation("_x_FeatureEquivalence316", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent, 2).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 2, ID, _x_componentDeclarations, IDSx - 2, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_subElement, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent),
+	metaedge(_x_DarwinFSP, composition, _x_componentDeclarations, _x_ComponentDeclaration, _x_ComponentDeclaration),
+	node(_x_A0, IDSx, IDS, _x_SoftwareArchitecture), node(_x_A0, IDTx, IDT, _x_SAcomponent),
+	node'(_x_DarwinFSP,IDSx - 2, IDS, _x_ComponentDeclaration), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 2, ID, _x_subElement, IDSx + 2, IDS, IDTx + 1, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_componentDeclarations, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_ComponentDeclaration), node(_x_DarwinFSP, IDTx, IDT, _x_ComponentDeclaration),
+	node'(_x_A0, IDSx + 2, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDTx + 1, IDT, _x_SAcomponent), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence811",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence811", _x_DarwinFSP, _x_innerInstances, _x_ComponentDeclaration, _x_ComponentInstance, - 2).
+	relation("_x_FeatureEquivalence811", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship, 2).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 2, ID, _x_innerInstances, IDSx - 2, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_subElement, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship),
+	metaedge(_x_DarwinFSP, composition, _x_innerInstances, _x_ComponentDeclaration, _x_ComponentInstance),
+	node(_x_A0, IDSx, IDS, _x_SoftwareArchitecture), node(_x_A0, IDTx, IDT, _x_SArelationship),
+	node'(_x_DarwinFSP,IDSx - 2, IDS, _x_ComponentDeclaration), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_ComponentInstance), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 2, ID, _x_subElement, IDSx + 2, IDS, IDTx + 1, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_innerInstances, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_ComponentDeclaration), node(_x_DarwinFSP, IDTx, IDT, _x_ComponentInstance),
+	node'(_x_A0, IDSx + 2, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDTx + 1, IDT, _x_SArelationship), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence812",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence812", _x_DarwinFSP, _x_innerInstances, _x_ComponentDeclaration, _x_ComponentInstance, - 2).
+	relation("_x_FeatureEquivalence812", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface, 2).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 2, ID, _x_innerInstances, IDSx - 2, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_subElement, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface),
+	metaedge(_x_DarwinFSP, composition, _x_innerInstances, _x_ComponentDeclaration, _x_ComponentInstance),
+	node(_x_A0, IDSx, IDS, _x_SoftwareArchitecture), node(_x_A0, IDTx, IDT, _x_SAinterface),
+	node'(_x_DarwinFSP,IDSx - 2, IDS, _x_ComponentDeclaration), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_ComponentInstance), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 2, ID, _x_subElement, IDSx + 2, IDS, IDTx + 1, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_innerInstances, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_ComponentDeclaration), node(_x_DarwinFSP, IDTx, IDT, _x_ComponentInstance),
+	node'(_x_A0, IDSx + 2, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDTx + 1, IDT, _x_SAinterface), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence813",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence813", _x_DarwinFSP, _x_innerInstances, _x_ComponentDeclaration, _x_ComponentInstance, - 2).
+	relation("_x_FeatureEquivalence813", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SABinding, 2).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 2, ID, _x_innerInstances, IDSx - 2, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_subElement, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SABinding),
+	metaedge(_x_DarwinFSP, composition, _x_innerInstances, _x_ComponentDeclaration, _x_ComponentInstance),
+	node(_x_A0, IDSx, IDS, _x_SoftwareArchitecture), node(_x_A0, IDTx, IDT, _x_SABinding),
+	node'(_x_DarwinFSP,IDSx - 2, IDS, _x_ComponentDeclaration), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_ComponentInstance), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 2, ID, _x_subElement, IDSx + 2, IDS, IDTx + 1, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_innerInstances, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_ComponentDeclaration), node(_x_DarwinFSP, IDTx, IDT, _x_ComponentInstance),
+	node'(_x_A0, IDSx + 2, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDTx + 1, IDT, _x_SABinding), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence814",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence814", _x_DarwinFSP, _x_innerInstances, _x_ComponentDeclaration, _x_ComponentInstance, - 2).
+	relation("_x_FeatureEquivalence814", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel, 2).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 2, ID, _x_innerInstances, IDSx - 2, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_subElement, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel),
+	metaedge(_x_DarwinFSP, composition, _x_innerInstances, _x_ComponentDeclaration, _x_ComponentInstance),
+	node(_x_A0, IDSx, IDS, _x_SoftwareArchitecture), node(_x_A0, IDTx, IDT, _x_SAchannel),
+	node'(_x_DarwinFSP,IDSx - 2, IDS, _x_ComponentDeclaration), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_ComponentInstance), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 2, ID, _x_subElement, IDSx + 2, IDS, IDTx + 1, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_innerInstances, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_ComponentDeclaration), node(_x_DarwinFSP, IDTx, IDT, _x_ComponentInstance),
+	node'(_x_A0, IDSx + 2, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDTx + 1, IDT, _x_SAchannel), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence815",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence815", _x_DarwinFSP, _x_innerInstances, _x_ComponentDeclaration, _x_ComponentInstance, - 2).
+	relation("_x_FeatureEquivalence815", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector, 2).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 2, ID, _x_innerInstances, IDSx - 2, IDS, IDTx - 7, IDT),
+	edge(_x_A0, IDx, ID, _x_subElement, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector),
+	metaedge(_x_DarwinFSP, composition, _x_innerInstances, _x_ComponentDeclaration, _x_ComponentInstance),
+	node(_x_A0, IDSx, IDS, _x_SoftwareArchitecture), node(_x_A0, IDTx, IDT, _x_SAconnector),
+	node'(_x_DarwinFSP,IDSx - 2, IDS, _x_ComponentDeclaration), node'(_x_DarwinFSP, IDTx - 7, IDT, _x_ComponentInstance), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 2, ID, _x_subElement, IDSx + 2, IDS, IDTx + 7, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_innerInstances, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_ComponentDeclaration), node(_x_DarwinFSP, IDTx, IDT, _x_ComponentInstance),
+	node'(_x_A0, IDSx + 2, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDTx + 1, IDT, _x_SAconnector), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence816",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence816", _x_DarwinFSP, _x_innerInstances, _x_ComponentDeclaration, _x_ComponentInstance, - 2).
+	relation("_x_FeatureEquivalence816", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent, 2).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 2, ID, _x_innerInstances, IDSx - 2, IDS, IDTx - 7, IDT),
+	edge(_x_A0, IDx, ID, _x_subElement, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent),
+	metaedge(_x_DarwinFSP, composition, _x_innerInstances, _x_ComponentDeclaration, _x_ComponentInstance),
+	node(_x_A0, IDSx, IDS, _x_SoftwareArchitecture), node(_x_A0, IDTx, IDT, _x_SAcomponent),
+	node'(_x_DarwinFSP,IDSx - 2, IDS, _x_ComponentDeclaration), node'(_x_DarwinFSP, IDTx - 7, IDT, _x_ComponentInstance), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 2, ID, _x_subElement, IDSx + 2, IDS, IDTx + 7, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_innerInstances, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_ComponentDeclaration), node(_x_DarwinFSP, IDTx, IDT, _x_ComponentInstance),
+	node'(_x_A0, IDSx + 2, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDTx + 1, IDT, _x_SAcomponent), mmt==_x_A0.
+
+
+%%%% node 2 node (Left2RightCorrespondence) %%%%
+relation("_x_//@correspondences.01",_x_DarwinFSP,_x_A0).
+relation("_x_//@correspondences.01", _x_DarwinFSP, _x_DarwinSpecification, -1).
+relation("_x_//@correspondences.01", _x_A0, _x_SoftwareArchitecture, 1).
+:- node(_x_DarwinFSP,IDx , ID, _x_DarwinSpecification), not node'(_x_A0,IDx + 1, ID, _x_SoftwareArchitecture), mmt==_x_A0.
+
+	%%%% prop 2 prop %%%%
+	relation("_x_//@correspondences.0/@right.0/@featureEquivalences.0",_x_DarwinFSP,_x_A0).
+	relation("_x_//@correspondences.0/@right.0/@featureEquivalences.0", _x_DarwinFSP, _x_name, _x_DarwinSpecification, -1).
+	relation("_x_//@correspondences.0/@right.0/@featureEquivalences.0", _x_A0, _x_name, _x_SoftwareArchitecture, 1).
+	%% for each prop, prop' must be generated
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_DarwinFSP, IDmcx, IDmc, _x_DarwinSpecification),
+	not prop'(_x_A0, IDx + 1, ID, IDmcx + 1, IDmc, _x_name, Value), node'(_x_A0, IDmcx + 1, IDmc, _x_SoftwareArchitecture), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_DarwinFSP, IDmcx, IDmc, _x_DarwinSpecification),
+	prop'(_x_A0, IDx + 1, ID,IDmcx + 1, IDmc, _x_name, Value), not node'(_x_A0, IDmcx + 1, IDmc, _x_SoftwareArchitecture), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_SoftwareArchitecture),
+	prop'(_x_DarwinFSP, IDx - 1, ID, IDmcx - 1, IDmc, _x_name, Value), not node'(_x_DarwinFSP, IDmcx - 1, IDmc, _x_DarwinSpecification), mmt==_x_DarwinFSP.
+
+%%%% node 2 node (Left2RightCorrespondence) %%%%
+relation("_x_//@correspondences.02",_x_DarwinFSP,_x_A0).
+relation("_x_//@correspondences.02", _x_DarwinFSP, _x_DarwinSpecification, -2).
+relation("_x_//@correspondences.02", _x_A0, _x_A0Spec, 2).
+:- node(_x_DarwinFSP,IDx , ID, _x_DarwinSpecification), not node'(_x_A0,IDx + 2, ID, _x_A0Spec), mmt==_x_A0.
+
+	%%%% prop 2 prop %%%%
+	relation("_x_//@correspondences.0/@right.1/@featureEquivalences.0",_x_DarwinFSP,_x_A0).
+	relation("_x_//@correspondences.0/@right.1/@featureEquivalences.0", _x_DarwinFSP, _x_name, _x_DarwinSpecification, -2).
+	relation("_x_//@correspondences.0/@right.1/@featureEquivalences.0", _x_A0, _x_name, _x_A0Spec, 2).
+	%% for each prop, prop' must be generated
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_DarwinFSP, IDmcx, IDmc, _x_DarwinSpecification),
+	not prop'(_x_A0, IDx + 2, ID, IDmcx + 2, IDmc, _x_name, Value), node'(_x_A0, IDmcx + 2, IDmc, _x_A0Spec), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_DarwinFSP, IDmcx, IDmc, _x_DarwinSpecification),
+	prop'(_x_A0, IDx + 2, ID,IDmcx + 2, IDmc, _x_name, Value), not node'(_x_A0, IDmcx + 2, IDmc, _x_A0Spec), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_A0Spec),
+	prop'(_x_DarwinFSP, IDx - 2, ID, IDmcx - 2, IDmc, _x_name, Value), not node'(_x_DarwinFSP, IDmcx - 2, IDmc, _x_DarwinSpecification), mmt==_x_DarwinFSP.
+
+
+	%%%% node 2 edge left2right %%%%
+	relation("_x_//@correspondences.0/@right.1/@featureEquivalences.11",_x_DarwinFSP,_x_A0).
+	relation("_x_//@correspondences.0/@right.1/@featureEquivalences.11", _x_DarwinFSP, _x_DarwinSpecification, - 2).
+	relation("_x_//@correspondences.0/@right.1/@featureEquivalences.11", _x_A0, _x_architectures, _x_A0Spec, _x_SoftwareArchitecture, 2).
+	%% for each node, edge' must be created
+	:- not edge'(_x_A0, IDx + 2, IDS, _x_architectures, IDx + 2, IDS, IDx + 1, IDS),
+	node(_x_DarwinFSP, IDx, IDS, _x_DarwinSpecification),
+	metaedge(_x_A0, composition, _x_architectures, _x_A0Spec, _x_SoftwareArchitecture),
+	node'(_x_A0, IDx + 2, IDS, _x_A0Spec), node'(_x_A0,IDx + 1, IDS, _x_SoftwareArchitecture), mmt==_x_A0.
+
+
+%%%% node 2 node (EquivalenceCorrespondence) %%%%
+relation("_x_EquivalenceCorrespondence1",bx,bx).
+relation("_x_EquivalenceCorrespondence1", _x_DarwinFSP, _x_Portal, -1).
+relation("_x_EquivalenceCorrespondence1", _x_A0, _x_SAinterface, 1).
+:- node(_x_DarwinFSP, IDx, ID, _x_Portal), not node'(_x_A0, IDx + 1, ID, _x_SAinterface), mmt==_x_A0.
+:- node(_x_A0, IDx, ID, _x_SAinterface), not node'(_x_DarwinFSP, IDx - 1, ID, _x_Portal), mmt==_x_DarwinFSP.
+
+	%%%% prop 2 prop %%%%
+	relation("_x_FeatureEquivalence9",bx,bx).
+	relation("_x_FeatureEquivalence9", _x_DarwinFSP, _x_identifier, _x_Portal, - 1).
+	relation("_x_FeatureEquivalence9", _x_A0, _x_name, _x_SAinterface, 1).
+	%% for each prop, prop' must be generated
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_identifier, Value),
+	node(_x_DarwinFSP,IDmcx, IDmc, _x_Portal),
+	not prop'(_x_A0, IDx + 1, ID, IDmcx + 1, IDmc, _x_name, Value), node'(_x_A0, IDmcx + 1, IDmc, _x_SAinterface), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_DarwinFSP,IDx, ID, IDmcx, IDmc, _x_identifier, Value),
+	node(_x_DarwinFSP,IDmcx, IDmc, _x_Portal),
+	prop'(_x_A0, IDx + 1, ID, IDmcx + 1, IDmc, _x_name, Value), not node'(_x_A0, IDmcx + 1, IDmc, _x_SAinterface), mmt==_x_A0.
+	%% for each prop, prop' must exist
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_SAinterface),
+	not prop'(_x_DarwinFSP, IDx - 1, ID,IDmcx - 1, IDmc, _x_identifier, Value), node'(_x_DarwinFSP, IDmcx - 1, IDmc, _x_Portal), mmt==_x_DarwinFSP.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_A0, IDx, ID, IDmcx, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_SAinterface),
+	prop'(_x_DarwinFSP, IDx - 1, ID,IDmcx - 1, IDmc, _x_identifier, Value), not node'(_x_DarwinFSP,IDmcx - 1, IDmc, _x_Portal), mmt==_x_DarwinFSP.
+
+	%%%% prop 2 prop %%%%
+	relation("_x_FeatureEquivalence11",bx,bx).
+	relation("_x_FeatureEquivalence11", _x_DarwinFSP, _x_type, _x_Portal, - 1).
+	relation("_x_FeatureEquivalence11", _x_A0, _x_direction, _x_SAinterface, 1).
+	%% for each prop, prop' must be generated
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_type, Value2),
+	node(_x_DarwinFSP,IDmcx, IDmc, _x_Portal),
+	enumeration(IDenum, IDe, _x_DarwinFSP, Value2),enumeration(IDenum, IDe, _x_A0, Value),
+	not prop'(_x_A0, IDx + 1, ID, IDmcx + 1, IDmc, _x_direction, Value), node'(_x_A0, IDmcx + 1, IDmc, _x_SAinterface), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_DarwinFSP,IDx, ID, IDmcx, IDmc, _x_type, Value2),
+	node(_x_DarwinFSP,IDmcx, IDmc, _x_Portal),
+	enumeration(IDenum, IDe, _x_DarwinFSP, Value2),enumeration(IDenum, IDe, _x_A0, Value),
+	prop'(_x_A0, IDx + 1, ID, IDmcx + 1, IDmc, _x_direction, Value), not node'(_x_A0, IDmcx + 1, IDmc, _x_SAinterface), mmt==_x_A0.
+	%% for each prop, prop' must exist
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_direction, Value2),
+	node(_x_A0, IDmcx, IDmc, _x_SAinterface),
+	enumeration(IDenum, IDe, _x_A0, Value2),enumeration(IDenum, IDe, _x_DarwinFSP, Value),
+	not prop'(_x_DarwinFSP, IDx - 1, ID,IDmcx - 1, IDmc, _x_type, Value), node'(_x_DarwinFSP, IDmcx - 1, IDmc, _x_Portal), mmt==_x_DarwinFSP.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_A0, IDx, ID, IDmcx, ID, IDmc, _x_direction, Value2),
+	node(_x_A0, IDmcx, IDmc, _x_SAinterface),
+	enumeration(IDenum, IDe, _x_A0, Value2),enumeration(IDenum, IDe, _x_DarwinFSP, Value),
+	prop'(_x_DarwinFSP, IDx - 1, ID,IDmcx - 1, IDmc, _x_type, Value), not node'(_x_DarwinFSP,IDmcx - 1, IDmc, _x_Portal), mmt==_x_DarwinFSP.
+
+
+%%%% node 2 node (Left2RightCorrespondence) %%%%
+relation("_x_Left2RightCorrespondence11",_x_DarwinFSP,_x_A0).
+relation("_x_Left2RightCorrespondence11", _x_DarwinFSP, _x_ComponentDeclaration, -1).
+relation("_x_Left2RightCorrespondence11", _x_A0, _x_SAconnector, 1).
+:- node(_x_DarwinFSP,IDx , ID, _x_ComponentDeclaration), not node'(_x_A0,IDx + 1, ID, _x_SAconnector), mmt==_x_A0.
+
+	%%%% prop 2 prop %%%%
+	relation("_x_FeatureEquivalence17",_x_DarwinFSP,_x_A0).
+	relation("_x_FeatureEquivalence17", _x_DarwinFSP, _x_name, _x_ComponentDeclaration, -1).
+	relation("_x_FeatureEquivalence17", _x_A0, _x_name, _x_SAconnector, 1).
+	%% for each prop, prop' must be generated
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_DarwinFSP, IDmcx, IDmc, _x_ComponentDeclaration),
+	not prop'(_x_A0, IDx + 1, ID, IDmcx + 1, IDmc, _x_name, Value), node'(_x_A0, IDmcx + 1, IDmc, _x_SAconnector), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_DarwinFSP, IDmcx, IDmc, _x_ComponentDeclaration),
+	prop'(_x_A0, IDx + 1, ID,IDmcx + 1, IDmc, _x_name, Value), not node'(_x_A0, IDmcx + 1, IDmc, _x_SAconnector), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence1811",_x_DarwinFSP,_x_A0).
+	relation("_x_FeatureEquivalence1811", _x_DarwinFSP, _x_portals, _x_ComponentDeclaration, _x_Portal, - 1).
+	relation("_x_FeatureEquivalence1811", _x_A0, _x_points, _x_SAconnector, _x_SAinterface, 1).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, IDx + 1, ID, _x_points, IDSx + 1, IDS, IDTx + 1,IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_portals, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_DarwinFSP, composition, _x_portals, _x_ComponentDeclaration, _x_Portal),
+	metaedge(_x_A0, composition, _x_points, _x_SAconnector, _x_SAinterface),
+	node(_x_DarwinFSP, IDSx, IDS, _x_ComponentDeclaration), node(_x_DarwinFSP, IDTx, IDT, _x_Portal),
+	node'(_x_A0, IDSx + 1, IDS, _x_SAconnector), node'(_x_A0, IDTx + 1, IDT, _x_SAinterface), mmt==_x_A0.
+
+
+%%%% node 2 node (Left2RightCorrespondence) %%%%
+relation("_x_Left2RightCorrespondence21",_x_DarwinFSP,_x_A0).
+relation("_x_Left2RightCorrespondence21", _x_DarwinFSP, _x_ComponentDeclaration, -1).
+relation("_x_Left2RightCorrespondence21", _x_A0, _x_SAcomponent, 1).
+:- node(_x_DarwinFSP,IDx , ID, _x_ComponentDeclaration), not node'(_x_A0,IDx + 1, ID, _x_SAcomponent), mmt==_x_A0.
+
+	%%%% prop 2 prop %%%%
+	relation("_x_//@correspondences.3/@right.0/@featureEquivalences.0",_x_DarwinFSP,_x_A0).
+	relation("_x_//@correspondences.3/@right.0/@featureEquivalences.0", _x_DarwinFSP, _x_name, _x_ComponentDeclaration, -1).
+	relation("_x_//@correspondences.3/@right.0/@featureEquivalences.0", _x_A0, _x_name, _x_SAcomponent, 1).
+	%% for each prop, prop' must be generated
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_DarwinFSP, IDmcx, IDmc, _x_ComponentDeclaration),
+	not prop'(_x_A0, IDx + 1, ID, IDmcx + 1, IDmc, _x_name, Value), node'(_x_A0, IDmcx + 1, IDmc, _x_SAcomponent), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_DarwinFSP, IDmcx, IDmc, _x_ComponentDeclaration),
+	prop'(_x_A0, IDx + 1, ID,IDmcx + 1, IDmc, _x_name, Value), not node'(_x_A0, IDmcx + 1, IDmc, _x_SAcomponent), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.3/@right.0/@featureEquivalences.111",_x_DarwinFSP,_x_A0).
+	relation("_x_//@correspondences.3/@right.0/@featureEquivalences.111", _x_DarwinFSP, _x_portals, _x_ComponentDeclaration, _x_Portal, - 1).
+	relation("_x_//@correspondences.3/@right.0/@featureEquivalences.111", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface, 1).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, IDx + 1, ID, _x_points, IDSx + 1, IDS, IDTx + 1,IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_portals, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_DarwinFSP, composition, _x_portals, _x_ComponentDeclaration, _x_Portal),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_DarwinFSP, IDSx, IDS, _x_ComponentDeclaration), node(_x_DarwinFSP, IDTx, IDT, _x_Portal),
+	node'(_x_A0, IDSx + 1, IDS, _x_SAcomponent), node'(_x_A0, IDTx + 1, IDT, _x_SAinterface), mmt==_x_A0.
+
+
+%%%% node 2 node (Right2LeftCorrespondence) %%%%
+relation("_x_Right2LeftCorrespondence31",_x_A0,_x_DarwinFSP).
+relation("_x_Right2LeftCorrespondence31", _x_DarwinFSP, _x_ComponentDeclaration, -1).
+relation("_x_Right2LeftCorrespondence31", _x_A0, _x_SAconnector, 1).
+:- node(_x_A0, IDx, ID, _x_SAconnector), not node'(_x_DarwinFSP,IDx - 1, ID, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+
+	%%%% prop 2 prop %%%%
+	relation("_x_FeatureEquivalence12",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence12", _x_DarwinFSP, _x_name, _x_ComponentDeclaration, - 1).
+	relation("_x_FeatureEquivalence12", _x_A0, _x_name, _x_SAconnector, 1).
+	%% for each prop, prop' must be generated
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_SAconnector),
+	not prop'(_x_DarwinFSP, IDx - 1, ID, IDmcx - 1, IDmc, _x_name, Value), node'(_x_DarwinFSP, IDmcx - 1, IDmc, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_SAconnector),
+	prop'(_x_DarwinFSP, IDx - 1, ID, IDmcx - 1, IDmc, _x_name, Value), not node'(_x_DarwinFSP, IDmcx - 1, IDmc, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_DarwinFSP, IDmcx, IDmc, _x_ComponentDeclaration),
+	prop'(_x_A0, IDx + 1, ID, IDmcx + 1, IDmc, _x_name, Value), not node'(_x_A0, IDmcx + 1, IDmc, _x_SAconnector), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence1411",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence1411", _x_DarwinFSP, _x_portals, _x_ComponentDeclaration, _x_Portal, - 1).
+	relation("_x_FeatureEquivalence1411", _x_A0, _x_points, _x_SAconnector, _x_SAinterface, 1).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 1, ID, _x_portals, IDSx - 1, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_points, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, composition, _x_points, _x_SAconnector, _x_SAinterface),
+	metaedge(_x_DarwinFSP, composition, _x_portals, _x_ComponentDeclaration, _x_Portal),
+	node(_x_A0, IDSx, IDS, _x_SAconnector), node(_x_A0, IDTx, IDT, _x_SAinterface),
+	node'(_x_DarwinFSP,IDSx - 1, IDS, _x_ComponentDeclaration), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_Portal), mmt==_x_DarwinFSP.
+
+%%%% node 2 node (Right2LeftCorrespondence) %%%%
+relation("_x_Right2LeftCorrespondence32",_x_A0,_x_DarwinFSP).
+relation("_x_Right2LeftCorrespondence32", _x_DarwinFSP, _x_ComponentInstance, -7).
+relation("_x_Right2LeftCorrespondence32", _x_A0, _x_SAconnector, 7).
+:- node(_x_A0, IDx, ID, _x_SAconnector), not node'(_x_DarwinFSP,IDx - 7, ID, _x_ComponentInstance), mmt==_x_DarwinFSP.
+
+	%%%% prop 2 prop %%%%
+	relation("_x_FeatureEquivalence13",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence13", _x_DarwinFSP, _x_identifier, _x_ComponentInstance, - 7).
+	relation("_x_FeatureEquivalence13", _x_A0, _x_name, _x_SAconnector, 7).
+	%% for each prop, prop' must be generated
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_SAconnector),
+	not prop'(_x_DarwinFSP, IDx - 7, ID, IDmcx - 7, IDmc, _x_identifier, Value), node'(_x_DarwinFSP, IDmcx - 7, IDmc, _x_ComponentInstance), mmt==_x_DarwinFSP.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_A0, IDx, ID, IDmcx, IDmc, _x_name, Value),
+	node(_x_A0, IDmcx, IDmc, _x_SAconnector),
+	prop'(_x_DarwinFSP, IDx - 7, ID, IDmcx - 7, IDmc, _x_identifier, Value), not node'(_x_DarwinFSP, IDmcx - 7, IDmc, _x_ComponentInstance), mmt==_x_DarwinFSP.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_DarwinFSP, IDx, ID, IDmcx, IDmc, _x_identifier, Value),
+	node(_x_DarwinFSP, IDmcx, IDmc, _x_ComponentInstance),
+	prop'(_x_A0, IDx + 7, ID, IDmcx + 7, IDmc, _x_name, Value), not node'(_x_A0, IDmcx + 7, IDmc, _x_SAconnector), mmt==_x_A0.
+	%%%% node 2 edge right2left %%%%
+	relation("_x_FeatureEquivalence151",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence151", _x_A0, _x_SAconnector, 7).
+	relation("_x_FeatureEquivalence151", _x_DarwinFSP, _x_declaration, _x_ComponentInstance, _x_ComponentDeclaration, -7).
+	%% for each node, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 7, IDS, _x_declaration, IDx - 7, IDS, IDx - 1, IDS),
+	node(_x_A0, IDx, IDS, _x_SAconnector),
+	metaedge(_x_DarwinFSP, association, _x_declaration, _x_ComponentInstance, _x_ComponentDeclaration),
+	node'(_x_DarwinFSP, IDx - 7, IDS, _x_ComponentInstance), node'(_x_DarwinFSP, IDx - 1, IDS, _x_ComponentDeclaration), mmt==_x_DarwinFSP.
+
+
+%%%% node 2 node (Right2LeftCorrespondence) %%%%
+relation("_x_Right2LeftCorrespondence51",_x_A0,_x_DarwinFSP).
+relation("_x_Right2LeftCorrespondence51", _x_DarwinFSP, _x_Binding, -1).
+relation("_x_Right2LeftCorrespondence51", _x_A0, _x_SAchannel, 1).
+:- node(_x_A0, IDx, ID, _x_SAchannel), not node'(_x_DarwinFSP,IDx - 1, ID, _x_Binding), mmt==_x_DarwinFSP.
+:- node(_x_DarwinFSP, IDx, ID, _x_Binding), node'(_x_A0,IDx + 1, ID, _x_SAchannel), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence1911",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence1911", _x_DarwinFSP, _x_from, _x_Binding, _x_Portal, - 1).
+	relation("_x_FeatureEquivalence1911", _x_A0, _x_from, _x_SAchannel, _x_SAinterface, 1).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 1, ID, _x_from, IDSx - 1, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_from, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAinterface),
+	metaedge(_x_DarwinFSP, association, _x_from, _x_Binding, _x_Portal),
+	node(_x_A0, IDSx, IDS, _x_SAchannel), node(_x_A0, IDTx, IDT, _x_SAinterface),
+	node'(_x_DarwinFSP,IDSx - 1, IDS, _x_Binding), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_Portal), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 1, ID, _x_from, IDSx + 1, IDS, IDTx + 1, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_from, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_Binding), node(_x_DarwinFSP, IDTx, IDT, _x_Portal),
+	node'(_x_A0, IDSx + 1, IDS, _x_SAchannel), node'(_x_A0, IDTx + 1, IDT, _x_SAinterface), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence1912",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence1912", _x_DarwinFSP, _x_from, _x_Binding, _x_Portal, - 1).
+	relation("_x_FeatureEquivalence1912", _x_A0, _x_from, _x_SAchannel, _x_SAconnector, 1).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 1, ID, _x_from, IDSx - 1, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_from, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAconnector),
+	metaedge(_x_DarwinFSP, association, _x_from, _x_Binding, _x_Portal),
+	node(_x_A0, IDSx, IDS, _x_SAchannel), node(_x_A0, IDTx, IDT, _x_SAconnector),
+	node'(_x_DarwinFSP,IDSx - 1, IDS, _x_Binding), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_Portal), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 1, ID, _x_from, IDSx + 1, IDS, IDTx + 1, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_from, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_Binding), node(_x_DarwinFSP, IDTx, IDT, _x_Portal),
+	node'(_x_A0, IDSx + 1, IDS, _x_SAchannel), node'(_x_A0, IDTx + 1, IDT, _x_SAconnector), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence1913",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence1913", _x_DarwinFSP, _x_from, _x_Binding, _x_Portal, - 1).
+	relation("_x_FeatureEquivalence1913", _x_A0, _x_from, _x_SAchannel, _x_SAcomponent, 1).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 1, ID, _x_from, IDSx - 1, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_from, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAcomponent),
+	metaedge(_x_DarwinFSP, association, _x_from, _x_Binding, _x_Portal),
+	node(_x_A0, IDSx, IDS, _x_SAchannel), node(_x_A0, IDTx, IDT, _x_SAcomponent),
+	node'(_x_DarwinFSP,IDSx - 1, IDS, _x_Binding), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_Portal), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 1, ID, _x_from, IDSx + 1, IDS, IDTx + 1, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_from, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_Binding), node(_x_DarwinFSP, IDTx, IDT, _x_Portal),
+	node'(_x_A0, IDSx + 1, IDS, _x_SAchannel), node'(_x_A0, IDTx + 1, IDT, _x_SAcomponent), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence2011",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence2011", _x_DarwinFSP, _x_to, _x_Binding, _x_Portal, - 1).
+	relation("_x_FeatureEquivalence2011", _x_A0, _x_to, _x_SAchannel, _x_SAinterface, 1).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 1, ID, _x_to, IDSx - 1, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_to, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAinterface),
+	metaedge(_x_DarwinFSP, association, _x_to, _x_Binding, _x_Portal),
+	node(_x_A0, IDSx, IDS, _x_SAchannel), node(_x_A0, IDTx, IDT, _x_SAinterface),
+	node'(_x_DarwinFSP,IDSx - 1, IDS, _x_Binding), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_Portal), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 1, ID, _x_to, IDSx + 1, IDS, IDTx + 1, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_to, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_Binding), node(_x_DarwinFSP, IDTx, IDT, _x_Portal),
+	node'(_x_A0, IDSx + 1, IDS, _x_SAchannel), node'(_x_A0, IDTx + 1, IDT, _x_SAinterface), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence2012",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence2012", _x_DarwinFSP, _x_to, _x_Binding, _x_Portal, - 1).
+	relation("_x_FeatureEquivalence2012", _x_A0, _x_to, _x_SAchannel, _x_SAconnector, 1).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 1, ID, _x_to, IDSx - 1, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_to, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAconnector),
+	metaedge(_x_DarwinFSP, association, _x_to, _x_Binding, _x_Portal),
+	node(_x_A0, IDSx, IDS, _x_SAchannel), node(_x_A0, IDTx, IDT, _x_SAconnector),
+	node'(_x_DarwinFSP,IDSx - 1, IDS, _x_Binding), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_Portal), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 1, ID, _x_to, IDSx + 1, IDS, IDTx + 1, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_to, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_Binding), node(_x_DarwinFSP, IDTx, IDT, _x_Portal),
+	node'(_x_A0, IDSx + 1, IDS, _x_SAchannel), node'(_x_A0, IDTx + 1, IDT, _x_SAconnector), mmt==_x_A0.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence2013",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence2013", _x_DarwinFSP, _x_to, _x_Binding, _x_Portal, - 1).
+	relation("_x_FeatureEquivalence2013", _x_A0, _x_to, _x_SAchannel, _x_SAcomponent, 1).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 1, ID, _x_to, IDSx - 1, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_to, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAcomponent),
+	metaedge(_x_DarwinFSP, association, _x_to, _x_Binding, _x_Portal),
+	node(_x_A0, IDSx, IDS, _x_SAchannel), node(_x_A0, IDTx, IDT, _x_SAcomponent),
+	node'(_x_DarwinFSP,IDSx - 1, IDS, _x_Binding), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_Portal), mmt==_x_DarwinFSP.
+	:- edge'(_x_A0, IDx + 1, ID, _x_to, IDSx + 1, IDS, IDTx + 1, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_to, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_Binding), node(_x_DarwinFSP, IDTx, IDT, _x_Portal),
+	node'(_x_A0, IDSx + 1, IDS, _x_SAchannel), node'(_x_A0, IDTx + 1, IDT, _x_SAcomponent), mmt==_x_A0.
+	
+	
+	%%%% test %%%%%%%%
+	%%%% edge 2 edge %%%%
+	relation("_x_FeatureEquivalence2014",_x_A0,_x_DarwinFSP).
+	relation("_x_FeatureEquivalence2014", _x_DarwinFSP, _x_fromComponent, _x_Binding, _x_ComponentInstancel, - 1).
+	relation("_x_FeatureEquivalence2014", _x_A0, _x_from, _x_SAchannel, _x_SAinterface, 1).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_DarwinFSP, IDx - 1, ID, _x_fromComponent, IDSx - 1, IDS, IDTx - 1, IDT),
+	edge(_x_A0, IDx, ID, _x_to, IDSx, IDS, IDTx, IDT),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAcomponent),
+	metaedge(_x_DarwinFSP, association, _x_to, _x_Binding, _x_Portal),
+	node(_x_A0, IDSx, IDS, _x_SAchannel), node(_x_A0, IDTx, IDT, _x_SAcomponent),
+	node'(_x_DarwinFSP,IDSx - 1, IDS, _x_Binding), node'(_x_DarwinFSP, IDTx - 1, IDT, _x_Portal), mmt==_x_DarwinFSP.
+	
+	:- edge'(_x_A0, IDx + 1, ID, _x_to, IDSx + 1, IDS, IDTx + 1, IDT),
+	edge(_x_DarwinFSP, IDx, ID, _x_to, IDSx, IDS, IDTx, IDT),
+	node(_x_DarwinFSP, IDSx, IDS, _x_Binding), node(_x_DarwinFSP, IDTx, IDT, _x_Portal),
+	node'(_x_A0, IDSx + 1, IDS, _x_SAchannel), node'(_x_A0, IDTx + 1, IDT, _x_SAcomponent), mmt==_x_A0.
+	
+	
+enumeration(e1, portalType_SAinterfaceDirection).
+	enumeration(e1, e11, _x_DarwinFSP, "_x_#provide").
+	enumeration(e1, e11, _x_A0, "_x_#input").
+	enumeration(e1, e12, _x_DarwinFSP, "_x_#require").
+	enumeration(e1, e12, _x_A0, "_x_#output").
+
+
+%%%%%%%%%%% DarwinFSP metamodel %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+metamodel(_x_DarwinFSP).
+  metanode(_x_DarwinFSP, _x_Action).
+  metanode(_x_DarwinFSP, _x_ProcessDeclaration).
+  metanode(_x_DarwinFSP, _x_CompositeProcessDeclaration).
+  metanode(_x_DarwinFSP, _x_Process).
+  metanode(_x_DarwinFSP, _x_Relabel).
+  metanode(_x_DarwinFSP, _x_ERROR).
+  metanode(_x_DarwinFSP, _x_STOP).
+  metanode(_x_DarwinFSP, _x_END).
+  metanode(_x_DarwinFSP, _x_PrefixableElement).
+  metanode(_x_DarwinFSP, _x_ActionPrefix).
+  metanode(_x_DarwinFSP, _x_ProcessCall).
+  metanode(_x_DarwinFSP, _x_Choice).
+  metanode(_x_DarwinFSP, _x_FspSpecification).
+  metanode(_x_DarwinFSP, _x_Constant).
+  metanode(_x_DarwinFSP, _x_DarwinSpecification).
+  metanode(_x_DarwinFSP, _x_ComponentDeclaration).
+  metanode(_x_DarwinFSP, _x_InterfaceDeclaration).
+  metanode(_x_DarwinFSP, _x_Binding).
+  metanode(_x_DarwinFSP, _x_ComponentInstance).
+  metanode(_x_DarwinFSP, _x_ConstantDeclaration).
+  metanode(_x_DarwinFSP, _x_AssertDeclaration).
+  metanode(_x_DarwinFSP, _x_Portal).
+  metanode(_x_DarwinFSP, _x_InterfaceCall).
+
+  metaprop(_x_DarwinFSP, _x_id, _x_Action).
+  metaprop(_x_DarwinFSP, _x_hidden, _x_Action).
+  metaprop(_x_DarwinFSP, _x_label, _x_Action).
+  metaprop(_x_DarwinFSP, _x_condition, _x_Action).
+  metaprop(_x_DarwinFSP, _x_identifier, _x_ProcessDeclaration).
+  metaprop(_x_DarwinFSP, _x_formalParameters, _x_ProcessDeclaration).
+  metaprop(_x_DarwinFSP, _x_identifier, _x_CompositeProcessDeclaration).
+  metaprop(_x_DarwinFSP, _x_formalParameters, _x_CompositeProcessDeclaration).
+  metaprop(_x_DarwinFSP, _x_identifier, _x_Process).
+  metaprop(_x_DarwinFSP, _x_formalParameters, _x_Process).
+  metaprop(_x_DarwinFSP, _x_newLabel, _x_Relabel).
+  metaprop(_x_DarwinFSP, _x_actualParameters, _x_ProcessCall).
+  metaprop(_x_DarwinFSP, _x_name, _x_FspSpecification).
+  metaprop(_x_DarwinFSP, _x_declaration, _x_Constant).
+  metaprop(_x_DarwinFSP, _x_type, _x_Constant).
+  metaprop(_x_DarwinFSP, _x_name, _x_DarwinSpecification).
+  metaprop(_x_DarwinFSP, _x_name, _x_ComponentDeclaration).
+  metaprop(_x_DarwinFSP, _x_formalParameters, _x_ComponentDeclaration).
+  metaprop(_x_DarwinFSP, _x_members, _x_InterfaceDeclaration).
+  metaprop(_x_DarwinFSP, _x_formalParameters, _x_InterfaceDeclaration).
+  metaprop(_x_DarwinFSP, _x_identifier, _x_InterfaceDeclaration).
+  metaprop(_x_DarwinFSP, _x_identifier, _x_ComponentInstance).
+  metaprop(_x_DarwinFSP, _x_actualParameters, _x_ComponentInstance).
+  metaprop(_x_DarwinFSP, _x_declaration, _x_ConstantDeclaration).
+  metaprop(_x_DarwinFSP, _x_declaration, _x_AssertDeclaration).
+  metaprop(_x_DarwinFSP, _x_type, _x_Portal).
+  metaprop(_x_DarwinFSP, _x_identifier, _x_Portal).
+  metaprop(_x_DarwinFSP, _x_actualParameters, _x_InterfaceCall).
+
+  metaedge(_x_DarwinFSP, generalization, _x_general, _x_Action, _x_PrefixableElement).
+  metaedge(_x_DarwinFSP, composition, _x_definition, _x_ProcessDeclaration, _x_PrefixableElement).
+  metaedge(_x_DarwinFSP, composition, _x_definition, _x_ProcessDeclaration, _x_Action).
+  metaedge(_x_DarwinFSP, composition, _x_definition, _x_ProcessDeclaration, _x_ERROR).
+  metaedge(_x_DarwinFSP, composition, _x_definition, _x_ProcessDeclaration, _x_STOP).
+  metaedge(_x_DarwinFSP, composition, _x_definition, _x_ProcessDeclaration, _x_END).
+  metaedge(_x_DarwinFSP, composition, _x_definition, _x_ProcessDeclaration, _x_ActionPrefix).
+  metaedge(_x_DarwinFSP, composition, _x_definition, _x_ProcessDeclaration, _x_ProcessCall).
+  metaedge(_x_DarwinFSP, composition, _x_definition, _x_ProcessDeclaration, _x_Choice).
+  metaedge(_x_DarwinFSP, composition, _x_relabelingOperation, _x_ProcessDeclaration, _x_Relabel).
+  metaedge(_x_DarwinFSP, composition, _x_localProcesses, _x_ProcessDeclaration, _x_ProcessDeclaration).
+  metaedge(_x_DarwinFSP, generalization, _x_general, _x_ProcessDeclaration, _x_Process).
+  metaedge(_x_DarwinFSP, composition, _x_concurrentExecutions, _x_CompositeProcessDeclaration, _x_ProcessCall).
+  metaedge(_x_DarwinFSP, generalization, _x_general, _x_CompositeProcessDeclaration, _x_Process).
+  metaedge(_x_DarwinFSP, association, _x_relabeledAction, _x_Relabel, _x_Action).
+  metaedge(_x_DarwinFSP, generalization, _x_general, _x_ERROR, _x_PrefixableElement).
+  metaedge(_x_DarwinFSP, generalization, _x_general, _x_STOP, _x_PrefixableElement).
+  metaedge(_x_DarwinFSP, generalization, _x_general, _x_END, _x_PrefixableElement).
+  metaedge(_x_DarwinFSP, composition, _x_action, _x_ActionPrefix, _x_Action).
+  metaedge(_x_DarwinFSP, composition, _x_process, _x_ActionPrefix, _x_PrefixableElement).
+  metaedge(_x_DarwinFSP, composition, _x_process, _x_ActionPrefix, _x_Action).
+  metaedge(_x_DarwinFSP, composition, _x_process, _x_ActionPrefix, _x_ERROR).
+  metaedge(_x_DarwinFSP, composition, _x_process, _x_ActionPrefix, _x_STOP).
+  metaedge(_x_DarwinFSP, composition, _x_process, _x_ActionPrefix, _x_END).
+  metaedge(_x_DarwinFSP, composition, _x_process, _x_ActionPrefix, _x_ActionPrefix).
+  metaedge(_x_DarwinFSP, composition, _x_process, _x_ActionPrefix, _x_ProcessCall).
+  metaedge(_x_DarwinFSP, composition, _x_process, _x_ActionPrefix, _x_Choice).
+  metaedge(_x_DarwinFSP, generalization, _x_general, _x_ActionPrefix, _x_PrefixableElement).
+  metaedge(_x_DarwinFSP, association, _x_called, _x_ProcessCall, _x_Process).
+  metaedge(_x_DarwinFSP, association, _x_called, _x_ProcessCall, _x_ProcessDeclaration).
+  metaedge(_x_DarwinFSP, association, _x_called, _x_ProcessCall, _x_CompositeProcessDeclaration).
+  metaedge(_x_DarwinFSP, generalization, _x_general, _x_ProcessCall, _x_PrefixableElement).
+  metaedge(_x_DarwinFSP, composition, _x_choices, _x_Choice, _x_PrefixableElement).
+  metaedge(_x_DarwinFSP, composition, _x_choices, _x_Choice, _x_Action).
+  metaedge(_x_DarwinFSP, composition, _x_choices, _x_Choice, _x_ERROR).
+  metaedge(_x_DarwinFSP, composition, _x_choices, _x_Choice, _x_STOP).
+  metaedge(_x_DarwinFSP, composition, _x_choices, _x_Choice, _x_END).
+  metaedge(_x_DarwinFSP, composition, _x_choices, _x_Choice, _x_ActionPrefix).
+  metaedge(_x_DarwinFSP, composition, _x_choices, _x_Choice, _x_ProcessCall).
+  metaedge(_x_DarwinFSP, composition, _x_choices, _x_Choice, _x_Choice).
+  metaedge(_x_DarwinFSP, generalization, _x_general, _x_Choice, _x_PrefixableElement).
+  metaedge(_x_DarwinFSP, composition, _x_ref, _x_FspSpecification, _x_Process).
+  metaedge(_x_DarwinFSP, composition, _x_ref, _x_FspSpecification, _x_ProcessDeclaration).
+  metaedge(_x_DarwinFSP, composition, _x_ref, _x_FspSpecification, _x_CompositeProcessDeclaration).
+  metaedge(_x_DarwinFSP, composition, _x_constantDeclarations, _x_FspSpecification, _x_Constant).
+  metaedge(_x_DarwinFSP, composition, _x_componentDeclarations, _x_DarwinSpecification, _x_ComponentDeclaration).
+  metaedge(_x_DarwinFSP, composition, _x_interfaceDeclarations, _x_DarwinSpecification, _x_InterfaceDeclaration).
+  metaedge(_x_DarwinFSP, composition, _x_constantDeclarations, _x_DarwinSpecification, _x_ConstantDeclaration).
+  metaedge(_x_DarwinFSP, composition, _x_assertDeclarations, _x_DarwinSpecification, _x_AssertDeclaration).
+  metaedge(_x_DarwinFSP, composition, _x_innerInstances, _x_ComponentDeclaration, _x_ComponentInstance).
+  metaedge(_x_DarwinFSP, composition, _x_portals, _x_ComponentDeclaration, _x_Portal).
+  metaedge(_x_DarwinFSP, association, _x_relatedFSP, _x_ComponentDeclaration, _x_Process).
+  metaedge(_x_DarwinFSP, association, _x_relatedFSP, _x_ComponentDeclaration, _x_ProcessDeclaration).
+  metaedge(_x_DarwinFSP, association, _x_relatedFSP, _x_ComponentDeclaration, _x_CompositeProcessDeclaration).
+  metaedge(_x_DarwinFSP, composition, _x_componentDeclarations, _x_ComponentDeclaration, _x_ComponentDeclaration).
+  metaedge(_x_DarwinFSP, composition, _x_interfaceDeclarations, _x_ComponentDeclaration, _x_InterfaceDeclaration).
+  metaedge(_x_DarwinFSP, composition, _x_constantDeclarations, _x_ComponentDeclaration, _x_ConstantDeclaration).
+  metaedge(_x_DarwinFSP, composition, _x_assertDeclarations, _x_ComponentDeclaration, _x_AssertDeclaration).
+  metaedge(_x_DarwinFSP, composition, _x_innerBindings, _x_ComponentDeclaration, _x_Binding).
+  metaedge(_x_DarwinFSP, association, _x_from, _x_Binding, _x_Portal).
+  metaedge(_x_DarwinFSP, association, _x_to, _x_Binding, _x_Portal).
+  metaedge(_x_DarwinFSP, association, _x_fromComponent, _x_Binding, _x_ComponentInstance).
+  metaedge(_x_DarwinFSP, association, _x_toComponent, _x_Binding, _x_ComponentInstance).
+  metaedge(_x_DarwinFSP, association, _x_declaration, _x_ComponentInstance, _x_ComponentDeclaration).
+  metaedge(_x_DarwinFSP, association, _x_interface, _x_Portal, _x_InterfaceCall).
+  metaedge(_x_DarwinFSP, association, _x_calledInterface, _x_InterfaceCall, _x_InterfaceDeclaration).
+
+
+%%%%%%%%%%%%%%%%%%% A0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+metamodel(_x_A0).
+  metanode(_x_A0, _x_SAcomponent).
+  metanode(_x_A0, _x_SAconnector).
+  metanode(_x_A0, _x_Type).
+  metanode(_x_A0, _x_SAinterface).
+  metanode(_x_A0, _x_Component).
+  metanode(_x_A0, _x_SAchannel).
+  metanode(_x_A0, _x_Behavior).
+  metanode(_x_A0, _x_Business).
+  metanode(_x_A0, _x_Development).
+  metanode(_x_A0, _x_Element).
+  metanode(_x_A0, _x_Link).
+  metanode(_x_A0, _x_ConnectableElement).
+  metanode(_x_A0, _x_TypedElement).
+  metanode(_x_A0, _x_PropertyHolderElement).
+  metanode(_x_A0, _x_Property).
+  metanode(_x_A0, _x_InteractionPoint).
+  metanode(_x_A0, _x_SArelationship).
+  metanode(_x_A0, _x_Architecture).
+  metanode(_x_A0, _x_SoftwareArchitecture).
+  metanode(_x_A0, _x_ArchitecturalElement).
+  metanode(_x_A0, _x_group).
+  metanode(_x_A0, _x_TypesSpecification).
+  metanode(_x_A0, _x_SAtype).
+  metanode(_x_A0, _x_PropertyValue).
+  metanode(_x_A0, _x_SAstructuredType).
+  metanode(_x_A0, _x_SABinding).
+  metanode(_x_A0, _x_A0Spec).
+  metanode(_x_A0, _x_StateDiagram).
+  metanode(_x_A0, _x_State).
+  metanode(_x_A0, _x_Transition).
+  metanode(_x_A0, _x_InitialState).
+  metanode(_x_A0, _x_FinalState).
+
+  metaprop(_x_A0, _x_name, _x_SAcomponent).
+  metaprop(_x_A0, _x_description, _x_SAcomponent).
+  metaprop(_x_A0, _x_name, _x_SAconnector).
+  metaprop(_x_A0, _x_description, _x_SAconnector).
+  metaprop(_x_A0, _x_name, _x_Type).
+  metaprop(_x_A0, _x_description, _x_Type).
+  metaprop(_x_A0, _x_name, _x_SAinterface).
+  metaprop(_x_A0, _x_description, _x_SAinterface).
+  metaprop(_x_A0, _x_direction, _x_SAinterface).
+  metaprop(_x_A0, _x_name, _x_Component).
+  metaprop(_x_A0, _x_description, _x_Component).
+  metaprop(_x_A0, _x_name, _x_SAchannel).
+  metaprop(_x_A0, _x_description, _x_SAchannel).
+  metaprop(_x_A0, _x_navigability, _x_SAchannel).
+  metaprop(_x_A0, _x_name, _x_Behavior).
+  metaprop(_x_A0, _x_description, _x_Behavior).
+  metaprop(_x_A0, _x_name, _x_Business).
+  metaprop(_x_A0, _x_description, _x_Business).
+  metaprop(_x_A0, _x_name, _x_Development).
+  metaprop(_x_A0, _x_description, _x_Development).
+  metaprop(_x_A0, _x_name, _x_Element).
+  metaprop(_x_A0, _x_description, _x_Element).
+  metaprop(_x_A0, _x_name, _x_Link).
+  metaprop(_x_A0, _x_description, _x_Link).
+  metaprop(_x_A0, _x_navigability, _x_Link).
+  metaprop(_x_A0, _x_name, _x_ConnectableElement).
+  metaprop(_x_A0, _x_description, _x_ConnectableElement).
+  metaprop(_x_A0, _x_name, _x_TypedElement).
+  metaprop(_x_A0, _x_description, _x_TypedElement).
+  metaprop(_x_A0, _x_name, _x_PropertyHolderElement).
+  metaprop(_x_A0, _x_description, _x_PropertyHolderElement).
+  metaprop(_x_A0, _x_name, _x_Property).
+  metaprop(_x_A0, _x_description, _x_Property).
+  metaprop(_x_A0, _x_type, _x_Property).
+  metaprop(_x_A0, _x_name, _x_InteractionPoint).
+  metaprop(_x_A0, _x_description, _x_InteractionPoint).
+  metaprop(_x_A0, _x_name, _x_SArelationship).
+  metaprop(_x_A0, _x_description, _x_SArelationship).
+  metaprop(_x_A0, _x_navigability, _x_SArelationship).
+  metaprop(_x_A0, _x_name, _x_Architecture).
+  metaprop(_x_A0, _x_description, _x_Architecture).
+  metaprop(_x_A0, _x_name, _x_SoftwareArchitecture).
+  metaprop(_x_A0, _x_description, _x_SoftwareArchitecture).
+  metaprop(_x_A0, _x_name, _x_ArchitecturalElement).
+  metaprop(_x_A0, _x_description, _x_ArchitecturalElement).
+  metaprop(_x_A0, _x_name, _x_group).
+  metaprop(_x_A0, _x_description, _x_group).
+  metaprop(_x_A0, _x_name, _x_TypesSpecification).
+  metaprop(_x_A0, _x_description, _x_TypesSpecification).
+  metaprop(_x_A0, _x_name, _x_SAtype).
+  metaprop(_x_A0, _x_description, _x_SAtype).
+  metaprop(_x_A0, _x_booleanValue, _x_PropertyValue).
+  metaprop(_x_A0, _x_stringValue, _x_PropertyValue).
+  metaprop(_x_A0, _x_floatValue, _x_PropertyValue).
+  metaprop(_x_A0, _x_intValue, _x_PropertyValue).
+  metaprop(_x_A0, _x_shortValue, _x_PropertyValue).
+  metaprop(_x_A0, _x_longValue, _x_PropertyValue).
+  metaprop(_x_A0, _x_doubleValue, _x_PropertyValue).
+  metaprop(_x_A0, _x_name, _x_SAstructuredType).
+  metaprop(_x_A0, _x_description, _x_SAstructuredType).
+  metaprop(_x_A0, _x_name, _x_SABinding).
+  metaprop(_x_A0, _x_description, _x_SABinding).
+  metaprop(_x_A0, _x_navigability, _x_SABinding).
+  metaprop(_x_A0, _x_name, _x_A0Spec).
+  metaprop(_x_A0, _x_description, _x_A0Spec).
+  metaprop(_x_A0, _x_name, _x_StateDiagram).
+  metaprop(_x_A0, _x_description, _x_StateDiagram).
+  metaprop(_x_A0, _x_name, _x_State).
+  metaprop(_x_A0, _x_description, _x_State).
+  metaprop(_x_A0, _x_name, _x_Transition).
+  metaprop(_x_A0, _x_description, _x_Transition).
+  metaprop(_x_A0, _x_label, _x_Transition).
+  metaprop(_x_A0, _x_guard, _x_Transition).
+  metaprop(_x_A0, _x_name, _x_InitialState).
+  metaprop(_x_A0, _x_description, _x_InitialState).
+  metaprop(_x_A0, _x_name, _x_FinalState).
+  metaprop(_x_A0, _x_description, _x_FinalState).
+
+  metaedge(_x_A0, composition, _x_development, _x_SAcomponent, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_SAcomponent, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_SAcomponent, _x_Property).
+  metaedge(_x_A0, association, _x_type, _x_SAcomponent, _x_Type).
+  metaedge(_x_A0, association, _x_type, _x_SAcomponent, _x_SAtype).
+  metaedge(_x_A0, association, _x_type, _x_SAcomponent, _x_SAstructuredType).
+  metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_InteractionPoint).
+  metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface).
+  metaedge(_x_A0, composition, _x_subArchitecture, _x_SAcomponent, _x_Architecture).
+  metaedge(_x_A0, composition, _x_subArchitecture, _x_SAcomponent, _x_SoftwareArchitecture).
+  metaedge(_x_A0, composition, _x_behavior, _x_SAcomponent, _x_Behavior).
+  metaedge(_x_A0, composition, _x_behavior, _x_SAcomponent, _x_StateDiagram).
+  metaedge(_x_A0, generalization, _x_general, _x_SAcomponent, _x_Component).
+  metaedge(_x_A0, composition, _x_development, _x_SAconnector, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_SAconnector, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_SAconnector, _x_Property).
+  metaedge(_x_A0, association, _x_type, _x_SAconnector, _x_Type).
+  metaedge(_x_A0, association, _x_type, _x_SAconnector, _x_SAtype).
+  metaedge(_x_A0, association, _x_type, _x_SAconnector, _x_SAstructuredType).
+  metaedge(_x_A0, composition, _x_points, _x_SAconnector, _x_InteractionPoint).
+  metaedge(_x_A0, composition, _x_points, _x_SAconnector, _x_SAinterface).
+  metaedge(_x_A0, composition, _x_subArchitecture, _x_SAconnector, _x_Architecture).
+  metaedge(_x_A0, composition, _x_subArchitecture, _x_SAconnector, _x_SoftwareArchitecture).
+  metaedge(_x_A0, composition, _x_behavior, _x_SAconnector, _x_Behavior).
+  metaedge(_x_A0, composition, _x_behavior, _x_SAconnector, _x_StateDiagram).
+  metaedge(_x_A0, generalization, _x_general, _x_SAconnector, _x_Component).
+  metaedge(_x_A0, composition, _x_development, _x_Type, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_Type, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_Type, _x_Property).
+  metaedge(_x_A0, association, _x_implementations, _x_Type, _x_TypedElement).
+  metaedge(_x_A0, association, _x_implementations, _x_Type, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_implementations, _x_Type, _x_SAconnector).
+  metaedge(_x_A0, association, _x_implementations, _x_Type, _x_SAinterface).
+  metaedge(_x_A0, association, _x_implementations, _x_Type, _x_Component).
+  metaedge(_x_A0, association, _x_implementations, _x_Type, _x_SAchannel).
+  metaedge(_x_A0, association, _x_implementations, _x_Type, _x_Link).
+  metaedge(_x_A0, association, _x_implementations, _x_Type, _x_SArelationship).
+  metaedge(_x_A0, association, _x_implementations, _x_Type, _x_ArchitecturalElement).
+  metaedge(_x_A0, association, _x_implementations, _x_Type, _x_SABinding).
+  metaedge(_x_A0, association, _x_supertypes, _x_Type, _x_Type).
+  metaedge(_x_A0, association, _x_supertypes, _x_Type, _x_SAtype).
+  metaedge(_x_A0, association, _x_supertypes, _x_Type, _x_SAstructuredType).
+  metaedge(_x_A0, association, _x_subtypes, _x_Type, _x_Type).
+  metaedge(_x_A0, association, _x_subtypes, _x_Type, _x_SAtype).
+  metaedge(_x_A0, association, _x_subtypes, _x_Type, _x_SAstructuredType).
+  metaedge(_x_A0, generalization, _x_general, _x_Type, _x_PropertyHolderElement).
+  metaedge(_x_A0, composition, _x_development, _x_SAinterface, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_SAinterface, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_SAinterface, _x_Property).
+  metaedge(_x_A0, association, _x_type, _x_SAinterface, _x_Type).
+  metaedge(_x_A0, association, _x_type, _x_SAinterface, _x_SAtype).
+  metaedge(_x_A0, association, _x_type, _x_SAinterface, _x_SAstructuredType).
+  metaedge(_x_A0, composition, _x_behavior, _x_SAinterface, _x_Behavior).
+  metaedge(_x_A0, composition, _x_behavior, _x_SAinterface, _x_StateDiagram).
+  metaedge(_x_A0, generalization, _x_general, _x_SAinterface, _x_InteractionPoint).
+  metaedge(_x_A0, generalization, _x_general, _x_SAinterface, _x_ArchitecturalElement).
+  metaedge(_x_A0, composition, _x_development, _x_Component, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_Component, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_Component, _x_Property).
+  metaedge(_x_A0, association, _x_type, _x_Component, _x_Type).
+  metaedge(_x_A0, association, _x_type, _x_Component, _x_SAtype).
+  metaedge(_x_A0, association, _x_type, _x_Component, _x_SAstructuredType).
+  metaedge(_x_A0, composition, _x_points, _x_Component, _x_InteractionPoint).
+  metaedge(_x_A0, composition, _x_points, _x_Component, _x_SAinterface).
+  metaedge(_x_A0, composition, _x_subArchitecture, _x_Component, _x_Architecture).
+  metaedge(_x_A0, composition, _x_subArchitecture, _x_Component, _x_SoftwareArchitecture).
+  metaedge(_x_A0, composition, _x_behavior, _x_Component, _x_Behavior).
+  metaedge(_x_A0, composition, _x_behavior, _x_Component, _x_StateDiagram).
+  metaedge(_x_A0, generalization, _x_general, _x_Component, _x_ConnectableElement).
+  metaedge(_x_A0, generalization, _x_general, _x_Component, _x_ArchitecturalElement).
+  metaedge(_x_A0, composition, _x_development, _x_SAchannel, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_SAchannel, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_SAchannel, _x_Property).
+  metaedge(_x_A0, association, _x_type, _x_SAchannel, _x_Type).
+  metaedge(_x_A0, association, _x_type, _x_SAchannel, _x_SAtype).
+  metaedge(_x_A0, association, _x_type, _x_SAchannel, _x_SAstructuredType).
+  metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_ConnectableElement).
+  metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAconnector).
+  metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAinterface).
+  metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_Component).
+  metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_InteractionPoint).
+  metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_ConnectableElement).
+  metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAconnector).
+  metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAinterface).
+  metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_Component).
+  metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_InteractionPoint).
+  metaedge(_x_A0, association, _x_fromContext, _x_SAchannel, _x_Component).
+  metaedge(_x_A0, association, _x_fromContext, _x_SAchannel, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_fromContext, _x_SAchannel, _x_SAconnector).
+  metaedge(_x_A0, association, _x_toContext, _x_SAchannel, _x_Component).
+  metaedge(_x_A0, association, _x_toContext, _x_SAchannel, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_toContext, _x_SAchannel, _x_SAconnector).
+  metaedge(_x_A0, generalization, _x_general, _x_SAchannel, _x_SArelationship).
+  metaedge(_x_A0, composition, _x_development, _x_Behavior, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_Behavior, _x_Business).
+  metaedge(_x_A0, generalization, _x_general, _x_Behavior, _x_Element).
+  metaedge(_x_A0, composition, _x_development, _x_Business, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_Business, _x_Business).
+  metaedge(_x_A0, generalization, _x_general, _x_Business, _x_Element).
+  metaedge(_x_A0, composition, _x_development, _x_Development, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_Development, _x_Business).
+  metaedge(_x_A0, generalization, _x_general, _x_Development, _x_Element).
+  metaedge(_x_A0, composition, _x_development, _x_Element, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_Element, _x_Business).
+  metaedge(_x_A0, composition, _x_development, _x_Link, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_Link, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_Link, _x_Property).
+  metaedge(_x_A0, association, _x_type, _x_Link, _x_Type).
+  metaedge(_x_A0, association, _x_type, _x_Link, _x_SAtype).
+  metaedge(_x_A0, association, _x_type, _x_Link, _x_SAstructuredType).
+  metaedge(_x_A0, association, _x_from, _x_Link, _x_ConnectableElement).
+  metaedge(_x_A0, association, _x_from, _x_Link, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_from, _x_Link, _x_SAconnector).
+  metaedge(_x_A0, association, _x_from, _x_Link, _x_SAinterface).
+  metaedge(_x_A0, association, _x_from, _x_Link, _x_Component).
+  metaedge(_x_A0, association, _x_from, _x_Link, _x_InteractionPoint).
+  metaedge(_x_A0, association, _x_to, _x_Link, _x_ConnectableElement).
+  metaedge(_x_A0, association, _x_to, _x_Link, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_to, _x_Link, _x_SAconnector).
+  metaedge(_x_A0, association, _x_to, _x_Link, _x_SAinterface).
+  metaedge(_x_A0, association, _x_to, _x_Link, _x_Component).
+  metaedge(_x_A0, association, _x_to, _x_Link, _x_InteractionPoint).
+  metaedge(_x_A0, association, _x_fromContext, _x_Link, _x_Component).
+  metaedge(_x_A0, association, _x_fromContext, _x_Link, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_fromContext, _x_Link, _x_SAconnector).
+  metaedge(_x_A0, association, _x_toContext, _x_Link, _x_Component).
+  metaedge(_x_A0, association, _x_toContext, _x_Link, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_toContext, _x_Link, _x_SAconnector).
+  metaedge(_x_A0, generalization, _x_general, _x_Link, _x_PropertyHolderElement).
+  metaedge(_x_A0, generalization, _x_general, _x_Link, _x_TypedElement).
+  metaedge(_x_A0, composition, _x_development, _x_ConnectableElement, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_ConnectableElement, _x_Business).
+  metaedge(_x_A0, generalization, _x_general, _x_ConnectableElement, _x_Element).
+  metaedge(_x_A0, composition, _x_development, _x_TypedElement, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_TypedElement, _x_Business).
+  metaedge(_x_A0, association, _x_type, _x_TypedElement, _x_Type).
+  metaedge(_x_A0, association, _x_type, _x_TypedElement, _x_SAtype).
+  metaedge(_x_A0, association, _x_type, _x_TypedElement, _x_SAstructuredType).
+  metaedge(_x_A0, generalization, _x_general, _x_TypedElement, _x_Element).
+  metaedge(_x_A0, composition, _x_development, _x_PropertyHolderElement, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_PropertyHolderElement, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_PropertyHolderElement, _x_Property).
+  metaedge(_x_A0, generalization, _x_general, _x_PropertyHolderElement, _x_Element).
+  metaedge(_x_A0, composition, _x_development, _x_Property, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_Property, _x_Business).
+  metaedge(_x_A0, composition, _x_value, _x_Property, _x_PropertyValue).
+  metaedge(_x_A0, generalization, _x_general, _x_Property, _x_Element).
+  metaedge(_x_A0, composition, _x_development, _x_InteractionPoint, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_InteractionPoint, _x_Business).
+  metaedge(_x_A0, generalization, _x_general, _x_InteractionPoint, _x_ConnectableElement).
+  metaedge(_x_A0, composition, _x_development, _x_SArelationship, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_SArelationship, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_SArelationship, _x_Property).
+  metaedge(_x_A0, association, _x_type, _x_SArelationship, _x_Type).
+  metaedge(_x_A0, association, _x_type, _x_SArelationship, _x_SAtype).
+  metaedge(_x_A0, association, _x_type, _x_SArelationship, _x_SAstructuredType).
+  metaedge(_x_A0, association, _x_from, _x_SArelationship, _x_ConnectableElement).
+  metaedge(_x_A0, association, _x_from, _x_SArelationship, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_from, _x_SArelationship, _x_SAconnector).
+  metaedge(_x_A0, association, _x_from, _x_SArelationship, _x_SAinterface).
+  metaedge(_x_A0, association, _x_from, _x_SArelationship, _x_Component).
+  metaedge(_x_A0, association, _x_from, _x_SArelationship, _x_InteractionPoint).
+  metaedge(_x_A0, association, _x_to, _x_SArelationship, _x_ConnectableElement).
+  metaedge(_x_A0, association, _x_to, _x_SArelationship, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_to, _x_SArelationship, _x_SAconnector).
+  metaedge(_x_A0, association, _x_to, _x_SArelationship, _x_SAinterface).
+  metaedge(_x_A0, association, _x_to, _x_SArelationship, _x_Component).
+  metaedge(_x_A0, association, _x_to, _x_SArelationship, _x_InteractionPoint).
+  metaedge(_x_A0, association, _x_fromContext, _x_SArelationship, _x_Component).
+  metaedge(_x_A0, association, _x_fromContext, _x_SArelationship, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_fromContext, _x_SArelationship, _x_SAconnector).
+  metaedge(_x_A0, association, _x_toContext, _x_SArelationship, _x_Component).
+  metaedge(_x_A0, association, _x_toContext, _x_SArelationship, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_toContext, _x_SArelationship, _x_SAconnector).
+  metaedge(_x_A0, generalization, _x_general, _x_SArelationship, _x_Link).
+  metaedge(_x_A0, generalization, _x_general, _x_SArelationship, _x_ArchitecturalElement).
+  metaedge(_x_A0, composition, _x_development, _x_Architecture, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_Architecture, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_Architecture, _x_Property).
+  metaedge(_x_A0, composition, _x_subElement, _x_Architecture, _x_ArchitecturalElement).
+  metaedge(_x_A0, composition, _x_subElement, _x_Architecture, _x_SAcomponent).
+  metaedge(_x_A0, composition, _x_subElement, _x_Architecture, _x_SAconnector).
+  metaedge(_x_A0, composition, _x_subElement, _x_Architecture, _x_SAinterface).
+  metaedge(_x_A0, composition, _x_subElement, _x_Architecture, _x_Component).
+  metaedge(_x_A0, composition, _x_subElement, _x_Architecture, _x_SAchannel).
+  metaedge(_x_A0, composition, _x_subElement, _x_Architecture, _x_SArelationship).
+  metaedge(_x_A0, composition, _x_subElement, _x_Architecture, _x_SABinding).
+  metaedge(_x_A0, composition, _x_behavior, _x_Architecture, _x_Behavior).
+  metaedge(_x_A0, composition, _x_behavior, _x_Architecture, _x_StateDiagram).
+  metaedge(_x_A0, composition, _x_groups, _x_Architecture, _x_group).
+  metaedge(_x_A0, composition, _x_types, _x_Architecture, _x_TypesSpecification).
+  metaedge(_x_A0, generalization, _x_general, _x_Architecture, _x_PropertyHolderElement).
+  metaedge(_x_A0, composition, _x_development, _x_SoftwareArchitecture, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_SoftwareArchitecture, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_SoftwareArchitecture, _x_Property).
+  metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_ArchitecturalElement).
+  metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent).
+  metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector).
+  metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface).
+  metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_Component).
+  metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel).
+  metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship).
+  metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SABinding).
+  metaedge(_x_A0, composition, _x_behavior, _x_SoftwareArchitecture, _x_Behavior).
+  metaedge(_x_A0, composition, _x_behavior, _x_SoftwareArchitecture, _x_StateDiagram).
+  metaedge(_x_A0, composition, _x_groups, _x_SoftwareArchitecture, _x_group).
+  metaedge(_x_A0, composition, _x_types, _x_SoftwareArchitecture, _x_TypesSpecification).
+  metaedge(_x_A0, generalization, _x_general, _x_SoftwareArchitecture, _x_Architecture).
+  metaedge(_x_A0, composition, _x_development, _x_ArchitecturalElement, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_ArchitecturalElement, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_ArchitecturalElement, _x_Property).
+  metaedge(_x_A0, association, _x_type, _x_ArchitecturalElement, _x_Type).
+  metaedge(_x_A0, association, _x_type, _x_ArchitecturalElement, _x_SAtype).
+  metaedge(_x_A0, association, _x_type, _x_ArchitecturalElement, _x_SAstructuredType).
+  metaedge(_x_A0, generalization, _x_general, _x_ArchitecturalElement, _x_PropertyHolderElement).
+  metaedge(_x_A0, generalization, _x_general, _x_ArchitecturalElement, _x_TypedElement).
+  metaedge(_x_A0, composition, _x_development, _x_group, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_group, _x_Business).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_Element).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_SAconnector).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_Type).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_SAinterface).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_Component).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_SAchannel).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_Behavior).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_Business).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_Development).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_Link).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_ConnectableElement).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_TypedElement).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_PropertyHolderElement).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_Property).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_InteractionPoint).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_SArelationship).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_Architecture).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_SoftwareArchitecture).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_ArchitecturalElement).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_group).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_TypesSpecification).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_SAtype).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_SAstructuredType).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_SABinding).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_A0Spec).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_StateDiagram).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_State).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_Transition).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_InitialState).
+  metaedge(_x_A0, association, _x_members, _x_group, _x_FinalState).
+  metaedge(_x_A0, generalization, _x_general, _x_group, _x_Element).
+  metaedge(_x_A0, composition, _x_development, _x_TypesSpecification, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_TypesSpecification, _x_Business).
+  metaedge(_x_A0, composition, _x_types, _x_TypesSpecification, _x_Type).
+  metaedge(_x_A0, composition, _x_types, _x_TypesSpecification, _x_SAtype).
+  metaedge(_x_A0, composition, _x_types, _x_TypesSpecification, _x_SAstructuredType).
+  metaedge(_x_A0, generalization, _x_general, _x_TypesSpecification, _x_Element).
+  metaedge(_x_A0, composition, _x_development, _x_SAtype, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_SAtype, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_SAtype, _x_Property).
+  metaedge(_x_A0, association, _x_implementations, _x_SAtype, _x_TypedElement).
+  metaedge(_x_A0, association, _x_implementations, _x_SAtype, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_implementations, _x_SAtype, _x_SAconnector).
+  metaedge(_x_A0, association, _x_implementations, _x_SAtype, _x_SAinterface).
+  metaedge(_x_A0, association, _x_implementations, _x_SAtype, _x_Component).
+  metaedge(_x_A0, association, _x_implementations, _x_SAtype, _x_SAchannel).
+  metaedge(_x_A0, association, _x_implementations, _x_SAtype, _x_Link).
+  metaedge(_x_A0, association, _x_implementations, _x_SAtype, _x_SArelationship).
+  metaedge(_x_A0, association, _x_implementations, _x_SAtype, _x_ArchitecturalElement).
+  metaedge(_x_A0, association, _x_implementations, _x_SAtype, _x_SABinding).
+  metaedge(_x_A0, association, _x_supertypes, _x_SAtype, _x_Type).
+  metaedge(_x_A0, association, _x_supertypes, _x_SAtype, _x_SAtype).
+  metaedge(_x_A0, association, _x_supertypes, _x_SAtype, _x_SAstructuredType).
+  metaedge(_x_A0, association, _x_subtypes, _x_SAtype, _x_Type).
+  metaedge(_x_A0, association, _x_subtypes, _x_SAtype, _x_SAtype).
+  metaedge(_x_A0, association, _x_subtypes, _x_SAtype, _x_SAstructuredType).
+  metaedge(_x_A0, composition, _x_behavior, _x_SAtype, _x_Behavior).
+  metaedge(_x_A0, composition, _x_behavior, _x_SAtype, _x_StateDiagram).
+  metaedge(_x_A0, generalization, _x_general, _x_SAtype, _x_Type).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_Element).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_SAconnector).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_Type).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_SAinterface).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_Component).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_SAchannel).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_Behavior).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_Business).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_Development).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_Link).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_ConnectableElement).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_TypedElement).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_PropertyHolderElement).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_Property).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_InteractionPoint).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_SArelationship).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_Architecture).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_SoftwareArchitecture).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_ArchitecturalElement).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_group).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_TypesSpecification).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_SAtype).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_SAstructuredType).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_SABinding).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_A0Spec).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_StateDiagram).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_State).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_Transition).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_InitialState).
+  metaedge(_x_A0, association, _x_referenceValue, _x_PropertyValue, _x_FinalState).
+  metaedge(_x_A0, composition, _x_development, _x_SAstructuredType, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_SAstructuredType, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_SAstructuredType, _x_Property).
+  metaedge(_x_A0, association, _x_implementations, _x_SAstructuredType, _x_TypedElement).
+  metaedge(_x_A0, association, _x_implementations, _x_SAstructuredType, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_implementations, _x_SAstructuredType, _x_SAconnector).
+  metaedge(_x_A0, association, _x_implementations, _x_SAstructuredType, _x_SAinterface).
+  metaedge(_x_A0, association, _x_implementations, _x_SAstructuredType, _x_Component).
+  metaedge(_x_A0, association, _x_implementations, _x_SAstructuredType, _x_SAchannel).
+  metaedge(_x_A0, association, _x_implementations, _x_SAstructuredType, _x_Link).
+  metaedge(_x_A0, association, _x_implementations, _x_SAstructuredType, _x_SArelationship).
+  metaedge(_x_A0, association, _x_implementations, _x_SAstructuredType, _x_ArchitecturalElement).
+  metaedge(_x_A0, association, _x_implementations, _x_SAstructuredType, _x_SABinding).
+  metaedge(_x_A0, association, _x_supertypes, _x_SAstructuredType, _x_Type).
+  metaedge(_x_A0, association, _x_supertypes, _x_SAstructuredType, _x_SAtype).
+  metaedge(_x_A0, association, _x_supertypes, _x_SAstructuredType, _x_SAstructuredType).
+  metaedge(_x_A0, association, _x_subtypes, _x_SAstructuredType, _x_Type).
+  metaedge(_x_A0, association, _x_subtypes, _x_SAstructuredType, _x_SAtype).
+  metaedge(_x_A0, association, _x_subtypes, _x_SAstructuredType, _x_SAstructuredType).
+  metaedge(_x_A0, composition, _x_behavior, _x_SAstructuredType, _x_Behavior).
+  metaedge(_x_A0, composition, _x_behavior, _x_SAstructuredType, _x_StateDiagram).
+  metaedge(_x_A0, composition, _x_definition, _x_SAstructuredType, _x_Architecture).
+  metaedge(_x_A0, composition, _x_definition, _x_SAstructuredType, _x_SoftwareArchitecture).
+  metaedge(_x_A0, generalization, _x_general, _x_SAstructuredType, _x_SAtype).
+  metaedge(_x_A0, composition, _x_development, _x_SABinding, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_SABinding, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_SABinding, _x_Property).
+  metaedge(_x_A0, association, _x_type, _x_SABinding, _x_Type).
+  metaedge(_x_A0, association, _x_type, _x_SABinding, _x_SAtype).
+  metaedge(_x_A0, association, _x_type, _x_SABinding, _x_SAstructuredType).
+  metaedge(_x_A0, association, _x_from, _x_SABinding, _x_ConnectableElement).
+  metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAconnector).
+  metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAinterface).
+  metaedge(_x_A0, association, _x_from, _x_SABinding, _x_Component).
+  metaedge(_x_A0, association, _x_from, _x_SABinding, _x_InteractionPoint).
+  metaedge(_x_A0, association, _x_to, _x_SABinding, _x_ConnectableElement).
+  metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAconnector).
+  metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAinterface).
+  metaedge(_x_A0, association, _x_to, _x_SABinding, _x_Component).
+  metaedge(_x_A0, association, _x_to, _x_SABinding, _x_InteractionPoint).
+  metaedge(_x_A0, association, _x_fromContext, _x_SABinding, _x_Component).
+  metaedge(_x_A0, association, _x_fromContext, _x_SABinding, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_fromContext, _x_SABinding, _x_SAconnector).
+  metaedge(_x_A0, association, _x_toContext, _x_SABinding, _x_Component).
+  metaedge(_x_A0, association, _x_toContext, _x_SABinding, _x_SAcomponent).
+  metaedge(_x_A0, association, _x_toContext, _x_SABinding, _x_SAconnector).
+  metaedge(_x_A0, generalization, _x_general, _x_SABinding, _x_SArelationship).
+  metaedge(_x_A0, composition, _x_development, _x_A0Spec, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_A0Spec, _x_Business).
+  metaedge(_x_A0, composition, _x_architectures, _x_A0Spec, _x_Architecture).
+  metaedge(_x_A0, composition, _x_architectures, _x_A0Spec, _x_SoftwareArchitecture).
+  metaedge(_x_A0, composition, _x_typesSpecs, _x_A0Spec, _x_TypesSpecification).
+  metaedge(_x_A0, generalization, _x_general, _x_A0Spec, _x_Element).
+  metaedge(_x_A0, composition, _x_development, _x_StateDiagram, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_StateDiagram, _x_Business).
+  metaedge(_x_A0, composition, _x_ownedState, _x_StateDiagram, _x_State).
+  metaedge(_x_A0, composition, _x_ownedState, _x_StateDiagram, _x_InitialState).
+  metaedge(_x_A0, composition, _x_ownedState, _x_StateDiagram, _x_FinalState).
+  metaedge(_x_A0, composition, _x_ownedTransition, _x_StateDiagram, _x_Transition).
+  metaedge(_x_A0, generalization, _x_general, _x_StateDiagram, _x_Behavior).
+  metaedge(_x_A0, composition, _x_development, _x_State, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_State, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_State, _x_Property).
+  metaedge(_x_A0, association, _x_owningStateDiagram, _x_State, _x_StateDiagram).
+  metaedge(_x_A0, composition, _x_subDiagram, _x_State, _x_StateDiagram).
+  metaedge(_x_A0, association, _x_incoming, _x_State, _x_Transition).
+  metaedge(_x_A0, association, _x_outgoing, _x_State, _x_Transition).
+  metaedge(_x_A0, generalization, _x_general, _x_State, _x_PropertyHolderElement).
+  metaedge(_x_A0, composition, _x_development, _x_Transition, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_Transition, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_Transition, _x_Property).
+  metaedge(_x_A0, association, _x_owningStateDiagram, _x_Transition, _x_StateDiagram).
+  metaedge(_x_A0, association, _x_source, _x_Transition, _x_State).
+  metaedge(_x_A0, association, _x_source, _x_Transition, _x_InitialState).
+  metaedge(_x_A0, association, _x_source, _x_Transition, _x_FinalState).
+  metaedge(_x_A0, association, _x_target, _x_Transition, _x_State).
+  metaedge(_x_A0, association, _x_target, _x_Transition, _x_InitialState).
+  metaedge(_x_A0, association, _x_target, _x_Transition, _x_FinalState).
+  metaedge(_x_A0, generalization, _x_general, _x_Transition, _x_PropertyHolderElement).
+  metaedge(_x_A0, composition, _x_development, _x_InitialState, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_InitialState, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_InitialState, _x_Property).
+  metaedge(_x_A0, association, _x_owningStateDiagram, _x_InitialState, _x_StateDiagram).
+  metaedge(_x_A0, composition, _x_subDiagram, _x_InitialState, _x_StateDiagram).
+  metaedge(_x_A0, association, _x_incoming, _x_InitialState, _x_Transition).
+  metaedge(_x_A0, association, _x_outgoing, _x_InitialState, _x_Transition).
+  metaedge(_x_A0, generalization, _x_general, _x_InitialState, _x_State).
+  metaedge(_x_A0, composition, _x_development, _x_FinalState, _x_Development).
+  metaedge(_x_A0, composition, _x_business, _x_FinalState, _x_Business).
+  metaedge(_x_A0, composition, _x_properties, _x_FinalState, _x_Property).
+  metaedge(_x_A0, association, _x_owningStateDiagram, _x_FinalState, _x_StateDiagram).
+  metaedge(_x_A0, composition, _x_subDiagram, _x_FinalState, _x_StateDiagram).
+  metaedge(_x_A0, association, _x_incoming, _x_FinalState, _x_Transition).
+  metaedge(_x_A0, association, _x_outgoing, _x_FinalState, _x_Transition).
+  metaedge(_x_A0, generalization, _x_general, _x_FinalState, _x_State).
+
+%%%%%%%%%%%%%% MODELS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+model(m2,_x_A0).
+node(_x_A0,274,_x_c8,_x_SAchannel).
+node(_x_A0,267,_x_c7,_x_SAchannel).
+node(_x_A0,260,_x_c6,_x_SAchannel).
+node(_x_A0,253,_x_c5,_x_SAchannel).
+node(_x_A0,246,_x_c4,_x_SAchannel).
+node(_x_A0,239,_x_c3,_x_SAchannel).
+node(_x_A0,232,_x_c2,_x_SAchannel).
+node(_x_A0,225,_x_c1,_x_SAchannel).
+node(_x_A0,221,_x_p21,_x_SAinterface).
+node(_x_A0,216,_x_p20,_x_SAinterface).
+node(_x_A0,212,_x_p19,_x_SAinterface).
+node(_x_A0,208,_x_p18,_x_SAinterface).
+node(_x_A0,204,_x_p17,_x_SAinterface).
+node(_x_A0,200,_x_p6,_x_SAinterface).
+node(_x_A0,196,_x_p5,_x_SAinterface).
+node(_x_A0,192,_x_p4,_x_SAinterface).
+node(_x_A0,188,_x_p3,_x_SAinterface).
+node(_x_A0,184,_x_p16,_x_SAinterface).
+node(_x_A0,180,_x_p15,_x_SAinterface).
+node(_x_A0,176,_x_p14,_x_SAinterface).
+node(_x_A0,172,_x_p13,_x_SAinterface).
+node(_x_A0,168,_x_p12,_x_SAinterface).
+node(_x_A0,164,_x_p11,_x_SAinterface).
+node(_x_A0,160,_x_p10,_x_SAinterface).
+node(_x_A0,158,_x_p25,_x_SAinterface).
+node(_x_A0,156,_x_p24,_x_SAinterface).
+node(_x_A0,154,_x_p22,_x_SAinterface).
+node(_x_A0,151,_x_p2,_x_SAinterface).
+node(_x_A0,148,_x_p1,_x_SAinterface).
+node(_x_A0,146,_x_p23,_x_SAinterface).
+node(_x_A0,143,_x_p9,_x_SAinterface).
+node(_x_A0,140,_x_p8,_x_SAinterface).
+node(_x_A0,137,_x_p7,_x_SAinterface).
+node(_x_A0,126,_x_cc5,_x_SAconnector).
+node(_x_A0,119,_x_cc2,_x_SAcomponent).
+node(_x_A0,112,_x_cc1,_x_SAcomponent).
+node(_x_A0,92,_x_cc3,_x_SAcomponent).
+node(_x_A0,44,_x_cc4,_x_SAcomponent).
+node(_x_A0,2,_x_s1,_x_SoftwareArchitecture).
+node(_x_A0,3,_x_s1,_x_A0Spec).
+edge(_x_A0,2426,_x_s123,_x_subElement,2,_x_s1,274,_x_c8).
+edge(_x_A0,2123,_x_s120,_x_subElement,2,_x_s1,267,_x_c7).
+edge(_x_A0,1820,_x_s117,_x_subElement,2,_x_s1,260,_x_c6).
+edge(_x_A0,1517,_x_s114,_x_subElement,2,_x_s1,253,_x_c5).
+edge(_x_A0,1214,_x_s111,_x_subElement,2,_x_s1,246,_x_c4).
+edge(_x_A0,911,_x_s18,_x_subElement,2,_x_s1,239,_x_c3).
+edge(_x_A0,68,_x_s15,_x_subElement,2,_x_s1,232,_x_c2).
+edge(_x_A0,35,_x_s12,_x_subElement,2,_x_s1,225,_x_c1).
+edge(_x_A0,8486,_x_cc483,_x_points,44,_x_cc4,221,_x_p21).
+edge(_x_A0,8183,_x_cc480,_x_points,44,_x_cc4,216,_x_p20).
+edge(_x_A0,7880,_x_cc477,_x_points,44,_x_cc4,212,_x_p19).
+edge(_x_A0,7577,_x_cc474,_x_points,44,_x_cc4,208,_x_p18).
+edge(_x_A0,7274,_x_cc471,_x_points,44,_x_cc4,204,_x_p17).
+edge(_x_A0,102104,_x_cc3101,_x_points,92,_x_cc3,200,_x_p6).
+edge(_x_A0,261263,_x_c6260,_x_from,260,_x_c6,200,_x_p6).
+edge(_x_A0,99101,_x_cc398,_x_points,92,_x_cc3,196,_x_p5).
+edge(_x_A0,254256,_x_c5253,_x_from,253,_x_c5,196,_x_p5).
+edge(_x_A0,9698,_x_cc395,_x_points,92,_x_cc3,192,_x_p4).
+edge(_x_A0,247249,_x_c4246,_x_from,246,_x_c4,192,_x_p4).
+edge(_x_A0,9395,_x_cc392,_x_points,92,_x_cc3,188,_x_p3).
+edge(_x_A0,240242,_x_c3239,_x_from,239,_x_c3,188,_x_p3).
+edge(_x_A0,6971,_x_cc468,_x_points,44,_x_cc4,184,_x_p16).
+edge(_x_A0,257259,_x_c5256,_x_to,253,_x_c5,184,_x_p16).
+edge(_x_A0,6668,_x_cc465,_x_points,44,_x_cc4,180,_x_p15).
+edge(_x_A0,264266,_x_c6263,_x_to,260,_x_c6,180,_x_p15).
+edge(_x_A0,6365,_x_cc462,_x_points,44,_x_cc4,176,_x_p14).
+edge(_x_A0,6062,_x_cc459,_x_points,44,_x_cc4,172,_x_p13).
+edge(_x_A0,5759,_x_cc456,_x_points,44,_x_cc4,168,_x_p12).
+edge(_x_A0,5456,_x_cc453,_x_points,44,_x_cc4,164,_x_p11).
+edge(_x_A0,250252,_x_c4249,_x_to,246,_x_c4,164,_x_p11).
+edge(_x_A0,5153,_x_cc450,_x_points,44,_x_cc4,160,_x_p10).
+edge(_x_A0,243245,_x_c3242,_x_to,239,_x_c3,160,_x_p10).
+edge(_x_A0,133135,_x_cc5132,_x_points,126,_x_cc5,158,_x_p25).
+edge(_x_A0,226228,_x_c1225,_x_from,225,_x_c1,158,_x_p25).
+edge(_x_A0,130132,_x_cc5129,_x_points,126,_x_cc5,156,_x_p24).
+edge(_x_A0,268270,_x_c7267,_x_from,267,_x_c7,156,_x_p24).
+edge(_x_A0,8789,_x_cc486,_x_points,44,_x_cc4,154,_x_p22).
+edge(_x_A0,275277,_x_c8274,_x_from,274,_x_c8,151,_x_p2).
+edge(_x_A0,120122,_x_cc2119,_x_points,119,_x_cc2,151,_x_p2).
+edge(_x_A0,113115,_x_cc1112,_x_points,112,_x_cc1,148,_x_p1).
+edge(_x_A0,233235,_x_c2232,_x_from,232,_x_c2,148,_x_p1).
+edge(_x_A0,127129,_x_cc5126,_x_points,126,_x_cc5,146,_x_p23).
+edge(_x_A0,236238,_x_c2235,_x_to,232,_x_c2,146,_x_p23).
+edge(_x_A0,278280,_x_c8277,_x_to,274,_x_c8,143,_x_p9).
+edge(_x_A0,4850,_x_cc447,_x_points,44,_x_cc4,143,_x_p9).
+edge(_x_A0,4547,_x_cc444,_x_points,44,_x_cc4,140,_x_p8).
+edge(_x_A0,229231,_x_c1228,_x_to,225,_x_c1,140,_x_p8).
+edge(_x_A0,105107,_x_cc3104,_x_points,92,_x_cc3,137,_x_p7).
+edge(_x_A0,271273,_x_c7270,_x_to,267,_x_c7,137,_x_p7).
+edge(_x_A0,3941,_x_s138,_x_subElement,2,_x_s1,126,_x_cc5).
+edge(_x_A0,3032,_x_s129,_x_subElement,2,_x_s1,119,_x_cc2).
+edge(_x_A0,2729,_x_s126,_x_subElement,2,_x_s1,112,_x_cc1).
+edge(_x_A0,3335,_x_s132,_x_subElement,2,_x_s1,92,_x_cc3).
+edge(_x_A0,3638,_x_s135,_x_subElement,2,_x_s1,44,_x_cc4).
+edge(_x_A0,3,_x_s1,_x_architectures,3,_x_s1,2,_x_s1).
+prop(_x_A0,892,_x_cc41,44,_x_cc4,_x_name,_x_ACC_Application).
+prop(_x_A0,1602,_x_p101,160,_x_p10,_x_name,_x_CurrentSpeed).
+prop(_x_A0,1642,_x_p111,164,_x_p11,_x_name,_x_Distance).
+prop(_x_A0,1682,_x_p121,168,_x_p12,_x_name,_x_AccMaxSpeed).
+prop(_x_A0,1722,_x_p131,172,_x_p13,_x_name,_x_RoadSignsEnabled).
+prop(_x_A0,1762,_x_p141,176,_x_p14,_x_name,_x_RoadSignSpeed).
+prop(_x_A0,1802,_x_p151,180,_x_p15,_x_name,_x_AccEnabled).
+prop(_x_A0,1842,_x_p161,184,_x_p16,_x_name,_x_BrakePedalUsed).
+prop(_x_A0,1372,_x_p71,137,_x_p7,_x_name,_x_trig).
+prop(_x_A0,1402,_x_p81,140,_x_p8,_x_name,_x_trig50hz).
+prop(_x_A0,1432,_x_p91,143,_x_p9,_x_name,_x_trig10hz).
+prop(_x_A0,1462,_x_p231,146,_x_p23,_x_name,_x_in).
+prop(_x_A0,1882,_x_p31,188,_x_p3,_x_name,_x_speed).
+prop(_x_A0,1922,_x_p41,192,_x_p4,_x_name,_x_distance).
+prop(_x_A0,1962,_x_p51,196,_x_p5,_x_name,_x_brake).
+prop(_x_A0,2002,_x_p61,200,_x_p6,_x_name,_x_acc).
+prop(_x_A0,2042,_x_p171,204,_x_p17,_x_name,_x_Throttle).
+prop(_x_A0,2082,_x_p181,208,_x_p18,_x_name,_x_MaxSpeed).
+prop(_x_A0,2122,_x_p191,212,_x_p19,_x_name,_x_BrakeAssist).
+prop(_x_A0,2162,_x_p201,216,_x_p20,_x_name,_x_ACC).
+prop(_x_A0,2212,_x_p211,221,_x_p21,_x_name,_x_BrakeSignal).
+prop(_x_A0,413,_x_s11,3,_x_s1,_x_name,_x_acc).
+prop(_x_A0,412,_x_s11,2,_x_s1,_x_name,_x_acc).
+prop(_x_A0,1482,_x_p11,148,_x_p1,_x_name,_x_out).
+prop(_x_A0,1512,_x_p21,151,_x_p2,_x_name,_x_out).
+prop(_x_A0,1542,_x_p221,154,_x_p22,_x_name,_x_out).
+prop(_x_A0,1562,_x_p241,156,_x_p24,_x_name,_x_out2).
+prop(_x_A0,1582,_x_p251,158,_x_p25,_x_name,_x_out1).
+prop(_x_A0,1152,_x_cc11,112,_x_cc1,_x_name,_x_clk50hz).
+prop(_x_A0,1222,_x_cc21,119,_x_cc2,_x_name,_x_clk10hz).
+prop(_x_A0,1072,_x_cc31,92,_x_cc3,_x_name,_x_Sensors).
+prop(_x_A0,1352,_x_cc51,126,_x_cc5,_x_name,_x_splitter).
+prop(_x_A0,274,_x_c8,274,_x_c8,_x_navigability,"_x_#unidirectional").
+prop(_x_A0,267,_x_c7,267,_x_c7,_x_navigability,"_x_#unidirectional").
+prop(_x_A0,260,_x_c6,260,_x_c6,_x_navigability,"_x_#unidirectional").
+prop(_x_A0,253,_x_c5,253,_x_c5,_x_navigability,"_x_#unidirectional").
+prop(_x_A0,246,_x_c4,246,_x_c4,_x_navigability,"_x_#unidirectional").
+prop(_x_A0,239,_x_c3,239,_x_c3,_x_navigability,"_x_#unidirectional").
+prop(_x_A0,232,_x_c2,232,_x_c2,_x_navigability,"_x_#unidirectional").
+prop(_x_A0,225,_x_c1,225,_x_c1,_x_navigability,"_x_#unidirectional").
+prop(_x_A0,221,_x_p21,221,_x_p21,_x_direction,"_x_#output").
+prop(_x_A0,216,_x_p20,216,_x_p20,_x_direction,"_x_#output").
+prop(_x_A0,212,_x_p19,212,_x_p19,_x_direction,"_x_#output").
+prop(_x_A0,208,_x_p18,208,_x_p18,_x_direction,"_x_#output").
+prop(_x_A0,204,_x_p17,204,_x_p17,_x_direction,"_x_#output").
+prop(_x_A0,200,_x_p6,200,_x_p6,_x_direction,"_x_#output").
+prop(_x_A0,196,_x_p5,196,_x_p5,_x_direction,"_x_#output").
+prop(_x_A0,192,_x_p4,192,_x_p4,_x_direction,"_x_#output").
+prop(_x_A0,188,_x_p3,188,_x_p3,_x_direction,"_x_#output").
+prop(_x_A0,184,_x_p16,184,_x_p16,_x_direction,"_x_#input").
+prop(_x_A0,180,_x_p15,180,_x_p15,_x_direction,"_x_#input").
+prop(_x_A0,176,_x_p14,176,_x_p14,_x_direction,"_x_#input").
+prop(_x_A0,172,_x_p13,172,_x_p13,_x_direction,"_x_#input").
+prop(_x_A0,168,_x_p12,168,_x_p12,_x_direction,"_x_#input").
+prop(_x_A0,164,_x_p11,164,_x_p11,_x_direction,"_x_#input").
+prop(_x_A0,160,_x_p10,160,_x_p10,_x_direction,"_x_#input").
+prop(_x_A0,158,_x_p25,158,_x_p25,_x_direction,"_x_#output").
+prop(_x_A0,156,_x_p24,156,_x_p24,_x_direction,"_x_#output").
+prop(_x_A0,154,_x_p22,154,_x_p22,_x_direction,"_x_#output").
+prop(_x_A0,151,_x_p2,151,_x_p2,_x_direction,"_x_#output").
+prop(_x_A0,148,_x_p1,148,_x_p1,_x_direction,"_x_#output").
+prop(_x_A0,146,_x_p23,146,_x_p23,_x_direction,"_x_#input").
+prop(_x_A0,143,_x_p9,143,_x_p9,_x_direction,"_x_#input").
+prop(_x_A0,140,_x_p8,140,_x_p8,_x_direction,"_x_#input").
+prop(_x_A0,137,_x_p7,137,_x_p7,_x_direction,"_x_#input").
+
+
+
+%%%%%%%%%%%%%%%%%%%% Traces Generation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+is_metanode_related(MMS,MCS) :- relation(R, MMS, MCS, X), not relation(R,mmt,MMS), MMS!=mmt.
+
+trace(MMS,IDx,ID,MCS) :- node(MMS,IDx,ID,MCS), not is_metanode_related(MMS,MCS),MMS!=mmt.
+
+is_metaedge_related(MMS,Name,NodeSource,NodeTarget) :- relation(R,MMS,Name,NodeSource,NodeTarget,X), not relation(R,mmt,MMS), MMS!=mmt.
+
+trace(MMS,IDx,ID,Name,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget) :- 
+	edge(MMS,IDx,ID,Name,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget), not is_metaedge_related(MMS,Name,NodeSource,NodeTarget),
+	node(MMS,IDNodeSourcex,IDNodeSource,NodeSource),node(MMS,IDNodeTargetx,IDNodeTarget,NodeTarget),MMS!=mmt.
+
+is_metaprop_related(MMS,Name,MCS) :- relation(R,MMS,Name,MCS,X), not relation(R,mmt,MMS), MMS!=mmt.
+
+trace(MMS,IDx,ID,IDmcx,IDmc,Name,MCS) :- prop(MMS,IDx,ID,IDmcx,IDmc,Name,Value), not is_metaprop_related(MMS,Name,MCS),
+node(MMS,IDmcx,IDmc,MCS),MMS!=mmt.
+
+:- node(MMT,IDx,ID,Node1), node'(MMT,IDx,ID,Node2), metanode(MMT,Node2),  Node1!=Node2, MMT=mmt.
+
+%%%%%%%%%%% Metamodel Target Conformance Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+is_target_metamodel_conform(MM,Node) :- metanode(MM,Node).
+is_target_metamodel_conform(MM,Prop) :- metaprop(MM,Prop,Node).
+is_target_metamodel_conform(MM,Edge) :- metaedge(MM,MetaEdge,Edge,NodeSource,NodeTarget).
+
+%%%%%%%%%% Relations Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+is_related(MM,Node) :- relation(R,MM,Node,X), relation(R,MM2,Node2,Y).
+is_related(MM,Prop) :- relation(R,MM,Prop,Node,X), relation(R,MM2,Prop2,Node2,Y).
+is_related(MM,Edge) :- relation(R,MM,Edge,NodeSource,NodeTarget,X), relation(R,MM2,Edge2,NodeSource2,NodeTarget2,Y).
+
+%%%%%%%%%% Mapping Rules %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%node from node
+mapping_node(MM,IDx + X,ID,Node) :- relation(R,MM,Node, X), relation(R,MM2,Node2,Y),node(MM2,IDx,ID,Node2), MM!=MM2.
+
+%prop from prop        
+%mapping_prop(MM2,IDx + X,ID,IDmcx + Xnode,IDmc,Prop2,Value) :- relation(R,MM,Prop,Node,Y), relation(R,MM2,Prop2,Node2,X), 
+%              prop(MM,IDx,ID,IDmcx,IDmc,Prop,Value), node(MM,IDmcx,IDmc,Node),
+%              relation(Rnode,MM,Node,Ynode), relation(Rnode,MM2,Node2,Xnode),
+%              MM!=MM2.
+
+%prop from prop        
+mapping_prop(MM2,IDx + X,ID,IDmcx + Xnode,IDmc,Prop2,Value) :- relation(R,MM,Prop,Node,Y), relation(R,MM2,Prop2,Node2,X), 
+              prop(MM,IDx,ID,IDmcx,IDmc,Prop,Value), node(MM,IDmcx,IDmc,Node),
+              relation(Rnode,MM,Node,Ynode), relation(Rnode,MM2,Node2,Xnode),
+              not is_enumeration(Value),
+              MM!=MM2.
+              
+%prop from prop (enumeration)       
+mapping_prop(MM2,IDx + X,ID,IDmcx + Xnode,IDmc,Prop2,Value) :- relation(R,MM,Prop,Node,Y), relation(R,MM2,Prop2,Node2,X), 
+              prop(MM,IDx,ID,IDmcx,IDmc,Prop,Value2), node(MM,IDmcx,IDmc,Node),
+              relation(Rnode,MM,Node,Ynode), relation(Rnode,MM2,Node2,Xnode),
+              enumeration(IDenum, IDe, MM, Value2),enumeration(IDenum, IDe, MM2, Value),
+              is_enumeration(Value2),
+              MM!=MM2.
+
+is_enumeration(Value) :- enumeration(IDenum, ID, MMS, Value), enumeration(IDenum, ID, MMT, Value2), MMS != MMT, MMT = mmt.      
+       
+%edge from edge         
+mapping_edge(MM,IDx + X,ID,Edge,IDNodeSourcex + YnodeSource,IDNodeSource,IDNodeTargetx + YnodeTarget,IDNodeTarget) :- 
+			relation(R,MM,Edge,NodeSource,NodeTarget, X),relation(R,MM2,Edge2,NodeSource2,NodeTarget2, Y), 
+            edge(MM2,IDx,ID,Edge2,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget),
+            node(MM2,IDNodeSourcex,IDNodeSource,NodeSource2),node(MM2,IDNodeTargetx,IDNodeTarget,NodeTarget2),
+            relation(RnodeSource,MM,NodeSource,YnodeSource), relation(RnodeSource,MM2,NodeSource2,XnodeSource),
+            relation(RnodeTarget,MM,NodeTarget,YnodeTarget), relation(RnodeTarget,MM2,NodeTarget2,XnodeTarget),
+            MM!=MM2.
+           
+% edge from node            
+mapping_edge(MM,IDx + X,ID,Edge,IDx + XnodeSource,ID,IDx + XnodeTarget,ID) :- 
+			relation(R,MM,Edge,NodeSource,NodeTarget,X),relation(R,MM2,NodeSource2,Y),
+            node(MM2,IDx,ID,NodeSource2),
+            metaedge(MM,MetaEdge,Edge,NodeSource,NodeTarget),
+            relation(RnodeSource,MM,NodeSource,XnodeSource), relation(RnodeSource,MM2,NodeSource2,YnodeSource),
+            relation(RnodeTarget,MM,NodeTarget,XnodeTarget), relation(RnodeTarget,MM2,NodeSource2,YnodeTarget),            
+            MM!=MM2.
+                       
+%prop from edge            
+%mapping_prop(MMT,ID,Prop,Value) :- relation(R,MMT,Prop,NodeT), relation(R,MMS,Edge,NodeS1,NodeS2),
+%       edge(MMS,IDE,Edge,IDS,Value),
+%       node(MMS,ID,NodeS1), node(MMS,Value,NodeS2).
+
+%prop from node (il padre della prop è generato da node)
+mapping_prop(MMT,IDx + X,ID,IDx + Xnode,ID,Prop,Value) :- relation(R,MMS,Node,Y), relation(R,MMT,Prop,Value,NodeT,X), 
+       node(MMS,IDx,ID,Node), metaprop(MMT,Prop,NodeT),
+       relation(Rnode,MMS,Node,Ynode), relation(Rnode,MMT,NodeT,Xnode),
+       MMS!=MMT, X != Y.
+             
+%edge from prop
+%mapping_edge(MMT,IDS,EdgeT,IDS,IDT) :- relation(R,MMT,EdgeT,NodeT1,NodeT2), relation(R,MMS,EdgeS,NodeS1,NodeS2), 
+%        prop(MMS,IDp, IDS,Prop,IDT), node(MMS,IDT,NodeT2), 
+%        metaprop(MMT,Prop,NodeT1).
+
+%node from prop
+%mapping_node(MMT,ID,Node) :- relation(R,MMT,Node), relation(R,MMS,Prop,NodeS), prop(MMS,ID,IDP,Prop,ID), metaprop(MMS,Prop,NodeS).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%% Generability Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+												
+{is_generable(MM,IDx,ID,Node)} :- mapping_node(MM,IDx,ID,Node), is_related(MM,Node), is_target_metamodel_conform(MM,Node), 
+							  MM=mmt.
+{is_generable(MM,IDx,ID,Prop,Value)} :- mapping_prop(MM,IDx,ID,IDmcx,IDmc,Prop,Value), is_related(MM,Prop), 
+									is_target_metamodel_conform(MM,Prop), MM=mmt.
+									
+{is_generable(MM,IDx,ID,Edge,IDNodeSource,IDNodeTarget)} :- mapping_edge(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget), 
+														is_related(MM,Edge), is_target_metamodel_conform(MM,Edge),MM=mmt.
+
+%%%%%%%%% Element Generation by Transformation Rule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+node'(MM,IDx,ID,Node) :- is_generable(MM,IDx,ID,Node), mapping_node(MM,IDx,ID,Node),MM=mmt.
+
+prop'(MM,IDx,ID,IDmcx,IDmc,Prop,Value) :- is_generable(MM,IDx,ID,Prop,Value), mapping_prop(MM,IDx,ID,IDmcx,IDmc,Prop,Value), MM=mmt.
+
+edge'(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget) :- is_generable(MM,IDx,ID,Edge,IDNodeSource,IDNodeTarget), 
+              mapping_edge(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget), MM=mmt.
+
+ 
+
+%%%%%%%%% Element Generation by Traces %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+              
+node'(MM,IDx,ID,Node) :- trace(MM,IDx,ID,Node),MM=mmt.
+
+prop'(MM,IDx,ID,IDmcx,IDmc,Prop,Value) :-  trace(MM,IDx,ID,IDmcx,IDmc,Name,MCS), prop(MM,IDx,ID,IDmcx,IDmc,Prop,Value), 
+										   node'(MM,IDx,ID,IDmcx,IDmc,Name,MCS),node(MM,IDx,ID,IDmcx,IDmc,Name,MCS),MM=mmt.
+
+edge'(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget) :-  
+											trace(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget), 
+											edge(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget), 
+											node'(MM,IDNodeSourcex,IDNodeSource,NodeSource), node'(MM,IDNodeTargetx,IDNodeTarget,NodeTarget),
+											node(MM,IDNodeSourcex,IDNodeSource,NodeSource), node(MM,IDNodeTargetx,IDNodeTarget,NodeTarget), 
+											MM=mmt.             
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%												
+
+#hide.
+
+%show inherit(IDnode, PropName).
+%show is_source_metamodel_conform(MM,ID,Elem).
+show node'(MM,IDx,ID,Node).
+show prop'(MM,IDx,ID,IDmcx,IDmc,Prop,Value).
+show edge'(MM,IDx,ID,Edge,ID1x,ID1,ID2x,ID2).
+
+%show is_generable(MM,IDx,ID,Node).
+%show mapping_node(MM,IDx,ID,Node).
+
+show node(MM,IDx,ID,Node).
+show prop(MM,IDx,ID,IDmcx,IDmc,Prop,Value).
+show edge(MM,IDx,ID,Edge,ID1x,ID1,ID2x,ID2).
+
+%show is_related(MM,Node).
+%show is_meta_conforms(MM,Node).
+%show mapping(MM,ID,Node,A).
+%show parents(MM,ID1).
+
+%show nodet(tl,ID,Elem).
+%show edget(tl,ID,Elem,ID1,ID2).
+%show ct_association(IDCNP2,IDCP).
+
+%show mapping_prop(A,B,C,D,E,F,G).
+%show mapping_edge(A,B,C,D,E,F,G,H).
+%show is_enumeration(A).
+
+show trace(A,B,C,D),trace(A,B,C,D,E,F,G),trace(A,B,C,D,E,F,G,H).

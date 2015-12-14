@@ -1,0 +1,435 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%  HIERARCHICAL  to NON HIERARCHICAL  STATE MACHINE METAMODELS%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%   HIERARCHICAL STATE MACHINE METAMODEL  %%%%%%%%%%%%%%%%%%%%%%%
+
+  metamodel(x_SimpleHierarchicalStateMachine).
+  metanode(x_SimpleHierarchicalStateMachine, x_State).
+  metanode(x_SimpleHierarchicalStateMachine, x_Transition).
+  metanode(x_SimpleHierarchicalStateMachine, x_CompositeState).
+  metanode(x_SimpleHierarchicalStateMachine, x_StateMachine).
+  metanode(x_SimpleHierarchicalStateMachine, x_InitialState).
+  metanode(x_SimpleHierarchicalStateMachine, x_FinalState).
+
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_owningCompositeState, x_State, x_CompositeState).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_target, x_Transition, x_State).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_target, x_Transition, x_CompositeState).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_target, x_Transition, x_InitialState).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_target, x_Transition, x_FinalState).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_source, x_Transition, x_State).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_source, x_Transition, x_CompositeState).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_source, x_Transition, x_InitialState).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_source, x_Transition, x_FinalState).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_owningCompositeState, x_CompositeState, x_CompositeState).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedSubState, x_CompositeState, x_State).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedSubState, x_CompositeState, x_CompositeState).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedSubState, x_CompositeState, x_InitialState).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedSubState, x_CompositeState, x_FinalState).
+  metaedge(x_SimpleHierarchicalStateMachine, generalization, x_general, x_CompositeState, x_State).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedState, x_StateMachine, x_State).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedState, x_StateMachine, x_CompositeState).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedState, x_StateMachine, x_InitialState).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedState, x_StateMachine, x_FinalState).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedTransition, x_StateMachine, x_Transition).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_owningCompositeState, x_InitialState, x_CompositeState).
+  metaedge(x_SimpleHierarchicalStateMachine, generalization, x_general, x_InitialState, x_State).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_owningCompositeState, x_FinalState, x_CompositeState).
+  metaedge(x_SimpleHierarchicalStateMachine, generalization, x_general, x_FinalState, x_State).
+
+  metaprop(x_SimpleHierarchicalStateMachine, x_name, x_State).
+  metaprop(x_SimpleHierarchicalStateMachine, x_trigger, x_Transition).
+  metaprop(x_SimpleHierarchicalStateMachine, x_effect, x_Transition).
+  metaprop(x_SimpleHierarchicalStateMachine, x_name, x_CompositeState).
+  metaprop(x_SimpleHierarchicalStateMachine, x_name, x_InitialState).
+  metaprop(x_SimpleHierarchicalStateMachine, x_name, x_FinalState).
+
+
+%%%%%%%%%%%%%%%%%%%%%%  NON HIERARCHICAL STATE MACHINE METAMODEL  %%%%%%%%%%%%%%%%%%%
+
+  metamodel(x_SimpleNonHierarchicalStateMachine).
+  metanode(x_SimpleNonHierarchicalStateMachine, x_State).
+  metanode(x_SimpleNonHierarchicalStateMachine, x_Transition).
+  metanode(x_SimpleNonHierarchicalStateMachine, x_StateMachine).
+  metanode(x_SimpleNonHierarchicalStateMachine, x_InitialState).
+  metanode(x_SimpleNonHierarchicalStateMachine, x_FinalState).
+
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_incoming, x_State, x_Transition).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_owningStateMachine, x_State, x_StateMachine).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_target, x_Transition, x_State).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_target, x_Transition, x_InitialState).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_target, x_Transition, x_FinalState).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_source, x_Transition, x_State).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_source, x_Transition, x_InitialState).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_source, x_Transition, x_FinalState).
+  metaedge(x_SimpleNonHierarchicalStateMachine, composition, x_ownedState, x_StateMachine, x_State).
+  metaedge(x_SimpleNonHierarchicalStateMachine, composition, x_ownedState, x_StateMachine, x_InitialState).
+  metaedge(x_SimpleNonHierarchicalStateMachine, composition, x_ownedState, x_StateMachine, x_FinalState).
+  metaedge(x_SimpleNonHierarchicalStateMachine, composition, x_ownedTransition, x_StateMachine, x_Transition).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_incoming, x_InitialState, x_Transition).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_owningStateMachine, x_InitialState, x_StateMachine).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_EReference0, x_InitialState, x_State).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_EReference0, x_InitialState, x_InitialState).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_EReference0, x_InitialState, x_FinalState).
+  metaedge(x_SimpleNonHierarchicalStateMachine, generalization, x_general, x_InitialState, x_State).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_incoming, x_FinalState, x_Transition).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_owningStateMachine, x_FinalState, x_StateMachine).
+  metaedge(x_SimpleNonHierarchicalStateMachine, generalization, x_general, x_FinalState, x_State).
+
+  metaprop(x_SimpleNonHierarchicalStateMachine, x_name, x_State).
+  metaprop(x_SimpleNonHierarchicalStateMachine, x_trigger, x_Transition).
+  metaprop(x_SimpleNonHierarchicalStateMachine, x_effect, x_Transition).
+  metaprop(x_SimpleNonHierarchicalStateMachine, x_name, x_InitialState).
+  metaprop(x_SimpleNonHierarchicalStateMachine, x_name, x_FinalState).
+
+
+%%%%%%%%%%%%%%%%%%%%%%   HIERARCHICAL STATE MACHINE MODEL  %%%%%%%%%%%%%%%%%%%%%%%%
+
+  node(x_SimpleHierarchicalStateMachine, 1, "x_//@ownedState.1", x_State).
+  node(x_SimpleHierarchicalStateMachine, 3, "x_//@ownedState.2/@ownedSubState.0", x_State).
+  node(x_SimpleHierarchicalStateMachine, 5, "x_//@ownedState.2/@ownedSubState.1", x_State).
+  node(x_SimpleHierarchicalStateMachine, 7, "x_//@ownedState.2/@ownedSubState.2", x_State).
+  node(x_SimpleHierarchicalStateMachine, 41, "x_//@ownedState.2", x_CompositeState).
+  node(x_SimpleHierarchicalStateMachine, 52, "x_'s1__ASPid:3'", x_StateMachine).
+  node(x_SimpleHierarchicalStateMachine, 77, "x_//@ownedState.0", x_InitialState).
+  node(x_SimpleHierarchicalStateMachine, 9, "x_//@ownedTransition.0", x_Transition).
+  node(x_SimpleHierarchicalStateMachine, 17, "x_//@ownedTransition.1", x_Transition).
+  node(x_SimpleHierarchicalStateMachine, 25, "x_//@ownedTransition.2", x_Transition).
+  node(x_SimpleHierarchicalStateMachine, 33, "x_//@ownedTransition.3", x_Transition).
+  
+  edge(x_SimpleHierarchicalStateMachine, 4344, "x_//@ownedState.242", x_ownedSubState, 41, "x_//@ownedState.2", 3, "x_//@ownedState.2/@ownedSubState.0").
+  edge(x_SimpleHierarchicalStateMachine, 4647, "x_//@ownedState.245", x_ownedSubState, 41, "x_//@ownedState.2", 5, "x_//@ownedState.2/@ownedSubState.1").
+  edge(x_SimpleHierarchicalStateMachine, 4950, "x_//@ownedState.248", x_ownedSubState, 41, "x_//@ownedState.2", 7, "x_//@ownedState.2/@ownedSubState.2").
+  
+  edge(x_SimpleHierarchicalStateMachine, 1112, "x_//@ownedTransition.010", x_target, 9, "x_//@ownedTransition.0", 41, "x_//@ownedState.2").
+  edge(x_SimpleHierarchicalStateMachine, 1415, "x_//@ownedTransition.013", x_source, 9, "x_//@ownedTransition.0", 1, "x_//@ownedState.1").
+  edge(x_SimpleHierarchicalStateMachine, 1920, "x_//@ownedTransition.118", x_target, 17, "x_//@ownedTransition.1", 5, "x_//@ownedState.2/@ownedSubState.1").
+  edge(x_SimpleHierarchicalStateMachine, 2223, "x_//@ownedTransition.121", x_source, 17, "x_//@ownedTransition.1", 3, "x_//@ownedState.2/@ownedSubState.0").
+  edge(x_SimpleHierarchicalStateMachine, 2728, "x_//@ownedTransition.226", x_target, 25, "x_//@ownedTransition.2", 7, "x_//@ownedState.2/@ownedSubState.2").
+  edge(x_SimpleHierarchicalStateMachine, 3031, "x_//@ownedTransition.229", x_source, 25, "x_//@ownedTransition.2", 5, "x_//@ownedState.2/@ownedSubState.1").
+ % edge(x_SimpleHierarchicalStateMachine, 3536, "x_//@ownedTransition.334", x_target, 33, "x_//@ownedTransition.3",,).
+  edge(x_SimpleHierarchicalStateMachine, 3839, "x_//@ownedTransition.337", x_source, 33, "x_//@ownedTransition.3", 41, "x_//@ownedState.2").
+
+
+%%%%%%%%%%%%%%%%%%%%%%  NON  HIERARCHICAL STATE MACHINE MODEL %%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%   TRACE MODEL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+%%%%%%%%%%%%%%%%%%%%%%     RELATIONS   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#const mmt = x_SimpleNonHierarchicalStateMachine.
+
+%%%% node 2 node %%%%
+relation_direction("x_r1",bx,bx).
+relation_node("x_r1",  x_SimpleHierarchicalStateMachine, x_StateMachine).
+relation_node("x_r1", x_SimpleNonHierarchicalStateMachine, x_StateMachine).
+
+condition(x_SimpleNonHierarchicalStateMachine, ID, IDx):- node(x_SimpleHierarchicalStateMachine, ID, IDx, x_StateMachine).
+condition(x_SimpleHierarchicalStateMachine, ID, IDx):- node(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_StateMachine).
+%da sistemare con condition
+:- node(x_SimpleHierarchicalStateMachine, ID, IDx, x_StateMachine), not nodex(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_StateMachine), mmt = x_SimpleNonHierarchicalStateMachine.
+:- node(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_StateMachine), not nodex(x_SimpleHierarchicalStateMachine, ID, IDx, x_StateMachine), mmt = x_SimpleHierarchicalStateMachine.
+
+
+%%%% node 2 node %%%%
+relation_direction("x_r2",bx,bx).
+relation_node("x_r2",  x_SimpleHierarchicalStateMachine, x_InitialState).
+relation_node("x_r2", x_SimpleNonHierarchicalStateMachine, x_InitialState).
+
+condition(x_SimpleNonHierarchicalStateMachine, ID, IDx):- node(x_SimpleHierarchicalStateMachine, ID, IDx, x_InitialState).
+condition(x_SimpleHierarchicalStateMachine, ID, IDx):- node(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_InitialState).
+%da sistemare con condition
+:- node(x_SimpleHierarchicalStateMachine, ID, IDx, x_InitialState), not nodex(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_InitialState), mmt = x_SimpleNonHierarchicalStateMachine.
+:- node(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_InitialState), not nodex(x_SimpleHierarchicalStateMachine, ID, IDx, x_InitialState), mmt = x_SimpleHierarchicalStateMachine.
+
+
+%%%% node 2 node %%%%
+relation_direction("x_r3",bx,bx).
+relation_node("x_r3",  x_SimpleHierarchicalStateMachine, x_FinalState).
+relation_node("x_r3", x_SimpleNonHierarchicalStateMachine, x_FinalState).
+
+condition(x_SimpleNonHierarchicalStateMachine, ID, IDx):- node(x_SimpleHierarchicalStateMachine, ID, IDx, x_FinalState).
+condition(x_SimpleHierarchicalStateMachine, ID, IDx):- node(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_FinalState).
+%da sistemare con condition
+:- node(x_SimpleHierarchicalStateMachine, ID, IDx, x_FinalState), not nodex(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_FinalState), mmt = x_SimpleNonHierarchicalStateMachine.
+:- node(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_FinalState), not nodex(x_SimpleHierarchicalStateMachine, ID, IDx, x_FinalState), mmt = x_SimpleHierarchicalStateMachine.
+
+
+%%%% node 2 node %%%%
+relation_direction("x_r4",bx,bx).
+relation_node("x_r4",  x_SimpleHierarchicalStateMachine, x_CompositeState).
+relation_node("x_r4", x_SimpleNonHierarchicalStateMachine, x_State). 
+
+%F
+condition(x_SimpleNonHierarchicalStateMachine, ID, IDx):- node(x_SimpleHierarchicalStateMachine, ID, IDx, x_CompositeState).
+%da sistemare con condition
+:- node(x_SimpleHierarchicalStateMachine, ID, IDx, x_CompositeState), not nodex(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_State), mmt = x_SimpleNonHierarchicalStateMachine.
+
+%B
+%definisco solo la condition che uso nel mapping_node
+condition(x_SimpleHierarchicalStateMachine, ID, IDx):- node(x_SimpleHierarchicalStateMachine, ID, IDx, x_CompositeState).
+
+%:- node(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_State), condition(x_SimpleHierarchicalStateMachine, ID, IDx), not nodex(x_SimpleHierarchicalStateMachine, ID, IDx, x_CompositeState), mmt = x_SimpleHierarchicalStateMachine.
+%:- node(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_State), not condition(x_SimpleHierarchicalStateMachine, ID, IDx), nodex(x_SimpleHierarchicalStateMachine, ID, IDx, x_CompositeState), mmt = x_SimpleHierarchicalStateMachine.
+
+
+%%%% node 2 node %%%%
+relation_direction("x_r5",bx,bx).
+relation_node("x_r5",  x_SimpleHierarchicalStateMachine, x_State).
+relation_node("x_r5", x_SimpleNonHierarchicalStateMachine, x_State).
+
+%F
+%the relation is valid only if the state is not a sub state.
+condition(x_SimpleNonHierarchicalStateMachine,ID,IDx):- not is_subState(ID,IDx), node(x_SimpleHierarchicalStateMachine, ID, IDx, x_State).
+
+:- node(x_SimpleHierarchicalStateMachine, ID, IDx, x_State), 
+condition(x_SimpleNonHierarchicalStateMachine,ID,IDx),
+not nodex(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_State), 
+mmt = x_SimpleNonHierarchicalStateMachine.
+
+:- node(x_SimpleHierarchicalStateMachine, ID, IDx, x_State), 
+not condition(x_SimpleNonHierarchicalStateMachine,ID,IDx),
+nodex(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_State), 
+mmt = x_SimpleNonHierarchicalStateMachine.
+
+is_subState(ID,IDx):- node(x_SimpleHierarchicalStateMachine, ID, IDx, x_State), 
+node(x_SimpleHierarchicalStateMachine, IDc, IDcx, x_CompositeState),  edge(x_SimpleHierarchicalStateMachine, IDo, IDox,  x_ownedSubState, IDc, IDcx, ID, IDx).
+
+%B
+%definisco solo la condition che uso nel mapping_node
+condition(x_SimpleHierarchicalStateMachine,ID,IDx):- node(x_SimpleHierarchicalStateMachine, ID, IDx, x_State).
+
+%:- node(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_State), condition(x_SimpleHierarchicalStateMachine,ID,IDx), not nodex(x_SimpleHierarchicalStateMachine, ID, IDx, x_State), mmt = x_SimpleHierarchicalStateMachine.
+%:- node(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_State), not condition(x_SimpleHierarchicalStateMachine,ID,IDx), nodex(x_SimpleHierarchicalStateMachine, ID, IDx, x_State), mmt = x_SimpleHierarchicalStateMachine.
+
+
+
+
+
+%%%% node 2 node %%%%
+relation_direction("x_r6",bx,bx).
+relation_node("x_r6",  x_SimpleHierarchicalStateMachine, x_Transition).
+relation_node("x_r6", x_SimpleNonHierarchicalStateMachine, x_Transition).
+
+
+%F: T(S1,S2) -> T(S1,S2) iff  not is_substate(S1) and not is_substate(S2) 
+condition(x_SimpleNonHierarchicalStateMachine,ID,IDx):-  node(x_SimpleHierarchicalStateMachine, ID, IDx, x_Transition), 
+																					edge(x_SimpleHierarchicalStateMachine, IDes, IDesx, x_source, ID, IDx, IDs, IDsx),
+																					not is_subState(IDs,IDsx),
+																					edge(x_SimpleHierarchicalStateMachine, IDet, IDetx, x_source, ID, IDx, IDt, IDtx),
+																					not is_subState(IDt,IDtx).
+
+:- node(x_SimpleHierarchicalStateMachine, ID, IDx, x_Transition), 
+condition(x_SimpleNonHierarchicalStateMachine,ID,IDx),
+not nodex(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_Transition), 
+mmt = x_SimpleNonHierarchicalStateMachine.
+
+:- node(x_SimpleHierarchicalStateMachine, ID, IDx, x_Transition), 
+not condition(x_SimpleNonHierarchicalStateMachine,ID,IDx),
+nodex(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_Transition), 
+mmt = x_SimpleNonHierarchicalStateMachine.
+
+%:- node(x_SimpleHierarchicalStateMachine, ID, IDx, x_Transition), not nodex(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_Transition), mmt = x_SimpleNonHierarchicalStateMachine.
+
+%B: T(S1,S2) -> T(S1,S2)
+:- node(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_Transition), not nodex(x_SimpleHierarchicalStateMachine, ID, IDx, x_Transition), 
+mmt = x_SimpleHierarchicalStateMachine.
+
+%%%% edge 2 edge %%%%
+relation_direction("x_r7", bx, bx).
+relation_edge("x_r7",  x_SimpleHierarchicalStateMachine, x_source, x_Transition, x_CompositeState).
+relation_edge("x_r7", x_SimpleNonHierarchicalStateMachine, x_source, x_Transition, x_State).
+
+condition(x_SimpleNonHierarchicalStateMachine,ID,IDx):-  node(x_SimpleHierarchicalStateMachine, IDtr, IDtrx, x_Transition), 
+																					edge(x_SimpleHierarchicalStateMachine, ID, IDx, x_source, IDtr, IDtrx, IDs, IDsx),
+																					nodex(x_SimpleNonHierarchicalStateMachine, IDtr, IDtrx, x_Transition).
+
+:- edge(x_SimpleHierarchicalStateMachine, ID, IDx, x_source, IDtr, IDtrx, IDs, IDsx), 
+%node(x_SimpleHierarchicalStateMachine, ID, IDx, x_Transition), 
+condition(x_SimpleNonHierarchicalStateMachine,ID,IDx),
+not edgex(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_source, IDtr, IDtrx, IDs, IDsx), 
+mmt = x_SimpleNonHierarchicalStateMachine.
+
+
+:- edge(x_SimpleHierarchicalStateMachine, ID, IDx, x_source, IDtr, IDtrx, IDs, IDsx), 
+%node(x_SimpleHierarchicalStateMachine, ID, IDx, x_Transition), 
+not condition(x_SimpleNonHierarchicalStateMachine,ID,IDx),
+edgex(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_source, IDtr, IDtrx, IDs, IDsx), 
+mmt = x_SimpleNonHierarchicalStateMachine.
+
+:- edge(x_SimpleHierarchicalStateMachine, ID, IDx, x_Transition), not nodex(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_Transition), mmt = x_SimpleNonHierarchicalStateMachine.
+:- node(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_Transition), not nodex(x_SimpleHierarchicalStateMachine, ID, IDx, x_Transition), mmt = x_SimpleHierarchicalStateMachine.
+
+:- edge(x_SimpleHierarchicalStateMachine, ID, IDx, x_source, IDS, IDSx, IDT, IDTx), not edge(x_SimpleHierarchicalStateMachine,  ID, IDx, x_source,  IDS, IDSx,  IDT, IDTx), 
+	
+%%%% edge 2 edge %%%%
+%relation_direction("x_r8",bx,bx).
+%relation_node("x_r8",  x_SimpleHierarchicalStateMachine, x_target, x_Transition, x_CompositeState).
+%relation_node("x_r8", x_SimpleNonHierarchicalStateMachine, x_target, x_Transition, x_State).
+
+%:- edge(x_SimpleHierarchicalStateMachine, ID, IDx, x_Transition), not nodex(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_Transition), mmt = x_SimpleNonHierarchicalStateMachine.
+%:- node(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_Transition), not nodex(x_SimpleHierarchicalStateMachine, ID, IDx, x_Transition), mmt = x_SimpleHierarchicalStateMachine.
+
+%:- edge(x_SimpleHierarchicalStateMachine, ID, IDx, x_source, IDS, IDSx, IDT, IDTx), not edge(x_SimpleHierarchicalStateMachine,  ID, IDx, x_source,  IDS, IDSx,  IDT, IDTx), 
+
+
+%%%%%%%%%%%% generic constraint %%%%%%%%%%%%%%%%
+
+% se ho un'alternativa, devo dire che il modello target deve contenere una delle due alternative
+%:- node(x_SimpleNonHierarchicalStateMachine, ID, IDx, x_State), nodex(x_SimpleHierarchicalStateMachine, ID, IDx, Node1),  nodex(x_SimpleHierarchicalStateMachine, ID, IDx, Node2), Node1!=Node2.
+%MM1=HSM, MM2=NHSM, 
+:- node(MM2, ID, IDx, Node2), not nodex(mmt, ID, IDx, Node11), not nodex(mmt, ID, IDx, Node12),  
+	relation_node(R1, mmt, Node11), relation_node(R1, MM2, Node2), 
+	relation_node(R2, mmt, Node12), relation_node(R2, MM2, Node2), Node11!=Node12 .
+	
+:- 	node(MM2, ID, IDx, Node2), nodex(mmt, ID, IDx, Node11), nodex(mmt, ID, IDx, Node12),  
+	relation_node(R1, mmt, Node11), relation_node(R1, MM2, Node2), 
+	relation_node(R2, mmt, Node12), relation_node(R2, MM2, Node2), Node11!=Node12 .
+
+%se ho un'alternativa, devo dare priorità nella scelta agli elementi del modello da cui provengo 
+:- 	node(MM2, ID, IDx, Node2), node(mmt, ID, IDx, Node11), not nodex(mmt, ID, IDx, Node11),  
+	relation_node(R1, mmt, Node11), relation_node(R1, MM2, Node2), 
+	relation_node(R2, mmt, Node12), relation_node(R2, MM2, Node2), Node11!=Node12 .
+
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+%%%%%%%%%%%%%%%%%%%%%%    TRANSFORMATION ENGINE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%   TRACES GENERATION    %s%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+is_metanode_related(MMS,MCS) :- relation_node(R, MMS, MCS), not relation_direction(R,mmt,MMS), MMS!=mmt.
+
+trace_node(MMS,IDx,ID,MCS) :- node(MMS,IDx,ID,MCS), not is_metanode_related(MMS,MCS),MMS!=mmt.
+
+trace_node(MMS,IDx,ID,MCS) :- node(MMS,IDx,ID,MCS), is_metanode_related(MMS,MCS), 
+											   not condition(mmt, IDx, ID), MMS!=mmt.
+
+is_metaedge_related(MMS,Name,NodeSource,NodeTarget) :- relation_edge(R,MMS,Name,NodeSource,NodeTarget), not relation_direction(R,mmt,MMS), MMS!=mmt.
+
+trace_edge(MMS,IDx,ID,Name,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget) :- 
+	edge(MMS,IDx,ID,Name,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget), not is_metaedge_related(MMS,Name,NodeSource,NodeTarget),
+	node(MMS,IDNodeSourcex,IDNodeSource,NodeSource),node(MMS,IDNodeTargetx,IDNodeTarget,NodeTarget),MMS!=mmt.
+
+is_metaprop_related(MMS,Name,MCS) :- relation_prop(R,MMS,Name,MCS), not relation_direction(R,mmt,MMS), MMS!=mmt.
+
+trace_prop(MMS,IDx,ID,IDmcx,IDmc,Name,MCS) :- prop(MMS,IDx,ID,IDmcx,IDmc,Name,Value), not is_metaprop_related(MMS,Name,MCS),
+node(MMS,IDmcx,IDmc,MCS),MMS!=mmt.
+
+%:- node(MMT,IDx,ID,Node1), nodex(MMT,IDx,ID,Node2), metanode(MMT,Node2),  Node1!=Node2, MMT=mmt.
+
+
+
+%%%%%%%%%%% Metamodel Target Conformance Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+is_target_metamodel_conform(MM,Node) :- metanode(MM,Node).
+is_target_metamodel_conform(MM,Prop) :- metaprop(MM,Prop,Node).
+is_target_metamodel_conform(MM,Edge) :- metaedge(MM,MetaEdge,Edge,NodeSource,NodeTarget).
+
+%%%%%%%%%% Relations Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+is_related(MM,Node) :- relation_node(R,MM,Node), relation_node(R,MM2,Node2).
+is_related(MM,Prop) :- relation_prop(R,MM,Prop,Node), relation_prop(R,MM2,Prop2,Node2).
+is_related(MM,Edge) :- relation_edge(R,MM,Edge,NodeSource,NodeTarget), relation_edge(R,MM2,Edge2,NodeSource2,NodeTarget2).
+
+%%%%%%%%%% Mapping Rules %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%node from node
+mapping_node(MM,IDx,ID,Node) :- relation_node(R,MM,Node), relation_node(R,MM2,Node2),node(MM2,IDx,ID,Node2), condition(MM,IDx,ID), MM!=MM2,MM=mmt.
+
+%prop from prop        
+mapping_prop(MM2,IDx,ID,IDmcx,IDmc,Prop2,Value) :- relation_prop(R,MM,Prop,Node), relation_prop(R,MM2,Prop2,Node2), 
+              prop(MM,IDx,ID,IDmcx,IDmc,Prop,Value), node(MM,IDmcx,IDmc,Node),
+              relation_node(Rnode,MM,Node), relation_node(Rnode,MM2,Node2),
+              MM!=MM2.
+       
+%edge from edge         
+mapping_edge(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget) :- 
+			relation_edge(R,MM,Edge,NodeSource,NodeTarget),relation_edge(R,MM2,Edge2,NodeSource2,NodeTarget2), 
+            edge(MM2,IDx,ID,Edge2,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget),
+            node(MM2,IDNodeSourcex,IDNodeSource,NodeSource2),node(MM2,IDNodeTargetx,IDNodeTarget,NodeTarget2),
+            relation_node(RnodeSource,MM,NodeSource), relation_node(RnodeSource,MM2,NodeSource2),
+            relation_node(RnodeTarget,MM,NodeTarget), relation_node(RnodeTarget,MM2,NodeTarget2),
+            MM!=MM2.
+            
+% edge from node            
+%mapping_edge(MM,IDx,ID,Edge,IDx,ID,IDx,ID) :- 
+		 %relation(R,MM,Edge,NodeSource,NodeTarget,X),relation(R,MM2,NodeSource2,Y),
+         %node(MM2,IDx,ID,NodeSource2),metaedge(MM,MetaEdge,Edge,NodeSource,NodeTarget),
+         %relation(RnodeSource,MM,NodeSource,XnodeSource), relation(RnodeSource,MM2,NodeSource2,YnodeSource),
+         %relation(RnodeTarget,MM,NodeTarget,XnodeTarget), relation(RnodeTarget,MM2,NodeTarget2,YnodeTarget),            
+         %MM!=MM2.
+                       
+%prop from edge            
+%mapping_prop(MMT,ID,Prop,Value) :- relation(R,MMT,Prop,NodeT), relation(R,MMS,Edge,NodeS1,NodeS2),
+%       edge(MMS,IDE,Edge,IDS,Value),
+%       node(MMS,ID,NodeS1), node(MMS,Value,NodeS2).
+
+%prop from node (il padre della prop è generato da node)
+%mapping_prop(MMT,IDx + X,ID,IDx + Xnode,ID,Prop,Value) :- relation(R,MMS,Node,Y), relation(R,MMT,Prop,Value,NodeT,X), 
+   %    node(MMS,IDx,ID,Node), metaprop(MMT,Prop,NodeT),
+  %     relation(Rnode,MMS,Node,Ynode), relation(Rnode,MMT,NodeT,Xnode),
+    %   MMS!=MMT, X != Y.
+             
+%edge from prop
+%mapping_edge(MMT,IDS,EdgeT,IDS,IDT) :- relation(R,MMT,EdgeT,NodeT1,NodeT2), relation(R,MMS,EdgeS,NodeS1,NodeS2), 
+%        prop(MMS,IDp, IDS,Prop,IDT), node(MMS,IDT,NodeT2), 
+%        metaprop(MMT,Prop,NodeT1).
+
+%node from prop
+%mapping_node(MMT,ID,Node) :- relation(R,MMT,Node), 
+%(R,MMS,Prop,NodeS), prop(MMS,ID,IDP,Prop,ID), metaprop(MMS,Prop,NodeS).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%% Generability Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+												
+is_generable_node(MM,IDx,ID,Node) v -is_generable_node(MM,IDx,ID,Node):- mapping_node(MM,IDx,ID,Node), is_related(MM,Node), is_target_metamodel_conform(MM,Node), MM=mmt.
+
+
+is_generable_prop(MM,IDx,ID,Prop,Value) v -is_generable_prop(MM,IDx,ID,Prop,Value) :- mapping_prop(MM,IDx,ID,IDmcx,IDmc,Prop,Value), is_related(MM,Prop), 
+									is_target_metamodel_conform(MM,Prop), MM=mmt.
+									
+is_generable_edge(MM,IDx,ID,Edge,IDNodeSource,IDNodeTarget) v -is_generable_edge(MM,IDx,ID,Edge,IDNodeSource,IDNodeTarget) :- 
+									mapping_edge(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget), is_related(MM,Edge), is_target_metamodel_conform(MM,Edge),MM=mmt.
+														
+														
+%:- -is_generable_node(MM,IDx,ID,Node),MM=mmt.
+:- -is_generable_prop(MM,IDx,ID,Prop,Value) ,MM=mmt.
+:- -is_generable_edge(MM,IDx,ID,Edge,IDNodeSource,IDNodeTarget),MM=mmt.
+			
+%%%%%%%%% Element Generation by Transformation Rule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+nodex(MM,IDx,ID,Node) :- is_generable_node(MM,IDx,ID,Node), mapping_node(MM,IDx,ID,Node),MM=mmt.
+
+propx(MM,IDx,ID,IDmcx,IDmc,Prop,Value) :- is_generable_prop(MM,IDx,ID,Prop,Value), mapping_prop(MM,IDx,ID,IDmcx,IDmc,Prop,Value), MM=mmt.
+
+edgex(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget) :- is_generable_edge(MM,IDx,ID,Edge,IDNodeSource,IDNodeTarget), 
+             mapping_edge(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget), MM=mmt.	
+    
+
+%%%%%%%%% Element Generation by Traces %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+              
+nodex(MM,IDx,ID,Node) :- trace_node(MM,IDx,ID,Node), MM=mmt.
+
+propx(MM,IDx,ID,IDmcx,IDmc,Prop,Value) :-  trace_prop(MM,IDx,ID,IDmcx,IDmc,Name,MCS), prop(MM,IDx,ID,IDmcx,IDmc,Prop,Value), 
+										   nodex(MM,IDmcx,IDmc,MCS),node(MM,IDmcx,IDmc,MCS),MM=mmt.
+
+edgex(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget) :-  
+											trace_edge(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget), 
+											edge(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget), 
+											nodex(MM,IDNodeSourcex,IDNodeSource,NodeSource), nodex(MM,IDNodeTargetx,IDNodeTarget,NodeTarget),
+											node(MM,IDNodeSourcex,IDNodeSource,NodeSource), node(MM,IDNodeTargetx,IDNodeTarget,NodeTarget), 
+											MM=mmt.    
+       
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%						
+
+

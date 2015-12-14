@@ -1,0 +1,51 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1343\cocoasubrtf140
+{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red26\green26\blue26;\red255\green255\blue255;\red16\green60\blue192;
+}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Ti allego il file org.emftext.language.JTLMM.zip contenente l'intero progetto.\
+La sintassi \'e8 nel file metamodel/JTLMM.cs.\
+\'a0\
+Credo di averlo portato al livello del precedente TCS ma la parte di OCL non mi sembra essere completa.\
+\'a0\
+Infatti, per riconoscere gli ultimi file che mi hai mandato, servirebbe (oltre ad un'estensione della sintassi) un'estensione del metamodello di JTL per includere tutte le metaclassi OCL (al momento molte mi sembrano mancare).\
+\'a0\
+Ti riporto le modifiche apportate al metamodello iniziale:\
+\'a0\
+-------------------\
+- Rimosso essentialocl.TupleLiteralPart.attribute per errore:\
+  "A containment reference of a type with a container feature \
+   platform:/resource/JTLMM%5Bemftext%5D/metamodels/JTL_nuovo.ecore#//emof/Property/Class\
+   that requires instances to be contained elsewhere cannot be populated"\
+\'a0\
+\'a0\
+\'a0\
+- Lower bound di {\field{\*\fldinst{HYPERLINK "http://emof.namedelement.name/"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 emof.NamedElement.name}} da 0 -> 1\
+\'a0\
+- Lower bound di emof.TypedElement.type da 0 -> 1\
+\'a0\
+- Lower bound di JTL.Transformation.relation da 0 -> 1\
+\'a0\
+- Lower bound di essentialocl.BooleanLiteralExp.booleanSymbol da 0 -> 1\
+\'a0\
+- Lower bound di template.ObjectTemplateExp.referredClass da 1 -> 0\
+\'a0\
+\'a0\
+- emof.String propriet\'e0 "Instance Type Name" da String a java.lang.String\
+  \
+- JTL.Model.usedPackage ad attributo di tipo emof.String e molteplicit\'e0 1\
+	[forse \'e8 possibile creare un elemento di default Package in postprocessing]\
+\'a0\
+- emof.TypedElement.type da Type a emof.String\
+	[forse \'e8 possibile creare gli elementi datatype di default in postprocessing]\
+	\
+	\
+	\
+- Aggiunto template.ObjectTemplateExp.inside da JTLv6\
+--------------\
+}

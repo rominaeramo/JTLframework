@@ -1,0 +1,14 @@
+
+%%%% Analysis Model 1
+
+%%%% non-deterministic relations uml to rdbms:
+[]
+
+%%%% non-deterministic relations rdbms to uml:
+[(1,class2table), (3,superAttribute2column), (5,superAttribute2column)]
+
+%%%% set of ambiguous relations uml to rdbms: 
+[]
+
+%%%% set of ambiguous relations rdbms to uml: 
+[[3, 1, 5]]

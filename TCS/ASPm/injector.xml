@@ -1,0 +1,23 @@
+<project name="ASPmInjector" default="injection">
+	<property name="MUri" value="/ASPecore/models/acc.A0.aspm"/>
+
+	<target name="injection">
+		<!-- Loading ASPmm metamodel -->
+		<am3.loadModel modelHandler="EMF" name="ASPm" metamodel="MOF" path="/ASPm/Metamodel/ASPm.ecore"/>
+
+		<!-- Loading ASPmm model -->
+		<am3.loadModel modelHandler="EMF" name="myASPm" metamodel="ASPm" path="${MUri}">
+			<injector name="ebnf">
+				<param name="name" value="ASPm"/>
+				<param name="parserGenerator" value="antlr3"/>
+				<classpath>
+					<pathelement location="ASPm/Syntax/ASPm-parser.jar"/>
+				</classpath>
+			</injector>
+		</am3.loadModel>
+
+		<!-- Saving ASPmm model -->
+		<am3.saveModel model="myASPm" path="${MUri}.xmi"/>
+	</target>
+
+</project>

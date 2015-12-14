@@ -1,0 +1,45 @@
+
+node(uml, 1, "_x_/0", class).
+node(uml, 7, "_x_/1", class).
+node(uml, 13, "_x_/2", class).
+node(uml, 22, "_x_/5", association).
+node(uml, 30, "_x_/6", association).
+node(uml, 38, "_x_/0/@attrs.0", attribute).
+node(uml, 44, "_x_/1/@attrs.0", attribute).
+node(uml, 50, "_x_/2/@attrs.0", attribute).
+
+edge(uml, 34, "_x_/02", attrs, 1, "_x_/0", 38, "_x_/0/@attrs.0").
+edge(uml, 910, "_x_/18", attrs, 7, "_x_/1", 44, "_x_/1/@attrs.0").
+edge(uml, 1516, "_x_/214", attrs, 13, "_x_/2", 50, "_x_/2/@attrs.0").
+edge(uml, 2425, "_x_/523", src, 22, "_x_/5", 1, "_x_/0").
+edge(uml, 2728, "_x_/526", dest, 22, "_x_/5", 7, "_x_/1").
+edge(uml, 3233, "_x_/631", src, 30, "_x_/6", 7, "_x_/1").
+edge(uml, 3536, "_x_/634", dest, 30, "_x_/6", 13, "_x_/2").
+
+prop(uml, 51, "_x_/01", 1, "_x_/0", name, order).
+prop(uml, 62, "_x_/02", 1, "_x_/0", is_persistent, true).
+prop(uml, 111, "_x_/11", 7, "_x_/1", name, customer).
+prop(uml, 122, "_x_/12", 7, "_x_/1", is_persistent, true).
+prop(uml, 171, "_x_/21", 13, "_x_/2", name, address).
+prop(uml, 1222, "_x_/122", 13, "_x_/2", is_persistent, false).
+prop(uml, 291, "_x_/51", 22, "_x_/5", name, order_customer).
+prop(uml, 371, "_x_/61", 30, "_x_/6", name, customer_address).
+prop(uml, 421, "_x_/0/@attrs.01", 38, "_x_/0/@attrs.0", name, order_no).
+prop(uml, 432, "_x_/0/@attrs.02", 38, "_x_/0/@attrs.0", is_primary, true).
+prop(uml, 481, "_x_/1/@attrs.01", 44, "_x_/1/@attrs.0", name,name).
+prop(uml, 492, "_x_/1/@attrs.02", 44, "_x_/1/@attrs.0", is_primary, true).
+prop(uml, 541, "_x_/2/@attrs.01", 50, "_x_/2/@attrs.0", name, addr).
+
+
+
+relation(r1, uml, class, -1).
+relation(r1, uml, table, 1).
+
+
+
+
+
+
+
+
+ 

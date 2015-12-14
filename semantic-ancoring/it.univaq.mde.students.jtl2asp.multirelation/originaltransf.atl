@@ -1,0 +1,1048 @@
+------------------------------------------------------------------------------------------------------
+--Using the following rules and helpers, an ASP model is created from a JTL model
+----------------------------------------------------------------------------------------------------
+module JTLtoASP; -- Module Template
+create OUT : ASP from IN : JTL;
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+----------------------*******************HELPERS*********************------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+--helper [context context_type]? def : helper_name(parameters) : return_type = exp;
+
+-----------------------------------------------------------------------------------------------------------
+--This helper return a boolean value which indicates if the type JTL!Trasformation is defined or not
+--------------------------------------------------------------------------------------------------------------
+helper context JTL!Transformation def: getTransformation(): Boolean =
+	if not self.oclIsUndefined() then
+		true
+	else
+		false
+	endif;
+------------------------------------------------------------------------------------------------------------------
+--This helper return a boolean value which indicates if the context Domain contains or not the Pattern
+-------------------------------------------------------------------------------------------------------------------
+helper context JTL!Domain def: getPattern(): Boolean =
+	if not self.pattern.oclIsUndefined() then
+	
+		true
+	else
+		false
+	endif;
+
+---------------------------------------------------------------------------------------------------------------------
+--This helper return a boolean. If the value of the JTL!AssignExp is of type BooleanLiteralExp or VariableExp, the
+--helper return true else return false
+----------------------------------------------------------------------------------------------------------------------
+helper context JTL!AssignExp def: variabile_boolean():Boolean=
+	if self.getValue().oclIsTypeOf(JTL!BooleanLiteralExp)then true
+	else if self.getValue().oclIsTypeOf(JTL!VariableExp)then true
+	else false
+	endif
+	endif;
+	
+------------------------------------------------------------------------------------------------------------------------
+--This helper takes as parameter an object of type JTL!Predicate and s an ASP Literal. If the predicate is of type
+--VariableExp, the literal will contain the name of the referred variable, otherwise it will contain the JTL!Predicate 
+--value.
+---------------------------------------------------------------------------------------------------------------------
+helper def: crealiteral(o: JTL!Predicate): ASP!Literal=
+	if o.conditionExpression.getValue().oclIsTypeOf(JTL!VariableExp)then 
+	o.conditionExpression.getValue().referredVariable
+	else
+		o.conditionExpression.getValue()
+	endif;
+
+--------------------------------------------------------------------------------
+-- This helper takes as parameter an object of type JTL!Predicate and creates an ASP Element.
+--If the type of predicate is VariableExp or BooleanLiteralExp, the element will contain an object of type proposition, 
+--else it will contain an object of type edge.
+--------------------------------------------------------------------------------------------------------------------------
+helper def: riempielement(o: JTL!Predicate): ASP!Element=
+	if o.conditionExpression.getValue().oclIsTypeOf(JTL!VariableExp) then
+	thisModule.resolveTemp(o, 'prop')
+	else
+		if o.conditionExpression.getValue().oclIsTypeOf(JTL!BooleanLiteralExp) then
+		thisModule.resolveTemp(o, 'prop')
+		else
+			thisModule.resolveTemp(o, 'edge')
+			endif
+endif;
+------------------------------------------------------------------------------------------------
+
+--helper def: creaTerminal(p:Sequence (JTL!Predicate)): Sequence (ASP!Element)=
+----	
+----	for (x in p){
+----	thisModule.creaTerminal2(x)
+----	}
+----;
+--	p->iterate(x; y: ATL!Element=p |
+--	thisModule.creaTerminal2(x)
+--	);
+--
+--
+--
+--
+--helper def: creaTerminal2(p: JTL!Predicate):  ASP!Element= thisModule.resolveTemp(p, 'terminal');
+--	
+--	
+	
+
+--helper def: creaTerminal(coll: Sequence (JTL!Predicate)): ASP!Element=
+--	for(p in coll.allInstances())
+--		thisModule.resolveTemp(p, 'terminal');
+			
+--	coll->iterate(model; ASP!Element= ASP!Element |
+--	--if(model.conditionExpression.getValue().oclIsTypeOf(JTL!BooleanLiteralExp)) then
+--	thisModule.resolveTemp(model, 'terminal')
+--	);
+--	else
+--		if (model.conditionExpression.getValue().oclIsTypeOf(JTL!VariableExp)) then
+--		thisModule.resolveTemp(model, 'terminal')
+--		else
+--			thisModule.resolveTemp(o, 'term1_s1')
+--			endif
+--			)
+--endif;
+------------------------------------------------------------------------------------------------------------------
+--A global id variable is defined in the context of the ATL module, and initialized to zero. 
+--In order to associate each generated model element with a unique id, the imperative block of the rule 
+-- JTLRelation2ASPRelation simply increments the value of the id global variable and assigned this new value 
+--to the id property of the generated model element.
+--------------------------------------------------------------------------------------------------------------------
+helper def: id: Integer = 0;
+
+-----------------------------------------------------------------------------------------------------------------
+--This helper return a String that contains the value of the OCL expression. It checks if the value is defined in
+--the defaultValue or in the Value of JTL!AssignExp.
+-----------------------------------------------------------------------------------------------------------------------
+helper context JTL!AssignExp def: getValue(): String =
+	if not self.defaultValue.oclIsUndefined() then
+		self.defaultValue
+		else 
+			self.value.first()		
+	endif;
+
+------------------------------------------------------------------------------------------------------------------
+--This helper creates a Sequence that contains objects of type String. In particular that sequence will contain 
+--two String, one for the Class class and one for the class Table.
+----------------------------------------------------------------------------------------------------------------------
+helper context JTL!Relation def: getReferredClass(): Sequence (String)= 
+	self.domain->collect(a|a.pattern)->collect(e|e.templateExpression)->collect(b|b.referredClass)->
+	iterate( model ; elements : Sequence(String) = 
+	Sequence{} |
+		
+		if model.oclIsTypeOf(String) then  
+			elements.append(model)
+		else
+			'exclude'
+		endif
+		
+		);
+
+-----------------------------------------------------------------------------------------------------------------
+--This helper takes as parameter a JTL!Relation and returns a Sequence of JTL!Predicate.
+--The sequence of predicates is different depending on the domain.
+------------------------------------------------------------------------------------------------------------------
+helper context JTL!Relation def: getPredicate(): Sequence (JTL!Predicate) =
+	self.domain->collect(a|a.pattern)->collect(b|b.predicate)->
+	iterate( model ; elements : Sequence(JTL!Predicate) =
+	Sequence{} |
+		
+		if model.oclIsTypeOf(JTL!Predicate) then 
+			elements.append(model)
+		else
+			'exclude'
+		endif
+		
+		);
+
+---------------------------------------------------------------------------------------
+--This helper returns a sequence of strings corresponding to the packages. In our case we have
+--the package UML and the package RDBMS.
+--------------------------------------------------------------------------------------------
+helper context JTL!Relation def: getPackage(): Sequence (String) =
+	self.domain->iterate( model ; elements : Sequence(String) =	Sequence{} |
+				if model.name.oclIsTypeOf(String) then 
+			elements.append(model)			
+		else
+			'exclude'
+		endif
+		
+		);
+
+-------------------------------------------------------------------------------------------------------------------
+----------------------*******************RULES*********************------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+--This rule transforms the object JTL Transformation in the corresponding object trasformation defined in the 
+--ASP metamodel.
+---------------------------------------------------------------------------------------------------------------------
+
+rule JTLTransformation2ASPTransformation {
+	
+			from 
+						    s : JTL!Package (s.oclIsTypeOf(JTL!Transformation))
+							
+		to		
+							t: ASP!Transformation ( 
+									
+									name <- s.name,       --Transformation name
+									
+									elements<-s.relation->collect(e|e.domain->collect(a|a.pattern)
+										->collect(b|b.predicate)),
+									relations<-s.relation,
+									constraints<-s.relation->collect(e|e.domain)
+									
+									
+							)
+							
+							
+									do{
+				thisModule.transformationRoot<-t;
+			}
+				
+
+}
+
+---------------------------------------------------------------------------------------------
+--This rule takes the JTL Packages and transform them in Asp Literals.
+---------------------------------------------------------------------------------------------
+
+--rule JTLPackage2ASPLiteral {
+--	
+--			from 
+--						 s : JTL!Package (s.oclIsTypeOf(JTL!Package))
+--					
+--				to 		
+--				
+--						t: ASP!Literal ( 
+--									
+--									name <- s.name,   --nome dei package
+--									transformation<-thisModule.transformationRoot
+--									
+--							)
+--}
+
+-----------------------------------------------------------------------------------------------
+----This rule transforms the JTL primitive types in Asp Literals.
+------------------------------------------------------------------------------------------------
+--rule JTLPrimitiveTypes2ASPLiteral {
+--	
+--			from 
+--						 s : JTL!PrimitiveType 
+--					
+--				to 		
+--				
+--						t: ASP!Literal ( 
+--									
+--									name <- s.name,   --nome dei PrimitiveType
+--								
+--									transformation<-thisModule.transformationRoot
+--									
+--							)
+--		
+--}
+
+-----------------------------------------------------------------------------------------------
+----This rule transforms the JTL variables in Asp Literals and in ASP metaprop
+------------------------------------------------------------------------------------------------------
+
+rule JTLVariableExp2ASPLiteral {
+	
+				from 
+							s : JTL!VariableExp
+					
+						
+				to 		
+							t: ASP!Literal ( 
+									
+									name <-s.name,
+									transformation<-thisModule.transformationRoot
+									),
+									
+							metaprop: ASP!Metaprop( 
+								
+					name<- s.name,    --Property name
+					--literals<-s.Class.package,   --Belonging package
+					literals<-t,                 --Property
+					--literals<-s.Class,       
+					transformation<-thisModule.transformationRoot
+				
+				)
+
+}
+
+-----------------------------------------------------------------------------------------------
+----This rule transforms the JTL booleanliteralExp in Asp Literals and in ASP metaprop.
+------------------------------------------------------------------------------------------------------
+
+rule JTLBoolean2ASPLiteral {
+	
+				from 
+							s : JTL!BooleanLiteralExp
+					
+						
+				to 		
+							t: ASP!Literal ( 
+									
+									name <-s.name,
+									transformation<-thisModule.transformationRoot
+									),
+									
+							metaprop: ASP!Metaprop( 
+								name<- s.name,    --Property name
+								--literals<-s.Class.package,   --Belonging package
+								literals<-t,                 --Property
+								--literals<-s.Class,
+								transformation<-thisModule.transformationRoot
+							)
+
+}
+
+-----------------------------------------------------------------------------------------------
+----This rule transforms the JTL Objec templates in ASP Literals and in ASP metanode.
+------------------------------------------------------------------------------------------------------
+
+rule JTLObjectTemplate2ASPLiteral {
+	
+				from 
+							s : JTL!ObjectTemplateExp
+					
+						
+				to 		
+							t: ASP!Literal ( 
+									
+									name <-s.name,
+									transformation<-thisModule.transformationRoot
+									),
+									
+							metanode: ASP!Metanode (
+								
+							name<-s.name,  --nome della classe
+							--literals<-s.package,  --package che contiene la classe(Literal in ASP)
+							literals<-t,       --classe trasformata come literal
+							transformation<-thisModule.transformationRoot
+							
+							)
+							
+							
+
+}
+
+---------------------------------------------------------------------------------------------------------------------
+----This rules transforms all classes in the JTL packages in ASP Literals and in ASP Metanode also.
+--------------------------------------------------------------------------------------------------------------------
+--rule JTLClass2ASPLiteral_Metanode {
+--	
+--			from 
+--						    s : JTL!Class (s.oclIsTypeOf(JTL!Class))
+--			to 		
+--				
+--				
+--							t: ASP!Literal ( 
+--									
+--									name <- s.name,  --nome della classe
+--									transformation<-thisModule.transformationRoot
+--						
+--							),
+--				
+--							metanode: ASP!Metanode (
+--								
+--							name<-s.name,  --nome della classe
+--							literals<-s.package,  --package che contiene la classe(Literal in ASP)
+--							literals<-t,       --classe trasformata come literal
+--							transformation<-thisModule.transformationRoot
+--							
+--							)
+--							
+--}
+
+-----------------------------------------------------------------------------------------------
+----In this rule class attributes are transformed in ASP Literal and ASP metaprop. It is controlled
+----the type of Property: if it is a primitive type, it is transformed in Metaprop.
+----The metaprop contains the belonging package, the belonging class, the property and its name is that of property. 
+-----------------------------------------------------------------------------------------------
+
+--rule JTLProperty2ASPLiteral_PrimitiveTypes_MetaProp {
+--			from 
+--				s : JTL!Property (s.type.oclIsTypeOf(JTL!PrimitiveType))
+--			to 		
+--				t: ASP!Literal ( 
+--			
+--						name <- s.name,   --Property name
+--						transformation<-thisModule.transformationRoot
+--					),
+--			
+--					metaprop: ASP!Metaprop( 
+--								
+--					name<- s.name,    --Property name
+--					literals<-s.Class.package,   --Belonging package
+--					literals<-t,                 --Property
+--					literals<-s.Class,       
+--					transformation<-thisModule.transformationRoot
+--				
+--				)
+--				
+--}	
+
+---------------------------------------------------------------------------------------------
+--In this rule the class properties are transformed in Literals and in Metaedge. If the type of property is set
+--to Class, it is transformed in metaedge. The metaedge contains the name and the type of property, the source
+--class and the destination class.
+---------------------------------------------------------------------------------------------
+
+--rule JTLProperty2ASPLiteral_MetaEdge {
+--			from 
+--					s : JTL!Property (s.type.oclIsTypeOf(JTL!Class))
+--					
+--			
+--			to 		
+--			
+--					t: ASP!Literal ( 
+--			
+--						name <- s.name,     --Property name
+--						transformation<-thisModule.transformationRoot
+--					),
+--					
+--					t1: ASP!Literal ( 
+--			
+--						name <- s.default,     --Name of the type of relationship of edge
+--						transformation<-thisModule.transformationRoot
+--					),
+--			
+--			
+--					metaedge:ASP!Metaedge (
+--						
+--					name<-s.name,      --Property name
+--					literals<-s.type.package,    -- Belonging Package
+--					literals<-t1,           --Relation type
+--					literals<-t,             --Property name
+--					literals<-s.Class,      --source class
+--					literals<-s.type,       --destination class
+--					transformation<-thisModule.transformationRoot
+--					)
+--								
+--				do{
+--						if(s.isComposite=true) {
+--								t1.name<-s.default;
+--						}
+--						else
+--				    			t1.name<-s.default;
+--						}
+--}	
+--					
+-----------------------------------------------------------------------------------------------
+----This rule transforms each JTL relation in an ASP relation.
+----The first relation that is created is the general relation (in our case it is Relation class to table).
+----After, for each object template of our model, is created one relation for each Predicate of the other domain.
+----We have used two collection that contained the predicates of the first domain and those of the second domain 
+----respectively.
+-----------------------------------------------------------------------------------------------
+--
+--
+--
+--
+rule JTLRelation2ASPRelation {
+	
+				from 
+							s : JTL!Relation  (s.oclIsTypeOf(JTL!Relation))
+				
+				using {
+						
+																
+				coll : Sequence(JTL!Predicate) = -- This collection contains the predicates of the domain rdbms
+							s.getPackage().last().pattern.predicate->
+							iterate( model ; elements : Sequence(JTL!Predicate) =
+				Sequence{} |
+	
+		if model.oclIsTypeOf(JTL!Predicate)  
+			then 
+			elements.append(model)		
+			else
+			'exclude'
+		endif						
+			);	
+
+coll1 : Sequence(JTL!Predicate) = -- This collection contains the predicates of the domain uml
+							s.getPackage().first().pattern.predicate->
+							iterate( model ; elements : Sequence(JTL!Predicate) =
+				Sequence{} |
+	
+		if model.oclIsTypeOf(JTL!Predicate)  
+			then 
+			elements.append(model)		
+			else
+			'exclude'
+		endif						
+			);	
+
+}					
+							
+				to 		
+							t: ASP!Relation ( 
+									
+									name <- s.name,    --Relation name
+									type <- 'bidirectional',   --relation type
+									
+										
+									patterns<-leftPattern,
+									patterns<-rightPattern
+									
+									
+	
+							),
+							
+							leftPattern: ASP!LeftPattern(  --Left part of ASP relation
+									
+							name<-s.getReferredClass()->first(),--.name--,
+						element<-thisModule.resolveTemp(s.getPackage()->first().pattern.templateExpression, 
+							'metanode')--,
+							--element<-thisModule.resolveTemp(s.getReferredClass()->first(),'metanode')
+							),
+							
+							rightPattern: ASP!RightPattern( --Right part of ASP relation
+									
+							--name<-s.getReferredClass()->last().name,
+							name<-s.getReferredClass()->last(),
+							element<-thisModule.resolveTemp(s.getPackage()->last().pattern.templateExpression, 
+							'metanode')
+							),
+							
+							
+							node1: ASP!Node( -- node class
+								
+							name<-s.getReferredClass()->first(),
+							literals<-thisModule.resolveTemp(s.getPackage()->first().pattern.templateExpression, 't'),
+							--literals<-s.getReferredClass()->first(),
+							transformation<-thisModule.transformationRoot
+							),
+							
+							
+							node2: ASP!Node(-- node table
+								
+			      			name<-s.getReferredClass()->last(),
+							literals<-thisModule.resolveTemp(s.getPackage()->last().pattern.templateExpression, 't'),
+							--literals<-s.getReferredClass()->last(),
+							transformation<-thisModule.transformationRoot
+							),
+--							
+--							
+--							 -- for each object template we create the relations with the differenct predicate 
+--							 --of the other domain.
+--							 
+							 t1:distinct ASP!Relation foreach(e in coll)( 
+									
+									name <- s.getPackage().first().pattern.templateExpression.referredClass+
+									'2'+ e.conditionExpression.left.name,    --relation name
+									type <- 'bidirectional',   
+									patterns<-leftPattern1,
+									patterns<-rightPattern1
+									
+								),
+								
+							leftPattern1: distinct ASP!LeftPattern foreach (e in coll)(   
+									
+							name<-s.getReferredClass()->first(),
+							element<-thisModule.resolveTemp(s.getPackage()->first().pattern.templateExpression, 
+							'metanode')
+							),
+							
+							rightPattern1: distinct ASP!RightPattern foreach(e in coll)( 
+									
+							name<- e.conditionExpression.getValue().name,
+							element<-thisModule.riempielement(e)
+							),
+							
+							t2:distinct ASP!Relation foreach(e in coll1)(
+									
+									name <- s.getPackage().last().pattern.templateExpression.referredClass+'2'+
+									        e.conditionExpression.left.name,    
+									type <- 'bidirectional',  
+									patterns<-leftPattern2,
+									patterns<-rightPattern2
+									
+								),
+								
+							leftPattern2: distinct ASP!LeftPattern foreach(e in coll1)(    
+									
+							name<-s.getReferredClass()->last(),
+							element<-thisModule.resolveTemp(s.getPackage()->last().pattern.templateExpression, 
+							'metanode')
+							),
+							
+							rightPattern2: distinct ASP!RightPattern foreach(e in coll1)( 
+									
+							name<-e.conditionExpression.getValue().name,   
+							element<-thisModule.riempielement(e)
+							)
+							
+							do{
+							-- in this part the identificator for the relation is created	
+							thisModule.id<-thisModule.id+1;
+							t.id<-'x_'+thisModule.id.toString();
+							}
+												
+}
+
+-----------------------------------------------------------------------------------------------
+----This rule transforms a condition expression of type Boolean Literal Exp or Variable EXp in a ASP prop.
+----The ASP prop contains the referred property, the type of package. If the condition expression
+----is of type Boolean, the prop contains its value, otherwise if it is of type VariableExp the prop contains
+----the name of referred variable. This check is performed by the crealiteral() helper. 
+------------------------------------------------------------------------------------------------
+
+rule JTLPredicate2ASPRelation_Prop{
+	
+				from 
+							s: JTL!Predicate  (s.conditionExpression.variabile_boolean())
+							
+							
+							
+					
+				to 		
+		
+							
+							prop: ASP!Prop(
+								
+								name<-s.conditionExpression.left.name,
+								literals<-thisModule.resolveTemp(s.conditionExpression.getValue(), 't'),
+								--literals<-s.conditionExpression.left.referredProperty,
+								literals<-thisModule.crealiteral(s),
+								transformation<-thisModule.transformationRoot
+								)--,
+								
+--							terminal: ASP!Terminal(
+--								--name<- s.conditionExpression.left.referredProperty.name,
+--								name<- s.conditionExpression.getValue().name,
+--								element<-thisModule.riempielement(s)
+--								)--,
+								
+--							not_terminal: ASP!Not (
+--							name<-s.conditionExpression.left.referredProperty.name,
+--							element<-thisModule.riempielement(s)
+--							)
+																				
+}
+
+-------------------------------------------------------------------------------------------------
+------This rule transforms each JTL object template in ASP Edge.   
+----------------------------------------------------------------------------------------------------
+
+rule JTLPredicate2ASPRelation_Prop3 {
+	
+				from 
+						
+							s :  JTL!Predicate(s.conditionExpression.getValue().oclIsTypeOf(JTL!ObjectTemplateExp))
+							
+							
+												
+							
+						
+						
+				to 		
+							edge:  ASP!Edge (
+								name<-s.conditionExpression.left.name,
+								--name<-s.conditionExpression.left.referredProperty.name,
+								literals<-thisModule.resolveTemp(s.conditionExpression.getValue(), 't'),
+								--literals<-s.conditionExpression.left.referredProperty,
+								--literals<-s.conditionExpression.left.name,
+								transformation<-thisModule.transformationRoot
+							
+							)--,
+							
+--							terminal:ASP!Terminal(
+--								name<- s.conditionExpression.left.name,
+--								element<-thisModule.riempielement(s)
+--								)--,
+--								
+----							not_terminal: ASP!Not(
+----							name<-s.conditionExpression.left.referredProperty.name,
+----							element<-thisModule.riempielement(s)
+----							)
+}
+--
+--
+------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------CONSTRAINTS---------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------
+----
+----------------------------------------------------------------------------------------------------------------------------
+------This rule creates the costraints for the uml domain.
+------First is created the general constraints and after are created the constraint for each predicate of the domain. 
+-----------------------------------------------------------------------------------------------------------------------
+rule prova{   
+	
+			from 
+							s : JTL!Domain (s.name=s.relation.getPackage().first().name)-- UML domain
+			using {
+						
+						--this collection contains the predicates of the uml domain
+						 coll : Sequence(JTL!Predicate) = 
+							s.pattern.predicate->iterate( model ; elements : Sequence(JTL!Predicate) =	Sequence{} |
+				
+		if model.oclIsTypeOf(JTL!Predicate)  then 
+		elements.append(model)		else
+			'exclude'
+		endif
+		);	
+					
+coll_1: Sequence (JTL!Predicate)= coll->excluding(coll->at(1));
+coll_2: Sequence (JTL!Predicate)= coll->excluding(coll->at(2));
+coll_3: Sequence (JTL!Predicate)= coll->excluding(coll->at(3));
+
+--these variables contain the object templates of our model.
+
+	    domain_rdbms: JTL!ObjectTemplateExp = s.relation.getPackage().last().pattern;
+        domain_uml: JTL!ObjectTemplateExp = s.relation.getPackage().first().pattern;
+
+     
+
+	}	
+							
+						
+				to 		
+							t: ASP!Constraint(     --General constraint for the uml domain
+								
+							name<-s.name, 
+							--expressions<-and1,
+							expressions<-term_0,
+							--expressions<-and2,
+							expressions<-no1,
+							--expressions<-and3,
+							expressions<-term_s1--,
+							--expressions<-and4,
+							--expressions<-term2_s1,
+							--expressions<-term3_s1
+							),
+							
+--							and1: ASP!And(
+--							left<-and2,
+--							right<-term_0
+--							),
+				
+					        term_0: ASP!Terminal(-- terminal Class
+		                    name<-s.pattern.templateExpression.name,
+							element<-thisModule.resolveTemp(s.relation, 'node1')
+							),
+							
+--							and2: ASP!And(
+--							left<-and3,
+--							right<-no1
+--							),
+							
+				       	   	no1: ASP!Not (
+							name<-domain_rdbms.templateExpression.name,	
+							element<-thisModule.resolveTemp(s.relation,'node2')
+							),
+							
+--							and3: ASP!And(
+--							left<-and4,
+--							right<-term_s1
+--							),
+							
+							term_s1: distinct ASP!Terminal foreach (e in coll)(--terminal is_persistent
+			  				name<-e.conditionExpression.getValue().name,
+							element<-thisModule.riempielement(e)
+							),
+							
+--							and4: ASP!And(
+--							left<-term2_s1,
+--							right<-term3_s1
+--							),
+--							
+--							term2_s1: ASP!Terminal (--terminal name
+--			  				name<-coll->at(2).conditionExpression.left.referredProperty.name,
+--							element<-thisModule.riempielement(coll->at(2))
+--							),
+--							
+--							term3_s1: ASP!Terminal(--terminal attrs
+--			  				name<-coll->at(3).conditionExpression.left.referredProperty.name,
+--							element<-thisModule.riempielement(coll->at(3))
+--							),
+
+
+
+
+----------------------------------------------------------------------------------------------------------------
+
+
+                            t_iniziale: distinct ASP!Constraint foreach (e in coll)(
+							name<-e.conditionExpression.left.name,
+							expressions<-term1_iniziale,
+							expressions<-term1_finale,
+							expressions<- no2,
+							--expressions<-thisModule.proviamo(coll->collect(e| thisModule.getElement(e)))
+							--expressions<-coll->collect(e| thisModule.getElement(e)),
+							--expressions<-thisModule.getElements(coll)
+							expressions<-coll->collect(e| thisModule.getElement(e))--,call to lazy rule for the creation of the others terminal
+							--expressions<-vai
+							--expressions<-thisModule.creaTerminal2(e)
+							--expressions<-katia,
+							--expressions<-thisModule.getElement(coll->excluding(e).first()),
+							--expressions<-thisModule.getElement(coll->excluding(e).last())
+							--expressions<-thisModule.getElement(coll.last())
+							--expressions<- thisModule.resolveTemp(e, 'terminal')
+							),
+							
+							term1_iniziale: distinct ASP!Terminal foreach (e in coll)(
+			  				name<-domain_uml.templateExpression.name,     
+							element<-thisModule.resolveTemp(s.relation,'node1')
+							),
+							
+							no2: distinct ASP!Not foreach(e in coll)(
+							name<-e.conditionExpression.getValue().name,
+							element<-thisModule.riempielement(e)
+							),					
+							
+							term1_finale:distinct ASP!Terminal foreach(e in coll)(
+			  				name<-domain_rdbms.templateExpression.name,      
+							element<-thisModule.resolveTemp(s.relation, 'node2')
+							)--,
+
+
+
+
+}
+--
+--
+--
+----------------------------------------------------------------------------------------------------------------
+--
+----helper def: different_predicate(collection: Sequence (JTL!Predicate), o: JTL!Predicate ): Sequence (JTL!Predicate)=
+----	collection->iterate(model; elements:Sequence(JTL!Predicate)= Sequence{} |
+----	if (collection->collect(k| k.conditionExpression.getValue()= o.conditionExpression.getValue())) then 'exclude'
+----	else elements.append(model)
+----	endif
+----);
+--
+--
+----helper def: crea_terminals(collection: Sequence(JTL!Predicate), o: JTL!Predicate): ASP!Terminal=
+----	for(i in collection){
+----	if not(coll->at((coll->indexOf(i))).conditionExpression.left.referredProperty.name = o.conditionExpression.left
+----		.referredProperty.name)
+----		then thisModule.name->coll->at((coll->indexOf(i))).conditionExpression.left.referredProperty.name
+----		
+----	
+----	}
+--
+----helper def: append(collp: Sequence (JTL!Preficate), i: Integer, s: String): Sequence (JTL!Predicate)=
+----	helper def: append(collp: Sequence (JTL!Preficate), o: JTL!Predicate): Sequence (JTL!Predicate)=
+----		collfinale: Sequence (JTL!Predicate)=collp->collect(e| e= o);
+----collp->collect(e|e.conditionExpression.left.referredProperty.name.toString());
+--		--i: Integer=0;
+----collp->iterate(model, i ; elements: Sequence(JTL!Predicate)= Sequence{} |
+----if (collp->at(i).conditionExpression.left.referredProperty.name.toString()= s)then 'exclude'
+----else elements.append(model)
+----endif
+----);
+--
+----helper def: proviamo(s: ASP!Terminal): ASP!Expressions= s;
+--	
+--	
+--	
+----helper def: proviamo(s: Sequence (ASP!Terminal)):ASP!Expression=
+--	
+----	s->iterate(model; elements: ASP!Expression= |
+----	elements=model
+----	)
+--	--;
+--
+----helper def: scorri_coll(s:Sequence(ASP!Terminal)): Sequence (ASP!Expression)= 
+----	s->iterate(model; elements: ASP!Expression= Sequence {}|
+----	elements.append(model)
+----	);
+--
+--helper def: createrminali(s:Sequence (ASP!Predicate)): Sequence(ASP!Expression)=
+--	s->iterate(model; elements: ASP!Expression= Sequence{}|
+--	if(model.conditionExpression.left.referredProperty.name.oclIsUndefined()) then 'exclude'
+--	else
+--		elements.append(model.conditionExpression.left.referredProperty.name)
+--		endif
+--	);
+--
+--	
+----------------------------------------------------------------------------------------------------------------------
+----This rule creates the costraints for the rdbms domain.
+----First is created the general constraints and after are created the constraint for each predicate of the domain. 
+-----------------------------------------------------------------------------------------------------------------------
+
+rule prova1{   
+	
+			from 
+							s : JTL!Domain (s.name=s.relation.getPackage().last().name)
+			using {
+						
+								
+						 coll : Sequence(JTL!Predicate) = 
+							s.pattern.predicate->iterate( model ; elements : Sequence(JTL!Predicate) =	Sequence{} |
+				
+		if model.oclIsTypeOf(JTL!Predicate)  then 
+		elements.append(model)		else
+			'exclude'
+		endif
+		);	
+
+--collkkk: Sequence (ASP!Terminal)= thisModule.createrminali(coll);
+
+
+--coll_1: Sequence (JTL!Predicate)= coll->excluding(coll->at(1));
+--coll_2: Sequence (JTL!Predicate)= coll->excluding(coll->at(2));
+--coll_3: Sequence (JTL!Predicate)= coll->excluding(coll->at(3));
+--collprova: Sequence (JTL!Predicate)= thisModule.different_predicate(coll, coll->at(1));
+		
+	    domain_uml: JTL!ObjectTemplateExp = s.relation.getPackage().first().pattern;
+	    domain_rdbms: JTL!ObjectTemplateExp = s.relation.getPackage().last().pattern;
+
+
+	}	
+							
+						
+				to 		
+							t: ASP!Constraint(     --constraint base
+								
+							name<-s.name, 
+							--expressions<-and1,
+							expressions<-term_0,
+							--expressions<-and2,
+							expressions<-no1,
+							--expressions<-and3,
+							expressions<-term1_s1--,
+							--expressions<-and4--,
+							--expressions<-term2_s1--,
+							--expressions<-term3_s1
+							),
+					
+--					        and1: ASP!And(
+--							left<- and2,
+--							right<- term_0
+--							),
+							
+							term_0: ASP!Terminal(-- terminal Table
+		                    name<-s.pattern.templateExpression.name,
+							element<-thisModule.resolveTemp(s.relation, 'node2')
+							),
+							
+--							and2: ASP!And(
+--							left<- and4,
+--							right<- no1
+--							),
+							
+							no1: ASP!Not (
+							name<-domain_uml.templateExpression.name,		
+							element<-thisModule.resolveTemp(s.relation,'node1')
+							),
+							
+--							and3: ASP!And(
+--							left<- and4,
+--							right<- term1_s1
+--							),
+							
+							term1_s1: distinct ASP!Terminal foreach(e in coll) (--is_persisten, name, attr
+			  				name<-e.conditionExpression.getValue().name,
+							element<-thisModule.riempielement(e)
+							),
+							
+--							and4:distinct ASP!And foreach (e in coll)(
+--							left<- term1_s1,
+--							right<- no1
+--							),
+--							
+--							term2_s1: ASP!Terminal (--is_persisten, name, attr
+--			  				name<-coll->at(2).conditionExpression.left.referredProperty.name,
+--							element<-thisModule.riempielement(coll->at(2))
+--							),
+--							
+--							term3_s1: ASP!Terminal (--is_persisten, name, attr
+--			  				name<-coll->at(3).conditionExpression.left.referredProperty.name,
+--							element<-thisModule.riempielement(coll->at(3))
+--							),
+							
+							---------------------------------------------------------------------------------------
+			
+							t_iniziale: distinct ASP!Constraint foreach (e in coll)(
+							name<-e.conditionExpression.left.name,
+							expressions<-term1_iniziale,
+							expressions<-term1_finale,
+							expressions<- no2,
+							--expressions<-thisModule.proviamo(coll->collect(e| thisModule.getElement(e)))
+							--expressions<-coll->collect(e| thisModule.getElement(e)),
+							--expressions<-thisModule.getElements(coll)
+							expressions<-coll->collect(e| thisModule.getElement(e))--,call to lazy rule for the creation of the others terminal
+							--expressions<-vai
+							--expressions<-thisModule.creaTerminal2(e)
+							--expressions<-katia,
+							--expressions<-thisModule.getElement(coll->excluding(e).first()),
+							--expressions<-thisModule.getElement(coll->excluding(e).last())
+							--expressions<-thisModule.getElement(coll.last())
+							--expressions<- thisModule.resolveTemp(e, 'terminal')
+							),
+							
+							term1_iniziale: distinct ASP!Terminal foreach (e in coll)(
+			  				name<-domain_uml.templateExpression.name,     
+							element<-thisModule.resolveTemp(s.relation,'node1')
+							),
+							
+							no2: distinct ASP!Not foreach(e in coll)(
+							name<-e.conditionExpression.getValue().name,
+							element<-thisModule.riempielement(e)
+							),					
+							
+							term1_finale:distinct ASP!Terminal foreach(e in coll)(
+			  				name<-domain_rdbms.templateExpression.name,      
+							element<-thisModule.resolveTemp(s.relation, 'node2')
+							)--,
+							
+----							vai: distinct ASP!Terminal foreach(e in collkkk)(
+----									name<-e
+----															
+----							)
+--							
+----							katia: distinct ASP!Expression foreach(e in coll)(
+----							name<-e		
+----							)
+--							
+----							and1: distinct ASP!And foreach(e in coll)(
+----	                        left<- thisModule.getElement(e),
+----							--right<- thisModule.getElement(iterate->e)
+----							)
+--	
+--		
+--							
+--							
+--							
+--							--do{
+----								--for (element in coll)
+----									t_iniziale.expressions<-coll->collect(element| thisModule.getElement(element));
+----							}
+--							
+--	
+----							term_itera: ASP!Terminal(
+----							name<-no_iniziale.name->collect(e|e.name)--,
+----			  				--element<-thisModule.riempielement(no_)
+----							)
+--							
+--							
+--							
+--							-----------------------------------------------------------------------------------------------------------
+}
+
+lazy rule getElement{--lazy rule that creates the respective terminal from a JTL Predicate
+from
+i: JTL!Predicate
+to 
+s: ASP!Terminal(
+	name<-i.conditionExpression.getValue().name,
+	element<-thisModule.riempielement(i)
+	)
+
+}
+ 
+
+
+
+

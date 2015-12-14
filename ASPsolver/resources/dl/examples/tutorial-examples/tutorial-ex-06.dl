@@ -1,0 +1,6 @@
+#include<ListAndSet>
+
+word([a,n,n,a]).
+word([a,n,n,a,m,a,r,i,a]).
+word([a,d,a]).
+palindromic(X) :- word(X), #reverse(X)==X.

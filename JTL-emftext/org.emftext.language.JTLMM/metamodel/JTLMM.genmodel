@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.emftext.language.JTLMM/src" modelPluginID="org.emftext.language.JTLMM"
+    modelName="JTLMM" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>JTLMM.ecore</foreignModel>
+  <genPackages prefix="JTLMM" disposableProviderFactory="true" ecorePackage="JTLMM.ecore#/">
+    <nestedGenPackages prefix="Emof" disposableProviderFactory="true" ecorePackage="JTLMM.ecore#//emof">
+      <genDataTypes ecoreDataType="JTLMM.ecore#//emof/Boolean"/>
+      <genDataTypes ecoreDataType="JTLMM.ecore#//emof/String"/>
+      <genDataTypes ecoreDataType="JTLMM.ecore#//emof/UnlimitedNatural"/>
+      <genDataTypes ecoreDataType="JTLMM.ecore#//emof/Integer"/>
+      <genDataTypes ecoreDataType="JTLMM.ecore#//emof/Real"/>
+      <genClasses ecoreClass="JTLMM.ecore#//emof/Class">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//emof/Class/ownedAttribute"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//emof/Class/ownedOperation"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//emof/Class/superClass"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//emof/Class/isAbstract"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//emof/DataType"/>
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//emof/Element">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//emof/Element/tag"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//emof/Element/ownedComment"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//emof/Tag">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//emof/Tag/element"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//emof/Tag/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//emof/Tag/name"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//emof/Enumeration">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//emof/Enumeration/ownedLiteral"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//emof/NamedElement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//emof/NamedElement/name"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//emof/Extent"/>
+      <genClasses ecoreClass="JTLMM.ecore#//emof/Object"/>
+      <genClasses ecoreClass="JTLMM.ecore#//emof/Operation">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference JTLMM.ecore#//emof/Operation/class"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//emof/Operation/ownedParameter"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//emof/Operation/raisedException"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//emof/MultiplicityElement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//emof/MultiplicityElement/isOrdered"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//emof/MultiplicityElement/isUnique"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//emof/MultiplicityElement/lower"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//emof/MultiplicityElement/upper"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//emof/Package">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//emof/Package/ownedType"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//emof/Package/nestedPackage"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//emof/Package/uri"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//emof/Type">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference JTLMM.ecore#//emof/Type/package"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//emof/Parameter">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference JTLMM.ecore#//emof/Parameter/operation"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//emof/EnumerationLiteral">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference JTLMM.ecore#//emof/EnumerationLiteral/enumeration"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//emof/Property">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference JTLMM.ecore#//emof/Property/Class"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//emof/Property/opposite"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//emof/Property/isReadOnly"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//emof/Property/isDerived"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//emof/Property/isComposite"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//emof/Property/isId"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//emof/Property/default"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//emof/TypedElement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//emof/TypedElement/type"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//emof/PrimitiveType"/>
+      <genClasses ecoreClass="JTLMM.ecore#//emof/URIExtent"/>
+      <genClasses ecoreClass="JTLMM.ecore#//emof/Comment">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//emof/Comment/annotatedElement"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="JTL" disposableProviderFactory="true" ecorePackage="JTLMM.ecore#//JTL">
+      <genClasses ecoreClass="JTLMM.ecore#//JTL/Transformation">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Transformation/modelParameter"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Transformation/relation"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//JTL/Relation">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Relation/transformation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Relation/domain"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Relation/where"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Relation/when"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//JTL/Relation/isTopLevel"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Relation/variable"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//JTL/Domain">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//JTL/Domain/isCheckable"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//JTL/Domain/isEnforceable"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Domain/relation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Domain/pattern"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Domain/model"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Domain/rootVariable"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//JTL/Model">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Model/transformation"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Model/dependsOn"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//JTL/Model/usedPackage"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//JTL/Pattern">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Pattern/whereOwner"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Pattern/whenOwner"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Pattern/predicate"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Pattern/bindsTo"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Pattern/templateExpression"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Pattern/domain"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//JTL/Predicate">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Predicate/pattern"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//JTL/Predicate/conditionExpression"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Essentialocl" disposableProviderFactory="true" ecorePackage="JTLMM.ecore#//essentialocl">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="JTLMM.ecore#//essentialocl/CollectionKind">
+        <genEnumLiterals ecoreEnumLiteral="JTLMM.ecore#//essentialocl/CollectionKind/OrderedSet"/>
+        <genEnumLiterals ecoreEnumLiteral="JTLMM.ecore#//essentialocl/CollectionKind/Set"/>
+        <genEnumLiterals ecoreEnumLiteral="JTLMM.ecore#//essentialocl/CollectionKind/Bag"/>
+        <genEnumLiterals ecoreEnumLiteral="JTLMM.ecore#//essentialocl/CollectionKind/Sequence"/>
+      </genEnums>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/BooleanLiteralExp">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//essentialocl/BooleanLiteralExp/booleanSymbol"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//essentialocl/CallExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/CallExp/source"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//essentialocl/OclExpression">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/OclExpression/tryBodyOwner"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/UnlimitedNaturalExp">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//essentialocl/UnlimitedNaturalExp/symbol"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/IfExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/IfExp/condition"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/IfExp/thenExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/IfExp/elseExpression"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/LetExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/LetExp/in"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/LetExp/variable"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/Variable">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/Variable/initExpression"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/Variable/LetExp"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/Variable/bindParameter"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/Variable/computeOwner"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/PropertyCallExp">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/PropertyCallExp/referredProperty"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/VariableExp">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/VariableExp/referredVariable"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/TypeExp">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/TypeExp/referredType"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//essentialocl/LoopExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/LoopExp/body"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/LoopExp/iterator"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/IteratorExp"/>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/StringLiteralExp">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//essentialocl/StringLiteralExp/stringSymbol"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/IntegerLiteralExp">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//essentialocl/IntegerLiteralExp/integerSymbol"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/OperationCallExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/OperationCallExp/argument"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/OperationCallExp/referredOperation"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/RealLiteralExp">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//essentialocl/RealLiteralExp/realSymbol"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//essentialocl/LiteralExp"/>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/IterateExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/IterateExp/result"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//essentialocl/PrimitiveLiteralExp"/>
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//essentialocl/NumericLiteralExp"/>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/CollectionLiteralExp">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//essentialocl/CollectionLiteralExp/kind"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/CollectionLiteralExp/part"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//essentialocl/CollectionLiteralPart">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/CollectionLiteralPart/CollectionLiteralExp"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/CollectionItem">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/CollectionItem/item"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/CollectionRange">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/CollectionRange/first"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/CollectionRange/last"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/TupleLiteralExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/TupleLiteralExp/part"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/NullLiteralExp"/>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/ExpressionInOcl">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/ExpressionInOcl/bodyExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/ExpressionInOcl/context"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/ExpressionInOcl/resultVariable"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/ExpressionInOcl/parameterVariable"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/OpaqueExpression"/>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/InvalidLiteralExp"/>
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//essentialocl/FeaturePropertyCall"/>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/TupleLiteralPart">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/TupleLiteralPart/TupleLiteralExp"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/BagType"/>
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//essentialocl/CollectionType">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/CollectionType/elementType"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/EnumLiteralExp">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//essentialocl/EnumLiteralExp/referredEnumLiteral"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/InvalidType"/>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/OrderedSetType"/>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/SequenceType"/>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/SetType"/>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/TupleType"/>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/VoidType"/>
+      <genClasses ecoreClass="JTLMM.ecore#//essentialocl/AnyType"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Template" disposableProviderFactory="true" ecorePackage="JTLMM.ecore#//template">
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//template/TemplateExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//template/TemplateExp/bindsTo"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//template/TemplateExp/where"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//template/ObjectTemplateExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//template/ObjectTemplateExp/part"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//template/ObjectTemplateExp/referredClass"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//template/ObjectTemplateExp/inside"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//template/CollectionTemplateExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//template/CollectionTemplateExp/part"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//template/CollectionTemplateExp/kind"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//template/CollectionTemplateExp/referredCollectionType"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//template/CollectionTemplateExp/match"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//template/PropertyTemplateItem">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference JTLMM.ecore#//template/PropertyTemplateItem/objContainer"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//template/PropertyTemplateItem/value"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//template/PropertyTemplateItem/referredProperty"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Imperativeocl" disposableProviderFactory="true" ecorePackage="JTLMM.ecore#//imperativeocl">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="JTLMM.ecore#//imperativeocl/SeverityKind">
+        <genEnumLiterals ecoreEnumLiteral="JTLMM.ecore#//imperativeocl/SeverityKind/error"/>
+        <genEnumLiterals ecoreEnumLiteral="JTLMM.ecore#//imperativeocl/SeverityKind/fatal"/>
+        <genEnumLiterals ecoreEnumLiteral="JTLMM.ecore#//imperativeocl/SeverityKind/warning"/>
+      </genEnums>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/ImperativeIterateExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/ImperativeIterateExp/target"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/AssignExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/AssignExp/value"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/AssignExp/left"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/AssignExp/defaultValue"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//imperativeocl/AssignExp/isReset"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/BlockExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/BlockExp/body"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/SwitchExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/SwitchExp/alternativePart"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/SwitchExp/elsePart"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/VariableInitExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/VariableInitExp/referredVariable"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//imperativeocl/VariableInitExp/withResult"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/WhileExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/WhileExp/condition"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/WhileExp/body"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/ComputeExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/ComputeExp/returnedElement"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/ComputeExp/body"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/AltExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/AltExp/condition"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/AltExp/body"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/UnlinkExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/UnlinkExp/target"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/UnlinkExp/item"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/ReturnExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/ReturnExp/value"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/BreakExp"/>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/TryExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/TryExp/tryBody"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/TryExp/exception"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/TryExp/exceptBody"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/RaiseExp">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/RaiseExp/exception"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/ContinueExp"/>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/ForExp"/>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/TupleExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/TupleExp/element"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/Typedef">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/Typedef/base"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/Typedef/condition"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/InstantiationExp">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/InstantiationExp/instantiatedClass"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/InstantiationExp/extent"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/InstantiationExp/argument"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/DictionaryType">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/DictionaryType/keyType"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/DictLiteralExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/DictLiteralExp/part"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/DictLiteralPart">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/DictLiteralPart/key"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/DictLiteralPart/value"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/TemplateParameterType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//imperativeocl/TemplateParameterType/specification"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/LogExp">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//imperativeocl/LogExp/text"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//imperativeocl/LogExp/level"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/LogExp/condition"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/LogExp/element"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/AssertExp">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JTLMM.ecore#//imperativeocl/AssertExp/severity"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/AssertExp/log"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/AssertExp/assertion"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//imperativeocl/ImperativeLoopExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/ImperativeLoopExp/condition"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/CollectorExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/CollectorExp/target"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="JTLMM.ecore#//imperativeocl/ImperativeExpression"/>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/UnpackExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/UnpackExp/variable"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/AnonymousTupleType">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/AnonymousTupleType/elementType"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/AnonymousTupleLiteralExp">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/AnonymousTupleLiteralExp/part"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/AnonymousTupleLiteralPart">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JTLMM.ecore#//imperativeocl/AnonymousTupleLiteralPart/value"/>
+      </genClasses>
+      <genClasses ecoreClass="JTLMM.ecore#//imperativeocl/ListType"/>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

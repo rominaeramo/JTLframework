@@ -1,0 +1,45 @@
+%% for each prop, prop' must be generated
+	:- prop(x_SimpleClass, IDx, ID, IDmcx, IDmc, x_name, Value),
+	node(x_SimpleClass,IDmcx, IDmc, x_Class),
+	not prop'(x_SimpleRDBMS, IDx + 1, ID, IDmcx + 1, IDmc, x_name, Value), node'(x_SimpleRDBMS, IDmcx + 1, IDmc, x_Table), mmt==x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(x_SimpleClass,IDx, ID, IDmcx, IDmc, x_name, Value),
+	node(x_SimpleClass,IDmcx, IDmc, x_Class),
+	prop'(x_SimpleRDBMS, IDx + 1, ID, IDmcx + 1, IDmc, x_name, Value), not node'(x_SimpleRDBMS, IDmcx + 1, IDmc, x_Table), mmt==x_A0.
+	%% for each prop, prop' must exist
+	:- prop(x_SimpleRDBMSA0, IDx, ID, IDmcx, IDmc, x_name, Value),
+	node(x_SimpleRDBMS, IDmcx, IDmc, x_SAcomponent),
+	not prop'(x_SimpleClass, IDx - 1, ID,IDmcx - 1, IDmc, x_name, Value), node'(x_SimpleClass, IDmcx - 1, IDmc, x_Component), mmt==x_saveccm.
+
+	%%%% edge 2 edge %%%%
+	relation_dir("x_//@correspondences.0/@featureEquivalences.111",bx,bx).
+	relation("x_//@correspondences.0/@featureEquivalences.111", x_saveccm, x_offer, x_Component, x_TriggerOut, - 1).
+	relation("x_//@correspondences.0/@featureEquivalences.111", x_A0, x_points, x_SAcomponent, x_SAinterface, 1).
+	%% for each edge, edge' must be created
+	:- not edge'(x_A0, IDx + 1, ID, x_points, IDSx + 1, IDS, IDTx + 1,IDT),
+	edge(x_saveccm, IDx, ID, x_offer, IDSx, IDS, IDTx,IDT),
+	metaedge(x_saveccm, composition, x_offer, x_Component, x_TriggerOut),
+	metaedge(x_A0, composition, x_points, x_SAcomponent, x_SAinterface),
+	node(x_saveccm, IDSx, IDS, x_Component), node(x_saveccm, IDTx, IDT, x_TriggerOut),
+	node'(x_A0,IDSx + 1, IDS, x_SAcomponent), node'(x_A0,IDTx + 1, IDT, x_SAinterface), mmt==x_A0.
+	:- not edge'(x_saveccm, IDx - 1, ID, x_offer, IDSx - 1, IDS, IDTx - 1,IDT),
+	edge(x_A0, IDx, ID, x_points, IDSx, IDS, IDTx,IDT),
+	node(x_A0, IDSx, IDS, x_SAcomponent), node(x_A0,IDTx , IDT, x_SAinterface),
+	node'(x_saveccm, IDSx - 1, IDS, x_Component), node'(x_saveccm, IDTx - 1, IDT, x_TriggerOut), mmt==x_saveccm.
+
+
+
+
+
+
+
+
+
+											
+														
+														
+          
+              
+              
+              
+           

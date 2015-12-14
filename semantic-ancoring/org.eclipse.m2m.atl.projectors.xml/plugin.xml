@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.5"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.m2m.atl.core.injector">
+      <injector
+            class="org.eclipse.m2m.atl.projectors.xml.XMLInjector"
+            name="XML">
+      </injector>
+   </extension>
+   
+   <extension
+         point="org.eclipse.m2m.atl.core.extractor">
+      <extractor
+            class="org.eclipse.m2m.atl.projectors.xml.XMLExtractor"
+            name="XML">
+      </extractor>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.dynamic_package">
+      <resource
+            location="model/XML.ecore"
+            uri="http://www.eclipse.org/am3/2007/XML">
+      </resource>
+   </extension>
+ 
+</plugin>

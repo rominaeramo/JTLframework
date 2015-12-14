@@ -1,0 +1,7 @@
+#include<ListAndSet>
+
+user(john,{painting,music,reading}). user(mary,{sport,music}).
+user(bill,{painting,music,sport,reading}). user(frank,{sport,dance}).
+
+sharedInterests(U1,U2,#intersection(S1, S2)) :- user(U1,S1), user(U2, S2),U1 <> U2.
+proposeConnection(pair(U1,U2)) :- sharedInterests(U1,U2,S), #card(S) > 2.

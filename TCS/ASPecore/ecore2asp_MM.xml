@@ -1,0 +1,33 @@
+
+<project name="ecore2asp_MM" default="transform">
+	<property name="MMuri" value="/metamodels/RDBMS"/>
+
+	<target name="transform">
+		<!-- Loading ASPmm metamodel -->
+		<am3.loadModel modelHandler="EMF" name="ASPmm" metamodel="MOF" path="/ASPmm/Metamodel/ASPmm.ecore"/>
+
+		<!-- Loading TCS metamodel -->
+		<am3.loadModel modelHandler="EMF" name="TCS" metamodel="MOF" path="/ASPmm/Metamodel/TCS.ecore"/>
+
+		<!-- Loading ASPmm.tcs model -->
+		<am3.loadModel modelHandler="EMF" name="ASPmm.tcs" metamodel="TCS" path="/ASPmm/Syntax/ASPmm.tcs.xmi"/>
+		
+		<!-- Loading the metamodel -->
+		<am3.loadModel modelHandler="EMF" name="MM" metamodel="MOF" path="${MMuri}.ecore"/>
+
+		<am3.atl path="ASPecore/transformations/Ecore2ASPmm.atl">
+		 <inmodel name="ASPmm" model="ASPmm"/>
+		 <inmodel name="IN" model="MM"/>			
+		 <inmodel name="ECORE" model="%EMF"/>
+		 <outmodel name="OUT" model="result" metamodel="ASPmm"/>
+		</am3.atl>
+
+		<!-- Saving ASPmm model --> 
+		<am3.saveModel model="result" path="${MMuri}.aspmm">
+			<extractor name="ebnf">
+				<param name="format" value="ASPmm.tcs"/>
+			</extractor>
+		</am3.saveModel> 	
+	</target>
+
+</project>

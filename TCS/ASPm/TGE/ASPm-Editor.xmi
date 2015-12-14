@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<edt:Editor xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:edt="http://www.eclipse.org/gmt/tcs/2007/Editor" extension="mgm">
+  <block type="CommentsLine" blockbegin="%%" blockend="">
+    <format>
+      <color red="0" green="130" blue="0"/>
+      <font font="times" italic="true"/>
+    </format>
+  </block>
+  <block type="string" blockbegin="'" blockend="'" esc="\">
+    <format>
+      <color red="0" green="0" blue="255"/>
+      <font font="times"/>
+    </format>
+  </block>
+  <group type="symbols">
+    <format>
+      <color red="127" green="0" blue="85"/>
+      <font font="times" bold="true"/>
+    </format>
+    <element element="["/>
+    <element element="]"/>
+    <element element="!"/>
+    <element element=","/>
+    <element element="("/>
+    <element element=")"/>
+    <element element="{"/>
+    <element element="}"/>
+    <element element=";"/>
+    <element element=":"/>
+    <element element="|"/>
+    <element element="#"/>
+    <element element="?"/>
+    <element element="::"/>
+    <element element="."/>
+    <element element="->"/>
+    <element element="-"/>
+    <element element="*"/>
+    <element element="/"/>
+    <element element="+"/>
+    <element element="="/>
+    <element element=">"/>
+    <element element="&lt;"/>
+    <element element=">="/>
+    <element element="&lt;="/>
+    <element element="&lt;>"/>
+    <element element="&lt;-"/>
+  </group>
+  <group type="types">
+    <format>
+      <color red="42" green="0" blue="255"/>
+      <font font="times" bold="true"/>
+    </format>
+    <element element="String"/>
+    <element element="String"/>
+    <element element="Integer"/>
+    <element element="Double"/>
+  </group>
+  <group type="keywords">
+    <format>
+      <color red="127" green="0" blue="85"/>
+      <font font="times" bold="true"/>
+    </format>
+    <element element="model"/>
+    <element element="node"/>
+    <element element="prop"/>
+    <element element="edge"/>
+  </group>
+</edt:Editor>

@@ -1,0 +1,27 @@
+#include<ListAndSet>
+#maxint=100.
+
+%------------- Command line options ---------------
+% NONE
+%--------------------------------------------------
+
+%----------------- EDB -----------------
+
+% Fathers and the sets of all their sons
+
+sons(grandAnc, {john,carmelo}).
+sons(john, {carl, alex}).
+sons(carmelo, {gb,franz,luigi,romolo}).
+sons(gb, {mark,bill}).
+
+%----------------- Ancestor and his descendants -----------------
+
+% A father is an ancestor for his sons 
+ancestor(A,Ss) :- sons(A,Ss).
+% Transitive closure
+ancestor(A,#union(Ds,Ss)) :- ancestor(A,Ds), #member(S,Ds), sons(S,Ss).
+
+% We want to select the maximal (i.e. having the higher cardinality)
+% set of descendants of a given ancestor
+higherCard(A,#card(Ds1)) :- ancestor(A,Ds1), ancestor(A,Ds2), #card(Ds2)>#card(Ds1). 
+descendants(A,Ds) :- ancestor(A,Ds), not higherCard(A,#card(Ds)).

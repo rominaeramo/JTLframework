@@ -1,0 +1,18 @@
+metamodel(_x_database).
+  metanode(_x_database, _x_Schema).
+  metanode(_x_database, _x_Table).
+  metanode(_x_database, _x_Column).
+  metanode(_x_database, _x_ForeignKey).
+
+  metaedge(_x_database, composition, _x_tables, _x_Schema, _x_Table).
+  metaedge(_x_database, composition, _x_cols, _x_Table, _x_Column).
+  metaedge(_x_database, composition, _x_fkeys, _x_Table, _x_ForeignKey).
+  metaedge(_x_database, association, _x_pkey, _x_Table, _x_Column).
+  metaedge(_x_database, association, _x_cols, _x_ForeignKey, _x_Column).
+  metaedge(_x_database, association, _x_references, _x_ForeignKey, _x_Table).
+
+  metaprop(_x_database, _x_name, _x_Schema).
+  metaprop(_x_database, _x_name, _x_Table).
+  metaprop(_x_database, _x_is_local, _x_Table).
+  metaprop(_x_database, _x_type, _x_Column).
+  metaprop(_x_database, _x_name, _x_Column).

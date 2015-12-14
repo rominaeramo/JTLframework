@@ -1,0 +1,38 @@
+<!--
+	Auto-generated ant script that injects a <file>.sm into <file>.sm.xmi
+	It may be used in different ways:
+		- As an example to write your own ant scripts that do further processing
+		(e.g., ATL transformations, extractions).
+		- Called from another script
+		- From the "AM3 Resource Navigator" view, and if the corresponding megamodel
+		(megamodel.xmi) has been registered (via right-click action "Add megamodel"):
+		by right-click action "Inject ASPmm File to ASPmm Model" on files
+		with extension "sm".
+	
+	Note that property "MUri" is initialized by AM3 when invoked as a right-click injection
+	action. In any other case (e.g., calling the ant script, copy-paste-modify), property
+	"MUri" has to be defined explicitely.
+-->
+<project name="ASPmmInjector" default="injection">
+	<property name="MUri" value="/ASPmm/Samples/A0.aspmm.xmi.aspmm"/>
+
+	<target name="injection">
+		<!-- Loading ASPmm metamodel -->
+		<am3.loadModel modelHandler="EMF" name="ASPmm" metamodel="MOF" path="/ASPmm/Metamodel/ASPmm.ecore"/>
+
+		<!-- Loading ASPmm model -->
+		<am3.loadModel modelHandler="EMF" name="myASPmm" metamodel="ASPmm" path="${MUri}">
+			<injector name="ebnf">
+				<param name="name" value="ASPmm"/>
+				<param name="parserGenerator" value="antlr3"/>
+				<classpath>
+					<pathelement location="ASPmm/Syntax/ASPmm-parser.jar"/>
+				</classpath>
+			</injector>
+		</am3.loadModel>
+
+		<!-- Saving ASPmm model -->
+		<am3.saveModel model="myASPmm" path="${MUri}.xmi"/>
+	</target>
+
+</project>

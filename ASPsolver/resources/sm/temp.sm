@@ -1,0 +1,2839 @@
+#const mmt = _x_A0.
+	%%%% node 2 node (EquivalenceCorrespondence) %%%%
+relation("_x_//@correspondences.4",bx,bx).
+relation("_x_//@correspondences.4", _x_saveccm, _x_Delay).
+relation("_x_//@correspondences.4", _x_A0, _x_SAcomponent).
+:- node(_x_saveccm, ID, _x_Delay), not node'(_x_A0, ID, _x_SAcomponent), mmt==_x_A0.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.4/@featureEquivalences.011",bx,bx).
+	relation("_x_//@correspondences.4/@featureEquivalences.011", _x_saveccm, _x_offer, _x_Delay, _x_TriggerIn).
+	relation("_x_//@correspondences.4/@featureEquivalences.011", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Delay, _x_TriggerIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delay), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delay), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.4/@featureEquivalences.021",bx,bx).
+	relation("_x_//@correspondences.4/@featureEquivalences.021", _x_saveccm, _x_offer, _x_Delay, _x_DataOut).
+	relation("_x_//@correspondences.4/@featureEquivalences.021", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Delay, _x_DataOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delay), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delay), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.4/@featureEquivalences.031",bx,bx).
+	relation("_x_//@correspondences.4/@featureEquivalences.031", _x_saveccm, _x_offer, _x_Delay, _x_TriggerOut).
+	relation("_x_//@correspondences.4/@featureEquivalences.031", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Delay, _x_TriggerOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delay), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delay), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.4/@featureEquivalences.041",bx,bx).
+	relation("_x_//@correspondences.4/@featureEquivalences.041", _x_saveccm, _x_offer, _x_Delay, _x_DataIn).
+	relation("_x_//@correspondences.4/@featureEquivalences.041", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Delay, _x_DataIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delay), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delay), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.4/@featureEquivalences.051",bx,bx).
+	relation("_x_//@correspondences.4/@featureEquivalences.051", _x_saveccm, _x_offer, _x_Delay, _x_CombinedIn).
+	relation("_x_//@correspondences.4/@featureEquivalences.051", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Delay, _x_CombinedIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delay), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delay), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.4/@featureEquivalences.061",bx,bx).
+	relation("_x_//@correspondences.4/@featureEquivalences.061", _x_saveccm, _x_offer, _x_Delay, _x_CombinedOut).
+	relation("_x_//@correspondences.4/@featureEquivalences.061", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Delay, _x_CombinedOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delay), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delay), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+	%%%% prop 2 prop %%%%
+	relation("_x_//@correspondences.4/@featureEquivalences.1",bx,bx).
+	relation("_x_//@correspondences.4/@featureEquivalences.1", _x_saveccm, _x_name, _x_Delay).
+	relation("_x_//@correspondences.4/@featureEquivalences.1", _x_A0, _x_name, _x_SAcomponent).
+	%% for each prop, prop' must be generated
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_Delay),
+	not prop'(_x_A0, ID, IDmc, _x_name, Value), node'(_x_A0, IDmc, _x_SAcomponent), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_Delay),
+	prop'(_x_A0, ID, IDmc, _x_name, Value), not node'(_x_A0, IDmc, _x_SAcomponent), mmt==_x_A0.
+	%% for each prop, prop' must exist
+	:- prop(_x_A0, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmc, _x_SAcomponent),
+	not prop'(_x_saveccm, ID, IDmc, _x_name, Value), node'(_x_saveccm, IDmc, _x_Delay), mmt==_x_saveccm.
+
+
+
+	%%%% node 2 node (EquivalenceCorrespondence) %%%%
+relation("_x_//@correspondences.2",bx,bx).
+relation("_x_//@correspondences.2", _x_saveccm, _x_Composite).
+relation("_x_//@correspondences.2", _x_A0, _x_SAcomponent).
+:- node(_x_saveccm, ID, _x_Composite), not node'(_x_A0, ID, _x_SAcomponent), mmt==_x_A0.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.2/@featureEquivalences.011",bx,bx).
+	relation("_x_//@correspondences.2/@featureEquivalences.011", _x_saveccm, _x_offer, _x_Composite, _x_TriggerIn).
+	relation("_x_//@correspondences.2/@featureEquivalences.011", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Composite, _x_TriggerIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Composite), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Composite), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.2/@featureEquivalences.021",bx,bx).
+	relation("_x_//@correspondences.2/@featureEquivalences.021", _x_saveccm, _x_offer, _x_Composite, _x_DataOut).
+	relation("_x_//@correspondences.2/@featureEquivalences.021", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Composite, _x_DataOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Composite), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Composite), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.2/@featureEquivalences.031",bx,bx).
+	relation("_x_//@correspondences.2/@featureEquivalences.031", _x_saveccm, _x_offer, _x_Composite, _x_TriggerOut).
+	relation("_x_//@correspondences.2/@featureEquivalences.031", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Composite, _x_TriggerOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Composite), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Composite), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.2/@featureEquivalences.041",bx,bx).
+	relation("_x_//@correspondences.2/@featureEquivalences.041", _x_saveccm, _x_offer, _x_Composite, _x_DataIn).
+	relation("_x_//@correspondences.2/@featureEquivalences.041", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Composite, _x_DataIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Composite), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Composite), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.2/@featureEquivalences.051",bx,bx).
+	relation("_x_//@correspondences.2/@featureEquivalences.051", _x_saveccm, _x_offer, _x_Composite, _x_CombinedIn).
+	relation("_x_//@correspondences.2/@featureEquivalences.051", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Composite, _x_CombinedIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Composite), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Composite), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.2/@featureEquivalences.061",bx,bx).
+	relation("_x_//@correspondences.2/@featureEquivalences.061", _x_saveccm, _x_offer, _x_Composite, _x_CombinedOut).
+	relation("_x_//@correspondences.2/@featureEquivalences.061", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Composite, _x_CombinedOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Composite), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Composite), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+	%%%% prop 2 prop %%%%
+	relation("_x_//@correspondences.2/@featureEquivalences.1",bx,bx).
+	relation("_x_//@correspondences.2/@featureEquivalences.1", _x_saveccm, _x_name, _x_Composite).
+	relation("_x_//@correspondences.2/@featureEquivalences.1", _x_A0, _x_name, _x_SAcomponent).
+	%% for each prop, prop' must be generated
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_Composite),
+	not prop'(_x_A0, ID, IDmc, _x_name, Value), node'(_x_A0, IDmc, _x_SAcomponent), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_Composite),
+	prop'(_x_A0, ID, IDmc, _x_name, Value), not node'(_x_A0, IDmc, _x_SAcomponent), mmt==_x_A0.
+	%% for each prop, prop' must exist
+	:- prop(_x_A0, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmc, _x_SAcomponent),
+	not prop'(_x_saveccm, ID, IDmc, _x_name, Value), node'(_x_saveccm, IDmc, _x_Composite), mmt==_x_saveccm.
+
+
+
+	%%%% node 2 node (EquivalenceCorrespondence) %%%%
+relation("_x_//@correspondences.7",bx,bx).
+relation("_x_//@correspondences.7", _x_saveccm, _x_TriggerIn).
+relation("_x_//@correspondences.7", _x_A0, _x_SAinterface).
+:- node(_x_saveccm, ID, _x_TriggerIn), not node'(_x_A0, ID, _x_SAinterface), mmt==_x_A0.
+	%%%% prop 2 prop %%%%
+	relation("_x_//@correspondences.7/@featureEquivalences.0",bx,bx).
+	relation("_x_//@correspondences.7/@featureEquivalences.0", _x_saveccm, _x_name, _x_TriggerIn).
+	relation("_x_//@correspondences.7/@featureEquivalences.0", _x_A0, _x_name, _x_SAinterface).
+	%% for each prop, prop' must be generated
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_TriggerIn),
+	not prop'(_x_A0, ID, IDmc, _x_name, Value), node'(_x_A0, IDmc, _x_SAinterface), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_TriggerIn),
+	prop'(_x_A0, ID, IDmc, _x_name, Value), not node'(_x_A0, IDmc, _x_SAinterface), mmt==_x_A0.
+	%% for each prop, prop' must exist
+	:- prop(_x_A0, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmc, _x_SAinterface),
+	not prop'(_x_saveccm, ID, IDmc, _x_name, Value), node'(_x_saveccm, IDmc, _x_TriggerIn), mmt==_x_saveccm.
+
+
+	%%%% node 2 node (Left2RightCorrespondence) %%%%
+relation("_x_Left2RightCorrespondence11",_x_saveccm,_x_A0).
+relation("_x_Left2RightCorrespondence11", _x_saveccm, _x_System).
+relation("_x_Left2RightCorrespondence11", _x_A0, _x_SoftwareArchitecture).
+:- node(_x_saveccm, ID, _x_System), not node'(_x_A0, ID, _x_SoftwareArchitecture), mmt==_x_A0.
+:- node(_x_A0, ID, _x_SoftwareArchitecture), node'(_x_saveccm, ID, _x_System), mmt==_x_saveccm.
+	%%%% prop 2 prop %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.0",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.0", _x_saveccm, _x_name, _x_System).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.0", _x_A0, _x_name, _x_SoftwareArchitecture).
+	%% for each prop, prop' must be generated
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_System),
+	not prop'(_x_A0, ID, IDmc, _x_name, Value), node'(_x_A0, IDmc, _x_SoftwareArchitecture), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_System),
+	prop'(_x_A0, ID, IDmc, _x_name, Value), not node'(_x_A0, IDmc, _x_SoftwareArchitecture), mmt==_x_A0.
+	%% for each prop, prop' must not exist
+	:- prop(_x_A0, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmc, _x_SoftwareArchitecture),
+	prop'(_x_saveccm, ID, IDmc, _x_name, Value), node'(_x_saveccm, IDmc, _x_System), mmt==_x_saveccm.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_A0, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmc, _x_SoftwareArchitecture),
+	prop'(_x_saveccm, ID, IDmc, _x_name, Value), not node'(_x_saveccm, IDmc, _x_System), mmt==_x_saveccm.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.111",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.111", _x_saveccm, _x_compose, _x_System, _x_Composite).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.111", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Composite),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Composite),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SArelationship), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SArelationship),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Composite), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.112",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.112", _x_saveccm, _x_compose, _x_System, _x_Composite).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.112", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Composite),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Composite),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Composite), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.113",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.113", _x_saveccm, _x_compose, _x_System, _x_Composite).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.113", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Composite),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Composite),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Composite), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.114",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.114", _x_saveccm, _x_compose, _x_System, _x_Composite).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.114", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Composite),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Composite),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Composite), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.115",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.115", _x_saveccm, _x_compose, _x_System, _x_Composite).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.115", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Composite),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Composite),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAchannel), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAchannel),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Composite), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.116",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.116", _x_saveccm, _x_compose, _x_System, _x_Composite).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.116", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SABinding).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Composite),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SABinding),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Composite),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SABinding), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SABinding),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Composite), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.121",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.121", _x_saveccm, _x_compose, _x_System, _x_System).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.121", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_System),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_System),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SArelationship), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SArelationship),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_System), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.122",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.122", _x_saveccm, _x_compose, _x_System, _x_System).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.122", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_System),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_System),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_System), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.123",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.123", _x_saveccm, _x_compose, _x_System, _x_System).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.123", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_System),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_System),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_System), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.124",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.124", _x_saveccm, _x_compose, _x_System, _x_System).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.124", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_System),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_System),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_System), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.125",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.125", _x_saveccm, _x_compose, _x_System, _x_System).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.125", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_System),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_System),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAchannel), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAchannel),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_System), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.126",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.126", _x_saveccm, _x_compose, _x_System, _x_System).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.126", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SABinding).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_System),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SABinding),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_System),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SABinding), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SABinding),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_System), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.131",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.131", _x_saveccm, _x_compose, _x_System, _x_Switch).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.131", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Switch),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Switch),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SArelationship), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SArelationship),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Switch), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.132",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.132", _x_saveccm, _x_compose, _x_System, _x_Switch).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.132", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Switch),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Switch),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Switch), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.133",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.133", _x_saveccm, _x_compose, _x_System, _x_Switch).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.133", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Switch),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Switch),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Switch), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.134",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.134", _x_saveccm, _x_compose, _x_System, _x_Switch).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.134", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Switch),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Switch),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Switch), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.135",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.135", _x_saveccm, _x_compose, _x_System, _x_Switch).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.135", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Switch),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Switch),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAchannel), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAchannel),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Switch), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.136",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.136", _x_saveccm, _x_compose, _x_System, _x_Switch).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.136", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SABinding).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Switch),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SABinding),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Switch),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SABinding), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SABinding),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Switch), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.141",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.141", _x_saveccm, _x_compose, _x_System, _x_Clock).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.141", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Clock),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Clock),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SArelationship), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SArelationship),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Clock), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.142",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.142", _x_saveccm, _x_compose, _x_System, _x_Clock).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.142", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Clock),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Clock),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Clock), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.143",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.143", _x_saveccm, _x_compose, _x_System, _x_Clock).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.143", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Clock),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Clock),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Clock), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.144",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.144", _x_saveccm, _x_compose, _x_System, _x_Clock).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.144", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Clock),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Clock),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Clock), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.145",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.145", _x_saveccm, _x_compose, _x_System, _x_Clock).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.145", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Clock),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Clock),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAchannel), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAchannel),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Clock), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.146",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.146", _x_saveccm, _x_compose, _x_System, _x_Clock).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.146", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SABinding).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Clock),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SABinding),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Clock),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SABinding), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SABinding),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Clock), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.151",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.151", _x_saveccm, _x_compose, _x_System, _x_Assembly).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.151", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Assembly),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Assembly),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SArelationship), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SArelationship),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Assembly), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.152",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.152", _x_saveccm, _x_compose, _x_System, _x_Assembly).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.152", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Assembly),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Assembly),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Assembly), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.153",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.153", _x_saveccm, _x_compose, _x_System, _x_Assembly).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.153", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Assembly),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Assembly),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Assembly), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.154",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.154", _x_saveccm, _x_compose, _x_System, _x_Assembly).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.154", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Assembly),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Assembly),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Assembly), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.155",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.155", _x_saveccm, _x_compose, _x_System, _x_Assembly).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.155", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Assembly),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Assembly),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAchannel), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAchannel),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Assembly), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.156",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.156", _x_saveccm, _x_compose, _x_System, _x_Assembly).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.156", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SABinding).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Assembly),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SABinding),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Assembly),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SABinding), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SABinding),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Assembly), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.161",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.161", _x_saveccm, _x_compose, _x_System, _x_Component).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.161", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Component),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Component),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SArelationship), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SArelationship),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Component), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.162",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.162", _x_saveccm, _x_compose, _x_System, _x_Component).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.162", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Component),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Component),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Component), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.163",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.163", _x_saveccm, _x_compose, _x_System, _x_Component).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.163", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Component),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Component),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Component), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.164",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.164", _x_saveccm, _x_compose, _x_System, _x_Component).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.164", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Component),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Component),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Component), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.165",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.165", _x_saveccm, _x_compose, _x_System, _x_Component).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.165", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Component),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Component),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAchannel), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAchannel),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Component), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.166",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.166", _x_saveccm, _x_compose, _x_System, _x_Component).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.166", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SABinding).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Component),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SABinding),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Component),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SABinding), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SABinding),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Component), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.171",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.171", _x_saveccm, _x_compose, _x_System, _x_Delay).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.171", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Delay),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Delay),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SArelationship), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SArelationship),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Delay), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.172",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.172", _x_saveccm, _x_compose, _x_System, _x_Delay).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.172", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Delay),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Delay),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Delay), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.173",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.173", _x_saveccm, _x_compose, _x_System, _x_Delay).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.173", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Delay),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Delay),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Delay), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.174",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.174", _x_saveccm, _x_compose, _x_System, _x_Delay).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.174", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Delay),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Delay),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Delay), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.175",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.175", _x_saveccm, _x_compose, _x_System, _x_Delay).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.175", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Delay),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Delay),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAchannel), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAchannel),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Delay), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.176",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.176", _x_saveccm, _x_compose, _x_System, _x_Delay).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.176", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SABinding).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_compose, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_compose, _x_System, _x_Delay),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SABinding),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Delay),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SABinding), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_compose, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SABinding),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Delay), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.211",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.211", _x_saveccm, _x_connects, _x_System, _x_Connection).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.211", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_connects, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_connects, _x_System, _x_Connection),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Connection),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SArelationship), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_connects, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SArelationship),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Connection), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.212",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.212", _x_saveccm, _x_connects, _x_System, _x_Connection).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.212", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_connects, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_connects, _x_System, _x_Connection),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Connection),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_connects, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Connection), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.213",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.213", _x_saveccm, _x_connects, _x_System, _x_Connection).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.213", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_connects, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_connects, _x_System, _x_Connection),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Connection),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_connects, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Connection), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.214",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.214", _x_saveccm, _x_connects, _x_System, _x_Connection).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.214", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_connects, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_connects, _x_System, _x_Connection),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Connection),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_connects, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Connection), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.215",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.215", _x_saveccm, _x_connects, _x_System, _x_Connection).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.215", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_connects, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_connects, _x_System, _x_Connection),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Connection),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAchannel), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_connects, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAchannel),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Connection), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.216",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.216", _x_saveccm, _x_connects, _x_System, _x_Connection).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.216", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SABinding).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_connects, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_connects, _x_System, _x_Connection),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SABinding),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Connection),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SABinding), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_connects, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SABinding),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Connection), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.221",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.221", _x_saveccm, _x_connects, _x_System, _x_Delegation).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.221", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_connects, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_connects, _x_System, _x_Delegation),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SArelationship),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Delegation),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SArelationship), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_connects, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SArelationship),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Delegation), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.222",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.222", _x_saveccm, _x_connects, _x_System, _x_Delegation).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.222", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_connects, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_connects, _x_System, _x_Delegation),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Delegation),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_connects, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Delegation), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.223",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.223", _x_saveccm, _x_connects, _x_System, _x_Delegation).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.223", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_connects, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_connects, _x_System, _x_Delegation),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Delegation),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_connects, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Delegation), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.224",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.224", _x_saveccm, _x_connects, _x_System, _x_Delegation).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.224", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_connects, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_connects, _x_System, _x_Delegation),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Delegation),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_connects, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Delegation), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.225",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.225", _x_saveccm, _x_connects, _x_System, _x_Delegation).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.225", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_connects, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_connects, _x_System, _x_Delegation),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SAchannel),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Delegation),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SAchannel), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_connects, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SAchannel),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Delegation), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.226",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.226", _x_saveccm, _x_connects, _x_System, _x_Delegation).
+	relation("_x_//@correspondences.14/@right.0/@featureEquivalences.226", _x_A0, _x_subElement, _x_SoftwareArchitecture, _x_SABinding).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_subElement, IDS, IDT),
+	edge(_x_saveccm, ID, _x_connects, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_connects, _x_System, _x_Delegation),
+	metaedge(_x_A0, composition, _x_subElement, _x_SoftwareArchitecture, _x_SABinding),
+	node(_x_saveccm, IDS, _x_System), node(_x_saveccm, IDT, _x_Delegation),
+	node'(_x_A0, IDS, _x_SoftwareArchitecture), node'(_x_A0, IDT, _x_SABinding), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_connects, IDS, IDT),
+	edge(_x_A0, ID, _x_subElement, IDS, IDT),
+	node(_x_A0, IDS, _x_SoftwareArchitecture), node(_x_A0, IDT, _x_SABinding),
+	node'(_x_saveccm, IDS, _x_System), node'(_x_saveccm, IDT, _x_Delegation), mmt==_x_saveccm.
+	%%%% node 2 node (Left2RightCorrespondence) %%%%
+relation("_x_Left2RightCorrespondence12",_x_saveccm,_x_A0).
+relation("_x_Left2RightCorrespondence12", _x_saveccm, _x_System).
+relation("_x_Left2RightCorrespondence12", _x_A0, _x_A0Spec).
+:- node(_x_saveccm, ID, _x_System), not node'(_x_A0, ID, _x_A0Spec), mmt==_x_A0.
+:- node(_x_A0, ID, _x_A0Spec), node'(_x_saveccm, ID, _x_System), mmt==_x_saveccm.
+	%%%% prop 2 prop %%%%
+	relation("_x_FeatureEquivalence3",_x_saveccm,_x_A0).
+	relation("_x_FeatureEquivalence3", _x_saveccm, _x_name, _x_System).
+	relation("_x_FeatureEquivalence3", _x_A0, _x_name, _x_A0Spec).
+	%% for each prop, prop' must be generated
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_System),
+	not prop'(_x_A0, ID, IDmc, _x_name, Value), node'(_x_A0, IDmc, _x_A0Spec), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_System),
+	prop'(_x_A0, ID, IDmc, _x_name, Value), not node'(_x_A0, IDmc, _x_A0Spec), mmt==_x_A0.
+	%% for each prop, prop' must not exist
+	:- prop(_x_A0, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmc, _x_A0Spec),
+	prop'(_x_saveccm, ID, IDmc, _x_name, Value), node'(_x_saveccm, IDmc, _x_System), mmt==_x_saveccm.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_A0, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmc, _x_A0Spec),
+	prop'(_x_saveccm, ID, IDmc, _x_name, Value), not node'(_x_saveccm, IDmc, _x_System), mmt==_x_saveccm.
+
+	%%%% node 2 edge left2right %%%%
+	relation("_x_FeatureEquivalence41",_x_saveccm,_x_A0).
+	relation("_x_FeatureEquivalence41", _x_saveccm, _x_System).
+	relation("_x_FeatureEquivalence41", _x_A0, _x_architectures, _x_A0Spec, _x_SoftwareArchitecture).
+	%% for each node, edge' must be created
+	:- not edge'(_x_A0, IDS, _x_architectures, IDS, IDS),
+	node(_x_saveccm, IDS, _x_System),
+	node'(_x_A0, IDS, _x_A0Spec), node'(_x_A0, IDS, _x_SoftwareArchitecture), mmt==_x_A0.
+
+
+	%%%% node 2 node (EquivalenceCorrespondence) %%%%
+relation("_x_//@correspondences.3",bx,bx).
+relation("_x_//@correspondences.3", _x_saveccm, _x_Clock).
+relation("_x_//@correspondences.3", _x_A0, _x_SAcomponent).
+:- node(_x_saveccm, ID, _x_Clock), not node'(_x_A0, ID, _x_SAcomponent), mmt==_x_A0.
+	%%%% prop 2 prop %%%%
+	relation("_x_//@correspondences.3/@featureEquivalences.0",bx,bx).
+	relation("_x_//@correspondences.3/@featureEquivalences.0", _x_saveccm, _x_name, _x_Clock).
+	relation("_x_//@correspondences.3/@featureEquivalences.0", _x_A0, _x_name, _x_SAcomponent).
+	%% for each prop, prop' must be generated
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_Clock),
+	not prop'(_x_A0, ID, IDmc, _x_name, Value), node'(_x_A0, IDmc, _x_SAcomponent), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_Clock),
+	prop'(_x_A0, ID, IDmc, _x_name, Value), not node'(_x_A0, IDmc, _x_SAcomponent), mmt==_x_A0.
+	%% for each prop, prop' must exist
+	:- prop(_x_A0, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmc, _x_SAcomponent),
+	not prop'(_x_saveccm, ID, IDmc, _x_name, Value), node'(_x_saveccm, IDmc, _x_Clock), mmt==_x_saveccm.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.3/@featureEquivalences.111",bx,bx).
+	relation("_x_//@correspondences.3/@featureEquivalences.111", _x_saveccm, _x_offer, _x_Clock, _x_TriggerIn).
+	relation("_x_//@correspondences.3/@featureEquivalences.111", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Clock, _x_TriggerIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Clock), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Clock), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.3/@featureEquivalences.121",bx,bx).
+	relation("_x_//@correspondences.3/@featureEquivalences.121", _x_saveccm, _x_offer, _x_Clock, _x_DataOut).
+	relation("_x_//@correspondences.3/@featureEquivalences.121", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Clock, _x_DataOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Clock), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Clock), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.3/@featureEquivalences.131",bx,bx).
+	relation("_x_//@correspondences.3/@featureEquivalences.131", _x_saveccm, _x_offer, _x_Clock, _x_TriggerOut).
+	relation("_x_//@correspondences.3/@featureEquivalences.131", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Clock, _x_TriggerOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Clock), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Clock), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.3/@featureEquivalences.141",bx,bx).
+	relation("_x_//@correspondences.3/@featureEquivalences.141", _x_saveccm, _x_offer, _x_Clock, _x_DataIn).
+	relation("_x_//@correspondences.3/@featureEquivalences.141", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Clock, _x_DataIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Clock), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Clock), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.3/@featureEquivalences.151",bx,bx).
+	relation("_x_//@correspondences.3/@featureEquivalences.151", _x_saveccm, _x_offer, _x_Clock, _x_CombinedIn).
+	relation("_x_//@correspondences.3/@featureEquivalences.151", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Clock, _x_CombinedIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Clock), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Clock), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.3/@featureEquivalences.161",bx,bx).
+	relation("_x_//@correspondences.3/@featureEquivalences.161", _x_saveccm, _x_offer, _x_Clock, _x_CombinedOut).
+	relation("_x_//@correspondences.3/@featureEquivalences.161", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Clock, _x_CombinedOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Clock), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Clock), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+
+
+	%%%% node 2 node (EquivalenceCorrespondence) %%%%
+relation("_x_//@correspondences.6",bx,bx).
+relation("_x_//@correspondences.6", _x_saveccm, _x_TriggerOut).
+relation("_x_//@correspondences.6", _x_A0, _x_SAinterface).
+:- node(_x_saveccm, ID, _x_TriggerOut), not node'(_x_A0, ID, _x_SAinterface), mmt==_x_A0.
+	%%%% prop 2 prop %%%%
+	relation("_x_//@correspondences.6/@featureEquivalences.0",bx,bx).
+	relation("_x_//@correspondences.6/@featureEquivalences.0", _x_saveccm, _x_name, _x_TriggerOut).
+	relation("_x_//@correspondences.6/@featureEquivalences.0", _x_A0, _x_name, _x_SAinterface).
+	%% for each prop, prop' must be generated
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_TriggerOut),
+	not prop'(_x_A0, ID, IDmc, _x_name, Value), node'(_x_A0, IDmc, _x_SAinterface), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_TriggerOut),
+	prop'(_x_A0, ID, IDmc, _x_name, Value), not node'(_x_A0, IDmc, _x_SAinterface), mmt==_x_A0.
+	%% for each prop, prop' must exist
+	:- prop(_x_A0, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmc, _x_SAinterface),
+	not prop'(_x_saveccm, ID, IDmc, _x_name, Value), node'(_x_saveccm, IDmc, _x_TriggerOut), mmt==_x_saveccm.
+
+
+	%%%% node 2 node (Left2RightCorrespondence) %%%%
+relation("_x_//@correspondences.131",_x_saveccm,_x_A0).
+relation("_x_//@correspondences.131", _x_saveccm, _x_Connection).
+relation("_x_//@correspondences.131", _x_A0, _x_SAchannel).
+:- node(_x_saveccm, ID, _x_Connection), not node'(_x_A0, ID, _x_SAchannel), mmt==_x_A0.
+:- node(_x_A0, ID, _x_SAchannel), node'(_x_saveccm, ID, _x_Connection), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.011",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.011", _x_saveccm, _x_source, _x_Connection, _x_TriggerIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.011", _x_A0, _x_from, _x_SAchannel, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_TriggerIn),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.012",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.012", _x_saveccm, _x_source, _x_Connection, _x_TriggerIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.012", _x_A0, _x_from, _x_SAchannel, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_TriggerIn),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.013",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.013", _x_saveccm, _x_source, _x_Connection, _x_TriggerIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.013", _x_A0, _x_from, _x_SAchannel, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_TriggerIn),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.021",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.021", _x_saveccm, _x_source, _x_Connection, _x_DataOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.021", _x_A0, _x_from, _x_SAchannel, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_DataOut),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.022",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.022", _x_saveccm, _x_source, _x_Connection, _x_DataOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.022", _x_A0, _x_from, _x_SAchannel, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_DataOut),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.023",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.023", _x_saveccm, _x_source, _x_Connection, _x_DataOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.023", _x_A0, _x_from, _x_SAchannel, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_DataOut),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.031",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.031", _x_saveccm, _x_source, _x_Connection, _x_TriggerOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.031", _x_A0, _x_from, _x_SAchannel, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_TriggerOut),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.032",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.032", _x_saveccm, _x_source, _x_Connection, _x_TriggerOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.032", _x_A0, _x_from, _x_SAchannel, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_TriggerOut),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.033",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.033", _x_saveccm, _x_source, _x_Connection, _x_TriggerOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.033", _x_A0, _x_from, _x_SAchannel, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_TriggerOut),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.041",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.041", _x_saveccm, _x_source, _x_Connection, _x_DataIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.041", _x_A0, _x_from, _x_SAchannel, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_DataIn),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.042",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.042", _x_saveccm, _x_source, _x_Connection, _x_DataIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.042", _x_A0, _x_from, _x_SAchannel, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_DataIn),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.043",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.043", _x_saveccm, _x_source, _x_Connection, _x_DataIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.043", _x_A0, _x_from, _x_SAchannel, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_DataIn),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.051",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.051", _x_saveccm, _x_source, _x_Connection, _x_CombinedIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.051", _x_A0, _x_from, _x_SAchannel, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_CombinedIn),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.052",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.052", _x_saveccm, _x_source, _x_Connection, _x_CombinedIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.052", _x_A0, _x_from, _x_SAchannel, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_CombinedIn),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.053",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.053", _x_saveccm, _x_source, _x_Connection, _x_CombinedIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.053", _x_A0, _x_from, _x_SAchannel, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_CombinedIn),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.061",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.061", _x_saveccm, _x_source, _x_Connection, _x_CombinedOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.061", _x_A0, _x_from, _x_SAchannel, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_CombinedOut),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.062",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.062", _x_saveccm, _x_source, _x_Connection, _x_CombinedOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.062", _x_A0, _x_from, _x_SAchannel, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_CombinedOut),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.063",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.063", _x_saveccm, _x_source, _x_Connection, _x_CombinedOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.063", _x_A0, _x_from, _x_SAchannel, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Connection, _x_CombinedOut),
+	metaedge(_x_A0, association, _x_from, _x_SAchannel, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.111",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.111", _x_saveccm, _x_destination, _x_Connection, _x_TriggerIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.111", _x_A0, _x_to, _x_SAchannel, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_TriggerIn),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.112",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.112", _x_saveccm, _x_destination, _x_Connection, _x_TriggerIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.112", _x_A0, _x_to, _x_SAchannel, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_TriggerIn),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.113",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.113", _x_saveccm, _x_destination, _x_Connection, _x_TriggerIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.113", _x_A0, _x_to, _x_SAchannel, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_TriggerIn),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.121",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.121", _x_saveccm, _x_destination, _x_Connection, _x_DataOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.121", _x_A0, _x_to, _x_SAchannel, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_DataOut),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.122",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.122", _x_saveccm, _x_destination, _x_Connection, _x_DataOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.122", _x_A0, _x_to, _x_SAchannel, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_DataOut),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.123",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.123", _x_saveccm, _x_destination, _x_Connection, _x_DataOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.123", _x_A0, _x_to, _x_SAchannel, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_DataOut),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.131",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.131", _x_saveccm, _x_destination, _x_Connection, _x_TriggerOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.131", _x_A0, _x_to, _x_SAchannel, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_TriggerOut),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.132",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.132", _x_saveccm, _x_destination, _x_Connection, _x_TriggerOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.132", _x_A0, _x_to, _x_SAchannel, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_TriggerOut),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.133",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.133", _x_saveccm, _x_destination, _x_Connection, _x_TriggerOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.133", _x_A0, _x_to, _x_SAchannel, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_TriggerOut),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.141",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.141", _x_saveccm, _x_destination, _x_Connection, _x_DataIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.141", _x_A0, _x_to, _x_SAchannel, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_DataIn),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.142",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.142", _x_saveccm, _x_destination, _x_Connection, _x_DataIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.142", _x_A0, _x_to, _x_SAchannel, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_DataIn),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.143",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.143", _x_saveccm, _x_destination, _x_Connection, _x_DataIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.143", _x_A0, _x_to, _x_SAchannel, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_DataIn),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.151",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.151", _x_saveccm, _x_destination, _x_Connection, _x_CombinedIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.151", _x_A0, _x_to, _x_SAchannel, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_CombinedIn),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.152",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.152", _x_saveccm, _x_destination, _x_Connection, _x_CombinedIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.152", _x_A0, _x_to, _x_SAchannel, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_CombinedIn),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.153",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.153", _x_saveccm, _x_destination, _x_Connection, _x_CombinedIn).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.153", _x_A0, _x_to, _x_SAchannel, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_CombinedIn),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.161",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.161", _x_saveccm, _x_destination, _x_Connection, _x_CombinedOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.161", _x_A0, _x_to, _x_SAchannel, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_CombinedOut),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.162",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.162", _x_saveccm, _x_destination, _x_Connection, _x_CombinedOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.162", _x_A0, _x_to, _x_SAchannel, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_CombinedOut),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.163",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.163", _x_saveccm, _x_destination, _x_Connection, _x_CombinedOut).
+	relation("_x_//@correspondences.13/@right.0/@featureEquivalences.163", _x_A0, _x_to, _x_SAchannel, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Connection, _x_CombinedOut),
+	metaedge(_x_A0, association, _x_to, _x_SAchannel, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Connection), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SAchannel), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SAchannel), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Connection), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+	%%%% node 2 prop %%%%
+	relation("_x_//@correspondences.13/@right.0/@constantBindings.0",_x_saveccm,_x_A0).
+	relation("_x_//@correspondences.13/@right.0/@constantBindings.0", _x_saveccm, _x_Connection).
+	relation("_x_//@correspondences.13/@right.0/@constantBindings.0", _x_A0, _x_navigability, "_x_#unidirectional", _x_SAchannel).
+	%% for each node, prop' must be generated
+	:- node(_x_saveccm, ID, _x_Connection),
+	not prop'(_x_A0, ID, ID, _x_navigability, "_x_#unidirectional"), node'(_x_A0, ID, _x_SAchannel), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- node(_x_saveccm, ID, _x_Connection),
+	not node'(_x_A0, ID, _x_SAchannel),
+	prop'(_x_A0, ID, ID, _x_navigability,"_x_#unidirectional"), mmt==_x_A0.
+
+
+	%%%% node 2 node (EquivalenceCorrespondence) %%%%
+relation("_x_//@correspondences.1",bx,bx).
+relation("_x_//@correspondences.1", _x_saveccm, _x_Assembly).
+relation("_x_//@correspondences.1", _x_A0, _x_SAcomponent).
+:- node(_x_saveccm, ID, _x_Assembly), not node'(_x_A0, ID, _x_SAcomponent), mmt==_x_A0.
+	%%%% prop 2 prop %%%%
+	relation("_x_//@correspondences.1/@featureEquivalences.0",bx,bx).
+	relation("_x_//@correspondences.1/@featureEquivalences.0", _x_saveccm, _x_name, _x_Assembly).
+	relation("_x_//@correspondences.1/@featureEquivalences.0", _x_A0, _x_name, _x_SAcomponent).
+	%% for each prop, prop' must be generated
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_Assembly),
+	not prop'(_x_A0, ID, IDmc, _x_name, Value), node'(_x_A0, IDmc, _x_SAcomponent), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_Assembly),
+	prop'(_x_A0, ID, IDmc, _x_name, Value), not node'(_x_A0, IDmc, _x_SAcomponent), mmt==_x_A0.
+	%% for each prop, prop' must exist
+	:- prop(_x_A0, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmc, _x_SAcomponent),
+	not prop'(_x_saveccm, ID, IDmc, _x_name, Value), node'(_x_saveccm, IDmc, _x_Assembly), mmt==_x_saveccm.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.1/@featureEquivalences.111",bx,bx).
+	relation("_x_//@correspondences.1/@featureEquivalences.111", _x_saveccm, _x_offer, _x_Assembly, _x_TriggerIn).
+	relation("_x_//@correspondences.1/@featureEquivalences.111", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Assembly, _x_TriggerIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Assembly), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Assembly), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.1/@featureEquivalences.121",bx,bx).
+	relation("_x_//@correspondences.1/@featureEquivalences.121", _x_saveccm, _x_offer, _x_Assembly, _x_DataOut).
+	relation("_x_//@correspondences.1/@featureEquivalences.121", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Assembly, _x_DataOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Assembly), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Assembly), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.1/@featureEquivalences.131",bx,bx).
+	relation("_x_//@correspondences.1/@featureEquivalences.131", _x_saveccm, _x_offer, _x_Assembly, _x_TriggerOut).
+	relation("_x_//@correspondences.1/@featureEquivalences.131", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Assembly, _x_TriggerOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Assembly), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Assembly), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.1/@featureEquivalences.141",bx,bx).
+	relation("_x_//@correspondences.1/@featureEquivalences.141", _x_saveccm, _x_offer, _x_Assembly, _x_DataIn).
+	relation("_x_//@correspondences.1/@featureEquivalences.141", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Assembly, _x_DataIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Assembly), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Assembly), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.1/@featureEquivalences.151",bx,bx).
+	relation("_x_//@correspondences.1/@featureEquivalences.151", _x_saveccm, _x_offer, _x_Assembly, _x_CombinedIn).
+	relation("_x_//@correspondences.1/@featureEquivalences.151", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Assembly, _x_CombinedIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Assembly), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Assembly), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.1/@featureEquivalences.161",bx,bx).
+	relation("_x_//@correspondences.1/@featureEquivalences.161", _x_saveccm, _x_offer, _x_Assembly, _x_CombinedOut).
+	relation("_x_//@correspondences.1/@featureEquivalences.161", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Assembly, _x_CombinedOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Assembly), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Assembly), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+
+
+	%%%% node 2 node (EquivalenceCorrespondence) %%%%
+relation("_x_//@correspondences.8",bx,bx).
+relation("_x_//@correspondences.8", _x_saveccm, _x_DataIn).
+relation("_x_//@correspondences.8", _x_A0, _x_SAinterface).
+:- node(_x_saveccm, ID, _x_DataIn), not node'(_x_A0, ID, _x_SAinterface), mmt==_x_A0.
+	%%%% prop 2 prop %%%%
+	relation("_x_//@correspondences.8/@featureEquivalences.0",bx,bx).
+	relation("_x_//@correspondences.8/@featureEquivalences.0", _x_saveccm, _x_name, _x_DataIn).
+	relation("_x_//@correspondences.8/@featureEquivalences.0", _x_A0, _x_name, _x_SAinterface).
+	%% for each prop, prop' must be generated
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_DataIn),
+	not prop'(_x_A0, ID, IDmc, _x_name, Value), node'(_x_A0, IDmc, _x_SAinterface), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_DataIn),
+	prop'(_x_A0, ID, IDmc, _x_name, Value), not node'(_x_A0, IDmc, _x_SAinterface), mmt==_x_A0.
+	%% for each prop, prop' must exist
+	:- prop(_x_A0, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmc, _x_SAinterface),
+	not prop'(_x_saveccm, ID, IDmc, _x_name, Value), node'(_x_saveccm, IDmc, _x_DataIn), mmt==_x_saveccm.
+
+
+
+	%%%% node 2 node (EquivalenceCorrespondence) %%%%
+relation("_x_//@correspondences.10",bx,bx).
+relation("_x_//@correspondences.10", _x_saveccm, _x_CombinedIn).
+relation("_x_//@correspondences.10", _x_A0, _x_SAinterface).
+:- node(_x_saveccm, ID, _x_CombinedIn), not node'(_x_A0, ID, _x_SAinterface), mmt==_x_A0.
+	%%%% prop 2 prop %%%%
+	relation("_x_//@correspondences.10/@featureEquivalences.0",bx,bx).
+	relation("_x_//@correspondences.10/@featureEquivalences.0", _x_saveccm, _x_name, _x_CombinedIn).
+	relation("_x_//@correspondences.10/@featureEquivalences.0", _x_A0, _x_name, _x_SAinterface).
+	%% for each prop, prop' must be generated
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_CombinedIn),
+	not prop'(_x_A0, ID, IDmc, _x_name, Value), node'(_x_A0, IDmc, _x_SAinterface), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_CombinedIn),
+	prop'(_x_A0, ID, IDmc, _x_name, Value), not node'(_x_A0, IDmc, _x_SAinterface), mmt==_x_A0.
+	%% for each prop, prop' must exist
+	:- prop(_x_A0, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmc, _x_SAinterface),
+	not prop'(_x_saveccm, ID, IDmc, _x_name, Value), node'(_x_saveccm, IDmc, _x_CombinedIn), mmt==_x_saveccm.
+
+
+
+	%%%% node 2 node (EquivalenceCorrespondence) %%%%
+relation("_x_//@correspondences.11",bx,bx).
+relation("_x_//@correspondences.11", _x_saveccm, _x_CombinedOut).
+relation("_x_//@correspondences.11", _x_A0, _x_SAinterface).
+:- node(_x_saveccm, ID, _x_CombinedOut), not node'(_x_A0, ID, _x_SAinterface), mmt==_x_A0.
+	%%%% prop 2 prop %%%%
+	relation("_x_//@correspondences.11/@featureEquivalences.0",bx,bx).
+	relation("_x_//@correspondences.11/@featureEquivalences.0", _x_saveccm, _x_name, _x_CombinedOut).
+	relation("_x_//@correspondences.11/@featureEquivalences.0", _x_A0, _x_name, _x_SAinterface).
+	%% for each prop, prop' must be generated
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_CombinedOut),
+	not prop'(_x_A0, ID, IDmc, _x_name, Value), node'(_x_A0, IDmc, _x_SAinterface), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_CombinedOut),
+	prop'(_x_A0, ID, IDmc, _x_name, Value), not node'(_x_A0, IDmc, _x_SAinterface), mmt==_x_A0.
+	%% for each prop, prop' must exist
+	:- prop(_x_A0, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmc, _x_SAinterface),
+	not prop'(_x_saveccm, ID, IDmc, _x_name, Value), node'(_x_saveccm, IDmc, _x_CombinedOut), mmt==_x_saveccm.
+
+
+
+	%%%% node 2 node (EquivalenceCorrespondence) %%%%
+relation("_x_//@correspondences.12",bx,bx).
+relation("_x_//@correspondences.12", _x_saveccm, _x_Delegation).
+relation("_x_//@correspondences.12", _x_A0, _x_SABinding).
+:- node(_x_saveccm, ID, _x_Delegation), not node'(_x_A0, ID, _x_SABinding), mmt==_x_A0.
+:- node(_x_A0, ID, _x_SABinding), not node'(_x_saveccm, ID, _x_Delegation), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.011",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.011", _x_saveccm, _x_source, _x_Delegation, _x_TriggerIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.011", _x_A0, _x_from, _x_SABinding, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_TriggerIn),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.012",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.012", _x_saveccm, _x_source, _x_Delegation, _x_TriggerIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.012", _x_A0, _x_from, _x_SABinding, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_TriggerIn),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.013",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.013", _x_saveccm, _x_source, _x_Delegation, _x_TriggerIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.013", _x_A0, _x_from, _x_SABinding, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_TriggerIn),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.021",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.021", _x_saveccm, _x_source, _x_Delegation, _x_DataOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.021", _x_A0, _x_from, _x_SABinding, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_DataOut),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.022",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.022", _x_saveccm, _x_source, _x_Delegation, _x_DataOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.022", _x_A0, _x_from, _x_SABinding, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_DataOut),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.023",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.023", _x_saveccm, _x_source, _x_Delegation, _x_DataOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.023", _x_A0, _x_from, _x_SABinding, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_DataOut),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.031",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.031", _x_saveccm, _x_source, _x_Delegation, _x_TriggerOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.031", _x_A0, _x_from, _x_SABinding, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_TriggerOut),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.032",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.032", _x_saveccm, _x_source, _x_Delegation, _x_TriggerOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.032", _x_A0, _x_from, _x_SABinding, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_TriggerOut),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.033",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.033", _x_saveccm, _x_source, _x_Delegation, _x_TriggerOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.033", _x_A0, _x_from, _x_SABinding, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_TriggerOut),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.041",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.041", _x_saveccm, _x_source, _x_Delegation, _x_DataIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.041", _x_A0, _x_from, _x_SABinding, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_DataIn),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.042",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.042", _x_saveccm, _x_source, _x_Delegation, _x_DataIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.042", _x_A0, _x_from, _x_SABinding, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_DataIn),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.043",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.043", _x_saveccm, _x_source, _x_Delegation, _x_DataIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.043", _x_A0, _x_from, _x_SABinding, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_DataIn),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.051",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.051", _x_saveccm, _x_source, _x_Delegation, _x_CombinedIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.051", _x_A0, _x_from, _x_SABinding, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_CombinedIn),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.052",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.052", _x_saveccm, _x_source, _x_Delegation, _x_CombinedIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.052", _x_A0, _x_from, _x_SABinding, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_CombinedIn),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.053",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.053", _x_saveccm, _x_source, _x_Delegation, _x_CombinedIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.053", _x_A0, _x_from, _x_SABinding, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_CombinedIn),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.061",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.061", _x_saveccm, _x_source, _x_Delegation, _x_CombinedOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.061", _x_A0, _x_from, _x_SABinding, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_CombinedOut),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.062",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.062", _x_saveccm, _x_source, _x_Delegation, _x_CombinedOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.062", _x_A0, _x_from, _x_SABinding, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_CombinedOut),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.063",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.063", _x_saveccm, _x_source, _x_Delegation, _x_CombinedOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.063", _x_A0, _x_from, _x_SABinding, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_from, IDS, IDT),
+	edge(_x_saveccm, ID, _x_source, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_source, _x_Delegation, _x_CombinedOut),
+	metaedge(_x_A0, association, _x_from, _x_SABinding, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_source, IDS, IDT),
+	edge(_x_A0, ID, _x_from, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.111",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.111", _x_saveccm, _x_destination, _x_Delegation, _x_TriggerIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.111", _x_A0, _x_to, _x_SABinding, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_TriggerIn),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.112",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.112", _x_saveccm, _x_destination, _x_Delegation, _x_TriggerIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.112", _x_A0, _x_to, _x_SABinding, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_TriggerIn),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.113",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.113", _x_saveccm, _x_destination, _x_Delegation, _x_TriggerIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.113", _x_A0, _x_to, _x_SABinding, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_TriggerIn),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.121",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.121", _x_saveccm, _x_destination, _x_Delegation, _x_DataOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.121", _x_A0, _x_to, _x_SABinding, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_DataOut),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.122",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.122", _x_saveccm, _x_destination, _x_Delegation, _x_DataOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.122", _x_A0, _x_to, _x_SABinding, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_DataOut),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.123",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.123", _x_saveccm, _x_destination, _x_Delegation, _x_DataOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.123", _x_A0, _x_to, _x_SABinding, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_DataOut),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.131",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.131", _x_saveccm, _x_destination, _x_Delegation, _x_TriggerOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.131", _x_A0, _x_to, _x_SABinding, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_TriggerOut),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.132",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.132", _x_saveccm, _x_destination, _x_Delegation, _x_TriggerOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.132", _x_A0, _x_to, _x_SABinding, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_TriggerOut),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.133",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.133", _x_saveccm, _x_destination, _x_Delegation, _x_TriggerOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.133", _x_A0, _x_to, _x_SABinding, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_TriggerOut),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.141",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.141", _x_saveccm, _x_destination, _x_Delegation, _x_DataIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.141", _x_A0, _x_to, _x_SABinding, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_DataIn),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.142",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.142", _x_saveccm, _x_destination, _x_Delegation, _x_DataIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.142", _x_A0, _x_to, _x_SABinding, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_DataIn),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.143",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.143", _x_saveccm, _x_destination, _x_Delegation, _x_DataIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.143", _x_A0, _x_to, _x_SABinding, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_DataIn),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.151",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.151", _x_saveccm, _x_destination, _x_Delegation, _x_CombinedIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.151", _x_A0, _x_to, _x_SABinding, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_CombinedIn),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.152",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.152", _x_saveccm, _x_destination, _x_Delegation, _x_CombinedIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.152", _x_A0, _x_to, _x_SABinding, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_CombinedIn),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.153",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.153", _x_saveccm, _x_destination, _x_Delegation, _x_CombinedIn).
+	relation("_x_//@correspondences.12/@featureEquivalences.153", _x_A0, _x_to, _x_SABinding, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_CombinedIn),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.161",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.161", _x_saveccm, _x_destination, _x_Delegation, _x_CombinedOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.161", _x_A0, _x_to, _x_SABinding, _x_SAconnector).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_CombinedOut),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAconnector),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAconnector), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAconnector),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.162",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.162", _x_saveccm, _x_destination, _x_Delegation, _x_CombinedOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.162", _x_A0, _x_to, _x_SABinding, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_CombinedOut),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.12/@featureEquivalences.163",bx,bx).
+	relation("_x_//@correspondences.12/@featureEquivalences.163", _x_saveccm, _x_destination, _x_Delegation, _x_CombinedOut).
+	relation("_x_//@correspondences.12/@featureEquivalences.163", _x_A0, _x_to, _x_SABinding, _x_SAcomponent).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_to, IDS, IDT),
+	edge(_x_saveccm, ID, _x_destination, IDS, IDT),
+	metaedge(_x_saveccm, association, _x_destination, _x_Delegation, _x_CombinedOut),
+	metaedge(_x_A0, association, _x_to, _x_SABinding, _x_SAcomponent),
+	node(_x_saveccm, IDS, _x_Delegation), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SABinding), node'(_x_A0, IDT, _x_SAcomponent), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_destination, IDS, IDT),
+	edge(_x_A0, ID, _x_to, IDS, IDT),
+	node(_x_A0, IDS, _x_SABinding), node(_x_A0, IDT, _x_SAcomponent),
+	node'(_x_saveccm, IDS, _x_Delegation), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+
+
+	%%%% node 2 node (EquivalenceCorrespondence) %%%%
+relation("_x_//@correspondences.5",bx,bx).
+relation("_x_//@correspondences.5", _x_saveccm, _x_Switch).
+relation("_x_//@correspondences.5", _x_A0, _x_SAconnector).
+:- node(_x_saveccm, ID, _x_Switch), not node'(_x_A0, ID, _x_SAconnector), mmt==_x_A0.
+:- node(_x_A0, ID, _x_SAconnector), not node'(_x_saveccm, ID, _x_Switch), mmt==_x_saveccm.
+	%%%% prop 2 prop %%%%
+	relation("_x_//@correspondences.5/@featureEquivalences.0",bx,bx).
+	relation("_x_//@correspondences.5/@featureEquivalences.0", _x_saveccm, _x_name, _x_Switch).
+	relation("_x_//@correspondences.5/@featureEquivalences.0", _x_A0, _x_name, _x_SAconnector).
+	%% for each prop, prop' must be generated
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_Switch),
+	not prop'(_x_A0, ID, IDmc, _x_name, Value), node'(_x_A0, IDmc, _x_SAconnector), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_Switch),
+	prop'(_x_A0, ID, IDmc, _x_name, Value), not node'(_x_A0, IDmc, _x_SAconnector), mmt==_x_A0.
+	%% for each prop, prop' must exist
+	:- prop(_x_A0, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmc, _x_SAconnector),
+	not prop'(_x_saveccm, ID, IDmc, _x_name, Value), node'(_x_saveccm, IDmc, _x_Switch), mmt==_x_saveccm.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_A0, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmc, _x_SAconnector),
+	prop'(_x_saveccm, ID, IDmc, _x_name, Value), not node'(_x_saveccm, IDmc, _x_Switch), mmt==_x_saveccm.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.5/@featureEquivalences.111",bx,bx).
+	relation("_x_//@correspondences.5/@featureEquivalences.111", _x_saveccm, _x_offer, _x_Switch, _x_TriggerIn).
+	relation("_x_//@correspondences.5/@featureEquivalences.111", _x_A0, _x_points, _x_SAconnector, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Switch, _x_TriggerIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAconnector, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Switch), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SAconnector), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAconnector), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Switch), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.5/@featureEquivalences.121",bx,bx).
+	relation("_x_//@correspondences.5/@featureEquivalences.121", _x_saveccm, _x_offer, _x_Switch, _x_DataOut).
+	relation("_x_//@correspondences.5/@featureEquivalences.121", _x_A0, _x_points, _x_SAconnector, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Switch, _x_DataOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAconnector, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Switch), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SAconnector), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAconnector), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Switch), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.5/@featureEquivalences.131",bx,bx).
+	relation("_x_//@correspondences.5/@featureEquivalences.131", _x_saveccm, _x_offer, _x_Switch, _x_TriggerOut).
+	relation("_x_//@correspondences.5/@featureEquivalences.131", _x_A0, _x_points, _x_SAconnector, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Switch, _x_TriggerOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAconnector, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Switch), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SAconnector), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAconnector), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Switch), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.5/@featureEquivalences.141",bx,bx).
+	relation("_x_//@correspondences.5/@featureEquivalences.141", _x_saveccm, _x_offer, _x_Switch, _x_DataIn).
+	relation("_x_//@correspondences.5/@featureEquivalences.141", _x_A0, _x_points, _x_SAconnector, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Switch, _x_DataIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAconnector, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Switch), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SAconnector), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAconnector), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Switch), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.5/@featureEquivalences.151",bx,bx).
+	relation("_x_//@correspondences.5/@featureEquivalences.151", _x_saveccm, _x_offer, _x_Switch, _x_CombinedIn).
+	relation("_x_//@correspondences.5/@featureEquivalences.151", _x_A0, _x_points, _x_SAconnector, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Switch, _x_CombinedIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAconnector, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Switch), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SAconnector), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAconnector), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Switch), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.5/@featureEquivalences.161",bx,bx).
+	relation("_x_//@correspondences.5/@featureEquivalences.161", _x_saveccm, _x_offer, _x_Switch, _x_CombinedOut).
+	relation("_x_//@correspondences.5/@featureEquivalences.161", _x_A0, _x_points, _x_SAconnector, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Switch, _x_CombinedOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAconnector, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Switch), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SAconnector), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAconnector), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Switch), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+
+
+	%%%% node 2 node (EquivalenceCorrespondence) %%%%
+relation("_x_//@correspondences.9",bx,bx).
+relation("_x_//@correspondences.9", _x_saveccm, _x_DataOut).
+relation("_x_//@correspondences.9", _x_A0, _x_SAinterface).
+:- node(_x_saveccm, ID, _x_DataOut), not node'(_x_A0, ID, _x_SAinterface), mmt==_x_A0.
+	%%%% prop 2 prop %%%%
+	relation("_x_//@correspondences.9/@featureEquivalences.0",bx,bx).
+	relation("_x_//@correspondences.9/@featureEquivalences.0", _x_saveccm, _x_name, _x_DataOut).
+	relation("_x_//@correspondences.9/@featureEquivalences.0", _x_A0, _x_name, _x_SAinterface).
+	%% for each prop, prop' must be generated
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_DataOut),
+	not prop'(_x_A0, ID, IDmc, _x_name, Value), node'(_x_A0, IDmc, _x_SAinterface), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_DataOut),
+	prop'(_x_A0, ID, IDmc, _x_name, Value), not node'(_x_A0, IDmc, _x_SAinterface), mmt==_x_A0.
+	%% for each prop, prop' must exist
+	:- prop(_x_A0, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmc, _x_SAinterface),
+	not prop'(_x_saveccm, ID, IDmc, _x_name, Value), node'(_x_saveccm, IDmc, _x_DataOut), mmt==_x_saveccm.
+
+
+
+	%%%% node 2 node (EquivalenceCorrespondence) %%%%
+relation("_x_//@correspondences.0",bx,bx).
+relation("_x_//@correspondences.0", _x_saveccm, _x_Component).
+relation("_x_//@correspondences.0", _x_A0, _x_SAcomponent).
+:- node(_x_saveccm, ID, _x_Component), not node'(_x_A0, ID, _x_SAcomponent), mmt==_x_A0.
+	%%%% prop 2 prop %%%%
+	relation("_x_//@correspondences.0/@featureEquivalences.0",bx,bx).
+	relation("_x_//@correspondences.0/@featureEquivalences.0", _x_saveccm, _x_name, _x_Component).
+	relation("_x_//@correspondences.0/@featureEquivalences.0", _x_A0, _x_name, _x_SAcomponent).
+	%% for each prop, prop' must be generated
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_Component),
+	not prop'(_x_A0, ID, IDmc, _x_name, Value), node'(_x_A0, IDmc, _x_SAcomponent), mmt==_x_A0.
+	%% if node' exists, then a prop' must be generated for each prop
+	:- prop(_x_saveccm, ID, IDmc, _x_name, Value),
+	node(_x_saveccm, IDmc, _x_Component),
+	prop'(_x_A0, ID, IDmc, _x_name, Value), not node'(_x_A0, IDmc, _x_SAcomponent), mmt==_x_A0.
+	%% for each prop, prop' must exist
+	:- prop(_x_A0, ID, IDmc, _x_name, Value),
+	node(_x_A0, IDmc, _x_SAcomponent),
+	not prop'(_x_saveccm, ID, IDmc, _x_name, Value), node'(_x_saveccm, IDmc, _x_Component), mmt==_x_saveccm.
+
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.0/@featureEquivalences.111",bx,bx).
+	relation("_x_//@correspondences.0/@featureEquivalences.111", _x_saveccm, _x_offer, _x_Component, _x_TriggerIn).
+	relation("_x_//@correspondences.0/@featureEquivalences.111", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Component, _x_TriggerIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Component), node(_x_saveccm, IDT, _x_TriggerIn),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Component), node'(_x_saveccm, IDT, _x_TriggerIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.0/@featureEquivalences.121",bx,bx).
+	relation("_x_//@correspondences.0/@featureEquivalences.121", _x_saveccm, _x_offer, _x_Component, _x_DataOut).
+	relation("_x_//@correspondences.0/@featureEquivalences.121", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Component, _x_DataOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Component), node(_x_saveccm, IDT, _x_DataOut),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Component), node'(_x_saveccm, IDT, _x_DataOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.0/@featureEquivalences.131",bx,bx).
+	relation("_x_//@correspondences.0/@featureEquivalences.131", _x_saveccm, _x_offer, _x_Component, _x_TriggerOut).
+	relation("_x_//@correspondences.0/@featureEquivalences.131", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Component, _x_TriggerOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Component), node(_x_saveccm, IDT, _x_TriggerOut),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Component), node'(_x_saveccm, IDT, _x_TriggerOut), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.0/@featureEquivalences.141",bx,bx).
+	relation("_x_//@correspondences.0/@featureEquivalences.141", _x_saveccm, _x_offer, _x_Component, _x_DataIn).
+	relation("_x_//@correspondences.0/@featureEquivalences.141", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Component, _x_DataIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Component), node(_x_saveccm, IDT, _x_DataIn),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Component), node'(_x_saveccm, IDT, _x_DataIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.0/@featureEquivalences.151",bx,bx).
+	relation("_x_//@correspondences.0/@featureEquivalences.151", _x_saveccm, _x_offer, _x_Component, _x_CombinedIn).
+	relation("_x_//@correspondences.0/@featureEquivalences.151", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Component, _x_CombinedIn),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Component), node(_x_saveccm, IDT, _x_CombinedIn),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Component), node'(_x_saveccm, IDT, _x_CombinedIn), mmt==_x_saveccm.
+	%%%% edge 2 edge %%%%
+	relation("_x_//@correspondences.0/@featureEquivalences.161",bx,bx).
+	relation("_x_//@correspondences.0/@featureEquivalences.161", _x_saveccm, _x_offer, _x_Component, _x_CombinedOut).
+	relation("_x_//@correspondences.0/@featureEquivalences.161", _x_A0, _x_points, _x_SAcomponent, _x_SAinterface).
+	%% for each edge, edge' must be created
+	:- not edge'(_x_A0, ID, _x_points, IDS, IDT),
+	edge(_x_saveccm, ID, _x_offer, IDS, IDT),
+	metaedge(_x_saveccm, composition, _x_offer, _x_Component, _x_CombinedOut),
+	metaedge(_x_A0, composition, _x_points, _x_SAcomponent, _x_SAinterface),
+	node(_x_saveccm, IDS, _x_Component), node(_x_saveccm, IDT, _x_CombinedOut),
+	node'(_x_A0, IDS, _x_SAcomponent), node'(_x_A0, IDT, _x_SAinterface), mmt==_x_A0.
+	:- not edge'(_x_saveccm, ID, _x_offer, IDS, IDT),
+	edge(_x_A0, ID, _x_points, IDS, IDT),
+	node(_x_A0, IDS, _x_SAcomponent), node(_x_A0, IDT, _x_SAinterface),
+	node'(_x_saveccm, IDS, _x_Component), node'(_x_saveccm, IDT, _x_CombinedOut), mmt==_x_saveccm.
+
+:- node(_x_A0, ID, _x_SAcomponent), node'(_x_saveccm, ID, Node1), node'(_x_saveccm, ID, Node2),
+	relation(R1, _x_saveccm, Node1),
+	relation(R1, _x_A0, _x_SAcomponent),
+	relation(R2, _x_saveccm, Node2),
+	relation(R2, _x_A0, _x_SAcomponent),
+	Node1 != Node2, mmt==_x_saveccm.
+:- not node'(_x_saveccm, ID, _x_Delay),
+not node'(_x_saveccm, ID, _x_Composite),
+not node'(_x_saveccm, ID, _x_Clock),
+not node'(_x_saveccm, ID, _x_Assembly),
+not node'(_x_saveccm, ID, _x_Component),
+node(_x_A0, ID, _x_SAcomponent), mmt==_x_saveccm.
+
+:- node(_x_A0, ID, _x_SAinterface), node'(_x_saveccm, ID, Node1), node'(_x_saveccm, ID, Node2),
+	relation(R1, _x_saveccm, Node1),
+	relation(R1, _x_A0, _x_SAinterface),
+	relation(R2, _x_saveccm, Node2),
+	relation(R2, _x_A0, _x_SAinterface),
+	Node1 != Node2, mmt==_x_saveccm.
+:- not node'(_x_saveccm, ID, _x_TriggerIn),
+not node'(_x_saveccm, ID, _x_TriggerOut),
+not node'(_x_saveccm, ID, _x_DataIn),
+not node'(_x_saveccm, ID, _x_CombinedIn),
+not node'(_x_saveccm, ID, _x_CombinedOut),
+not node'(_x_saveccm, ID, _x_DataOut),
+node(_x_A0, ID, _x_SAinterface), mmt==_x_saveccm.
+

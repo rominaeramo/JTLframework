@@ -1,0 +1,81 @@
+
+%%%% Target Model 1
+model(m2,x_HSM).
+node(x_HSM,1,"x/1",x_StateMachine).
+node(x_HSM,4,"x/4",x_Transition).
+node(x_HSM,4,"x/3",x_State).
+node(x_HSM,3,"x/3",x_CompositeState).
+node(x_HSM,3,"x/2",x_State).
+node(x_HSM,2,"x/2",x_CompositeState).
+edge(x_HSM,6,"x/6",x_target,4,"x/4",3,"x/3").
+edge(x_HSM,5,"x/5",x_source,4,"x/4",3,"x/2").
+edge(x_HSM,5,"x/3",x_ownedSubState,3,"x/3",4,"x/3").
+edge(x_HSM,4,"x/2",x_ownedSubState,2,"x/2",3,"x/2").
+
+%%%% Target Model 2  [may model]
+model(m3,x_HSM).
+node(x_HSM,m3,1,"x/1",x_StateMachine).
+node(x_HSM,4,"x/4",x_Transition).
+node(x_HSM,4,"x/3",x_State).
+node(x_HSM,3,"x/3",x_CompositeState).
+node(x_HSM,3,"x/2",x_State).
+node(x_HSM,2,"x/2",x_CompositeState).
+edge(x_HSM,5,"x/5",x_source,4,"x/4",2,"x/2").
+edge(x_HSM,6,"x/6",x_target,4,"x/4",4,"x/3").
+edge(x_HSM,6,"x/6",x_target,4,"x/4",3,"x/3").
+edge(x_HSM,5,"x/5",x_source,4,"x/4",3,"x/2").
+edge(x_HSM,5,"x/3",x_ownedSubState,3,"x/3",4,"x/3").
+edge(x_HSM,4,"x/2",x_ownedSubState,2,"x/2",3,"x/2").
+
+%%%% Target Model 3
+model(m4,x_HSM).
+node(x_HSM,1,"x/1",x_StateMachine).
+node(x_HSM,4,"x/4",x_Transition).
+node(x_HSM,4,"x/3",x_State).
+node(x_HSM,3,"x/3",x_CompositeState).
+node(x_HSM,3,"x/2",x_State).
+node(x_HSM,2,"x/2",x_CompositeState).
+edge(x_HSM,6,"x/6",x_target,4,"x/4",4,"x/3").
+edge(x_HSM,5,"x/5",x_source,4,"x/4",3,"x/2").
+edge(x_HSM,5,"x/3",x_ownedSubState,3,"x/3",4,"x/3").
+edge(x_HSM,4,"x/2",x_ownedSubState,2,"x/2",3,"x/2").
+
+%%%% Target Model 4
+model(m5,x_HSM).
+node(x_HSM,1,"x/1",x_StateMachine).
+node(x_HSM,4,"x/4",x_Transition).
+node(x_HSM,4,"x/3",x_State).
+node(x_HSM,3,"x/3",x_CompositeState).
+node(x_HSM,3,"x/2",x_State).
+node(x_HSM,2,"x/2",x_CompositeState).
+edge(x_HSM,5,"x/5",x_source,4,"x/4",2,"x/2").
+edge(x_HSM,6,"x/6",x_target,4,"x/4",3,"x/3").
+edge(x_HSM,5,"x/3",x_ownedSubState,3,"x/3",4,"x/3").
+edge(x_HSM,4,"x/2",x_ownedSubState,2,"x/2",3,"x/2").
+
+%%%% Target Model 5
+model(m6,x_HSM).
+node(x_HSM,1,"x/1",x_StateMachine).
+node(x_HSM,4,"x/4",x_Transition).
+node(x_HSM,4,"x/3",x_State).
+node(x_HSM,3,"x/3",x_CompositeState).
+node(x_HSM,3,"x/2",x_State).
+node(x_HSM,2,"x/2",x_CompositeState).
+edge(x_HSM,5,"x/5",x_source,4,"x/4",2,"x/2").
+edge(x_HSM,6,"x/6",x_target,4,"x/4",4,"x/3").
+edge(x_HSM,5,"x/3",x_ownedSubState,3,"x/3",4,"x/3").
+edge(x_HSM,4,"x/2",x_ownedSubState,2,"x/2",3,"x/2").
+
+%%%% Source Model 
+model(source,x_SM).
+node(x_SM,1,"x/1",x_StateMachine).
+node(x_SM,2,"x/2",x_State).
+node(x_SM,3,"x/3",x_State).
+node(x_SM,4,"x/4",x_Transition).
+edge(x_SM,5,"x/5",x_source,4,"x/4",2,"x/2").
+edge(x_SM,6,"x/6",x_target,4,"x/4",3,"x/3").
+edge(x_SM,7,"x/7",x_ownedState,1,"x/1",3,"x/3").
+edge(x_SM,8,"x/8",x_ownedState,1,"x/1",3,"x/2").
+edge(x_SM,9,"x/9",x_ownedTransition,1,"x/1",4,"x/4").
+
+%%%% Traces

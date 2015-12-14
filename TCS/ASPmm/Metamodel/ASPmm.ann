@@ -1,0 +1,21 @@
+annotate ASPmm {
+	annotate ASPmm with
+		nsURI='ASPmm',
+		nsPrefix='ASPmm';
+
+	annotate PrimitiveTypes with
+		nsURI='ASPmm-PrimitiveTypes',
+		nsPrefix='pt';
+
+	annotate "PrimitiveTypes::Boolean" with
+		instanceClassName='boolean';
+
+	annotate "PrimitiveTypes::Double" with
+		instanceClassName='double';
+
+	annotate "PrimitiveTypes::Integer" with
+		instanceClassName='int';
+
+	annotate "PrimitiveTypes::String" with
+		instanceClassName='java.lang.String';
+}

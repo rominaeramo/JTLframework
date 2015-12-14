@@ -1,0 +1,57 @@
+-- @name		ASPm
+-- @version		1.0
+-- @authors		Romina
+-- @date		2009/09/18
+-- @description	${description}
+package ASPm {
+
+	-- Every class should extend LocatedElement, directly or indirectly.
+	-- This is a technical constraint to support text-to-model traceability.
+	abstract class LocatedElement {
+		attribute location[0-1] : String;
+		attribute commentsBefore[*] ordered : String;
+		attribute commentsAfter[*] ordered : String;
+	}
+
+-- BEGIN Language-specific classes (replace sample contents)
+	class Model extends LocatedElement {
+		attribute id: String;
+		attribute metamodel: String;
+		reference nodes[*] container  : Node oppositeOf model;
+		reference edges[*] container  : Edge oppositeOf model;
+		reference props[*] container : Prop oppositeOf model;
+	}
+
+	class Node extends LocatedElement {
+		attribute id: Integer;
+		attribute idTrace: String;
+		attribute metaclass : String;
+		reference model[1-1] : Model oppositeOf nodes;
+	}
+	     
+	class Prop extends LocatedElement {
+		attribute id : Integer;
+		attribute idTrace: String;
+		attribute name : String;
+		attribute value: String;
+		reference model[1-1]  : Model oppositeOf props;
+		reference node[1-1]   : Node;
+	}
+	
+	class Edge extends LocatedElement{
+		attribute id: Integer;
+		attribute idTrace: String;
+		attribute name: String;
+		reference source[1-1] : Node;
+		reference target[1-1] : Node;
+		reference model[1-1]  : Model oppositeOf edges;
+	}
+-- END Language-specific classes
+}
+
+package PrimitiveTypes {
+	datatype Boolean;
+	datatype Double;
+	datatype Integer;
+	datatype String;
+}

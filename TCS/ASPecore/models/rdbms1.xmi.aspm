@@ -1,0 +1,34 @@
+model("_x_m/", _x_RDBMS).
+  node(_x_RDBMS, 1, "_x_/", _x_Schema).
+  node(_x_RDBMS, 9, "_x_//@tables.0", _x_Table).
+  node(_x_RDBMS, 23, "_x_//@tables.1", _x_Table).
+  node(_x_RDBMS, 40, "_x_//@tables.0/@cols.0", _x_Column).
+  node(_x_RDBMS, 42, "_x_//@tables.0/@cols.1", _x_Column).
+  node(_x_RDBMS, 44, "_x_//@tables.0/@cols.2", _x_Column).
+  node(_x_RDBMS, 46, "_x_//@tables.1/@cols.0", _x_Column).
+  node(_x_RDBMS, 48, "_x_//@tables.1/@cols.1", _x_Column).
+  node(_x_RDBMS, 50, "_x_//@tables.1/@cols.2", _x_Column).
+  node(_x_RDBMS, 52, "_x_//@tables.1/@cols.3", _x_Column).
+
+  edge(_x_RDBMS, 34, "_x_/2", _x_tables, 1, "_x_/", 9, "_x_//@tables.0").
+  edge(_x_RDBMS, 67, "_x_/5", _x_tables, 1, "_x_/", 23, "_x_//@tables.1").
+  edge(_x_RDBMS, 1112, "_x_//@tables.010", _x_cols, 9, "_x_//@tables.0", 40, "_x_//@tables.0/@cols.0").
+  edge(_x_RDBMS, 1415, "_x_//@tables.013", _x_cols, 9, "_x_//@tables.0", 42, "_x_//@tables.0/@cols.1").
+  edge(_x_RDBMS, 1718, "_x_//@tables.016", _x_cols, 9, "_x_//@tables.0", 44, "_x_//@tables.0/@cols.2").
+  edge(_x_RDBMS, 2021, "_x_//@tables.019", _x_pkey, 9, "_x_//@tables.0", 40, "_x_//@tables.0/@cols.0").
+  edge(_x_RDBMS, 2526, "_x_//@tables.124", _x_cols, 23, "_x_//@tables.1", 46, "_x_//@tables.1/@cols.0").
+  edge(_x_RDBMS, 2829, "_x_//@tables.127", _x_cols, 23, "_x_//@tables.1", 48, "_x_//@tables.1/@cols.1").
+  edge(_x_RDBMS, 3132, "_x_//@tables.130", _x_cols, 23, "_x_//@tables.1", 50, "_x_//@tables.1/@cols.2").
+  edge(_x_RDBMS, 3435, "_x_//@tables.133", _x_cols, 23, "_x_//@tables.1", 52, "_x_//@tables.1/@cols.3").
+  edge(_x_RDBMS, 3738, "_x_//@tables.136", _x_pkey, 23, "_x_//@tables.1", 40, "_x_//@tables.0/@cols.0").
+
+  prop(_x_RDBMS, 81, "_x_/1", 1, "_x_/", _x_name, _x_university).
+  prop(_x_RDBMS, 221, "_x_//@tables.01", 9, "_x_//@tables.0", _x_name, _x_employer).
+  prop(_x_RDBMS, 391, "_x_//@tables.11", 23, "_x_//@tables.1", _x_name, _x_professor).
+  prop(_x_RDBMS, 412, "_x_//@tables.0/@cols.02", 40, "_x_//@tables.0/@cols.0", _x_name, _x_name).
+  prop(_x_RDBMS, 432, "_x_//@tables.0/@cols.12", 42, "_x_//@tables.0/@cols.1", _x_name, _x_working_address).
+  prop(_x_RDBMS, 452, "_x_//@tables.0/@cols.22", 44, "_x_//@tables.0/@cols.2", _x_name, _x_department).
+  prop(_x_RDBMS, 472, "_x_//@tables.1/@cols.02", 46, "_x_//@tables.1/@cols.0", _x_name, _x_name).
+  prop(_x_RDBMS, 492, "_x_//@tables.1/@cols.12", 48, "_x_//@tables.1/@cols.1", _x_name, _x_working_address).
+  prop(_x_RDBMS, 512, "_x_//@tables.1/@cols.22", 50, "_x_//@tables.1/@cols.2", _x_name, _x_department).
+  prop(_x_RDBMS, 532, "_x_//@tables.1/@cols.32", 52, "_x_//@tables.1/@cols.3", _x_name, _x_number_of_pubblications).

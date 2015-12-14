@@ -1,0 +1,8 @@
+#const a = 3.
+#const b = 4.
+
+somma(a + b).
+
+#hide.
+
+show somma(X).

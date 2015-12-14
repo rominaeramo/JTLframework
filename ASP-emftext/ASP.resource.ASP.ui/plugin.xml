@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.emftext.access.syntax.ui">
+		<metaInformationProvider class="ASP.resource.ASP.ui.ASPUIMetaInformation" id="ASP.resource.ASP.ui.ASPUIMetaInformation">
+		</metaInformationProvider>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors">
+		<editor class="ASP.resource.ASP.ui.ASPEditor" contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor" extensions="ASP" icon="icons/editor_icon.gif" id="ASP.resource.ASP.ui.ASPEditor" name="EMFText ASP Editor">
+			<contentTypeBinding contentTypeId="ASP.resource.ASP">
+			</contentTypeBinding>
+		</editor>
+	</extension>
+	
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer class="ASP.resource.ASP.ui.ASPPreferenceInitializer">
+		</initializer>
+	</extension>
+	
+	<extension point="org.eclipse.ui.preferencePages">
+		<page name="ASP Text Editor" id="ASP.resource.ASP.ui.ASPPreferencePage" class="ASP.resource.ASP.ui.ASPPreferencePage" category="org.eclipse.ui.preferencePages.GeneralTextEditor">
+		</page>
+		<page name="Syntax Coloring" id="ASP.resource.ASP.ui.ASPSyntaxColoringPreferencePage" class="ASP.resource.ASP.ui.ASPSyntaxColoringPreferencePage" category="ASP.resource.ASP.ui.ASPPreferencePage">
+		</page>
+		<page name="Brackets" id="ASP.resource.ASP.ui.ASPBracketPreferencePage" class="ASP.resource.ASP.ui.ASPBracketPreferencePage" category="ASP.resource.ASP.ui.ASPPreferencePage">
+		</page>
+	</extension>
+	
+	<extension point="org.eclipse.ui.newWizards">
+		<category id="org.emftext.runtime.ui.EMFTextFileCategory" name="EMFText File">
+		</category>
+		<wizard category="org.emftext.runtime.ui.EMFTextFileCategory" icon="/icons/default_new_icon.gif" class="ASP.resource.ASP.ui.ASPNewFileWizard" id="ASP.resource.ASP.ui.ASPNewFileWizard" name="EMFText .ASP file">
+		</wizard>
+		<category id="org.emftext.runtime.ui.EMFTextProjectCategory" name="EMFText Project">
+		</category>
+		<wizard category="org.emftext.runtime.ui.EMFTextProjectCategory" icon="/icons/default_new_icon.gif" class="ASP.resource.ASP.ui.ASPNewProjectWizard" id="ASP.resource.ASP.ui.ASPNewProjectWizard" name="EMFText ASP project" project="true">
+		</wizard>
+	</extension>
+	
+	<extension point="org.eclipse.ui.ide.markerResolution">
+		<markerResolutionGenerator class="ASP.resource.ASP.ui.ASPMarkerResolutionGenerator" markerType="ASP.resource.ASP.problem">
+		</markerResolutionGenerator>
+	</extension>
+	
+	<extension point="org.eclipse.core.filebuffers.annotationModelCreation">
+		<factory class="ASP.resource.ASP.ui.ASPAnnotationModelFactory" extensions="ASP">
+		</factory>
+	</extension>
+	
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type id="ASP.resource.ASP" name=".ASP File" base-type="org.eclipse.core.runtime.text" file-extensions="ASP">
+		</content-type>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.documentProviders">
+		<provider class="org.eclipse.ui.editors.text.TextFileDocumentProvider" extensions="ASP" id="ASP.resource.ASP.ui.provider">
+		</provider>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.annotationTypes">
+		<type name="ASP.resource.ASP.ui.occurences">
+		</type>
+		<type name="ASP.resource.ASP.ui.occurences.declaration" super="ASP.resource.ASP.ui.occurences">
+		</type>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+		<specification annotationType="ASP.resource.ASP.ui.occurences" label="Occurrences (in .ASP files)" icon="/icons/occurrence_icon.gif" textPreferenceKey="ASP.occurrenceIndication" textPreferenceValue="false" highlightPreferenceKey="ASP.occurrenceHighlighting" highlightPreferenceValue="true" contributesToHeader="false" overviewRulerPreferenceKey="ASP.occurrenceIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="ASP.occurrenceIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="ASP.occurrenceIndicationColor" colorPreferenceValue="212,212,212" presentationLayer="4" showInNextPrevDropdownToolbarActionKey="ASP.showOccurrenceInNextPrevDropdownToolbarAction" showInNextPrevDropdownToolbarAction="true" isGoToNextNavigationTargetKey="ASP.isOccurrenceGoToNextNavigationTarget" isGoToNextNavigationTarget="false" isGoToPreviousNavigationTargetKey="ASP.isOccurrenceGoToPreviousNavigationTarget" isGoToPreviousNavigationTarget="false" textStylePreferenceKey="ASP.occurrenceTextStyle" textStylePreferenceValue="NONE">
+		</specification>
+		<specification annotationType="ASP.resource.ASP.ui.occurences.declaration" label="Declarations (in .ASP files)" textPreferenceKey="ASP.declarationIndication" textPreferenceValue="false" highlightPreferenceKey="ASP.declarationHighlighting" highlightPreferenceValue="true" overviewRulerPreferenceKey="ASP.declarationIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="ASP.declarationIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="ASP.declarationIndicationColor" colorPreferenceValue="240,216,168" presentationLayer="4" textStylePreferenceKey="ASP.declarationTextStyle" textStylePreferenceValue="NONE">
+		</specification>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+		<launchConfigurationTypeImage icon="/icons/launch_type_icon.gif" configTypeID="ASP.resource.ASP.ui.launchConfigurationType" id="ASP.launchImage">
+		</launchConfigurationTypeImage>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+		<launchConfigurationTabGroup type="ASP.resource.ASP.ui.launchConfigurationType" class="ASP.resource.ASP.ui.launch.ASPLaunchConfigurationTabGroup" id="ASP.launchConfigurationTabGroup" helpContextId="ASP.launchConfigHelpContext">
+			<launchMode mode="debug" perspective="org.eclipse.debug.ui.DebugPerspective" description="Debug ASP model.">
+			</launchMode>
+			<launchMode mode="run" description="Run ASP model.">
+			</launchMode>
+		</launchConfigurationTabGroup>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchShortcuts">
+		<shortcut label="ASP Application" icon="/icons/launch_shortcut_icon.gif" helpContextId="ASP.launch" modes="run,debug" class="ASP.resource.ASP.ui.launch.ASPLaunchShortcut" description="Launch a ASP model" id="ASP.launchShortcut">
+			<description description="Run ASP model" mode="run">
+			</description>
+			<description description="Debug ASP model" mode="debug">
+			</description>
+			<contextualLaunch>
+				<enablement>
+					<with variable="selection">
+						<count value="1">
+						</count>
+						<iterate>
+							<test property="ASP.isLaunchable">
+							</test>
+						</iterate>
+					</with>
+				</enablement>
+			</contextualLaunch>
+			<configurationType id="ASP.resource.ASP.ui.launchConfigurationType">
+			</configurationType>
+		</shortcut>
+	</extension>
+	
+	<extension point="org.eclipse.core.expressions.propertyTesters">
+		<propertyTester id="ASP.PropertyTester" type="java.lang.Object" namespace="ASP" properties="isLaunchable" class="ASP.resource.ASP.ui.ASPPropertyTester">
+		</propertyTester>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.annotationTypes">
+		<type name="ASP.resource.ASP.ui.debug.lineBreakpoint" markerType="ASP.resource.ASP.debug.lineBreakpoint.marker" super="org.eclipse.debug.core.breakpoint">
+		</type>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+		<specification annotationType="ASP.resource.ASP.ui.debug.lineBreakpoint" label="Breakpoints (in .ASP files)" icon="/icons/breakpoint_icon.gif" textPreferenceKey="ASP.resource.ASP.ui.lineBreakpoint" textPreferenceValue="false" highlightPreferenceKey="ASP.resource.ASP.ui.lineBreakpointHighlighting" highlightPreferenceValue="true" contributesToHeader="false" overviewRulerPreferenceKey="ASP.resource.ASP.ui.lineBreakpointIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="ASP.resource.ASP.ui.lineBreakpointIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="ASP.resource.ASP.ui.lineBreakpointColor" colorPreferenceValue="212,212,212" presentationLayer="4" showInNextPrevDropdownToolbarActionKey="ASP.resource.ASP.ui.showLineBreakpointInNextPrevDropdownToolbarAction" showInNextPrevDropdownToolbarAction="true" isGoToNextNavigationTargetKey="ASP.resource.ASP.ui.isLineBreakpointGoToNextNavigationTarget" isGoToNextNavigationTarget="false" isGoToPreviousNavigationTargetKey="ASP.resource.ASP.ui.isLineBreakpointGoToPreviousNavigationTarget" isGoToPreviousNavigationTarget="false" textStylePreferenceKey="ASP.resource.ASP.ui.lineBreakpointTextStyle" textStylePreferenceValue="NONE">
+		</specification>
+	</extension>
+	
+	<extension point="org.eclipse.core.runtime.adapters">
+		<factory adaptableType="ASP.resource.ASP.ui.ASPEditor" class="ASP.resource.ASP.ui.debug.ASPAdapterFactory">
+			<adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget">
+			</adapter>
+		</factory>
+		<factory adaptableType="ASP.resource.ASP.debug.ASPDebugVariable" class="ASP.resource.ASP.ui.debug.ASPAdapterFactory">
+			<adapter type="org.eclipse.debug.internal.ui.viewers.model.provisional.IElementLabelProvider">
+			</adapter>
+		</factory>
+		<factory adaptableType="ASP.resource.ASP.debug.ASPDebugVariable" class="ASP.resource.ASP.ui.debug.ASPAdapterFactory">
+			<adapter type="org.eclipse.debug.internal.ui.viewers.model.provisional.IElementContentProvider">
+			</adapter>
+		</factory>
+	</extension>
+	
+	<extension point="org.eclipse.ui.popupMenus">
+		<viewerContribution id="ASP.resource.ASP.ui.RulerPopupActions" targetID="ASP.resource.ASP.EditorRuler">
+			<action id="ASP.resource.ASP.ui.toggleBreakpointAction" icon="icons/breakpoint_icon.gif" label="Toggle Breakpoint" class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate" menubarPath="debug">
+			</action>
+		</viewerContribution>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editorActions">
+		<editorContribution targetID="ASP.resource.ASP.ui.ASPEditor" id="ASP.resource.ASP.ui.BreakpointRulerActions">
+			<action id="ASP.resource.ASP.ui.debug.RulerToggleBreakpointAction" label="Add breakpoint" class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate" actionID="RulerDoubleClick">
+			</action>
+		</editorContribution>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.debugModelPresentations">
+		<debugModelPresentation id="ASP.resource.ASP.debugModel" class="ASP.resource.ASP.ui.debug.ASPDebugModelPresentation">
+		</debugModelPresentation>
+	</extension>
+	
+</plugin>

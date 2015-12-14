@@ -1,0 +1,30 @@
+metamodel(_x_classdiagram).
+  metanode(_x_classdiagram, _x_Package).
+  metanode(_x_classdiagram, _x_Classifier).
+  metanode(_x_classdiagram, _x_PrimitiveDataType).
+  metanode(_x_classdiagram, _x_Class).
+  metanode(_x_classdiagram, _x_Attribute).
+  metanode(_x_classdiagram, _x_Association).
+
+  metaedge(_x_classdiagram, composition, _x_classifiers, _x_Package, _x_Classifier).
+  metaedge(_x_classdiagram, composition, _x_classifiers, _x_Package, _x_PrimitiveDataType).
+  metaedge(_x_classdiagram, composition, _x_classifiers, _x_Package, _x_Class).
+  metaedge(_x_classdiagram, composition, _x_associations, _x_Package, _x_Association).
+  metaedge(_x_classdiagram, generalization, _x_general, _x_PrimitiveDataType, _x_Classifier).
+  metaedge(_x_classdiagram, composition, _x_attrs, _x_Class, _x_Attribute).
+  metaedge(_x_classdiagram, association, _x_parent, _x_Class, _x_Class).
+  metaedge(_x_classdiagram, generalization, _x_general, _x_Class, _x_Classifier).
+  metaedge(_x_classdiagram, association, _x_type, _x_Attribute, _x_Classifier).
+  metaedge(_x_classdiagram, association, _x_type, _x_Attribute, _x_PrimitiveDataType).
+  metaedge(_x_classdiagram, association, _x_type, _x_Attribute, _x_Class).
+  metaedge(_x_classdiagram, association, _x_src, _x_Association, _x_Class).
+  metaedge(_x_classdiagram, association, _x_dest, _x_Association, _x_Class).
+
+  metaprop(_x_classdiagram, _x_name, _x_Package).
+  metaprop(_x_classdiagram, _x_name, _x_Classifier).
+  metaprop(_x_classdiagram, _x_name, _x_PrimitiveDataType).
+  metaprop(_x_classdiagram, _x_name, _x_Class).
+  metaprop(_x_classdiagram, _x_is_persistent, _x_Class).
+  metaprop(_x_classdiagram, _x_name, _x_Attribute).
+  metaprop(_x_classdiagram, _x_is_primary, _x_Attribute).
+  metaprop(_x_classdiagram, _x_name, _x_Association).

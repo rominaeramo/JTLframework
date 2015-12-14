@@ -1,0 +1,232 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  UML to RDBMS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%   UML METAMODEL   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+metamodel(x_SimpleClass).
+metanode(x_SimpleClass, x_Classifier).
+metanode(x_SimpleClass, x_Class).
+metanode(x_SimpleClass, x_PrimitiveDataType).
+metanode(x_SimpleClass, x_Association).
+metanode(x_SimpleClass, x_Attribute).
+
+metaprop(x_SimpleClass, x_name, x_Classifier).
+metaprop(x_SimpleClass, x_name, x_Class).
+metaprop(x_SimpleClass, x_is_persistent, x_Class).
+metaprop(x_SimpleClass, x_name, x_PrimitiveDataType).
+metaprop(x_SimpleClass, x_name, x_Association).
+metaprop(x_SimpleClass, x_name, x_Attribute).
+metaprop(x_SimpleClass, x_is_primary, x_Attribute).
+
+metaedge(x_SimpleClass, association, x_parent, x_Class, x_Class).
+metaedge(x_SimpleClass, composition, x_attrs, x_Class, x_Attribute).
+metaedge(x_SimpleClass, generalization, x_general, x_Class, x_Classifier).
+metaedge(x_SimpleClass, generalization, x_general, x_PrimitiveDataType, x_Classifier).
+metaedge(x_SimpleClass, association, x_src, x_Association, x_Class).
+metaedge(x_SimpleClass, association, x_dest, x_Association, x_Class).
+metaedge(x_SimpleClass, association, x_type, x_Attribute, x_Classifier).
+metaedge(x_SimpleClass, association, x_type, x_Attribute, x_Class).
+metaedge(x_SimpleClass, association, x_type, x_Attribute, x_PrimitiveDataType).
+
+
+%%%%%%%%%%%%%%%%%%%%%%  RDBMS METAMODEL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+metamodel(x_SimpleRDBMS).
+metanode(x_SimpleRDBMS, x_Table).
+metanode(x_SimpleRDBMS, x_Column).
+metanode(x_SimpleRDBMS, x_FKey).
+
+metaprop(x_SimpleRDBMS, x_name, x_Table).
+metaprop(x_SimpleRDBMS, x_name, x_Column).
+metaprop(x_SimpleRDBMS, x_type, x_Column).
+
+metaedge(x_SimpleRDBMS, composition, x_fkeys, x_Table, x_FKey).
+metaedge(x_SimpleRDBMS, association, x_pkey, x_Table, x_Column).
+metaedge(x_SimpleRDBMS, composition, x_cols, x_Table, x_Column).
+metaedge(x_SimpleRDBMS, association, x_references, x_FKey, x_Table).
+metaedge(x_SimpleRDBMS, association, x_cols, x_FKey, x_Column).
+  
+
+%%%%%%%%%%%%%%%%%%%%%%   UML MODEL  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  model("x_m/", x_UML).
+  node(x_UML, "x_/", x_Package).
+  node(x_UML, "x_//@classifiers.0", x_Class).
+  node(x_UML, "x_//@classifiers.1", x_Class).
+  node(x_UML, "x_//@classifiers.2", x_Class).
+  node(x_UML, "x_//@classifiers.3", x_Class).
+  node(x_UML, "x_//@classifiers.0/@attrs.0", x_Attribute).
+  node(x_UML, "x_//@classifiers.1/@attrs.0", x_Attribute).
+  node(x_UML, "x_//@classifiers.2/@attrs.0", x_Attribute).
+  node(x_UML, "x_//@classifiers.3/@attrs.0", x_Attribute).
+
+  edge(x_UML, "x_/2", x_classifiers, "x_/", "x_//@classifiers.0").
+  edge(x_UML, "x_/5", x_classifiers, "x_/", "x_//@classifiers.1").
+  edge(x_UML, "x_/8", x_classifiers, "x_/", "x_//@classifiers.2").
+  edge(x_UML, "x_/11", x_classifiers, "x_/", "x_//@classifiers.3").
+  edge(x_UML, "x_//@classifiers.016", x_attrs, "x_//@classifiers.0", "x_//@classifiers.0/@attrs.0").
+  edge(x_UML, "x_//@classifiers.121", x_attrs, "x_//@classifiers.1", "x_//@classifiers.1/@attrs.0").
+  edge(x_UML, "x_//@classifiers.124", x_parent, "x_//@classifiers.1", "x_//@classifiers.0").
+  edge(x_UML, "x_//@classifiers.229", x_attrs, "x_//@classifiers.2", "x_//@classifiers.2/@attrs.0").
+  edge(x_UML, "x_//@classifiers.232", x_parent, "x_//@classifiers.2", "x_//@classifiers.1").
+  edge(x_UML, "x_//@classifiers.338", x_attrs, "x_//@classifiers.3", "x_//@classifiers.3/@attrs.0").
+  edge(x_UML, "x_//@classifiers.341", x_parent, "x_//@classifiers.3", "x_//@classifiers.2").
+
+  prop(x_UML, "x_/1", "x_/", x_name, x_university).
+  prop(x_UML, "x_//@classifiers.01", "x_//@classifiers.0", x_name, x_person).
+  prop(x_UML, "x_//@classifiers.11", "x_//@classifiers.1", x_name, x_worker).
+  prop(x_UML, "x_//@classifiers.21", "x_//@classifiers.2", x_name, x_employer).
+  prop(x_UML, "x_//@classifiers.22", "x_//@classifiers.2", x_is_persistent, x_true).
+  prop(x_UML, "x_//@classifiers.31", "x_//@classifiers.3", x_name, x_professor).
+  prop(x_UML, "x_//@classifiers.32", "x_//@classifiers.3", x_is_persistent, x_true).
+  prop(x_UML, "x_//@classifiers.0/@attrs.01", "x_//@classifiers.0/@attrs.0", x_name, x_name).
+  prop(x_UML, "x_//@classifiers.0/@attrs.02", "x_//@classifiers.0/@attrs.0", x_is_primary, x_true).
+  prop(x_UML, "x_//@classifiers.1/@attrs.01", "x_//@classifiers.1/@attrs.0", x_name, x_working_address).
+  prop(x_UML, "x_//@classifiers.2/@attrs.01", "x_//@classifiers.2/@attrs.0", x_name, x_department).
+  prop(x_UML, "x_//@classifiers.3/@attrs.01", "x_//@classifiers.3/@attrs.0", x_name, x_number_of_publications).
+
+
+%node(x_SimpleClass, "x_/0", x_Class).
+%node(x_SimpleClass, "x_/0/@attrs.0", x_Attribute).
+
+%edge(x_SimpleClass, "x_/02", x_attrs, "x_/0", "x_/0/@attrs.0").
+
+%prop(x_SimpleClass, "x_/01", "x_/0", x_name, x_Order).
+%prop(x_SimpleClass, "x_/02", "x_/0", x_is_persistent, x_true).
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%   RDBMS MODEL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+model(m2,x_SimpleRDBMS).
+node(x_SimpleRDBMS,"x_/0",x_Table).
+node(x_SimpleRDBMS,"x_/0/@attrs.0",x_Column).
+edge(x_SimpleRDBMS,"x_/02",x_cols,"x_/0","x_/0/@attrs.0").
+prop(x_SimpleRDBMS,"x_/01","x_/0",x_name,x_Order).
+%%%%%%%%%%%%%%%%%%%%%%   TRACE MODEL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+%%%%%%%%%%%%%%%%%%%%%%     RELATIONS   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#const mmt = x_SimpleClass.
+
+
+%%%% node 2 node %%%%
+relation_node("x_r1",  x_SimpleClass, x_Class).
+relation_node("x_r1", x_SimpleRDBMS, x_Table).
+
+%% if condition, for each node, nodex must be generated
+%:- node( x_SimpleClass, IDx, ID, x_Class),  is_persistent(x_SimpleClass, IDx, ID, x_Class) , not nodex(x_SimpleRDBMS, IDx, ID, x_Table), mmt==x_SimpleRDBMS.
+%:- node( x_SimpleClass, IDx, ID, x_Class),  not is_persistent(x_SimpleClass, IDx, ID, x_Class), nodex(x_SimpleRDBMS, IDx, ID, x_Table), mmt==x_SimpleRDBMS.
+
+%is_persistent(x_SimpleClass, IDx, ID, x_Class) :- node( x_SimpleClass, IDx, ID, x_Class), 
+%												    prop(x_SimpleClass, IDpx, IDp, IDx,ID,x_is_persistent,x_true).												    
+%condition(MMS,IDx, ID, MCS) :- relation(IDrelation, MMS, MCS, X), relation(IDrelation, MMT, MCT, Y),
+%							  is_persistent(MMS, IDx, ID, MCS), MMT=mmt, MMS!=MMT.
+
+
+% for each node, nodex must be generated												  												    
+%:- node(x_SimpleRDBMS, IDx, ID, x_Table), not nodex( x_SimpleClass, IDx, ID, x_Class), mmt==x_SimpleClass.
+
+
+%%%% prop 2 prop %%%%
+relation_prop("x_r2", x_SimpleClass, x_name, x_Class).
+relation_prop("x_r2", x_SimpleRDBMS, x_name, x_Table).
+
+setting_prop("x_r2",ID,IDmc,Value) :- relation_prop("x_r2",MM,Prop,Node), relation_prop("x_r2",MM2,Prop2,Node2), prop(MM2,ID,IDmc,Prop2,Value), MM!=MM2, MM=mmt.  
+
+%%%% node 2 node %%%%
+relation_node("x_r3",  x_SimpleClass, x_Attribute).
+relation_node("x_r3", x_SimpleRDBMS, x_Column).
+
+%%%% prop 2 prop %%%%
+relation_prop("x_r4", x_SimpleClass, x_name, x_Attribute).
+relation_prop("x_r4", x_SimpleRDBMS, x_name, x_Column).
+setting_prop("x_r4",ID,IDmc,Value) :- relation_prop("x_r2",MM,Prop,Node), relation_prop("x_r2",MM2,Prop2,Node2), prop(MM2,ID,IDmc,Prop2,Value), MM!=MM2, MM=mmt.  
+
+
+%%%% edge 2 edge %%%%
+relation_edge("x_r5", x_SimpleClass, x_attrs, x_Class, x_Attribute).
+relation_edge("x_r5", x_SimpleRDBMS, x_cols, x_Table, x_Column).
+
+setting_edge("x_r5", ID, IDS, IDT) :- relation_edge("x_r5", x_SimpleClass, x_attrs, x_Class, x_Attribute), relation_edge("x_r5", x_SimpleRDBMS, x_cols, x_Table, x_Column),
+node(x_SimpleClass, IDS, x_Class), prop(x_SimpleClass, IDPS, IDS, x_is_persistent,x_true), edge(x_SimpleClass, ID, x_attrs, IDS, IDT).					
+
+setting_edge("x_r5", ID, IDS, IDT) :- relation_edge("x_r5", x_SimpleClass, x_attrs, x_Class, x_Attribute), relation_edge("x_r5", x_SimpleRDBMS, x_cols, x_Table, x_Column),
+node(x_SimpleClass, IDS, x_Class), prop(x_SimpleClass, IDPS, IDS, x_is_persistent,x_false), edge(x_SimpleClass, ID, x_attrs, IDS2, IDT), 
+node(x_SimpleClass, IDS2, x_Class), prop(x_SimpleClass, IDPS, IDS, x_is_persistent,x_true), tc(IDS,IDS2).  					
+													
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+%%%%%%%%%%%%%%%%%%%%%%    TRANSFORMATION ENGINE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%   TRACES GENERATION    %s%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%% Metamodel Target Conformance Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+is_target_metamodel_conform(MM,Node) :- metanode(MM,Node).
+is_target_metamodel_conform(MM,Prop) :- metaprop(MM,Prop,Node).
+is_target_metamodel_conform(MM,Edge) :- metaedge(MM,MetaEdge,Edge,NodeSource,NodeTarget).
+
+%%%%%%%%%% Relations Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+is_related(MM,Node) :- relation_node(R,MM,Node), relation_node(R,MM2,Node2).
+is_related(MM,Prop) :- relation_prop(R,MM,Prop,Node), relation_prop(R,MM2,Prop2,Node2).
+is_related(MM,Edge) :- relation_edge(R,MM,Edge,NodeSource,NodeTarget), relation_edge(R,MM2,Edge2,NodeSource2,NodeTarget2).
+
+%%%%%%%%%% Mapping Rules %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%node from node
+mapping_node(MM,ID,Node) :- relation_node(R,MM,Node), relation_node(R,MM2,Node2),node(MM2,ID,Node2), MM!=MM2.
+
+%prop from prop        
+mapping_prop(MM,ID,IDmc,Prop,Value) :- relation_prop(R,MM,Prop,Node), relation_prop(R,MM2,Prop2,Node2), 
+              prop(MM2,ID,IDmc2,Prop2,Value2), setting_prop(R,ID,IDmc,Value), MM!=MM2.
+       
+%edge from edge         
+mapping_edge(MM,ID,Edge,IDS,IDT) :- 
+			relation_edge(R,MM,Edge,NodeSource,NodeTarget),relation_edge(R,MM2,Edge2,NodeSource2,NodeTarget2), 
+            edge(MM2,ID,Edge2,IDS2,IDT2), setting_edge(R,ID,IDS,IDT), MM!=MM2.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%% Generability Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+												
+is_generable_node(MM,ID,Node) v -is_generable_node(MM,ID,Node) :- mapping_node(MM,ID,Node), is_related(MM,Node), is_target_metamodel_conform(MM,Node), MM=mmt.
+:- -is_generable_node(MM,ID,Node).
+
+is_generable_prop(MM,ID,Prop,Value) v -is_generable_prop(MM,ID,Prop,Value) :- mapping_prop(MM,ID,IDmc,Prop,Value), is_related(MM,Prop), 
+														is_target_metamodel_conform(MM,Prop), MM=mmt.
+:- -is_generable_prop(MM,ID,Prop,Value).
+									
+is_generable_edge(MM,ID,Edge,IDS,IDT) v -is_generable_edge(MM,ID,Edge,IDS,IDT) :- mapping_edge(MM,ID,Edge,IDS,IDT), 
+														is_related(MM,Edge), is_target_metamodel_conform(MM,Edge),MM=mmt.
+:- -is_generable_edge(MM,ID,Edge,IDS,IDT). 														
+														
+			
+%%%%%%%%% Element Generation by Transformation Rule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+nodex(MM,ID,Node) :- is_generable_node(MM,ID,Node), mapping_node(MM,ID,Node),MM=mmt.
+
+propx(MM,ID,IDmc,Prop,Value) :- is_generable_prop(MM,ID,Prop,Value), mapping_prop(MM,ID,IDmc,Prop,Value), MM=mmt.
+
+edgex(MM,ID,Edge,IDS,IDT) :- is_generable_edge(MM,ID,Edge,IDS,IDT), mapping_edge(MM,ID,Edge,IDS,IDT), MM=mmt.	
+    
+
+%%%%%%%%% Element Generation by Traces %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+              
+
+           
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%						
+
+

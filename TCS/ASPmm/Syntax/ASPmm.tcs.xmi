@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tcs="http://www.eclipse.org/gmt/tcs/2007/TCS">
+  <tcs:ConcreteSyntax location="11:1-230:2" name="ASPmm" lexer="&#xD;&#xA;%options testLiterals = false;&#xD;&#xA;&#xD;&#xA;NL&#xD;&#xA;&#x9;:&#x9;(&#x9;'\r' '\n'&#xD;&#xA;&#x9;&#x9;|&#x9;'\n' '\r'&#x9;//Improbable&#xD;&#xA;&#x9;&#x9;|&#x9;'\r'&#xD;&#xA;&#x9;&#x9;|&#x9;'\n'&#xD;&#xA;&#x9;&#x9;)&#xD;&#xA;&#x9;{newline();}&#xD;&#xA;&#x9;;&#xD;&#xA;&#xD;&#xA;WS&#xD;&#xA;&#x9;:&#x9;(&#x9;' '&#xD;&#xA;&#x9;&#x9;|&#x9;'\t'&#xD;&#xA;&#x9;&#x9;)&#xD;&#xA;&#x9;;&#xD;&#xA;&#xD;&#xA;%protected&#xD;&#xA;DIGIT&#xD;&#xA;&#x9;:&#x9;'0'..'9'&#xD;&#xA;&#x9;;&#xD;&#xA;&#xD;&#xA;%protected&#xD;&#xA;ALPHA&#xD;&#xA;&#x9;:&#x9;'a'..'z'&#xD;&#xA;&#x9;|&#x9;'A'..'Z'&#xD;&#xA;&#x9;|&#x9;'_'&#xD;&#xA;&#x9;//For Unicode compatibility (from 0000 to 00ff)&#xD;&#xA;&#x9;|&#x9;'\u00C0' .. '\u00D6'&#xD;&#xA;&#x9;|&#x9;'\u00D8' .. '\u00F6'&#xD;&#xA;&#x9;|&#x9;'\u00F8' .. '\u00FF'&#xD;&#xA;&#x9;;&#xD;&#xA;&#xD;&#xA;%protected&#xD;&#xA;SNAME&#xD;&#xA;%v2&#x9;options {&#xD;&#xA;%v2&#x9;&#x9;testLiterals = true;&#xD;&#xA;%v2&#x9;}&#xD;&#xA;&#x9;:&#x9;(ALPHA) (ALPHA | DIGIT)*&#xD;&#xA;;&#xD;&#xA;&#xD;&#xA;NAME&#xD;&#xA;&#x9;:&#x9;(&#xD;&#xA;%v3&#x9;&#x9;&#x9;SNAME&#xD;&#xA;%v2&#x9;&#x9;&#x9;s:SNAME {if(s.getType() != SNAME) $setType(s.getType());}&#xD;&#xA;&#x9;&#x9;|&#x9;'&quot;'!&#xD;&#xA;&#x9;&#x9;&#x9;(&#x9;ESC&#xD;&#xA;&#x9;&#x9;&#x9;|&#x9;'\n' {newline();}&#xD;&#xA;&#x9;&#x9;&#x9;|&#x9;~('\\'|'\&quot;'|'\n')&#xD;&#xA;&#x9;&#x9;&#x9;)*&#xD;&#xA;&#x9;&#x9;&#x9;'&quot;'!&#xD;&#xA;%v3&#x9;&#x9;&#x9;{setText(ei.unescapeString(getText(), 1));}&#xD;&#xA;&#x9;&#x9;)&#xD;&#xA;&#x9;;&#xD;&#xA;&#xD;&#xA;INT&#xD;&#xA;&#x9;:&#x9;(DIGIT)+&#xD;&#xA;%v2&#x9;&#x9;(('.' DIGIT)=> '.' (DIGIT)+ {$setType(FLOAT);})?&#xD;&#xA;&#x9;;&#xD;&#xA;&#xD;&#xA;%v3&#x9;FLOAT&#x9;:&#x9;DIGIT+ '.' DIGIT*&#x9;;&#xD;&#xA;&#xD;&#xA;%protected&#xD;&#xA;ESC&#xD;&#xA;&#x9;:&#x9;'\\'!&#xD;&#xA;&#x9;&#x9;(&#x9;'n' %v2{%setText(&quot;\n&quot;);}&#xD;&#xA;&#x9;&#x9;|&#x9;'r' %v2{%setText(&quot;\r&quot;);}&#xD;&#xA;&#x9;&#x9;|&#x9;'t' %v2{%setText(&quot;\t&quot;);}&#xD;&#xA;&#x9;&#x9;|&#x9;'b' %v2{%setText(&quot;\b&quot;);}&#xD;&#xA;&#x9;&#x9;|&#x9;'f' %v2{%setText(&quot;\f&quot;);}&#xD;&#xA;&#x9;&#x9;|&#x9;'&quot;' %v2{%setText(&quot;\&quot;&quot;);}&#xD;&#xA;&#x9;&#x9;|&#x9;'\'' %v2{%setText(&quot;\'&quot;);}&#xD;&#xA;&#x9;&#x9;|&#x9;'\\' %v2{%setText(&quot;\\&quot;);}&#xD;&#xA;&#x9;&#x9;|&#x9;(&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;('0'..'3')&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;(&#xD;&#xA;%v2&#x9;&#x9;&#x9;&#x9;&#x9;options {&#xD;&#xA;%v2&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;warnWhenFollowAmbig = false;&#xD;&#xA;%v2&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;:&#x9;('0'..'7')&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;(&#xD;&#xA;%v2&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;options {&#xD;&#xA;%v2&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;warnWhenFollowAmbig = false;&#xD;&#xA;%v2&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;:&#x9;'0'..'7'&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;)?&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;)?&#xD;&#xA;&#x9;&#x9;&#x9;|&#x9;('4'..'7')&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;(&#xD;&#xA;%v2&#x9;&#x9;&#x9;&#x9;&#x9;options {&#xD;&#xA;%v2&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;warnWhenFollowAmbig = false;&#xD;&#xA;%v2&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;:&#x9;('0'..'7')&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;)?&#xD;&#xA;&#x9;&#x9;&#x9;)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;{&#xD;&#xA;%v2&#x9;&#x9;&#x9;&#x9;&#x9;String s = %getText;&#xD;&#xA;%v2&#x9;&#x9;&#x9;&#x9;&#x9;int i;&#xD;&#xA;%v2&#x9;&#x9;&#x9;&#x9;&#x9;int ret = 0;&#xD;&#xA;%v2&#x9;&#x9;&#x9;&#x9;&#x9;String ans;&#xD;&#xA;%v2&#x9;&#x9;&#x9;&#x9;&#x9;for (i=0; i&lt;s.length(); ++i)&#xD;&#xA;%v2&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;ret = ret*8 + s.charAt(i) - '0';&#xD;&#xA;%v2&#x9;&#x9;&#x9;&#x9;&#x9;ans = String.valueOf((char) ret);&#xD;&#xA;%v2&#x9;&#x9;&#x9;&#x9;&#x9;%setText(ans);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;)&#xD;&#xA;&#x9;;&#xD;&#xA;&#x9;">
+    <commentsBefore>-- @name&#x9;&#x9;ASPmm</commentsBefore>
+    <commentsBefore>-- @version&#x9;&#x9;1.0</commentsBefore>
+    <commentsBefore>-- @authors&#x9;&#x9;Romina</commentsBefore>
+    <commentsBefore>-- @date&#x9;&#x9;2009/09/18</commentsBefore>
+    <commentsBefore>-- @description&#x9;${description}</commentsBefore>
+    <commentsBefore>-- The different sections of a TCS model have been enclosed between BEGIN and END</commentsBefore>
+    <commentsBefore>-- comments below. Additional information is provided below each BEGIN comment.</commentsBefore>
+    <commentsBefore>-- The main sections of interest are &quot;Class templates&quot;, and</commentsBefore>
+    <commentsBefore>-- &quot;Operator table&quot; (the latter only for DSLs using operators).</commentsBefore>
+    <templates xsi:type="tcs:PrimitiveTemplate" location="17:2-18:21" name="identifier" typeName="String" isDefault="true" tokenName="NAME" value="%token%">
+      <commentsBefore>-- BEGIN Primitive templates</commentsBefore>
+      <commentsBefore>-- Specifies representation of primitive types.</commentsBefore>
+      <commentsBefore>-- Only needs modification when default lexer is not satisfactory.</commentsBefore>
+      <commentsBefore>-- Generally modified along with the lexer.</commentsBefore>
+    </templates>
+    <templates xsi:type="tcs:PrimitiveTemplate" location="20:2-22:50" name="stringSymbol" typeName="String" tokenName="STRING" value="ei.unescapeString(%token%, 1)" serializer="''' + %value%.toCString() + '''"/>
+    <templates xsi:type="tcs:PrimitiveTemplate" location="24:2-25:38" name="integerSymbol" typeName="Integer" isDefault="true" tokenName="INT" value="Integer.valueOf(%token%)"/>
+    <templates xsi:type="tcs:PrimitiveTemplate" location="27:2-28:37" name="floatSymbol" typeName="Double" isDefault="true" tokenName="FLOAT" value="Double.valueOf(%token%)">
+      <commentsAfter>-- END Primitive templates</commentsAfter>
+      <commentsAfter>-- BEGIN Class templates</commentsAfter>
+      <commentsAfter>-- Specifies representation of classes.</commentsAfter>
+      <commentsAfter>-- This is the main section to work on.</commentsAfter>
+    </templates>
+    <templates xsi:type="tcs:ClassTemplate" location="34:2-39:4" name="Metamodel" isMain="true" isContext="true">
+      <commentsBefore>-- END Primitive templates</commentsBefore>
+      <commentsBefore>-- BEGIN Class templates</commentsBefore>
+      <commentsBefore>-- Specifies representation of classes.</commentsBefore>
+      <commentsBefore>-- This is the main section to work on.</commentsBefore>
+      <templateSequence location="35:6-38:15">
+        <elements xsi:type="tcs:LiteralRef" location="35:6-35:17" referredLiteral="/1"/>
+        <elements xsi:type="tcs:LiteralRef" location="35:18-35:21" referredLiteral="/0/@symbols.4"/>
+        <elements xsi:type="tcs:Property" location="35:22-35:26" name="name"/>
+        <elements xsi:type="tcs:LiteralRef" location="35:27-35:30" referredLiteral="/0/@symbols.5"/>
+        <elements xsi:type="tcs:LiteralRef" location="35:31-35:34" referredLiteral="/0/@symbols.14"/>
+        <elements xsi:type="tcs:Block" location="36:4-36:15">
+          <blockSequence location="36:5-36:14">
+            <elements xsi:type="tcs:Property" location="36:5-36:14" name="metanodes"/>
+          </blockSequence>
+        </elements>
+        <elements xsi:type="tcs:Block" location="37:4-37:15">
+          <blockSequence location="37:5-37:14">
+            <elements xsi:type="tcs:Property" location="37:5-37:14" name="metaedges"/>
+          </blockSequence>
+        </elements>
+        <elements xsi:type="tcs:Block" location="38:4-38:15">
+          <blockSequence location="38:5-38:14">
+            <elements xsi:type="tcs:Property" location="38:5-38:14" name="metaprops"/>
+          </blockSequence>
+        </elements>
+      </templateSequence>
+    </templates>
+    <templates xsi:type="tcs:ClassTemplate" location="41:2-43:4" name="Metanode" isAddToContext="true">
+      <templateSequence location="42:7-42:90">
+        <elements xsi:type="tcs:LiteralRef" location="42:7-42:17" referredLiteral="/2"/>
+        <elements xsi:type="tcs:LiteralRef" location="42:18-42:21" referredLiteral="/0/@symbols.4"/>
+        <elements xsi:type="tcs:Property" location="42:23-42:69" name="metamodel">
+          <propertyArgs xsi:type="tcs:RefersToPArg" location="42:33-42:48" propertyName="name"/>
+          <propertyArgs xsi:type="tcs:AutoCreatePArg" location="42:50-42:68" value="never"/>
+        </elements>
+        <elements xsi:type="tcs:LiteralRef" location="42:72-42:75" referredLiteral="/0/@symbols.3"/>
+        <elements xsi:type="tcs:Property" location="42:77-42:81" name="name"/>
+        <elements xsi:type="tcs:LiteralRef" location="42:83-42:86" referredLiteral="/0/@symbols.5"/>
+        <elements xsi:type="tcs:LiteralRef" location="42:87-42:90" referredLiteral="/0/@symbols.14"/>
+      </templateSequence>
+    </templates>
+    <templates xsi:type="tcs:ClassTemplate" location="45:2-48:4" name="Metaprop" isAddToContext="true">
+      <templateSequence location="46:6-47:58">
+        <elements xsi:type="tcs:LiteralRef" location="46:6-46:16" referredLiteral="/3"/>
+        <elements xsi:type="tcs:LiteralRef" location="46:17-46:20" referredLiteral="/0/@symbols.4"/>
+        <elements xsi:type="tcs:Property" location="46:23-46:67" name="metamodel">
+          <propertyArgs xsi:type="tcs:RefersToPArg" location="46:33-46:47" propertyName="name"/>
+          <propertyArgs xsi:type="tcs:AutoCreatePArg" location="46:49-46:66" value="never"/>
+        </elements>
+        <elements xsi:type="tcs:LiteralRef" location="46:70-46:73" referredLiteral="/0/@symbols.3"/>
+        <elements xsi:type="tcs:Property" location="46:75-46:79" name="name"/>
+        <elements xsi:type="tcs:LiteralRef" location="46:81-46:84" referredLiteral="/0/@symbols.3"/>
+        <elements xsi:type="tcs:Property" location="47:6-47:49" name="metanode">
+          <propertyArgs xsi:type="tcs:RefersToPArg" location="47:15-47:29" propertyName="name"/>
+          <propertyArgs xsi:type="tcs:AutoCreatePArg" location="47:31-47:48" value="never"/>
+        </elements>
+        <elements xsi:type="tcs:LiteralRef" location="47:51-47:54" referredLiteral="/0/@symbols.5"/>
+        <elements xsi:type="tcs:LiteralRef" location="47:55-47:58" referredLiteral="/0/@symbols.14"/>
+      </templateSequence>
+    </templates>
+    <templates xsi:type="tcs:ClassTemplate" location="50:2-53:4" name="Metaedge" isAddToContext="true">
+      <templateSequence location="51:6-52:105">
+        <elements xsi:type="tcs:LiteralRef" location="51:6-51:16" referredLiteral="/4"/>
+        <elements xsi:type="tcs:LiteralRef" location="51:17-51:20" referredLiteral="/0/@symbols.4"/>
+        <elements xsi:type="tcs:Property" location="51:23-51:67" name="metamodel">
+          <propertyArgs xsi:type="tcs:RefersToPArg" location="51:33-51:47" propertyName="name"/>
+          <propertyArgs xsi:type="tcs:AutoCreatePArg" location="51:49-51:66" value="never"/>
+        </elements>
+        <elements xsi:type="tcs:LiteralRef" location="51:70-51:73" referredLiteral="/0/@symbols.3"/>
+        <elements xsi:type="tcs:Property" location="51:75-51:79" name="type"/>
+        <elements xsi:type="tcs:LiteralRef" location="51:81-51:84" referredLiteral="/0/@symbols.3"/>
+        <elements xsi:type="tcs:Property" location="51:86-51:90" name="name"/>
+        <elements xsi:type="tcs:LiteralRef" location="51:92-51:95" referredLiteral="/0/@symbols.3"/>
+        <elements xsi:type="tcs:Property" location="52:6-52:47" name="source">
+          <propertyArgs xsi:type="tcs:RefersToPArg" location="52:13-52:27" propertyName="name"/>
+          <propertyArgs xsi:type="tcs:AutoCreatePArg" location="52:29-52:46" value="never"/>
+        </elements>
+        <elements xsi:type="tcs:LiteralRef" location="52:49-52:52" referredLiteral="/0/@symbols.3"/>
+        <elements xsi:type="tcs:Property" location="52:55-52:96" name="target">
+          <propertyArgs xsi:type="tcs:RefersToPArg" location="52:62-52:76" propertyName="name"/>
+          <propertyArgs xsi:type="tcs:AutoCreatePArg" location="52:78-52:95" value="never"/>
+        </elements>
+        <elements xsi:type="tcs:LiteralRef" location="52:98-52:101" referredLiteral="/0/@symbols.5"/>
+        <elements xsi:type="tcs:LiteralRef" location="52:102-52:105" referredLiteral="/0/@symbols.14"/>
+      </templateSequence>
+    </templates>
+    <templates xsi:type="tcs:EnumerationTemplate" location="55:2-59:4" name="MetaedgeType" automatic="true">
+      <commentsAfter>-- END Class templates</commentsAfter>
+      <commentsAfter>-- BEGIN Special symbols</commentsAfter>
+      <commentsAfter>-- Possible modifications:</commentsAfter>
+      <commentsAfter>--&#x9;- Addition of new symbols.</commentsAfter>
+      <commentsAfter>--&#x9;- Modification of spaces information.</commentsAfter>
+      <commentsAfter>--&#x9;- Removal of unused symbols so that using these symbols results in lexical</commentsAfter>
+      <commentsAfter>--&#x9;error rather than parsing error.</commentsAfter>
+      <mappings location="56:5-56:36">
+        <literal location="56:5-56:17" name="association"/>
+        <element xsi:type="tcs:LiteralRef" location="56:23-56:36" referredLiteral="/5"/>
+      </mappings>
+      <mappings location="57:4-57:38">
+        <literal location="57:4-57:19" name="generalization"/>
+        <element xsi:type="tcs:LiteralRef" location="57:22-57:38" referredLiteral="/6"/>
+      </mappings>
+      <mappings location="58:4-58:35">
+        <literal location="58:4-58:16" name="composition"/>
+        <element xsi:type="tcs:LiteralRef" location="58:22-58:35" referredLiteral="/7"/>
+      </mappings>
+    </templates>
+    <symbols location="71:3-71:18" name="lsquare" value="["/>
+    <symbols location="72:3-72:31" name="rsquare" value="]">
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="73:3-73:15" name="excl" value="!"/>
+    <symbols location="74:3-74:38" name="coma" literalRefs="/0/@templates.5/@templateSequence/@elements.3 /0/@templates.6/@templateSequence/@elements.3 /0/@templates.6/@templateSequence/@elements.5 /0/@templates.7/@templateSequence/@elements.3 /0/@templates.7/@templateSequence/@elements.5 /0/@templates.7/@templateSequence/@elements.7 /0/@templates.7/@templateSequence/@elements.9" value=",">
+      <spaces>leftNone</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="75:3-75:17" name="lparen" literalRefs="/0/@templates.4/@templateSequence/@elements.1 /0/@templates.5/@templateSequence/@elements.1 /0/@templates.6/@templateSequence/@elements.1 /0/@templates.7/@templateSequence/@elements.1" value="("/>
+    <symbols location="76:3-76:40" name="rparen" literalRefs="/0/@templates.4/@templateSequence/@elements.3 /0/@templates.5/@templateSequence/@elements.5 /0/@templates.6/@templateSequence/@elements.7 /0/@templates.7/@templateSequence/@elements.11" value=")">
+      <spaces>leftNone</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="77:3-77:29" name="lcurly" value="{">
+      <spaces>leftSpace</spaces>
+    </symbols>
+    <symbols location="78:3-78:40" name="rcurly" value="}">
+      <spaces>leftNone</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="79:3-79:38" name="semi" value=";">
+      <spaces>leftNone</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="80:3-80:40" name="colon" value=":">
+      <spaces>leftSpace</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="81:3-81:39" name="pipe" value="|">
+      <spaces>leftSpace</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="82:3-82:28" name="sharp" value="#">
+      <spaces>leftSpace</spaces>
+    </symbols>
+    <symbols location="83:3-83:16" name="qmark" value="?"/>
+    <symbols location="84:3-84:43" name="coloncolon" value="::">
+      <commentsAfter>-- operator symbols</commentsAfter>
+      <spaces>leftNone</spaces>
+      <spaces>rightNone</spaces>
+    </symbols>
+    <symbols location="87:3-87:39" name="point" literalRefs="/0/@templates.4/@templateSequence/@elements.4 /0/@templates.5/@templateSequence/@elements.6 /0/@templates.6/@templateSequence/@elements.8 /0/@templates.7/@templateSequence/@elements.12" value=".">
+      <commentsBefore>-- operator symbols</commentsBefore>
+      <spaces>leftNone</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="88:3-88:29" name="rarrow" value="->">
+      <spaces>leftNone</spaces>
+    </symbols>
+    <symbols location="89:3-89:40" name="minus" value="-">
+      <spaces>leftSpace</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="90:3-90:39" name="star" value="*">
+      <spaces>leftSpace</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="91:3-91:40" name="slash" value="/">
+      <spaces>leftSpace</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="92:3-92:39" name="plus" value="+">
+      <spaces>leftSpace</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="93:3-93:38" name="eq" value="=">
+      <spaces>leftSpace</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="94:3-94:38" name="gt" value=">">
+      <spaces>leftSpace</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="95:3-95:38" name="lt" value="&lt;">
+      <spaces>leftSpace</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="96:3-96:39" name="ge" value=">=">
+      <spaces>leftSpace</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="97:3-97:39" name="le" value="&lt;=">
+      <spaces>leftSpace</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="98:3-98:39" name="ne" value="&lt;>">
+      <spaces>leftSpace</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <symbols location="99:3-99:42" name="larrow" value="&lt;-">
+      <spaces>leftSpace</spaces>
+      <spaces>rightSpace</spaces>
+    </symbols>
+    <tokens location="116:2-116:42" name="COMMENT">
+      <commentsBefore>-- END Special symbols</commentsBefore>
+      <commentsBefore>-- BEGIN Operator table</commentsBefore>
+      <commentsBefore>-- Defines all operators with their priority, arity, and associativity.</commentsBefore>
+      <commentsBefore>-- All defined operators must be used in operator templates.</commentsBefore>
+      <commentsBefore>-- Specify operator table(s) here if necessary.</commentsBefore>
+      <commentsBefore>-- END Operator table</commentsBefore>
+      <commentsBefore>-- BEGIN Lexer</commentsBefore>
+      <commentsBefore>-- Specifies the lexical entities.</commentsBefore>
+      <commentsBefore>-- Only needs modification when default lexer is not satisfactory.</commentsBefore>
+      <commentsBefore>-- Generally modified along with Primitive templates.</commentsBefore>
+      <pattern location="116:18-116:41">
+        <simplePatterns xsi:type="tcs:RulePattern" location="116:18-116:41">
+          <rule xsi:type="tcs:EndOfLineRule" location="116:18-116:41">
+            <start location="116:36-116:40" name="%%"/>
+          </rule>
+        </simplePatterns>
+      </pattern>
+    </tokens>
+    <tokens location="117:2-117:65" name="STRING">
+      <pattern location="117:17-117:64">
+        <simplePatterns xsi:type="tcs:RulePattern" location="117:17-117:64">
+          <rule xsi:type="tcs:MultiLineRule" location="117:17-117:64">
+            <start location="117:35-117:39" name="'"/>
+            <end location="117:47-117:51" name="'"/>
+            <esc location="117:59-117:63" name="\"/>
+          </rule>
+        </simplePatterns>
+      </pattern>
+    </tokens>
+  </tcs:ConcreteSyntax>
+  <tcs:Keyword location="35:6-35:17" literalRefs="/0/@templates.4/@templateSequence/@elements.0" value="metamodel"/>
+  <tcs:Keyword location="42:7-42:17" literalRefs="/0/@templates.5/@templateSequence/@elements.0" value="metanode"/>
+  <tcs:Keyword location="46:6-46:16" literalRefs="/0/@templates.6/@templateSequence/@elements.0" value="metaprop"/>
+  <tcs:Keyword location="51:6-51:16" literalRefs="/0/@templates.7/@templateSequence/@elements.0" value="metaedge"/>
+  <tcs:Keyword location="56:23-56:36" literalRefs="/0/@templates.8/@mappings.0/@element" value="association"/>
+  <tcs:Keyword location="57:22-57:38" literalRefs="/0/@templates.8/@mappings.1/@element" value="generalization"/>
+  <tcs:Keyword location="58:22-58:35" literalRefs="/0/@templates.8/@mappings.2/@element" value="composition"/>
+</xmi:XMI>

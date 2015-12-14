@@ -1,0 +1,8 @@
+%%%% Analysis Model 1
+
+%%%% sets of non-deterministic relations (UML to RDBMS direction):
+[]
+
+%%%% sets of non-deterministic relations (RDBMS to UML direction):
+[(1,class2table), (3,superAttribute2column), (5,superAttribute2column)]
+

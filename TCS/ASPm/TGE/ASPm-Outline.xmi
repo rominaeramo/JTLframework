@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<otl:Outline xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:otl="http://www.eclipse.org/gmt/tcs/2007/Outline">
+  <nodes name="LocatedElement" icon="dummy">
+    <label label="LocatedElement"/>
+    <mapping mapString="LocatedElement"/>
+  </nodes>
+  <nodes name="Model" icon="dummy">
+    <label label="Model"/>
+    <mapping mapString="Model"/>
+  </nodes>
+  <nodes name="Node" icon="dummy">
+    <label label="Node"/>
+    <mapping mapString="Node"/>
+  </nodes>
+  <nodes name="Prop" icon="dummy">
+    <label label="Prop">
+      <labelSuite label=" : "/>
+      <labelSuite methodCall="name"/>
+    </label>
+    <mapping mapString="Prop"/>
+  </nodes>
+  <nodes name="Edge" icon="dummy">
+    <label label="Edge">
+      <labelSuite label=" : "/>
+      <labelSuite methodCall="name"/>
+    </label>
+    <mapping mapString="Edge"/>
+  </nodes>
+</otl:Outline>

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ATL org.eclipse.m2m.atl.jtl2asp.nomultirelation Transformation Runtime Plug-in
+Bundle-SymbolicName: org.eclipse.m2m.atl.jtl2asp.nomultirelation;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.eclipse.m2m.atl.officialplugin.Activator
+Bundle-Vendor: Eclipse Modeling Project
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.m2m.atl.engine.emfvm,
+ org.eclipse.ui,
+ org.eclipse.core.resources
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Eclipse-LazyStart: true

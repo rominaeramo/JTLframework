@@ -1,0 +1,207 @@
+%%%%%%%%%%%%%%%%%%%%%%   HIERARCHICAL STATE MACHINE METAMODEL  %%%%%%%%%%%%%%%%%%%%%%%
+
+  metamodel(x_SimpleHierarchicalStateMachine).
+  metanode(x_SimpleHierarchicalStateMachine, x_State).
+  metanode(x_SimpleHierarchicalStateMachine, x_Transition).
+  metanode(x_SimpleHierarchicalStateMachine, x_CompositeState).
+  metanode(x_SimpleHierarchicalStateMachine, x_StateMachine).
+  metanode(x_SimpleHierarchicalStateMachine, x_InitialState).
+  metanode(x_SimpleHierarchicalStateMachine, x_FinalState).
+
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_owningCompositeState, x_State, x_CompositeState).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_target, x_Transition, x_State).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_target, x_Transition, x_CompositeState).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_target, x_Transition, x_InitialState).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_target, x_Transition, x_FinalState).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_source, x_Transition, x_State).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_source, x_Transition, x_CompositeState).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_source, x_Transition, x_InitialState).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_source, x_Transition, x_FinalState).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_owningCompositeState, x_CompositeState, x_CompositeState).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedSubState, x_CompositeState, x_State).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedSubState, x_CompositeState, x_CompositeState).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedSubState, x_CompositeState, x_InitialState).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedSubState, x_CompositeState, x_FinalState).
+  metaedge(x_SimpleHierarchicalStateMachine, generalization, x_general, x_CompositeState, x_State).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedState, x_StateMachine, x_State).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedState, x_StateMachine, x_CompositeState).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedState, x_StateMachine, x_InitialState).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedState, x_StateMachine, x_FinalState).
+  metaedge(x_SimpleHierarchicalStateMachine, composition, x_ownedTransition, x_StateMachine, x_Transition).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_owningCompositeState, x_InitialState, x_CompositeState).
+  metaedge(x_SimpleHierarchicalStateMachine, generalization, x_general, x_InitialState, x_State).
+  metaedge(x_SimpleHierarchicalStateMachine, association, x_owningCompositeState, x_FinalState, x_CompositeState).
+  metaedge(x_SimpleHierarchicalStateMachine, generalization, x_general, x_FinalState, x_State).
+
+  metaprop(x_SimpleHierarchicalStateMachine, x_name, x_State).
+  metaprop(x_SimpleHierarchicalStateMachine, x_trigger, x_Transition).
+  metaprop(x_SimpleHierarchicalStateMachine, x_effect, x_Transition).
+  metaprop(x_SimpleHierarchicalStateMachine, x_name, x_CompositeState).
+  metaprop(x_SimpleHierarchicalStateMachine, x_name, x_InitialState).
+  metaprop(x_SimpleHierarchicalStateMachine, x_name, x_FinalState).
+
+
+%%%%%%%%%%%%%%%%%%%%%%  NON HIERARCHICAL STATE MACHINE METAMODEL  %%%%%%%%%%%%%%%%%%%
+
+  metamodel(x_SimpleNonHierarchicalStateMachine).
+  metanode(x_SimpleNonHierarchicalStateMachine, x_State).
+  metanode(x_SimpleNonHierarchicalStateMachine, x_Transition).
+  metanode(x_SimpleNonHierarchicalStateMachine, x_StateMachine).
+  metanode(x_SimpleNonHierarchicalStateMachine, x_InitialState).
+  metanode(x_SimpleNonHierarchicalStateMachine, x_FinalState).
+
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_incoming, x_State, x_Transition).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_owningStateMachine, x_State, x_StateMachine).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_target, x_Transition, x_State).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_target, x_Transition, x_InitialState).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_target, x_Transition, x_FinalState).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_source, x_Transition, x_State).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_source, x_Transition, x_InitialState).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_source, x_Transition, x_FinalState).
+  metaedge(x_SimpleNonHierarchicalStateMachine, composition, x_ownedState, x_StateMachine, x_State).
+  metaedge(x_SimpleNonHierarchicalStateMachine, composition, x_ownedState, x_StateMachine, x_InitialState).
+  metaedge(x_SimpleNonHierarchicalStateMachine, composition, x_ownedState, x_StateMachine, x_FinalState).
+  metaedge(x_SimpleNonHierarchicalStateMachine, composition, x_ownedTransition, x_StateMachine, x_Transition).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_incoming, x_InitialState, x_Transition).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_owningStateMachine, x_InitialState, x_StateMachine).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_EReference0, x_InitialState, x_State).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_EReference0, x_InitialState, x_InitialState).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_EReference0, x_InitialState, x_FinalState).
+  metaedge(x_SimpleNonHierarchicalStateMachine, generalization, x_general, x_InitialState, x_State).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_incoming, x_FinalState, x_Transition).
+  metaedge(x_SimpleNonHierarchicalStateMachine, association, x_owningStateMachine, x_FinalState, x_StateMachine).
+  metaedge(x_SimpleNonHierarchicalStateMachine, generalization, x_general, x_FinalState, x_State).
+
+  metaprop(x_SimpleNonHierarchicalStateMachine, x_name, x_State).
+  metaprop(x_SimpleNonHierarchicalStateMachine, x_trigger, x_Transition).
+  metaprop(x_SimpleNonHierarchicalStateMachine, x_effect, x_Transition).
+  metaprop(x_SimpleNonHierarchicalStateMachine, x_name, x_InitialState).
+  metaprop(x_SimpleNonHierarchicalStateMachine, x_name, x_FinalState).
+
+
+%%%%%%%%%%%%%%%%%%%%%%   HIERARCHICAL STATE MACHINE MODEL  %%%%%%%%%%%%%%%%%%%%%%%%
+
+model("_x_m's1__ASPid:3'", _x_SimpleHierarchicalStateMachine).
+  node(_x_SimpleHierarchicalStateMachine, 1, "_x_//@ownedState.1", _x_State).
+  node(_x_SimpleHierarchicalStateMachine, 3, "_x_//@ownedState.2/@ownedSubState.0", _x_State).
+  node(_x_SimpleHierarchicalStateMachine, 5, "_x_//@ownedState.2/@ownedSubState.1", _x_State).
+  node(_x_SimpleHierarchicalStateMachine, 7, "_x_//@ownedState.2/@ownedSubState.2", _x_State).
+  node(_x_SimpleHierarchicalStateMachine, 9, "_x_//@ownedState.3/@ownedSubState.0", _x_State).
+  node(_x_SimpleHierarchicalStateMachine, 11, "_x_//@ownedState.3/@ownedSubState.1", _x_State).
+  node(_x_SimpleHierarchicalStateMachine, 13, "_x_//@ownedState.3/@ownedSubState.2", _x_State).
+  node(_x_SimpleHierarchicalStateMachine, 15, "_x_//@ownedState.3/@ownedSubState.3", _x_State).
+  node(_x_SimpleHierarchicalStateMachine, 17, "_x_//@ownedState.4/@ownedSubState.0", _x_State).
+  node(_x_SimpleHierarchicalStateMachine, 19, "_x_//@ownedState.4/@ownedSubState.1", _x_State).
+  node(_x_SimpleHierarchicalStateMachine, 21, "_x_//@ownedState.4/@ownedSubState.2", _x_State).
+  node(_x_SimpleHierarchicalStateMachine, 23, "_x_//@ownedTransition.0", _x_Transition).
+  node(_x_SimpleHierarchicalStateMachine, 31, "_x_//@ownedTransition.1", _x_Transition).
+  node(_x_SimpleHierarchicalStateMachine, 39, "_x_//@ownedTransition.2", _x_Transition).
+  node(_x_SimpleHierarchicalStateMachine, 47, "_x_//@ownedTransition.3", _x_Transition).
+  node(_x_SimpleHierarchicalStateMachine, 55, "_x_//@ownedTransition.4", _x_Transition).
+  node(_x_SimpleHierarchicalStateMachine, 63, "_x_//@ownedTransition.5", _x_Transition).
+  node(_x_SimpleHierarchicalStateMachine, 71, "_x_//@ownedTransition.6", _x_Transition).
+  node(_x_SimpleHierarchicalStateMachine, 79, "_x_//@ownedTransition.7", _x_Transition).
+  node(_x_SimpleHierarchicalStateMachine, 87, "_x_//@ownedTransition.8", _x_Transition).
+  node(_x_SimpleHierarchicalStateMachine, 95, "_x_//@ownedTransition.9", _x_Transition).
+  node(_x_SimpleHierarchicalStateMachine, 103, "_x_//@ownedTransition.10", _x_Transition).
+  node(_x_SimpleHierarchicalStateMachine, 111, "_x_//@ownedTransition.11", _x_Transition).
+  node(_x_SimpleHierarchicalStateMachine, 119, "_x_//@ownedTransition.12", _x_Transition).
+  node(_x_SimpleHierarchicalStateMachine, 127, "_x_//@ownedState.2", _x_CompositeState).
+  node(_x_SimpleHierarchicalStateMachine, 138, "_x_//@ownedState.3", _x_CompositeState).
+  node(_x_SimpleHierarchicalStateMachine, 152, "_x_//@ownedState.4", _x_CompositeState).
+  node(_x_SimpleHierarchicalStateMachine, 163, "_x_'s1__ASPid:3'", _x_StateMachine).
+  node(_x_SimpleHierarchicalStateMachine, 224, "_x_//@ownedState.0", _x_InitialState).
+
+  edge(_x_SimpleHierarchicalStateMachine, 2526, "_x_//@ownedTransition.024", _x_target, 23, "_x_//@ownedTransition.0", 127, "_x_//@ownedState.2").
+  edge(_x_SimpleHierarchicalStateMachine, 2829, "_x_//@ownedTransition.027", _x_source, 23, "_x_//@ownedTransition.0", 1, "_x_//@ownedState.1").
+  edge(_x_SimpleHierarchicalStateMachine, 3334, "_x_//@ownedTransition.132", _x_target, 31, "_x_//@ownedTransition.1", 138, "_x_//@ownedState.3").
+  edge(_x_SimpleHierarchicalStateMachine, 3637, "_x_//@ownedTransition.135", _x_source, 31, "_x_//@ownedTransition.1", 127, "_x_//@ownedState.2").
+  edge(_x_SimpleHierarchicalStateMachine, 4142, "_x_//@ownedTransition.240", _x_target, 39, "_x_//@ownedTransition.2", 152, "_x_//@ownedState.4").
+  edge(_x_SimpleHierarchicalStateMachine, 4445, "_x_//@ownedTransition.243", _x_source, 39, "_x_//@ownedTransition.2", 127, "_x_//@ownedState.2").
+  edge(_x_SimpleHierarchicalStateMachine, 4950, "_x_//@ownedTransition.348", _x_target, 47, "_x_//@ownedTransition.3", 5, "_x_//@ownedState.2/@ownedSubState.1").
+  edge(_x_SimpleHierarchicalStateMachine, 5253, "_x_//@ownedTransition.351", _x_source, 47, "_x_//@ownedTransition.3", 3, "_x_//@ownedState.2/@ownedSubState.0").
+  edge(_x_SimpleHierarchicalStateMachine, 5758, "_x_//@ownedTransition.456", _x_target, 55, "_x_//@ownedTransition.4", 7, "_x_//@ownedState.2/@ownedSubState.2").
+  edge(_x_SimpleHierarchicalStateMachine, 6061, "_x_//@ownedTransition.459", _x_source, 55, "_x_//@ownedTransition.4", 5, "_x_//@ownedState.2/@ownedSubState.1").
+  edge(_x_SimpleHierarchicalStateMachine, 6566, "_x_//@ownedTransition.564", _x_target, 63, "_x_//@ownedTransition.5",,).
+  edge(_x_SimpleHierarchicalStateMachine, 6869, "_x_//@ownedTransition.567", _x_source, 63, "_x_//@ownedTransition.5", 127, "_x_//@ownedState.2").
+  edge(_x_SimpleHierarchicalStateMachine, 7374, "_x_//@ownedTransition.672", _x_target, 71, "_x_//@ownedTransition.6", 11, "_x_//@ownedState.3/@ownedSubState.1").
+  edge(_x_SimpleHierarchicalStateMachine, 7677, "_x_//@ownedTransition.675", _x_source, 71, "_x_//@ownedTransition.6", 9, "_x_//@ownedState.3/@ownedSubState.0").
+  edge(_x_SimpleHierarchicalStateMachine, 8182, "_x_//@ownedTransition.780", _x_target, 79, "_x_//@ownedTransition.7", 13, "_x_//@ownedState.3/@ownedSubState.2").
+  edge(_x_SimpleHierarchicalStateMachine, 8485, "_x_//@ownedTransition.783", _x_source, 79, "_x_//@ownedTransition.7", 11, "_x_//@ownedState.3/@ownedSubState.1").
+  edge(_x_SimpleHierarchicalStateMachine, 8990, "_x_//@ownedTransition.888", _x_target, 87, "_x_//@ownedTransition.8", 15, "_x_//@ownedState.3/@ownedSubState.3").
+  edge(_x_SimpleHierarchicalStateMachine, 9293, "_x_//@ownedTransition.891", _x_source, 87, "_x_//@ownedTransition.8", 13, "_x_//@ownedState.3/@ownedSubState.2").
+  edge(_x_SimpleHierarchicalStateMachine, 9798, "_x_//@ownedTransition.996", _x_target, 95, "_x_//@ownedTransition.9", 19, "_x_//@ownedState.4/@ownedSubState.1").
+  edge(_x_SimpleHierarchicalStateMachine, 100101, "_x_//@ownedTransition.999", _x_source, 95, "_x_//@ownedTransition.9", 17, "_x_//@ownedState.4/@ownedSubState.0").
+  edge(_x_SimpleHierarchicalStateMachine, 105106, "_x_//@ownedTransition.10104", _x_target, 103, "_x_//@ownedTransition.10", 21, "_x_//@ownedState.4/@ownedSubState.2").
+  edge(_x_SimpleHierarchicalStateMachine, 108109, "_x_//@ownedTransition.10107", _x_source, 103, "_x_//@ownedTransition.10", 19, "_x_//@ownedState.4/@ownedSubState.1").
+  edge(_x_SimpleHierarchicalStateMachine, 113114, "_x_//@ownedTransition.11112", _x_target, 111, "_x_//@ownedTransition.11",,).
+  edge(_x_SimpleHierarchicalStateMachine, 116117, "_x_//@ownedTransition.11115", _x_source, 111, "_x_//@ownedTransition.11", 15, "_x_//@ownedState.3/@ownedSubState.3").
+  edge(_x_SimpleHierarchicalStateMachine, 121122, "_x_//@ownedTransition.12120", _x_target, 119, "_x_//@ownedTransition.12",,).
+  edge(_x_SimpleHierarchicalStateMachine, 124125, "_x_//@ownedTransition.12123", _x_source, 119, "_x_//@ownedTransition.12", 15, "_x_//@ownedState.3/@ownedSubState.3").
+  edge(_x_SimpleHierarchicalStateMachine, 129130, "_x_//@ownedState.2128", _x_ownedSubState, 127, "_x_//@ownedState.2", 3, "_x_//@ownedState.2/@ownedSubState.0").
+  edge(_x_SimpleHierarchicalStateMachine, 132133, "_x_//@ownedState.2131", _x_ownedSubState, 127, "_x_//@ownedState.2", 5, "_x_//@ownedState.2/@ownedSubState.1").
+  edge(_x_SimpleHierarchicalStateMachine, 135136, "_x_//@ownedState.2134", _x_ownedSubState, 127, "_x_//@ownedState.2", 7, "_x_//@ownedState.2/@ownedSubState.2").
+  edge(_x_SimpleHierarchicalStateMachine, 140141, "_x_//@ownedState.3139", _x_ownedSubState, 138, "_x_//@ownedState.3", 9, "_x_//@ownedState.3/@ownedSubState.0").
+  edge(_x_SimpleHierarchicalStateMachine, 143144, "_x_//@ownedState.3142", _x_ownedSubState, 138, "_x_//@ownedState.3", 11, "_x_//@ownedState.3/@ownedSubState.1").
+  edge(_x_SimpleHierarchicalStateMachine, 146147, "_x_//@ownedState.3145", _x_ownedSubState, 138, "_x_//@ownedState.3", 13, "_x_//@ownedState.3/@ownedSubState.2").
+  edge(_x_SimpleHierarchicalStateMachine, 149150, "_x_//@ownedState.3148", _x_ownedSubState, 138, "_x_//@ownedState.3", 15, "_x_//@ownedState.3/@ownedSubState.3").
+  edge(_x_SimpleHierarchicalStateMachine, 154155, "_x_//@ownedState.4153", _x_ownedSubState, 152, "_x_//@ownedState.4", 17, "_x_//@ownedState.4/@ownedSubState.0").
+  edge(_x_SimpleHierarchicalStateMachine, 157158, "_x_//@ownedState.4156", _x_ownedSubState, 152, "_x_//@ownedState.4", 19, "_x_//@ownedState.4/@ownedSubState.1").
+  edge(_x_SimpleHierarchicalStateMachine, 160161, "_x_//@ownedState.4159", _x_ownedSubState, 152, "_x_//@ownedState.4", 21, "_x_//@ownedState.4/@ownedSubState.2").
+  edge(_x_SimpleHierarchicalStateMachine, 165166, "_x_'s1__ASPid:3'164", _x_ownedState, 163, "_x_'s1__ASPid:3'", 224, "_x_//@ownedState.0").
+  edge(_x_SimpleHierarchicalStateMachine, 168169, "_x_'s1__ASPid:3'167", _x_ownedState, 163, "_x_'s1__ASPid:3'", 1, "_x_//@ownedState.1").
+  edge(_x_SimpleHierarchicalStateMachine, 171172, "_x_'s1__ASPid:3'170", _x_ownedState, 163, "_x_'s1__ASPid:3'", 127, "_x_//@ownedState.2").
+  edge(_x_SimpleHierarchicalStateMachine, 174175, "_x_'s1__ASPid:3'173", _x_ownedState, 163, "_x_'s1__ASPid:3'", 138, "_x_//@ownedState.3").
+  edge(_x_SimpleHierarchicalStateMachine, 177178, "_x_'s1__ASPid:3'176", _x_ownedState, 163, "_x_'s1__ASPid:3'", 152, "_x_//@ownedState.4").
+  edge(_x_SimpleHierarchicalStateMachine, 180181, "_x_'s1__ASPid:3'179", _x_ownedState, 163, "_x_'s1__ASPid:3'",,).
+  edge(_x_SimpleHierarchicalStateMachine, 183184, "_x_'s1__ASPid:3'182", _x_ownedState, 163, "_x_'s1__ASPid:3'",,).
+  edge(_x_SimpleHierarchicalStateMachine, 186187, "_x_'s1__ASPid:3'185", _x_ownedTransition, 163, "_x_'s1__ASPid:3'", 23, "_x_//@ownedTransition.0").
+  edge(_x_SimpleHierarchicalStateMachine, 189190, "_x_'s1__ASPid:3'188", _x_ownedTransition, 163, "_x_'s1__ASPid:3'", 31, "_x_//@ownedTransition.1").
+  edge(_x_SimpleHierarchicalStateMachine, 192193, "_x_'s1__ASPid:3'191", _x_ownedTransition, 163, "_x_'s1__ASPid:3'", 39, "_x_//@ownedTransition.2").
+  edge(_x_SimpleHierarchicalStateMachine, 195196, "_x_'s1__ASPid:3'194", _x_ownedTransition, 163, "_x_'s1__ASPid:3'", 47, "_x_//@ownedTransition.3").
+  edge(_x_SimpleHierarchicalStateMachine, 198199, "_x_'s1__ASPid:3'197", _x_ownedTransition, 163, "_x_'s1__ASPid:3'", 55, "_x_//@ownedTransition.4").
+  edge(_x_SimpleHierarchicalStateMachine, 201202, "_x_'s1__ASPid:3'200", _x_ownedTransition, 163, "_x_'s1__ASPid:3'", 63, "_x_//@ownedTransition.5").
+  edge(_x_SimpleHierarchicalStateMachine, 204205, "_x_'s1__ASPid:3'203", _x_ownedTransition, 163, "_x_'s1__ASPid:3'", 71, "_x_//@ownedTransition.6").
+  edge(_x_SimpleHierarchicalStateMachine, 207208, "_x_'s1__ASPid:3'206", _x_ownedTransition, 163, "_x_'s1__ASPid:3'", 79, "_x_//@ownedTransition.7").
+  edge(_x_SimpleHierarchicalStateMachine, 210211, "_x_'s1__ASPid:3'209", _x_ownedTransition, 163, "_x_'s1__ASPid:3'", 87, "_x_//@ownedTransition.8").
+  edge(_x_SimpleHierarchicalStateMachine, 213214, "_x_'s1__ASPid:3'212", _x_ownedTransition, 163, "_x_'s1__ASPid:3'", 95, "_x_//@ownedTransition.9").
+  edge(_x_SimpleHierarchicalStateMachine, 216217, "_x_'s1__ASPid:3'215", _x_ownedTransition, 163, "_x_'s1__ASPid:3'", 103, "_x_//@ownedTransition.10").
+  edge(_x_SimpleHierarchicalStateMachine, 219220, "_x_'s1__ASPid:3'218", _x_ownedTransition, 163, "_x_'s1__ASPid:3'", 111, "_x_//@ownedTransition.11").
+  edge(_x_SimpleHierarchicalStateMachine, 222223, "_x_'s1__ASPid:3'221", _x_ownedTransition, 163, "_x_'s1__ASPid:3'", 119, "_x_//@ownedTransition.12").
+
+  prop(_x_SimpleHierarchicalStateMachine, 21, "_x_//@ownedState.11", 1, "_x_//@ownedState.1", _x_name, _x_StartInstallShield).
+  prop(_x_SimpleHierarchicalStateMachine, 41, "_x_//@ownedState.2/@ownedSubState.01", 3, "_x_//@ownedState.2/@ownedSubState.0", _x_name, _x_EntryInstall).
+  prop(_x_SimpleHierarchicalStateMachine, 61, "_x_//@ownedState.2/@ownedSubState.11", 5, "_x_//@ownedState.2/@ownedSubState.1", _x_name, _x_AskInstallingQuestions).
+  prop(_x_SimpleHierarchicalStateMachine, 81, "_x_//@ownedState.2/@ownedSubState.21", 7, "_x_//@ownedState.2/@ownedSubState.2", _x_name, _x_InstallSoftware).
+  prop(_x_SimpleHierarchicalStateMachine, 101, "_x_//@ownedState.3/@ownedSubState.01", 9, "_x_//@ownedState.3/@ownedSubState.0", _x_name, _x_EntryDiskError).
+  prop(_x_SimpleHierarchicalStateMachine, 121, "_x_//@ownedState.3/@ownedSubState.11", 11, "_x_//@ownedState.3/@ownedSubState.1", _x_name, _x_FixDiskDo).
+  prop(_x_SimpleHierarchicalStateMachine, 141, "_x_//@ownedState.3/@ownedSubState.21", 13, "_x_//@ownedState.3/@ownedSubState.2", _x_name, _x_ShowQuestionDialogDo).
+  prop(_x_SimpleHierarchicalStateMachine, 161, "_x_//@ownedState.3/@ownedSubState.31", 15, "_x_//@ownedState.3/@ownedSubState.3", _x_name, _x_AskConfirmAction).
+  prop(_x_SimpleHierarchicalStateMachine, 181, "_x_//@ownedState.4/@ownedSubState.01", 17, "_x_//@ownedState.4/@ownedSubState.0", _x_name, _x_EntryMemoryLow).
+  prop(_x_SimpleHierarchicalStateMachine, 201, "_x_//@ownedState.4/@ownedSubState.11", 19, "_x_//@ownedState.4/@ownedSubState.1", _x_name, _x_ShowQuestionDialogDo).
+  prop(_x_SimpleHierarchicalStateMachine, 221, "_x_//@ownedState.4/@ownedSubState.21", 21, "_x_//@ownedState.4/@ownedSubState.2", _x_name, _x_AskConfirmAction).
+  prop(_x_SimpleHierarchicalStateMachine, 301, "_x_//@ownedTransition.01", 23, "_x_//@ownedTransition.0", _x_trigger, _x_start_install).
+  prop(_x_SimpleHierarchicalStateMachine, 381, "_x_//@ownedTransition.11", 31, "_x_//@ownedTransition.1", _x_trigger, _x_disk_error).
+  prop(_x_SimpleHierarchicalStateMachine, 461, "_x_//@ownedTransition.21", 39, "_x_//@ownedTransition.2", _x_trigger, _x_out_of_memory).
+  prop(_x_SimpleHierarchicalStateMachine, 541, "_x_//@ownedTransition.31", 47, "_x_//@ownedTransition.3", _x_trigger, _x_a).
+  prop(_x_SimpleHierarchicalStateMachine, 621, "_x_//@ownedTransition.41", 55, "_x_//@ownedTransition.4", _x_trigger, _x_b).
+  prop(_x_SimpleHierarchicalStateMachine, 701, "_x_//@ownedTransition.51", 63, "_x_//@ownedTransition.5", _x_trigger, _x_c).
+  prop(_x_SimpleHierarchicalStateMachine, 781, "_x_//@ownedTransition.61", 71, "_x_//@ownedTransition.6", _x_trigger, _x_d).
+  prop(_x_SimpleHierarchicalStateMachine, 861, "_x_//@ownedTransition.71", 79, "_x_//@ownedTransition.7", _x_trigger, _x_e).
+  prop(_x_SimpleHierarchicalStateMachine, 941, "_x_//@ownedTransition.81", 87, "_x_//@ownedTransition.8", _x_trigger, _x_f).
+  prop(_x_SimpleHierarchicalStateMachine, 1021, "_x_//@ownedTransition.91", 95, "_x_//@ownedTransition.9", _x_trigger, _x_g).
+  prop(_x_SimpleHierarchicalStateMachine, 1101, "_x_//@ownedTransition.101", 103, "_x_//@ownedTransition.10", _x_trigger, _x_h).
+  prop(_x_SimpleHierarchicalStateMachine, 1181, "_x_//@ownedTransition.111", 111, "_x_//@ownedTransition.11", _x_trigger, _x_i).
+  prop(_x_SimpleHierarchicalStateMachine, 1261, "_x_//@ownedTransition.121", 119, "_x_//@ownedTransition.12", _x_trigger, _x_l).
+  prop(_x_SimpleHierarchicalStateMachine, 1371, "_x_//@ownedState.21", 127, "_x_//@ownedState.2", _x_name, _x_InstallSoftware).
+  prop(_x_SimpleHierarchicalStateMachine, 1511, "_x_//@ownedState.31", 138, "_x_//@ownedState.3", _x_name, _x_DiskError).
+  prop(_x_SimpleHierarchicalStateMachine, 1621, "_x_//@ownedState.41", 152, "_x_//@ownedState.4", _x_name, _x_MemoryLow).
+  prop(_x_SimpleHierarchicalStateMachine, 2251, "_x_//@ownedState.01", 224, "_x_//@ownedState.0", _x_name, _x_Start).
+
+  
+  
+  
+  
+  
+  
+  
