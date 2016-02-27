@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ASP:Transformation xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ASP="http://asp.ecore" name="UML2RDBMS">
+  <elements xsi:type="ASP:Literal" name="UML"/>
+  <elements xsi:type="ASP:Literal" name="Attribute"/>
+  <elements xsi:type="ASP:Literal" name="name"/>
+  <elements xsi:type="ASP:Metaprop" name="UML!Attribute.name" literals="//@elements.0 //@elements.2 //@elements.1"/>
+  <elements xsi:type="ASP:Literal" name="RDBMS"/>
+  <elements xsi:type="ASP:Literal" name="Column"/>
+  <elements xsi:type="ASP:Metaprop" name="RDBMS!Column.name" literals="//@elements.4 //@elements.2 //@elements.5"/>
+  <elements xsi:type="ASP:Metanode" name="UML!Attribute" literals="//@elements.0 //@elements.1"/>
+  <elements xsi:type="ASP:Metanode" name="RDBMS!Column" literals="//@elements.4 //@elements.5"/>
+  <elements xsi:type="ASP:Literal" name="node0:UML!Attribute"/>
+  <elements xsi:type="ASP:Literal" name="attribute2column"/>
+  <elements xsi:type="ASP:Node" name="node0:UML!Attribute" literals="//@elements.0 //@elements.9 //@elements.10 //@elements.1"/>
+  <elements xsi:type="ASP:Literal" name="node1:RDBMS!Column"/>
+  <elements xsi:type="ASP:Node" name="node1:RDBMS!Column" literals="//@elements.4 //@elements.12 //@elements.10 //@elements.5"/>
+  <elements xsi:type="ASP:Literal" name="prop0:UML!Attribute.name"/>
+  <elements xsi:type="ASP:Literal" name="atn"/>
+  <elements xsi:type="ASP:Literal" name="atnattribute2column"/>
+  <elements xsi:type="ASP:Prop" name="prop0:UML!Attribute.name=atn" literals="//@elements.0 //@elements.14 //@elements.16 //@elements.1 //@elements.2 //@elements.15"/>
+  <elements xsi:type="ASP:Literal" name="prop1:RDBMS!Column.name"/>
+  <elements xsi:type="ASP:Literal" name="atn"/>
+  <elements xsi:type="ASP:Prop" name="prop1:RDBMS!Column.name=atn" literals="//@elements.4 //@elements.18 //@elements.16 //@elements.5 //@elements.2 //@elements.19"/>
+  <relations id="attribute2column" name="attribute2column" type="bidirectional">
+    <patterns xsi:type="ASP:LeftPattern" element="//@elements.7" name="Attribute"
+        type="node"/>
+    <patterns xsi:type="ASP:LeftPattern" element="//@elements.3" name="name" type="prop"/>
+    <patterns xsi:type="ASP:RightPattern" element="//@elements.8" name="Column" type="node"/>
+    <patterns xsi:type="ASP:RightPattern" element="//@elements.6" name="name" type="prop"/>
+  </relations>
+  <constraints name="Constraint0">
+    <expressions xsi:type="ASP:Terminal" name="a" element="//@elements.11"/>
+    <expressions xsi:type="ASP:Not" name="c" element="//@elements.13"/>
+    <expressions xsi:type="ASP:Terminal" name="name" element="//@elements.17"/>
+  </constraints>
+  <constraints name="Constraint1">
+    <expressions xsi:type="ASP:Terminal" name="c" element="//@elements.13"/>
+    <expressions xsi:type="ASP:Not" name="a" element="//@elements.11"/>
+    <expressions xsi:type="ASP:Terminal" name="name" element="//@elements.20"/>
+  </constraints>
+  <constraints name="Constraint2">
+    <expressions xsi:type="ASP:Terminal" name="a" element="//@elements.11"/>
+    <expressions xsi:type="ASP:Terminal" name="c" element="//@elements.13"/>
+    <expressions xsi:type="ASP:Not" name="name" element="//@elements.17"/>
+  </constraints>
+  <constraints name="Constraint3">
+    <expressions xsi:type="ASP:Terminal" name="a" element="//@elements.11"/>
+    <expressions xsi:type="ASP:Terminal" name="c" element="//@elements.13"/>
+    <expressions xsi:type="ASP:Not" name="name" element="//@elements.20"/>
+  </constraints>
+  <constraints name="Constraint4">
+    <expressions xsi:type="ASP:Terminal" name="a" element="//@elements.11"/>
+    <expressions xsi:type="ASP:Terminal" name="name" element="//@elements.17"/>
+    <expressions xsi:type="ASP:Terminal" name="c" element="//@elements.13"/>
+    <expressions xsi:type="ASP:Not" name="name" element="//@elements.20"/>
+  </constraints>
+  <constraints name="Constraint5">
+    <expressions xsi:type="ASP:Terminal" name="c" element="//@elements.13"/>
+    <expressions xsi:type="ASP:Terminal" name="name" element="//@elements.20"/>
+    <expressions xsi:type="ASP:Terminal" name="a" element="//@elements.11"/>
+    <expressions xsi:type="ASP:Not" name="name" element="//@elements.17"/>
+  </constraints>
+  <constraints name="Constraint6">
+    <expressions xsi:type="ASP:Terminal" name="a" element="//@elements.11"/>
+    <expressions xsi:type="ASP:Terminal" name="name" element="//@elements.17"/>
+    <expressions xsi:type="ASP:Not" name="c" element="//@elements.13"/>
+    <expressions xsi:type="ASP:Terminal" name="name" element="//@elements.20"/>
+  </constraints>
+  <constraints name="Constraint7">
+    <expressions xsi:type="ASP:Terminal" name="c" element="//@elements.13"/>
+    <expressions xsi:type="ASP:Terminal" name="name" element="//@elements.20"/>
+    <expressions xsi:type="ASP:Not" name="a" element="//@elements.11"/>
+    <expressions xsi:type="ASP:Terminal" name="name" element="//@elements.17"/>
+  </constraints>
+</ASP:Transformation>
