@@ -1,0 +1,155 @@
+transformation uml2rdbms(uml:SimpleUML, rdbms:SimpleRDBMS) {
+
+	top relation ClassToTable {
+		cn : String;
+		an: String;
+		
+		enforce domain uml c : SimpleUML::Class {
+			is_persistent = true,
+			name = cn,
+			attr = at : SimpleUML::Attribute {
+			name = an,
+			dataType = ’NUMBER’
+			}
+		};
+		
+		enforce domain rdbms t : SimpleRDBMS::Table {
+			name = cn,
+			col = cl : SimpleRDBMS::Column {
+			name = an,
+			dataType = ’NUMBER’
+			},
+			pKey = k : SimpleRDBMS::Column {
+				name = an,
+				dataType = ’NUMBER’
+			}
+		};
+		
+		when {}
+		
+		where {
+			ClassToPkey(c, k);
+			AttributeToColumn(c, t);
+		}
+	}
+	
+	
+	relation ClassToPkey {
+		cn : String;
+			enforce domain uml c : SimpleUML::Class {
+			name = cn
+		};
+		
+		enforce domain rdbms k : SimpleRDBMS::Column {
+			name = cn
+		};
+	}
+	
+	
+	relation AttributeToColumn {
+	
+		enforce domain uml c : SimpleUML::Class {    };
+		
+		enforce domain rdbms t : SimpleRDBMS::Table { 	};
+		
+		where {
+			PrimitiveAttributeToColumn(c, t);
+			SuperAttributeToColumn(c, t);
+		}
+	}
+	
+	
+	relation PrimitiveAttributeToColumn {
+		an : String;
+		pn : String;
+		cn : String;
+		sqltype : String;
+		
+		enforce domain uml c : SimpleUML::Class {
+			attr = a : SimpleUML::Attribute {
+				name = an,
+				type = p : SimpleUML::PrimitiveDataType { name = pn }
+			}
+		};
+		
+		enforce domain rdbms t : SimpleRDBMS::Table {
+			col = cl : SimpleRDBMS::Column {
+				name = cn,
+				type = sqltype
+			}
+		};
+		
+		where {
+			sqltype = PrimitiveTypeToSqlType(pn);
+		}
+	}
+	
+	
+	relation SuperAttributeToColumn {
+	
+		enforce domain uml c : SimpleUML::Class {
+			parent = sc : SimpleUML::Class {
+			}
+		};
+		
+		enforce domain rdbms t : SimpleRDBMS::Table {};
+		
+		where {
+			AttributeToColumn(sc, t);
+		}
+	}
+	
+	
+	top relation AssocToFKey {
+		an : String;
+		scn : String;
+		dcn : String;
+		fkn : String;
+		fcn : String;
+		
+		checkonly domain uml a : SimpleUML::Association {
+			name = an,
+			src = sc : SimpleUML::Class {
+				is_persistent = true,
+				name = scn
+			},
+			dest = dc : SimpleUML::Class {
+				is_persistent = true,
+				name = dcn
+			}
+		};
+		
+		enforce domain rdbms fk : SimpleRDBMS::ForeignKey {
+			name = fkn,
+			owner = srcTbl : SimpleRDBMS::Table { },
+			fcol = fc : SimpleRDBMS::Column {
+				name = fcn,
+				dataType = ’NUMBER’,
+				owner = srcTbl
+			},
+			references = pKey : SimpleRDBMS::Column {
+				owner = destTbl : SimpleRDBMS::Table { }
+			}
+		};
+		
+		when {
+			ClassToPkey(dc, pKey);
+			ClassToTable(sc, srcTbl);
+			ClassToTable(dc, destTbl);
+		}
+	}
+	
+	
+	query PrimitiveTypeToSqlType (typename : String) : String {
+		if typename = ’INTEGER’ then
+			’NUMBER’
+		else
+			if typename = ’BOOLEAN’ then
+				’BOOLEAN’
+			else
+				’VARCHAR’
+			endif
+		endif
+	}
+	
+}
