@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ASP:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ASP="http://asp.ecore" name="UML2RDBMS">
+  <elements xsi:type="ASP:Literal" name="UML"/>
+  <elements xsi:type="ASP:Literal" name="Class"/>
+  <elements xsi:type="ASP:Literal" name="is_persistent"/>
+  <elements xsi:type="ASP:Metaprop" name="UML!Class.is_persistent" literals="//@elements.0 //@elements.2 //@elements.1"/>
+  <elements xsi:type="ASP:Literal" name="name"/>
+  <elements xsi:type="ASP:Metaprop" name="UML!Class.name" literals="//@elements.0 //@elements.4 //@elements.1"/>
+  <elements xsi:type="ASP:Literal" name="attrs"/>
+  <elements xsi:type="ASP:Literal" name="association"/>
+  <elements xsi:type="ASP:Literal" name="Attribute"/>
+  <elements xsi:type="ASP:Metaedge" name="UML!Class.attrs" literals="//@elements.0 //@elements.7 //@elements.6 //@elements.1 //@elements.8"/>
+  <elements xsi:type="ASP:Literal" name="RDBMS"/>
+  <elements xsi:type="ASP:Literal" name="Table"/>
+  <elements xsi:type="ASP:Literal" name="col"/>
+  <elements xsi:type="ASP:Literal" name="Column"/>
+  <elements xsi:type="ASP:Metaedge" name="RDBMS!Table.col" literals="//@elements.10 //@elements.7 //@elements.12 //@elements.11 //@elements.13"/>
+  <elements xsi:type="ASP:Literal" name="pKey"/>
+  <elements xsi:type="ASP:Metaedge" name="RDBMS!Table.pKey" literals="//@elements.10 //@elements.7 //@elements.15 //@elements.11 //@elements.13"/>
+  <elements xsi:type="ASP:Metaprop" name="RDBMS!Table.name" literals="//@elements.10 //@elements.4 //@elements.11"/>
+  <elements xsi:type="ASP:Metanode" name="UML!Class" literals="//@elements.0 //@elements.1"/>
+  <elements xsi:type="ASP:Metanode" name="RDBMS!Table" literals="//@elements.10 //@elements.11"/>
+  <elements xsi:type="ASP:Metaprop" name="UML!Attribute.name" literals="//@elements.0 //@elements.4 //@elements.8"/>
+  <elements xsi:type="ASP:Metaprop" name="RDBMS!Column.name" literals="//@elements.10 //@elements.4 //@elements.13"/>
+  <elements xsi:type="ASP:Metanode" name="UML!Attribute" literals="//@elements.0 //@elements.8"/>
+  <elements xsi:type="ASP:Metanode" name="RDBMS!Column" literals="//@elements.10 //@elements.13"/>
+  <elements xsi:type="ASP:Literal" name="node0:UML!Class"/>
+  <elements xsi:type="ASP:Node" name="node0:UML!Class" literals="//@elements.0 //@elements.24 //@elements.1"/>
+  <elements xsi:type="ASP:Literal" name="node1:RDBMS!Table"/>
+  <elements xsi:type="ASP:Node" name="node1:RDBMS!Table" literals="//@elements.10 //@elements.26 //@elements.11"/>
+  <elements xsi:type="ASP:Literal" name="node2:UML!Attribute"/>
+  <elements xsi:type="ASP:Node" name="node2:UML!Attribute" literals="//@elements.0 //@elements.28 //@elements.8"/>
+  <elements xsi:type="ASP:Literal" name="node3:RDBMS!Column"/>
+  <elements xsi:type="ASP:Node" name="node3:RDBMS!Column" literals="//@elements.10 //@elements.30 //@elements.13"/>
+  <elements xsi:type="ASP:Literal" name="prop0:UML!Class.name"/>
+  <elements xsi:type="ASP:Literal" name="cn"/>
+  <elements xsi:type="ASP:Prop" name="prop0:UML!Class.name=cn" literals="//@elements.0 //@elements.32 //@elements.1 //@elements.4 //@elements.33"/>
+  <elements xsi:type="ASP:Literal" name="prop1:RDBMS!Table.name"/>
+  <elements xsi:type="ASP:Literal" name="cn"/>
+  <elements xsi:type="ASP:Prop" name="prop1:RDBMS!Table.name=cn" literals="//@elements.10 //@elements.35 //@elements.11 //@elements.4 //@elements.36"/>
+  <elements xsi:type="ASP:Literal" name="prop2:UML!Attribute.name"/>
+  <elements xsi:type="ASP:Literal" name="atn"/>
+  <elements xsi:type="ASP:Prop" name="prop2:UML!Attribute.name=atn" literals="//@elements.0 //@elements.38 //@elements.8 //@elements.4 //@elements.39"/>
+  <elements xsi:type="ASP:Literal" name="prop3:RDBMS!Column.name"/>
+  <elements xsi:type="ASP:Literal" name="atn"/>
+  <elements xsi:type="ASP:Prop" name="prop3:RDBMS!Column.name=atn" literals="//@elements.10 //@elements.41 //@elements.13 //@elements.4 //@elements.42"/>
+  <elements xsi:type="ASP:Literal" name="prop4:UML!Class.is_persistent"/>
+  <elements xsi:type="ASP:Literal" name="true"/>
+  <elements xsi:type="ASP:Prop" name="prop4:UML!Class.is_persistent=true" literals="//@elements.0 //@elements.44 //@elements.1 //@elements.2 //@elements.45"/>
+  <elements xsi:type="ASP:Literal" name="node4:UML!Attribute"/>
+  <elements xsi:type="ASP:Node" name="node4:UML!Attribute" literals="//@elements.0 //@elements.47 //@elements.8"/>
+  <elements xsi:type="ASP:Literal" name="edge0:UML!Class.attrs"/>
+  <elements xsi:type="ASP:Edge" name="edge0:UML!Class.attrs=at" literals="//@elements.0 //@elements.49 //@elements.6 //@elements.24 //@elements.47"/>
+  <elements xsi:type="ASP:Literal" name="node4:RDBMS!Column"/>
+  <elements xsi:type="ASP:Node" name="node4:RDBMS!Column" literals="//@elements.10 //@elements.51 //@elements.13"/>
+  <elements xsi:type="ASP:Literal" name="edge1:RDBMS!Table.col"/>
+  <elements xsi:type="ASP:Edge" name="edge1:RDBMS!Table.col=cl" literals="//@elements.10 //@elements.53 //@elements.12 //@elements.26 //@elements.51"/>
+  <elements xsi:type="ASP:Literal" name="node4:RDBMS!Column"/>
+  <elements xsi:type="ASP:Node" name="node4:RDBMS!Column" literals="//@elements.10 //@elements.55 //@elements.13"/>
+  <elements xsi:type="ASP:Literal" name="edge2:RDBMS!Table.pKey"/>
+  <elements xsi:type="ASP:Edge" name="edge2:RDBMS!Table.pKey=k" literals="//@elements.10 //@elements.57 //@elements.15 //@elements.26 //@elements.55"/>
+  <relations id="class2table" name="class2table" type="bidirectional">
+    <patterns xsi:type="ASP:LeftPattern" element="//@elements.18" name="Class" type="node"/>
+    <patterns xsi:type="ASP:LeftPattern" element="//@elements.3" name="is_persistent"
+        type="prop"/>
+    <patterns xsi:type="ASP:LeftPattern" element="//@elements.5" name="name" type="prop"/>
+    <patterns xsi:type="ASP:LeftPattern" element="//@elements.9" name="attrs" type="edge"/>
+    <patterns xsi:type="ASP:RightPattern" element="//@elements.19" name="Table" type="node"/>
+    <patterns xsi:type="ASP:RightPattern" element="//@elements.14" name="col" type="edge"/>
+    <patterns xsi:type="ASP:RightPattern" element="//@elements.16" name="pKey" type="edge"/>
+    <patterns xsi:type="ASP:RightPattern" element="//@elements.17" name="name" type="prop"/>
+  </relations>
+  <relations id="attribute2column" name="attribute2column" type="bidirectional">
+    <patterns xsi:type="ASP:LeftPattern" element="//@elements.22" name="Attribute"
+        type="node"/>
+    <patterns xsi:type="ASP:LeftPattern" element="//@elements.20" name="name" type="prop"/>
+    <patterns xsi:type="ASP:RightPattern" element="//@elements.23" name="Column" type="node"/>
+    <patterns xsi:type="ASP:RightPattern" element="//@elements.21" name="name" type="prop"/>
+  </relations>
+  <constraints name="Constraint0">
+    <expressions xsi:type="ASP:Terminal" name="c" element="//@elements.25"/>
+    <expressions xsi:type="ASP:Not" name="t" element="//@elements.27"/>
+    <expressions xsi:type="ASP:Terminal" name="is_persistent" element="//@elements.46"/>
+    <expressions xsi:type="ASP:Terminal" name="name" element="//@elements.34"/>
+    <expressions xsi:type="ASP:Terminal" name="attrs" element="//@elements.50"/>
+  </constraints>
+  <constraints name="Constraint1">
+    <expressions xsi:type="ASP:Terminal" name="t" element="//@elements.27"/>
+    <expressions xsi:type="ASP:Not" name="c" element="//@elements.25"/>
+    <expressions xsi:type="ASP:Terminal" name="col" element="//@elements.54"/>
+    <expressions xsi:type="ASP:Terminal" name="pKey" element="//@elements.58"/>
+    <expressions xsi:type="ASP:Terminal" name="name" element="//@elements.37"/>
+  </constraints>
+  <constraints name="Constraint2">
+    <expressions xsi:type="ASP:Terminal" name="c" element="//@elements.25"/>
+    <expressions xsi:type="ASP:Terminal" name="t" element="//@elements.27"/>
+    <expressions xsi:type="ASP:Not" name="is_persistent" element="//@elements.46"/>
+  </constraints>
+  <constraints name="Constraint3">
+    <expressions xsi:type="ASP:Terminal" name="c" element="//@elements.25"/>
+    <expressions xsi:type="ASP:Terminal" name="t" element="//@elements.27"/>
+    <expressions xsi:type="ASP:Not" name="name" element="//@elements.34"/>
+  </constraints>
+  <constraints name="Constraint4">
+    <expressions xsi:type="ASP:Terminal" name="c" element="//@elements.25"/>
+    <expressions xsi:type="ASP:Terminal" name="t" element="//@elements.27"/>
+    <expressions xsi:type="ASP:Not" name="attrs" element="//@elements.50"/>
+  </constraints>
+  <constraints name="Constraint5">
+    <expressions xsi:type="ASP:Terminal" name="c" element="//@elements.25"/>
+    <expressions xsi:type="ASP:Terminal" name="t" element="//@elements.27"/>
+    <expressions xsi:type="ASP:Not" name="col" element="//@elements.54"/>
+  </constraints>
+  <constraints name="Constraint6">
+    <expressions xsi:type="ASP:Terminal" name="c" element="//@elements.25"/>
+    <expressions xsi:type="ASP:Terminal" name="t" element="//@elements.27"/>
+    <expressions xsi:type="ASP:Not" name="pKey" element="//@elements.58"/>
+  </constraints>
+  <constraints name="Constraint7">
+    <expressions xsi:type="ASP:Terminal" name="c" element="//@elements.25"/>
+    <expressions xsi:type="ASP:Terminal" name="t" element="//@elements.27"/>
+    <expressions xsi:type="ASP:Not" name="name" element="//@elements.37"/>
+  </constraints>
+  <constraints name="Constraint8">
+    <expressions xsi:type="ASP:Terminal" name="a" element="//@elements.29"/>
+    <expressions xsi:type="ASP:Not" name="c" element="//@elements.31"/>
+    <expressions xsi:type="ASP:Terminal" name="name" element="//@elements.40"/>
+  </constraints>
+  <constraints name="Constraint9">
+    <expressions xsi:type="ASP:Terminal" name="c" element="//@elements.31"/>
+    <expressions xsi:type="ASP:Not" name="a" element="//@elements.29"/>
+    <expressions xsi:type="ASP:Terminal" name="name" element="//@elements.43"/>
+  </constraints>
+  <constraints name="Constraint10">
+    <expressions xsi:type="ASP:Terminal" name="a" element="//@elements.29"/>
+    <expressions xsi:type="ASP:Terminal" name="c" element="//@elements.31"/>
+    <expressions xsi:type="ASP:Not" name="name" element="//@elements.40"/>
+  </constraints>
+  <constraints name="Constraint11">
+    <expressions xsi:type="ASP:Terminal" name="a" element="//@elements.29"/>
+    <expressions xsi:type="ASP:Terminal" name="c" element="//@elements.31"/>
+    <expressions xsi:type="ASP:Not" name="name" element="//@elements.43"/>
+  </constraints>
+</ASP:Transformation>

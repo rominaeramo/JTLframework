@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<JTL:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http:///imperativeocl.ecore" xmlns:JTL="http:///jtl.ecore" xmlns:_1="http:///template.ecore"
+    xmlns:essentialocl="http:///essentialocl.ecore" xmi:id="o424" name="UML2RDBMS">
+  <modelParameter name="UML"/>
+  <modelParameter name="RDBMS"/>
+  <relation name="attribute2column">
+    <domain name="UML" isEnforceable="true" model="#//@modelParameter.0">
+      <pattern domain="#//@relation.0/@domain.0">
+        <predicate>
+          <conditionExpression xsi:type="AssignExp" name="name=atn">
+            <value xsi:type="essentialocl:VariableExp" name="atn" referredVariable="#//@relation.0/@variable.0"/>
+            <left xsi:type="essentialocl:PropertyCallExp" name="name"/>
+          </conditionExpression>
+        </predicate>
+        <templateExpression xsi:type="_1:ObjectTemplateExp" name="a" referredClass="Attribute"/>
+      </pattern>
+    </domain>
+    <domain name="RDBMS" isEnforceable="true" model="#//@modelParameter.1">
+      <pattern domain="#//@relation.0/@domain.1">
+        <predicate>
+          <conditionExpression xsi:type="AssignExp" name="name=atn">
+            <value xsi:type="essentialocl:VariableExp" name="atn" referredVariable="#//@relation.0/@variable.0"/>
+            <left xsi:type="essentialocl:PropertyCallExp" name="name"/>
+          </conditionExpression>
+        </predicate>
+        <templateExpression xsi:type="_1:ObjectTemplateExp" name="c" referredClass="Column"/>
+      </pattern>
+    </domain>
+    <when domain="#//@relation.0/@domain.0">
+      <predicate>
+        <conditionExpression xsi:type="AssignExp" name="type=atn">
+          <value xsi:type="essentialocl:VariableExp" name="atn" referredVariable="#//@relation.0/@variable.0"/>
+          <left xsi:type="essentialocl:PropertyCallExp" name="type"/>
+        </conditionExpression>
+      </predicate>
+    </when>
+    <variable name="atn"/>
+  </relation>
+</JTL:Transformation>
