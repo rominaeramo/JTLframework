@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EMFText Parser Plugin: JTLMM
+Bundle-SymbolicName: JTLMM.resource.JTLMM;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Vendor: Software Technology Group - TU Dresden Germany
+Require-Bundle: org.eclipse.core.runtime;resolution:=optional,
+  org.eclipse.emf.ecore,
+  org.eclipse.emf.ecore.change,
+  org.eclipse.emf.validation;resolution:=optional,
+  org.emftext.access;resolution:=optional,
+  org.eclipse.debug.core;resolution:=optional,
+  org.emftext.commons.antlr3_4_0,
+  org.emftext.language.JTLMM
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: JTLMM.resource.JTLMM,
+  JTLMM.resource.JTLMM.analysis,
+  JTLMM.resource.JTLMM.mopp,
+  JTLMM.resource.JTLMM.debug,
+  JTLMM.resource.JTLMM.launch,
+  JTLMM.resource.JTLMM.grammar,
+  JTLMM.resource.JTLMM.util
+Bundle-Activator: JTLMM.resource.JTLMM.mopp.JTLMMPlugin

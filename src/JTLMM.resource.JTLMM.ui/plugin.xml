@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.emftext.access.syntax.ui">
+		<metaInformationProvider class="JTLMM.resource.JTLMM.ui.JTLMMUIMetaInformation" id="JTLMM.resource.JTLMM.ui.JTLMMUIMetaInformation">
+		</metaInformationProvider>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors">
+		<editor class="JTLMM.resource.JTLMM.ui.JTLMMEditor" contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor" extensions="JTLMM" icon="icons/editor_icon.gif" id="JTLMM.resource.JTLMM.ui.JTLMMEditor" name="EMFText JTLMM Editor">
+			<contentTypeBinding contentTypeId="JTLMM.resource.JTLMM">
+			</contentTypeBinding>
+		</editor>
+	</extension>
+	
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer class="JTLMM.resource.JTLMM.ui.JTLMMPreferenceInitializer">
+		</initializer>
+	</extension>
+	
+	<extension point="org.eclipse.ui.preferencePages">
+		<page name="JTLMM Text Editor" id="JTLMM.resource.JTLMM.ui.JTLMMPreferencePage" class="JTLMM.resource.JTLMM.ui.JTLMMPreferencePage" category="org.eclipse.ui.preferencePages.GeneralTextEditor">
+		</page>
+		<page name="Syntax Coloring" id="JTLMM.resource.JTLMM.ui.JTLMMSyntaxColoringPreferencePage" class="JTLMM.resource.JTLMM.ui.JTLMMSyntaxColoringPreferencePage" category="JTLMM.resource.JTLMM.ui.JTLMMPreferencePage">
+		</page>
+		<page name="Brackets" id="JTLMM.resource.JTLMM.ui.JTLMMBracketPreferencePage" class="JTLMM.resource.JTLMM.ui.JTLMMBracketPreferencePage" category="JTLMM.resource.JTLMM.ui.JTLMMPreferencePage">
+		</page>
+	</extension>
+	
+	<extension point="org.eclipse.ui.newWizards">
+		<category id="org.emftext.runtime.ui.EMFTextFileCategory" name="EMFText File">
+		</category>
+		<wizard category="org.emftext.runtime.ui.EMFTextFileCategory" icon="/icons/default_new_icon.gif" class="JTLMM.resource.JTLMM.ui.JTLMMNewFileWizard" id="JTLMM.resource.JTLMM.ui.JTLMMNewFileWizard" name="EMFText .JTLMM file">
+		</wizard>
+		<category id="org.emftext.runtime.ui.EMFTextProjectCategory" name="EMFText Project">
+		</category>
+		<wizard category="org.emftext.runtime.ui.EMFTextProjectCategory" icon="/icons/default_new_icon.gif" class="JTLMM.resource.JTLMM.ui.JTLMMNewProjectWizard" id="JTLMM.resource.JTLMM.ui.JTLMMNewProjectWizard" name="EMFText JTLMM project" project="true">
+		</wizard>
+	</extension>
+	
+	<extension point="org.eclipse.ui.ide.markerResolution">
+		<markerResolutionGenerator class="JTLMM.resource.JTLMM.ui.JTLMMMarkerResolutionGenerator" markerType="JTLMM.resource.JTLMM.problem">
+		</markerResolutionGenerator>
+	</extension>
+	
+	<extension point="org.eclipse.core.filebuffers.annotationModelCreation">
+		<factory class="JTLMM.resource.JTLMM.ui.JTLMMAnnotationModelFactory" extensions="JTLMM">
+		</factory>
+	</extension>
+	
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type id="JTLMM.resource.JTLMM" name=".JTLMM File" base-type="org.eclipse.core.runtime.text" file-extensions="JTLMM">
+		</content-type>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.documentProviders">
+		<provider class="org.eclipse.ui.editors.text.TextFileDocumentProvider" extensions="JTLMM" id="JTLMM.resource.JTLMM.ui.provider">
+		</provider>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.annotationTypes">
+		<type name="JTLMM.resource.JTLMM.ui.occurences">
+		</type>
+		<type name="JTLMM.resource.JTLMM.ui.occurences.declaration" super="JTLMM.resource.JTLMM.ui.occurences">
+		</type>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+		<specification annotationType="JTLMM.resource.JTLMM.ui.occurences" label="Occurrences (in .JTLMM files)" icon="/icons/occurrence_icon.gif" textPreferenceKey="JTLMM.occurrenceIndication" textPreferenceValue="false" highlightPreferenceKey="JTLMM.occurrenceHighlighting" highlightPreferenceValue="true" contributesToHeader="false" overviewRulerPreferenceKey="JTLMM.occurrenceIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="JTLMM.occurrenceIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="JTLMM.occurrenceIndicationColor" colorPreferenceValue="212,212,212" presentationLayer="4" showInNextPrevDropdownToolbarActionKey="JTLMM.showOccurrenceInNextPrevDropdownToolbarAction" showInNextPrevDropdownToolbarAction="true" isGoToNextNavigationTargetKey="JTLMM.isOccurrenceGoToNextNavigationTarget" isGoToNextNavigationTarget="false" isGoToPreviousNavigationTargetKey="JTLMM.isOccurrenceGoToPreviousNavigationTarget" isGoToPreviousNavigationTarget="false" textStylePreferenceKey="JTLMM.occurrenceTextStyle" textStylePreferenceValue="NONE">
+		</specification>
+		<specification annotationType="JTLMM.resource.JTLMM.ui.occurences.declaration" label="Declarations (in .JTLMM files)" textPreferenceKey="JTLMM.declarationIndication" textPreferenceValue="false" highlightPreferenceKey="JTLMM.declarationHighlighting" highlightPreferenceValue="true" overviewRulerPreferenceKey="JTLMM.declarationIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="JTLMM.declarationIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="JTLMM.declarationIndicationColor" colorPreferenceValue="240,216,168" presentationLayer="4" textStylePreferenceKey="JTLMM.declarationTextStyle" textStylePreferenceValue="NONE">
+		</specification>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+		<launchConfigurationTypeImage icon="/icons/launch_type_icon.gif" configTypeID="JTLMM.resource.JTLMM.ui.launchConfigurationType" id="JTLMM.launchImage">
+		</launchConfigurationTypeImage>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+		<launchConfigurationTabGroup type="JTLMM.resource.JTLMM.ui.launchConfigurationType" class="JTLMM.resource.JTLMM.ui.launch.JTLMMLaunchConfigurationTabGroup" id="JTLMM.launchConfigurationTabGroup" helpContextId="JTLMM.launchConfigHelpContext">
+			<launchMode mode="debug" perspective="org.eclipse.debug.ui.DebugPerspective" description="Debug JTLMM model.">
+			</launchMode>
+			<launchMode mode="run" description="Run JTLMM model.">
+			</launchMode>
+		</launchConfigurationTabGroup>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchShortcuts">
+		<shortcut label="JTLMM Application" icon="/icons/launch_shortcut_icon.gif" helpContextId="JTLMM.launch" modes="run,debug" class="JTLMM.resource.JTLMM.ui.launch.JTLMMLaunchShortcut" description="Launch a JTLMM model" id="JTLMM.launchShortcut">
+			<description description="Run JTLMM model" mode="run">
+			</description>
+			<description description="Debug JTLMM model" mode="debug">
+			</description>
+			<contextualLaunch>
+				<enablement>
+					<with variable="selection">
+						<count value="1">
+						</count>
+						<iterate>
+							<test property="JTLMM.isLaunchable">
+							</test>
+						</iterate>
+					</with>
+				</enablement>
+			</contextualLaunch>
+			<configurationType id="JTLMM.resource.JTLMM.ui.launchConfigurationType">
+			</configurationType>
+		</shortcut>
+	</extension>
+	
+	<extension point="org.eclipse.core.expressions.propertyTesters">
+		<propertyTester id="JTLMM.PropertyTester" type="java.lang.Object" namespace="JTLMM" properties="isLaunchable" class="JTLMM.resource.JTLMM.ui.JTLMMPropertyTester">
+		</propertyTester>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.annotationTypes">
+		<type name="JTLMM.resource.JTLMM.ui.debug.lineBreakpoint" markerType="JTLMM.resource.JTLMM.debug.lineBreakpoint.marker" super="org.eclipse.debug.core.breakpoint">
+		</type>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+		<specification annotationType="JTLMM.resource.JTLMM.ui.debug.lineBreakpoint" label="Breakpoints (in .JTLMM files)" icon="/icons/breakpoint_icon.gif" textPreferenceKey="JTLMM.resource.JTLMM.ui.lineBreakpoint" textPreferenceValue="false" highlightPreferenceKey="JTLMM.resource.JTLMM.ui.lineBreakpointHighlighting" highlightPreferenceValue="true" contributesToHeader="false" overviewRulerPreferenceKey="JTLMM.resource.JTLMM.ui.lineBreakpointIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="JTLMM.resource.JTLMM.ui.lineBreakpointIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="JTLMM.resource.JTLMM.ui.lineBreakpointColor" colorPreferenceValue="212,212,212" presentationLayer="4" showInNextPrevDropdownToolbarActionKey="JTLMM.resource.JTLMM.ui.showLineBreakpointInNextPrevDropdownToolbarAction" showInNextPrevDropdownToolbarAction="true" isGoToNextNavigationTargetKey="JTLMM.resource.JTLMM.ui.isLineBreakpointGoToNextNavigationTarget" isGoToNextNavigationTarget="false" isGoToPreviousNavigationTargetKey="JTLMM.resource.JTLMM.ui.isLineBreakpointGoToPreviousNavigationTarget" isGoToPreviousNavigationTarget="false" textStylePreferenceKey="JTLMM.resource.JTLMM.ui.lineBreakpointTextStyle" textStylePreferenceValue="NONE">
+		</specification>
+	</extension>
+	
+	<extension point="org.eclipse.core.runtime.adapters">
+		<factory adaptableType="JTLMM.resource.JTLMM.ui.JTLMMEditor" class="JTLMM.resource.JTLMM.ui.debug.JTLMMAdapterFactory">
+			<adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget">
+			</adapter>
+		</factory>
+		<factory adaptableType="JTLMM.resource.JTLMM.debug.JTLMMDebugVariable" class="JTLMM.resource.JTLMM.ui.debug.JTLMMAdapterFactory">
+			<adapter type="org.eclipse.debug.internal.ui.viewers.model.provisional.IElementLabelProvider">
+			</adapter>
+		</factory>
+		<factory adaptableType="JTLMM.resource.JTLMM.debug.JTLMMDebugVariable" class="JTLMM.resource.JTLMM.ui.debug.JTLMMAdapterFactory">
+			<adapter type="org.eclipse.debug.internal.ui.viewers.model.provisional.IElementContentProvider">
+			</adapter>
+		</factory>
+	</extension>
+	
+	<extension point="org.eclipse.ui.popupMenus">
+		<viewerContribution id="JTLMM.resource.JTLMM.ui.RulerPopupActions" targetID="JTLMM.resource.JTLMM.EditorRuler">
+			<action id="JTLMM.resource.JTLMM.ui.toggleBreakpointAction" icon="icons/breakpoint_icon.gif" label="Toggle Breakpoint" class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate" menubarPath="debug">
+			</action>
+		</viewerContribution>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editorActions">
+		<editorContribution targetID="JTLMM.resource.JTLMM.ui.JTLMMEditor" id="JTLMM.resource.JTLMM.ui.BreakpointRulerActions">
+			<action id="JTLMM.resource.JTLMM.ui.debug.RulerToggleBreakpointAction" label="Add breakpoint" class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate" actionID="RulerDoubleClick">
+			</action>
+		</editorContribution>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.debugModelPresentations">
+		<debugModelPresentation id="JTLMM.resource.JTLMM.debugModel" class="JTLMM.resource.JTLMM.ui.debug.JTLMMDebugModelPresentation">
+		</debugModelPresentation>
+	</extension>
+	
+</plugin>

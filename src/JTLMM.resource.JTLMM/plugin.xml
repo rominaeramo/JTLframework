@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.emftext.access.syntax">
+		<metaInformationProvider class="JTLMM.resource.JTLMM.mopp.JTLMMMetaInformation" id="JTLMM.resource.JTLMM.mopp.JTLMMMetaInformation">
+		</metaInformationProvider>
+	</extension>
+	
+	<extension id="JTLMM.resource.JTLMM.problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="org.eclipse.core.resources.problemmarker">
+		</super>
+		<super type="org.eclipse.core.resources.textmarker">
+		</super>
+		<super type="org.eclipse.emf.ecore.diagnostic">
+		</super>
+	</extension>
+	
+	<extension id="JTLMM.resource.JTLMM.problem.syntax_error" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="JTLMM.resource.JTLMM.problem">
+		</super>
+	</extension>
+	
+	<extension id="JTLMM.resource.JTLMM.problem.print_problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="JTLMM.resource.JTLMM.problem">
+		</super>
+	</extension>
+	
+	<extension id="JTLMM.resource.JTLMM.problem.unresolved_reference" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="JTLMM.resource.JTLMM.problem">
+		</super>
+	</extension>
+	
+	<extension id="JTLMM.resource.JTLMM.problem.analysis_problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="JTLMM.resource.JTLMM.problem">
+		</super>
+	</extension>
+	
+	<extension id="JTLMM.resource.JTLMM.problem.builder_error" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="JTLMM.resource.JTLMM.problem">
+		</super>
+	</extension>
+	
+	<extension id="JTLMM.resource.JTLMM.nature" name="JTLMM nature" point="org.eclipse.core.resources.natures">
+		<runtime>
+			<run class="JTLMM.resource.JTLMM.mopp.JTLMMNature">
+			</run>
+		</runtime>
+		<builder id="JTLMM.resource.JTLMM.builder">
+		</builder>
+	</extension>
+	
+	<extension point="org.eclipse.core.resources.builders" id="JTLMM.resource.JTLMM.builder" name="JTLMM Builder">
+		<builder hasNature="true">
+			<run class="JTLMM.resource.JTLMM.mopp.JTLMMBuilderAdapter">
+			</run>
+		</builder>
+	</extension>
+	
+	<extension-point id="JTLMM.resource.JTLMM.default_load_options" name="Default Load Options" schema="schema/default_load_options.exsd">
+	</extension-point>
+	
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser class="JTLMM.resource.JTLMM.mopp.JTLMMResourceFactoryDelegator" type="JTLMM">
+		</parser>
+	</extension>
+	
+	<extension-point id="JTLMM.resource.JTLMM.additional_extension_parser" name="Additional Extension Parser" schema="schema/additional_extension_parser.exsd">
+	</extension-point>
+	
+	<extension point="org.eclipse.debug.core.breakpoints">
+		<breakpoint class="JTLMM.resource.JTLMM.debug.JTLMMLineBreakpoint" id="JTLMM.resource.JTLMM.debug.breakpoint" markerType="JTLMM.resource.JTLMM.debug.lineBreakpoint.marker" name="JTLMM Breakpoint">
+		</breakpoint>
+	</extension>
+	
+	<extension id="JTLMM.resource.JTLMM.debug.lineBreakpoint.marker" point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.debug.core.lineBreakpointMarker">
+		</super>
+		<super type="org.eclipse.core.resources.textmarker">
+		</super>
+		<persistent value="true">
+		</persistent>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.launchConfigurationTypes">
+		<launchConfigurationType id="JTLMM.resource.JTLMM.ui.launchConfigurationType" delegate="JTLMM.resource.JTLMM.launch.JTLMMLaunchConfigurationDelegate" modes="run,debug" name="JTLMM Application" sourceLocatorId="JTLMM.resource.JTLMM.ui.sourceLocator" sourcePathComputerId="JTLMM.resource.JTLMM.ui.sourcePathComputer" delegateName="JTLMM Launch Tooling" delegateDescription="This will run or debug .JTLMM files.">
+		</launchConfigurationType>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.sourcePathComputers">
+		<sourcePathComputer class="JTLMM.resource.JTLMM.debug.JTLMMSourcePathComputerDelegate" id="JTLMM.resource.JTLMM.ui.sourcePathComputer">
+		</sourcePathComputer>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.sourceLocators">
+		<sourceLocator id="JTLMM.resource.JTLMM.ui.sourceLocator" class="JTLMM.resource.JTLMM.debug.JTLMMSourceLocator" name="JTLMM Source Locator">
+		</sourceLocator>
+	</extension>
+ <extension
+       point="JTLMM.resource.JTLMM.default_load_options">
+    <provider
+          class="JTLMM.resource.JTLMM.PostProcessor"
+          id="JTLMM.resource.JTLMM.provider1"
+          name="PostProcessor">
+    </provider>
+ </extension>
+	
+</plugin>
