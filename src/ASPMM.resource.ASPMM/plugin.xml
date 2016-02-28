@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.emftext.access.syntax">
+		<metaInformationProvider class="ASPMM.resource.ASPMM.mopp.ASPMMMetaInformation" id="ASPMM.resource.ASPMM.mopp.ASPMMMetaInformation">
+		</metaInformationProvider>
+	</extension>
+	
+	<extension id="ASPMM.resource.ASPMM.problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="org.eclipse.core.resources.problemmarker">
+		</super>
+		<super type="org.eclipse.core.resources.textmarker">
+		</super>
+		<super type="org.eclipse.emf.ecore.diagnostic">
+		</super>
+	</extension>
+	
+	<extension id="ASPMM.resource.ASPMM.problem.syntax_error" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="ASPMM.resource.ASPMM.problem">
+		</super>
+	</extension>
+	
+	<extension id="ASPMM.resource.ASPMM.problem.print_problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="ASPMM.resource.ASPMM.problem">
+		</super>
+	</extension>
+	
+	<extension id="ASPMM.resource.ASPMM.problem.unresolved_reference" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="ASPMM.resource.ASPMM.problem">
+		</super>
+	</extension>
+	
+	<extension id="ASPMM.resource.ASPMM.problem.analysis_problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="ASPMM.resource.ASPMM.problem">
+		</super>
+	</extension>
+	
+	<extension id="ASPMM.resource.ASPMM.problem.builder_error" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="ASPMM.resource.ASPMM.problem">
+		</super>
+	</extension>
+	
+	<extension id="ASPMM.resource.ASPMM.nature" name="ASPMM nature" point="org.eclipse.core.resources.natures">
+		<runtime>
+			<run class="ASPMM.resource.ASPMM.mopp.ASPMMNature">
+			</run>
+		</runtime>
+		<builder id="ASPMM.resource.ASPMM.builder">
+		</builder>
+	</extension>
+	
+	<extension point="org.eclipse.core.resources.builders" id="ASPMM.resource.ASPMM.builder" name="ASPMM Builder">
+		<builder hasNature="true">
+			<run class="ASPMM.resource.ASPMM.mopp.ASPMMBuilderAdapter">
+			</run>
+		</builder>
+	</extension>
+	
+	<extension-point id="ASPMM.resource.ASPMM.default_load_options" name="Default Load Options" schema="schema/default_load_options.exsd">
+	</extension-point>
+	
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser class="ASPMM.resource.ASPMM.mopp.ASPMMResourceFactoryDelegator" type="ASPMM">
+		</parser>
+	</extension>
+	
+	<extension-point id="ASPMM.resource.ASPMM.additional_extension_parser" name="Additional Extension Parser" schema="schema/additional_extension_parser.exsd">
+	</extension-point>
+	
+	<extension point="org.eclipse.debug.core.breakpoints">
+		<breakpoint class="ASPMM.resource.ASPMM.debug.ASPMMLineBreakpoint" id="ASPMM.resource.ASPMM.debug.breakpoint" markerType="ASPMM.resource.ASPMM.debug.lineBreakpoint.marker" name="ASPMM Breakpoint">
+		</breakpoint>
+	</extension>
+	
+	<extension id="ASPMM.resource.ASPMM.debug.lineBreakpoint.marker" point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.debug.core.lineBreakpointMarker">
+		</super>
+		<super type="org.eclipse.core.resources.textmarker">
+		</super>
+		<persistent value="true">
+		</persistent>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.launchConfigurationTypes">
+		<launchConfigurationType id="ASPMM.resource.ASPMM.ui.launchConfigurationType" delegate="ASPMM.resource.ASPMM.launch.ASPMMLaunchConfigurationDelegate" modes="run,debug" name="ASPMM Application" sourceLocatorId="ASPMM.resource.ASPMM.ui.sourceLocator" sourcePathComputerId="ASPMM.resource.ASPMM.ui.sourcePathComputer" delegateName="ASPMM Launch Tooling" delegateDescription="This will run or debug .ASPMM files.">
+		</launchConfigurationType>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.sourcePathComputers">
+		<sourcePathComputer class="ASPMM.resource.ASPMM.debug.ASPMMSourcePathComputerDelegate" id="ASPMM.resource.ASPMM.ui.sourcePathComputer">
+		</sourcePathComputer>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.sourceLocators">
+		<sourceLocator id="ASPMM.resource.ASPMM.ui.sourceLocator" class="ASPMM.resource.ASPMM.debug.ASPMMSourceLocator" name="ASPMM Source Locator">
+		</sourceLocator>
+	</extension>
+	
+</plugin>
