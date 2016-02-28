@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.emftext.access.syntax">
+		<metaInformationProvider class="ASPM.resource.ASPM.mopp.ASPMMetaInformation" id="ASPM.resource.ASPM.mopp.ASPMMetaInformation">
+		</metaInformationProvider>
+	</extension>
+	
+	<extension id="ASPM.resource.ASPM.problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="org.eclipse.core.resources.problemmarker">
+		</super>
+		<super type="org.eclipse.core.resources.textmarker">
+		</super>
+		<super type="org.eclipse.emf.ecore.diagnostic">
+		</super>
+	</extension>
+	
+	<extension id="ASPM.resource.ASPM.problem.syntax_error" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="ASPM.resource.ASPM.problem">
+		</super>
+	</extension>
+	
+	<extension id="ASPM.resource.ASPM.problem.print_problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="ASPM.resource.ASPM.problem">
+		</super>
+	</extension>
+	
+	<extension id="ASPM.resource.ASPM.problem.unresolved_reference" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="ASPM.resource.ASPM.problem">
+		</super>
+	</extension>
+	
+	<extension id="ASPM.resource.ASPM.problem.analysis_problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="ASPM.resource.ASPM.problem">
+		</super>
+	</extension>
+	
+	<extension id="ASPM.resource.ASPM.problem.builder_error" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="ASPM.resource.ASPM.problem">
+		</super>
+	</extension>
+	
+	<extension id="ASPM.resource.ASPM.nature" name="ASPM nature" point="org.eclipse.core.resources.natures">
+		<runtime>
+			<run class="ASPM.resource.ASPM.mopp.ASPMNature">
+			</run>
+		</runtime>
+		<builder id="ASPM.resource.ASPM.builder">
+		</builder>
+	</extension>
+	
+	<extension point="org.eclipse.core.resources.builders" id="ASPM.resource.ASPM.builder" name="ASPM Builder">
+		<builder hasNature="true">
+			<run class="ASPM.resource.ASPM.mopp.ASPMBuilderAdapter">
+			</run>
+		</builder>
+	</extension>
+	
+	<extension-point id="ASPM.resource.ASPM.default_load_options" name="Default Load Options" schema="schema/default_load_options.exsd">
+	</extension-point>
+	
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser class="ASPM.resource.ASPM.mopp.ASPMResourceFactoryDelegator" type="ASPM">
+		</parser>
+	</extension>
+	
+	<extension-point id="ASPM.resource.ASPM.additional_extension_parser" name="Additional Extension Parser" schema="schema/additional_extension_parser.exsd">
+	</extension-point>
+	
+	<extension point="org.eclipse.debug.core.breakpoints">
+		<breakpoint class="ASPM.resource.ASPM.debug.ASPMLineBreakpoint" id="ASPM.resource.ASPM.debug.breakpoint" markerType="ASPM.resource.ASPM.debug.lineBreakpoint.marker" name="ASPM Breakpoint">
+		</breakpoint>
+	</extension>
+	
+	<extension id="ASPM.resource.ASPM.debug.lineBreakpoint.marker" point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.debug.core.lineBreakpointMarker">
+		</super>
+		<super type="org.eclipse.core.resources.textmarker">
+		</super>
+		<persistent value="true">
+		</persistent>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.launchConfigurationTypes">
+		<launchConfigurationType id="ASPM.resource.ASPM.ui.launchConfigurationType" delegate="ASPM.resource.ASPM.launch.ASPMLaunchConfigurationDelegate" modes="run,debug" name="ASPM Application" sourceLocatorId="ASPM.resource.ASPM.ui.sourceLocator" sourcePathComputerId="ASPM.resource.ASPM.ui.sourcePathComputer" delegateName="ASPM Launch Tooling" delegateDescription="This will run or debug .ASPM files.">
+		</launchConfigurationType>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.sourcePathComputers">
+		<sourcePathComputer class="ASPM.resource.ASPM.debug.ASPMSourcePathComputerDelegate" id="ASPM.resource.ASPM.ui.sourcePathComputer">
+		</sourcePathComputer>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.sourceLocators">
+		<sourceLocator id="ASPM.resource.ASPM.ui.sourceLocator" class="ASPM.resource.ASPM.debug.ASPMSourceLocator" name="ASPM Source Locator">
+		</sourceLocator>
+	</extension>
+	
+</plugin>
