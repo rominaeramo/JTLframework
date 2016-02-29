@@ -3,6 +3,9 @@
 	<name>org.emftext.language.JTLMM</name>
 	<comment></comment>
 	<projects>
+		<project>JTLMM.resource.JTLMM</project>
+		<project>JTLMM.resource.JTLMM.ui</project>
+		<project>org.emftext.commons.antlr3_4_0</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

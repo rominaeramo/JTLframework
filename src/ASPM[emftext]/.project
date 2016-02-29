@@ -3,6 +3,8 @@
 	<name>ASPM[emftext]</name>
 	<comment></comment>
 	<projects>
+		<project>ASPM.resource.ASPM</project>
+		<project>ASPM.resource.ASPM.ui</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

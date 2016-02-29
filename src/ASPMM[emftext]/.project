@@ -3,6 +3,8 @@
 	<name>ASPMM[emftext]</name>
 	<comment></comment>
 	<projects>
+		<project>ASPMM.resource.ASPMM</project>
+		<project>ASPMM.resource.ASPMM.ui</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
