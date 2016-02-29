@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JTL:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:JTL="http:///jtl.ecore" xmlns:essentialocl="http:///essentialocl.ecore"
+    xmlns:imperativeocl="http:///imperativeocl.ecore" xmlns:template="http:///template.ecore"
+    name="uml2rdbms">
+  <modelParameter name="uml" />
+  <modelParameter name="rdbms" />
+  <relation name="ClassToTable" isTopLevel="true">
+    <domain name="uml" isEnforceable="true" model="#//@modelParameter.0">
+      <pattern domain="#//@relation.0/@domain.0">
+        <predicate>
+          <conditionExpression xsi:type="imperativeocl:AssignExp" name="is_persistent">
+            <value xsi:type="essentialocl:BooleanLiteralExp" name="is_persistent=true"
+                booleanSymbol="true"/>
+            <left xsi:type="essentialocl:PropertyCallExp" name="is_persistent"/>
+          </conditionExpression>
+        </predicate>
+        <predicate>
+          <conditionExpression xsi:type="imperativeocl:AssignExp" name="name">
+            <value xsi:type="essentialocl:VariableExp" name="cn" referredVariable="#//@relation.0/@variable.0"/>
+            <left xsi:type="essentialocl:PropertyCallExp" name="name"/>
+          </conditionExpression>
+        </predicate>
+        <predicate>
+          <conditionExpression xsi:type="imperativeocl:AssignExp" name="attr">
+            <value xsi:type="template:ObjectTemplateExp" name="at" 
+                referredClass="Attribute">
+              <inside name="name">
+                <value xsi:type="essentialocl:VariableExp" name="an" referredVariable="#//@relation.0/@variable.1"/>
+                <left xsi:type="essentialocl:PropertyCallExp" name="name"/>
+              </inside>
+              <inside name="dataType">
+                <value xsi:type="essentialocl:StringLiteralExp" name="NUMBER"/>
+                <left xsi:type="essentialocl:PropertyCallExp" name="dataType"/>
+              </inside>
+            </value>
+            <left xsi:type="essentialocl:PropertyCallExp" name="attr"/>
+          </conditionExpression>
+        </predicate>
+        <templateExpression xsi:type="template:ObjectTemplateExp" name="c" 
+            referredClass="Class"/>
+      </pattern>
+    </domain>
+    <domain name="rdbms" isEnforceable="true" model="#//@modelParameter.1">
+      <pattern domain="#//@relation.0/@domain.1">
+        <predicate>
+          <conditionExpression xsi:type="imperativeocl:AssignExp" name="name">
+            <value xsi:type="essentialocl:VariableExp" name="cn" referredVariable="#//@relation.0/@variable.0"/>
+            <left xsi:type="essentialocl:PropertyCallExp" name="name"/>
+          </conditionExpression>
+        </predicate>
+        <predicate>
+          <conditionExpression xsi:type="imperativeocl:AssignExp" name="col">
+            <value xsi:type="template:ObjectTemplateExp" name="cl" 
+                referredClass="Column">
+              <inside name="name">
+                <value xsi:type="essentialocl:VariableExp" name="an" referredVariable="#//@relation.0/@variable.1"/>
+                <left xsi:type="essentialocl:PropertyCallExp" name="name"/>
+              </inside>
+              <inside name="dataType">
+                <value xsi:type="essentialocl:StringLiteralExp" name="NUMBER"/>
+                <left xsi:type="essentialocl:PropertyCallExp" name="dataType"/>
+              </inside>
+            </value>
+            <left xsi:type="essentialocl:PropertyCallExp" name="col"/>
+          </conditionExpression>
+        </predicate>
+        <predicate>
+          <conditionExpression xsi:type="imperativeocl:AssignExp" name="pKey">
+            <value xsi:type="template:ObjectTemplateExp" name="k" 
+                referredClass="Column">
+              <inside name="name">
+                <value xsi:type="essentialocl:VariableExp" name="an" referredVariable="#//@relation.0/@variable.1"/>
+                <left xsi:type="essentialocl:PropertyCallExp" name="name"/>
+              </inside>
+              <inside name="dataType">
+                <value xsi:type="essentialocl:StringLiteralExp" name="NUMBER"/>
+                <left xsi:type="essentialocl:PropertyCallExp" name="dataType"/>
+              </inside>
+            </value>
+            <left xsi:type="essentialocl:PropertyCallExp" name="pKey"/>
+          </conditionExpression>
+        </predicate>
+        <templateExpression xsi:type="template:ObjectTemplateExp" name="t" 
+            referredClass="Table"/>
+      </pattern>
+    </domain>
+    <variable name="cn" />
+    <variable name="an" />
+  </relation>
+</JTL:Transformation>

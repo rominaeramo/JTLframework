@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JTL:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:JTL="http:///jtl.ecore" xmlns:template="http:///template.ecore" name="uml2rdbms">
+  <modelParameter name="uml" />
+  <modelParameter name="rdbms" />
+  <relation name="AttributeToColumn">
+    <domain name="uml" isEnforceable="true" model="#//@modelParameter.0">
+      <pattern domain="#//@relation.0/@domain.0">
+        <templateExpression xsi:type="template:ObjectTemplateExp" name="c" 
+            referredClass="Class"/>
+      </pattern>
+    </domain>
+    <domain name="rdbms" isEnforceable="true" model="#//@modelParameter.1">
+      <pattern domain="#//@relation.0/@domain.1">
+        <templateExpression xsi:type="template:ObjectTemplateExp" name="t" 
+            referredClass="Table"/>
+      </pattern>
+    </domain>
+  </relation>
+</JTL:Transformation>
