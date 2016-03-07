@@ -1,6 +1,5 @@
 package JTLMM.resource.JTLMM;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.ListIterator;
 import java.util.Map;
@@ -15,7 +14,6 @@ import org.eclipse.emf.ecore.util.BasicExtendedMetaData;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 
-import JTLMM.JTL.Domain;
 import JTLMM.JTL.impl.DomainImpl;
 import JTLMM.JTL.impl.ModelImpl;
 import JTLMM.JTL.impl.PatternImpl;
@@ -100,13 +98,12 @@ public class PostProcessor implements IJTLMMOptionProvider, IJTLMMResourcePostPr
 
 			// Set the missing OperationCallExp.referredOperation attribute
 			// to the Relation with the corresponding name
-			// FIXME OperationCallExp.referredOperation : Relation (ATL JTL MM) vs Operation (emftext JTL MM)
-//			EStructuralFeature oceName = opcallexp.eClass().getEStructuralFeature("name");
-//			EStructuralFeature oceRefOp = opcallexp.eClass().getEStructuralFeature("referredOperation");
-//			EObject relation = findSingle(root, RelationImpl.class, "name", opcallexp.eGet(oceName));
-//			if (relation != null) {
-//				opcallexp.eSet(oceRefOp, relation);
-//			}
+			EStructuralFeature oceName = opcallexp.eClass().getEStructuralFeature("name");
+			EStructuralFeature oceRefOp = opcallexp.eClass().getEStructuralFeature("referredOperation");
+			EObject relation = findSingle(root, RelationImpl.class, "name", opcallexp.eGet(oceName));
+			if (relation != null) {
+				opcallexp.eSet(oceRefOp, relation);
+			}
 			
 			EStructuralFeature argument = opcallexp.eClass().getEStructuralFeature("argument");
 			if (opcallexp.eIsSet(argument)) {

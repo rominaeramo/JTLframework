@@ -2,8 +2,7 @@
  */
 package JTLMM.essentialocl.impl;
 
-import JTLMM.emof.Operation;
-
+import JTLMM.JTL.Relation;
 import JTLMM.essentialocl.EssentialoclPackage;
 import JTLMM.essentialocl.OclExpression;
 import JTLMM.essentialocl.OperationCallExp;
@@ -57,7 +56,7 @@ public class OperationCallExpImpl extends FeaturePropertyCallImpl implements Ope
 	 * @generated
 	 * @ordered
 	 */
-  protected Operation referredOperation;
+  protected Relation referredOperation;
 
   /**
 	 * <!-- begin-user-doc -->
@@ -98,11 +97,11 @@ public class OperationCallExpImpl extends FeaturePropertyCallImpl implements Ope
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public Operation getReferredOperation()
+  public Relation getReferredOperation()
   {
 		if (referredOperation != null && referredOperation.eIsProxy()) {
 			InternalEObject oldReferredOperation = (InternalEObject)referredOperation;
-			referredOperation = (Operation)eResolveProxy(oldReferredOperation);
+			referredOperation = (Relation)eResolveProxy(oldReferredOperation);
 			if (referredOperation != oldReferredOperation) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EssentialoclPackage.OPERATION_CALL_EXP__REFERRED_OPERATION, oldReferredOperation, referredOperation));
@@ -116,25 +115,24 @@ public class OperationCallExpImpl extends FeaturePropertyCallImpl implements Ope
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public Operation basicGetReferredOperation()
+  public Relation basicGetReferredOperation()
   {
 		return referredOperation;
 	}
 
   /**
 	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public void setReferredOperation(Operation newReferredOperation)
-  {
-		Operation oldReferredOperation = referredOperation;
+	public void setReferredOperation(Relation newReferredOperation) {
+		Relation oldReferredOperation = referredOperation;
 		referredOperation = newReferredOperation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EssentialoclPackage.OPERATION_CALL_EXP__REFERRED_OPERATION, oldReferredOperation, referredOperation));
 	}
 
-  /**
+		/**
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated
@@ -182,7 +180,7 @@ public class OperationCallExpImpl extends FeaturePropertyCallImpl implements Ope
 				getArgument().addAll((Collection<? extends OclExpression>)newValue);
 				return;
 			case EssentialoclPackage.OPERATION_CALL_EXP__REFERRED_OPERATION:
-				setReferredOperation((Operation)newValue);
+				setReferredOperation((Relation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -201,7 +199,7 @@ public class OperationCallExpImpl extends FeaturePropertyCallImpl implements Ope
 				getArgument().clear();
 				return;
 			case EssentialoclPackage.OPERATION_CALL_EXP__REFERRED_OPERATION:
-				setReferredOperation((Operation)null);
+				setReferredOperation((Relation)null);
 				return;
 		}
 		super.eUnset(featureID);

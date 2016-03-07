@@ -2,8 +2,7 @@
  */
 package JTLMM.essentialocl;
 
-import JTLMM.emof.Operation;
-
+import JTLMM.JTL.Relation;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -50,21 +49,21 @@ public interface OperationCallExp extends FeaturePropertyCall
    * </p>
    * <!-- end-user-doc -->
 	 * @return the value of the '<em>Referred Operation</em>' reference.
-	 * @see #setReferredOperation(Operation)
+	 * @see #setReferredOperation(Relation)
 	 * @see JTLMM.essentialocl.EssentialoclPackage#getOperationCallExp_ReferredOperation()
 	 * @model ordered="false"
 	 * @generated
 	 */
-  Operation getReferredOperation();
+  Relation getReferredOperation();
 
   /**
 	 * Sets the value of the '{@link JTLMM.essentialocl.OperationCallExp#getReferredOperation <em>Referred Operation</em>}' reference.
 	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Referred Operation</em>' reference.
 	 * @see #getReferredOperation()
 	 * @generated
 	 */
-  void setReferredOperation(Operation value);
+	void setReferredOperation(Relation value);
 
 } // OperationCallExp
