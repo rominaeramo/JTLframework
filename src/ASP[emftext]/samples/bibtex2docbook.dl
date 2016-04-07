@@ -1,0 +1,212 @@
+%%%%%%%%%%%%%%%%%%%%%%   METAMODEL 1   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ metamodel(x_Bibtex).
+  metanode(x_Bibtex, x_BibTeXFile).
+   metaedge(x_Bibtex, association, x_entry, x_BibTeXFile, x_BibTexEntry).
+   metaprop(x_Bibtex, x_name, x_BibTeXFile).
+  metanode(x_Bibtex, x_BibTexEntry).
+   metaedge(x_Bibtex, association, x_file, x_BibTexEntry, x_BibTeXFile).
+   metaprop(x_Bibtex, x_title, x_BibTeXEntry).
+  metanode(x_Bibtex, x_Proc).
+   metaedge(x_Bibtex, association, x_editor, x_Proc, x_Person).
+   metaedge(x_Bibtex, association, x_file, x_Proc, x_BibTeXFile).
+    metaprop(x_Bibtex, x_yearE, x_Proc).
+    metaprop(x_Bibtex, x_yearP, x_Proc).
+    metaprop(x_Bibtex, x_title, x_Proc).
+  metanode(x_Bibtex, x_InProc).
+   metaedge(x_Bibtex, association, x_author, x_InProc, x_Person).
+   metaprop(x_Bibtex, x_bookTitle, x_InProc).
+   metaedge(x_Bibtex, association, x_file, x_InProc, x_BibTeXFile). 
+   metaprop(x_Bibtex, x_title, x_InProc).
+  metanode(x_Bibtex, x_Person).
+   metaedge(x_Bibtex, association, x_proc, x_Person, x_Proc).
+   metaedge(x_Bibtex, association, x_inProc, x_Person, x_InProc).
+   metaprop(x_Bibtex, x_name, x_Person).
+ 
+%%%%%%%%%%%%%%%%%%%%%%   METAMODEL  2  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ metamodel(x_docbook).
+  metanode(x_docbook, x_DocBook).
+   metaedge(x_docbook, association, x_book, x_DocBook, x_Book).
+  metanode(x_docbook, x_Book).
+   metaedge(x_docbook, association, x_docBook, x_Book, x_DocBook).
+   metaedge(x_docbook, association, x_editor, x_Book, x_PersonD).
+   metaedge(x_docbook, association, x_chapter, x_Book, x_Chapter).
+   metaedge(x_docbook, association, x_author, x_Book, x_PersonD).
+   metaprop(x_docbook, x_title, x_Book).  
+  metanode(x_docbook, x_Chapter).
+   metaedge(x_docbook, association, x_book, x_Chapter, x_Book).
+   metaedge(x_docbook, association, x_author, x_Chapter, x_Person).
+   metaprop(x_docbook, x_title, x_Chapter). 
+  metanode(x_docbook, x_PersonD).
+   metaedge(x_docbook, association, x_bookE, x_PersonD, x_Book).
+   metaedge(x_docbook, association, x_bookA, x_PersonD, x_Book).
+   metaedge(x_docbook, association, x_chapter, x_PersonD, x_Chapter).
+   metaprop(x_docbook, x_name, x_PersonD).
+
+%%%%%%%%%%%%%%%%%%%%%%   MODEL 1       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ model(x_m1,x_Bibtex).
+  node(x_Bibtex, 1, "x/1", x_BibTeXFile).
+  	prop(x_Bibtex, 2, "x/2", 1, "x/1", x_name, "C:/Bib/Cyd.bib").
+  node(x_Bibtex, 3, "x/3", x_Proc).
+    prop(x_Bibtex, 4, "x/4", 3, "x/3", x_title, "SW Process").
+    edge(x_Bibtex, 5, "x/5", x_editor, 3, "x/3", 21, "x/21").
+    prop(x_Bibtex, 6, "x/6", 3, "x/3", x_yearE, "2003").
+    prop(x_Bibtex, 7, "x/7", 3, "x/3", x_yearP, "2005").  
+  node(x_Bibtex, 8, "x/8", x_InProc).
+    prop(x_Bibtex, 9, "x/9", 8, "x/8", x_title, "DB Apps"). 
+    edge(x_Bibtex, 10, "x/10", x_author, 8, "x/8", 21, "x/21").
+    prop(x_Bibtex, 11, "x/11", 8, "x/8", x_bookTitle, "SW Process").
+  node(x_Bibtex, 12, "x/12", x_Proc).
+    prop(x_Bibtex, 13, "x/13", 12, "x/12", x_title, "XML Query").
+    edge(x_Bibtex, 14, "x/14", x_editor, 12, "x/12", 21, "x/21").
+    prop(x_Bibtex, 15, "x/15", 12, "x/12", x_yearE, "2003").
+    prop(x_Bibtex, 16, "x/16", 12, "x/12", x_yearP, "2005").  
+  node(x_Bibtex, 17, "x/17", x_InProc).
+    prop(x_Bibtex, 18, "x/18", 17, "x/17", x_title, "ER Design").
+    edge(x_Bibtex, 19, "x/19", x_author, 17, "x/17", 21, "x/21").
+    prop(x_Bibtex, 20, "x/20", 17, "x/17", x_bookTitle, "XML Query").
+  node(x_Bibtex, 21, "x/21", x_Person). 
+   edge(x_Bibtex, 22, "x/22", x_proc, 21, "x/21", 3, "x/3").
+   edge(x_Bibtex, 22, "x/22", x_proc, 21, "x/21", 12, "x/12").
+   edge(x_Bibtex, 23, "x/23", x_inProc, 21, "x/21", 8, "x/8").
+   edge(x_Bibtex, 23, "x/23", x_inProc, 21, "x/21", 17, "x/17").
+   prop(x_Bibtex, 24, "x/24", 21, "x/21", x_name, "Jan").
+
+%%%%%%%%%%%%%%%%%%%%%%   TRACE MODEL   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+%%%%%%%%%%%%%%%%%%%%%%     RELATIONS   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#const mmt = x_docbook.
+
+relation_node("x_r1", x_Bibtex, x_BibTeXFile, 0).
+%relation_prop("x_r1", x_Bibtex, x_name, x_BibTeXFile, 0).
+relation_node("x_r1", x_docbook, x_DocBook, 0).
+:- node(x_Bibtex, ID, IDx, x_BibTeXFile), not nodex(x_docbook, ID, IDx, x_DocBook), mmt = x_docbook.
+:- node(x_docbook, ID, IDx, x_DocBook), not nodex(x_Bibtex, ID, IDx, x_BibTeXFile), mmt = x_Bibtex.
+
+relation_node("x_r2", x_Bibtex, x_Proc, 0).
+relation_prop("x_r2", x_Bibtex, x_title, x_Proc, 0).
+relation_edge("x_r2", x_Bibtex, x_file, x_Proc, x_BibTeXFile, 0).
+relation_node("x_r2", x_docbook, x_Book, 0).
+relation_prop("x_r2", x_docbook, x_title, x_Book, 0).
+relation_edge("x_r2", x_docbook, x_docBook, x_Book, x_DocBook, 0).
+	
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%    TRANSFORMATION ENGINE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+%%%%%%%%%%%%%%%%%%%%%%   TRACES GENERATION    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%genero i trace relativi agli elementi non presenti nelle relations
+
+is_metanode_related(MMS,MCS) :- relation_node(R, MMS, MCS, X), not relation_direction(R,mmt,MMS), MMS!=mmt.
+
+trace_node(MMS,IDx,ID,MCS) :- node(MMS,IDx,ID,MCS), not is_metanode_related(MMS,MCS),MMS!=mmt.
+
+trace_node(MMS,IDx,ID,MCS) :- node(MMS,IDx,ID,MCS), is_metanode_related(MMS,MCS), not condition(MMS,IDx,ID,MCS), MMS!=mmt.
+
+is_metaedge_related(MMS,Name,NodeSource,NodeTarget) :- relation_edge(R,MMS,Name,NodeSource,NodeTarget, X), not relation_direction(R,mmt,MMS), MMS!=mmt.
+
+trace_edge(MMS,IDx,ID,Name,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget) :- 
+	edge(MMS,IDx,ID,Name,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget), not is_metaedge_related(MMS,Name,NodeSource,NodeTarget),
+	node(MMS,IDNodeSourcex,IDNodeSource,NodeSource),node(MMS,IDNodeTargetx,IDNodeTarget,NodeTarget),MMS!=mmt.
+
+is_metaprop_related(MMS,Name,MCS) :- relation_prop(R,MMS,Name,MCS,X), not relation_direction(R,mmt,MMS), MMS!=mmt.
+
+trace_prop(MMS,IDx,ID,IDmcx,IDmc,Name,Value) :- prop(MMS,IDx,ID,IDmcx,IDmc,Name,Value), not is_metaprop_related(MMS,Name,MCS),
+node(MMS,IDmcx,IDmc,MCS),MMS!=mmt.
+
+:- node(MMT,IDx,ID,Node1), nodex(MMT,IDx,ID,Node2), metanode(MMT,Node2),  Node1!=Node2, MMT=mmt.
+
+%%%%%%%%%%% Metamodel Target Conformance Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+is_target_metamodel_conform(MM,Node) :- metanode(MM,Node).
+is_target_metamodel_conform(MM,Prop) :- metaprop(MM,Prop,Node).
+is_target_metamodel_conform(MM,Edge) :- metaedge(MM,MetaEdge,Edge,NodeSource,NodeTarget).
+
+%%%%%%%%%% Relations Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+is_related(MM,Node) :- relation_node(R,MM,Node,X), relation_node(R,MM2,Node2,Y).
+is_related(MM,Prop) :- relation_prop(R,MM,Prop,Node,X), relation_prop(R,MM2,Prop2,Node2,Y).
+is_related(MM,Edge) :- relation_edge(R,MM,Edge,NodeSource,NodeTarget,X), relation_edge(R,MM2,Edge2,NodeSource2,NodeTarget2,Y).
+
+%%%%%%%%%% Mapping Rules %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%node from node
+%mapping_node(MM,ID,IDx,Node) :- relation_node(R,MM,Node,X), relation_node(R,MM2,Node2,Y),node(MM2,ID,IDx,Node2), MM!=MM2.
+mapping_node(MM,ID + X,IDx, Node) :- relation_node(R,MM,Node,X), relation_node(R,MM2,Node2,Y),node(MM2,ID,IDx,Node2), MM!=MM2.
+
+%prop from prop        
+%mapping_prop(MM,ID,IDmc,Prop,Value) :- relation_prop(R,MM,Prop,Node,X), relation_prop(R,MM2,Prop2,Node2,X), 
+%              prop(MM2,ID,IDmc2,Prop2,Value2), setting_prop(R,ID,IDmc,Value), MM!=MM2.
+       
+%edge from edge         
+mapping_edge(MM,ID + X,IDx,Edge,IDS,IDSx,IDT,IDTx) :- 
+			relation_edge(R,MM,Edge,NodeSource,NodeTarget,X),relation_edge(R,MM2,Edge2,NodeSource2,NodeTarget2,Y), 
+            edge(MM2,ID,IDx,Edge2,IDS,IDSx,IDT,IDTx), MM!=MM2.
+
+mapping_edge(MM,ID + X,IDx,Edge,IDS,IDSx,IDT + Z,IDTx) :- 
+			relation_edge(R,MM,Edge,NodeSource,NodeTarget,X),relation_edge(R,MM2,Edge2,NodeSource2,NodeTarget2,Y), 
+            edge(MM2,ID,IDx,Edge2,IDS,IDSx,IDT,IDTx), 
+            relation_node(R1,MM,Node,Z), relation_node(R1,MM2,Node2,W),node(MM2,IDT,IDTx,Node2),
+            MM!=MM2.
+            
+            
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%% Generability Check %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+												
+is_generable_node(MM,ID,IDx,Node) v -is_generable_node(MM,ID,IDx,Node) :- mapping_node(MM,ID,IDx,Node), is_related(MM,Node), 
+														is_target_metamodel_conform(MM,Node), MM=mmt.
+%:- -is_generable_node(MM,ID,IDx,Node).
+
+%is_generable_prop(MM,ID,Prop,Value) v -is_generable_prop(MM,ID,Prop,Value) :- mapping_prop(MM,ID,IDmc,Prop,Value), is_related(MM,Prop), 
+%														is_target_metamodel_conform(MM,Prop), MM=mmt.
+%:--is_generable_prop(MM,ID,Prop,Value).
+									
+is_generable_edge(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx) v -is_generable_edge(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx) :- mapping_edge(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx), 
+														is_related(MM,Edge), is_target_metamodel_conform(MM,Edge),MM=mmt.
+%:- -is_generable_edge(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx). 														
+														
+			
+%%%%%%%%% Element Generation by Transformation Rule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+nodex(MM,ID,IDx,Node) :- is_generable_node(MM,ID,IDx,Node), mapping_node(MM,ID,IDx,Node),MM=mmt.
+
+
+%propx(MM,ID,IDmc,Prop,Value) :- is_generable_prop(MM,ID,Prop,Value), mapping_prop(MM,ID,IDmc,Prop,Value), MM=mmt.
+
+edgex(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx) :- is_generable_edge(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx), mapping_edge(MM,ID,IDx,Edge,IDS,IDSx,IDT,IDTx), MM=mmt.	
+    
+
+%%%%%%%%% Element Generation by Traces %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+              
+              
+nodex(MM,IDx,ID,Node) :- trace_node(MM,IDx,ID,Node),MM=mmt.
+%:- nodex(MM,IDx,ID,Node2), trace_node(MM,IDx,ID,Node), Node != Node2.
+ 
+propx(MM,IDx,ID,IDmcx,IDmc,Prop,Value) :-  trace_prop(MM,IDx,ID,IDmcx,IDmc,Prop,Value),
+										   % prop(MM,IDx,ID,IDmcx,IDmc,Prop,Value), 
+										   %nodex(MM,IDmcx,IDmc,MCS),%node(MM,IDmcx,IDmc,MCS),
+										   MM=mmt.
+
+edgex(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget) :-  
+											trace_edge(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget), 
+											edge(MM,IDx,ID,Edge,IDNodeSourcex,IDNodeSource,IDNodeTargetx,IDNodeTarget), 
+											nodex(MM,IDNodeSourcex,IDNodeSource,NodeSource), nodex(MM,IDNodeTargetx,IDNodeTarget,NodeTarget),
+											node(MM,IDNodeSourcex,IDNodeSource,NodeSource), node(MM,IDNodeTargetx,IDNodeTarget,NodeTarget), 
+											MM=mmt.    
+           
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%						
+
+           
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%						
+
+
