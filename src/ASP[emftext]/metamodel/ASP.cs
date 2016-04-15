@@ -1,13 +1,20 @@
+@SuppressWarnings(noRuleForMetaClass)
 SYNTAXDEF ASP
 FOR <http://asp.ecore>
 START Transformation
 
 OPTIONS {
 //	disableTokenSorting = "true";
+	usePredefinedTokens = "false";
+//	useClassicPrinter = "true";
+//	tokenspace = "0";
 }
 
 TOKENS {
 	DEFINE COMMENT $'%'(~('\n'|'\r'|'\uffff'))*$;
+	DEFINE TEXT $('A'..'Z'|'a'..'z'|'0'..'9'|'_'|'-'|'!'|':')+$;
+	DEFINE LINEBREAK $('\r\n'|'\r'|'\n')$;
+	DEFINE WHITESPACE $(' '|'\t'|'\f')$;
 }
 
 RULES {
@@ -15,12 +22,15 @@ RULES {
 	Transformation ::= elements+ !0 relations+ !0 constraints*;
 	
 	@SuppressWarnings(featureWithoutSyntax)
-	Relation ::= patterns (!0 patterns)+;
+	Relation ::= patterns !0 patterns : RightPattern;
+//	Relation ::= patterns (!0 patterns)+;
 	
 	@SuppressWarnings(featureWithoutSyntax,explicitSyntaxChoice)
 	LeftPattern  ::= ("relation_node" | "relation_prop" | "relation_edge") element['(',')'] ".";
+//	LeftPattern  ::= "relation_" type[]? #0 "(" element[] #0 ").";
 	@SuppressWarnings(featureWithoutSyntax,explicitSyntaxChoice)
 	RightPattern ::= ("relation_node" | "relation_prop" | "relation_edge") element['(',')'] ".";
+//	RightPattern ::= "relation_" type[]? #0 "(" element[] #0 ").";
 	
 	@SuppressWarnings(featureWithoutSyntax,minOccurenceMismatch)
 	Metanode ::= "metanode(" literals[] "," #1 literals[] ")." !0;

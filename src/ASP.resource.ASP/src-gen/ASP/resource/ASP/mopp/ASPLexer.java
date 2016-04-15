@@ -498,15 +498,15 @@ public class ASPLexer extends Lexer {
         try {
             int _type = COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ASP.g:3101:8: ( ( '%' (~ ( '\\n' | '\\r' | '\\uffff' ) )* ) )
-            // ASP.g:3102:2: ( '%' (~ ( '\\n' | '\\r' | '\\uffff' ) )* )
+            // ASP.g:3077:8: ( ( '%' (~ ( '\\n' | '\\r' | '\\uffff' ) )* ) )
+            // ASP.g:3078:2: ( '%' (~ ( '\\n' | '\\r' | '\\uffff' ) )* )
             {
-            // ASP.g:3102:2: ( '%' (~ ( '\\n' | '\\r' | '\\uffff' ) )* )
-            // ASP.g:3102:3: '%' (~ ( '\\n' | '\\r' | '\\uffff' ) )*
+            // ASP.g:3078:2: ( '%' (~ ( '\\n' | '\\r' | '\\uffff' ) )* )
+            // ASP.g:3078:3: '%' (~ ( '\\n' | '\\r' | '\\uffff' ) )*
             {
             match('%'); 
 
-            // ASP.g:3102:6: (~ ( '\\n' | '\\r' | '\\uffff' ) )*
+            // ASP.g:3078:6: (~ ( '\\n' | '\\r' | '\\uffff' ) )*
             loop1:
             do {
                 int alt1=2;
@@ -561,20 +561,20 @@ public class ASPLexer extends Lexer {
         try {
             int _type = TEXT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ASP.g:3105:5: ( ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ ) )
-            // ASP.g:3106:2: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ )
+            // ASP.g:3081:5: ( ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' | '!' | ':' )+ ) )
+            // ASP.g:3082:2: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' | '!' | ':' )+ )
             {
-            // ASP.g:3106:2: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ )
-            // ASP.g:3106:3: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
+            // ASP.g:3082:2: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' | '!' | ':' )+ )
+            // ASP.g:3082:3: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' | '!' | ':' )+
             {
-            // ASP.g:3106:3: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
+            // ASP.g:3082:3: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' | '!' | ':' )+
             int cnt2=0;
             loop2:
             do {
                 int alt2=2;
                 int LA2_0 = input.LA(1);
 
-                if ( (LA2_0=='-'||(LA2_0 >= '0' && LA2_0 <= '9')||(LA2_0 >= 'A' && LA2_0 <= 'Z')||LA2_0=='_'||(LA2_0 >= 'a' && LA2_0 <= 'z')) ) {
+                if ( (LA2_0=='!'||LA2_0=='-'||(LA2_0 >= '0' && LA2_0 <= ':')||(LA2_0 >= 'A' && LA2_0 <= 'Z')||LA2_0=='_'||(LA2_0 >= 'a' && LA2_0 <= 'z')) ) {
                     alt2=1;
                 }
 
@@ -583,7 +583,7 @@ public class ASPLexer extends Lexer {
             	case 1 :
             	    // ASP.g:
             	    {
-            	    if ( input.LA(1)=='-'||(input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
+            	    if ( input.LA(1)=='!'||input.LA(1)=='-'||(input.LA(1) >= '0' && input.LA(1) <= ':')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
             	        input.consume();
             	    }
             	    else {
@@ -620,49 +620,18 @@ public class ASPLexer extends Lexer {
     }
     // $ANTLR end "TEXT"
 
-    // $ANTLR start "WHITESPACE"
-    public final void mWHITESPACE() throws RecognitionException {
-        try {
-            int _type = WHITESPACE;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ASP.g:3108:11: ( ( ( ' ' | '\\t' | '\\f' ) ) )
-            // ASP.g:3109:2: ( ( ' ' | '\\t' | '\\f' ) )
-            {
-            if ( input.LA(1)=='\t'||input.LA(1)=='\f'||input.LA(1)==' ' ) {
-                input.consume();
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                recover(mse);
-                throw mse;
-            }
-
-
-             _channel = 99; 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "WHITESPACE"
-
     // $ANTLR start "LINEBREAK"
     public final void mLINEBREAK() throws RecognitionException {
         try {
             int _type = LINEBREAK;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ASP.g:3112:10: ( ( ( '\\r\\n' | '\\r' | '\\n' ) ) )
-            // ASP.g:3113:2: ( ( '\\r\\n' | '\\r' | '\\n' ) )
+            // ASP.g:3084:10: ( ( ( '\\r\\n' | '\\r' | '\\n' ) ) )
+            // ASP.g:3085:2: ( ( '\\r\\n' | '\\r' | '\\n' ) )
             {
-            // ASP.g:3113:2: ( ( '\\r\\n' | '\\r' | '\\n' ) )
-            // ASP.g:3113:3: ( '\\r\\n' | '\\r' | '\\n' )
+            // ASP.g:3085:2: ( ( '\\r\\n' | '\\r' | '\\n' ) )
+            // ASP.g:3085:3: ( '\\r\\n' | '\\r' | '\\n' )
             {
-            // ASP.g:3113:3: ( '\\r\\n' | '\\r' | '\\n' )
+            // ASP.g:3085:3: ( '\\r\\n' | '\\r' | '\\n' )
             int alt3=3;
             int LA3_0 = input.LA(1);
 
@@ -688,7 +657,7 @@ public class ASPLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // ASP.g:3113:4: '\\r\\n'
+                    // ASP.g:3085:4: '\\r\\n'
                     {
                     match("\r\n"); 
 
@@ -697,14 +666,14 @@ public class ASPLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ASP.g:3113:13: '\\r'
+                    // ASP.g:3085:11: '\\r'
                     {
                     match('\r'); 
 
                     }
                     break;
                 case 3 :
-                    // ASP.g:3113:20: '\\n'
+                    // ASP.g:3085:16: '\\n'
                     {
                     match('\n'); 
 
@@ -730,26 +699,57 @@ public class ASPLexer extends Lexer {
     }
     // $ANTLR end "LINEBREAK"
 
+    // $ANTLR start "WHITESPACE"
+    public final void mWHITESPACE() throws RecognitionException {
+        try {
+            int _type = WHITESPACE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ASP.g:3088:11: ( ( ( ' ' | '\\t' | '\\f' ) ) )
+            // ASP.g:3089:2: ( ( ' ' | '\\t' | '\\f' ) )
+            {
+            if ( input.LA(1)=='\t'||input.LA(1)=='\f'||input.LA(1)==' ' ) {
+                input.consume();
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;
+            }
+
+
+             _channel = 99; 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "WHITESPACE"
+
     // $ANTLR start "QUOTED_40_41"
     public final void mQUOTED_40_41() throws RecognitionException {
         try {
             int _type = QUOTED_40_41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ASP.g:3116:13: ( ( ( '(' ) (~ ( ')' ) )* ( ')' ) ) )
-            // ASP.g:3117:2: ( ( '(' ) (~ ( ')' ) )* ( ')' ) )
+            // ASP.g:3092:13: ( ( ( '(' ) (~ ( ')' ) )* ( ')' ) ) )
+            // ASP.g:3093:2: ( ( '(' ) (~ ( ')' ) )* ( ')' ) )
             {
-            // ASP.g:3117:2: ( ( '(' ) (~ ( ')' ) )* ( ')' ) )
-            // ASP.g:3117:3: ( '(' ) (~ ( ')' ) )* ( ')' )
+            // ASP.g:3093:2: ( ( '(' ) (~ ( ')' ) )* ( ')' ) )
+            // ASP.g:3093:3: ( '(' ) (~ ( ')' ) )* ( ')' )
             {
-            // ASP.g:3117:3: ( '(' )
-            // ASP.g:3117:4: '('
+            // ASP.g:3093:3: ( '(' )
+            // ASP.g:3093:4: '('
             {
             match('('); 
 
             }
 
 
-            // ASP.g:3117:8: (~ ( ')' ) )*
+            // ASP.g:3093:8: (~ ( ')' ) )*
             loop4:
             do {
                 int alt4=2;
@@ -783,8 +783,8 @@ public class ASPLexer extends Lexer {
             } while (true);
 
 
-            // ASP.g:3117:17: ( ')' )
-            // ASP.g:3117:18: ')'
+            // ASP.g:3093:17: ( ')' )
+            // ASP.g:3093:18: ')'
             {
             match(')'); 
 
@@ -806,7 +806,7 @@ public class ASPLexer extends Lexer {
     // $ANTLR end "QUOTED_40_41"
 
     public void mTokens() throws RecognitionException {
-        // ASP.g:1:8: ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | COMMENT | TEXT | WHITESPACE | LINEBREAK | QUOTED_40_41 )
+        // ASP.g:1:8: ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | COMMENT | TEXT | LINEBREAK | WHITESPACE | QUOTED_40_41 )
         int alt5=24;
         alt5 = dfa5.predict(input);
         switch (alt5) {
@@ -979,17 +979,17 @@ public class ASPLexer extends Lexer {
                 }
                 break;
             case 22 :
-                // ASP.g:1:136: WHITESPACE
+                // ASP.g:1:136: LINEBREAK
                 {
-                mWHITESPACE(); 
+                mLINEBREAK(); 
 
 
                 }
                 break;
             case 23 :
-                // ASP.g:1:147: LINEBREAK
+                // ASP.g:1:146: WHITESPACE
                 {
-                mLINEBREAK(); 
+                mWHITESPACE(); 
 
 
                 }
@@ -1010,111 +1010,121 @@ public class ASPLexer extends Lexer {
 
     protected DFA5 dfa5 = new DFA5(this);
     static final String DFA5_eotS =
-        "\7\uffff\5\15\5\uffff\10\15\1\37\5\15\1\uffff\2\15\1\uffff\4\15"+
-        "\1\uffff\1\15\1\uffff\2\15\1\uffff\3\15\2\uffff\11\15\3\uffff\12"+
-        "\15\1\113\1\114\1\115\3\uffff";
+        "\1\uffff\1\15\3\uffff\1\15\1\uffff\5\15\6\uffff\1\30\5\15\1\uffff"+
+        "\3\15\1\42\5\15\1\uffff\2\15\1\uffff\4\15\1\uffff\1\15\1\uffff\2"+
+        "\15\1\uffff\3\15\2\uffff\11\15\3\uffff\12\15\1\116\1\117\1\120\3"+
+        "\uffff";
     static final String DFA5_eofS =
-        "\116\uffff";
+        "\121\uffff";
     static final String DFA5_minS =
-        "\1\11\6\uffff\1\144\1\145\1\157\1\162\1\145\5\uffff\1\147\1\164"+
-        "\1\144\1\157\1\154\1\145\1\141\1\145\1\55\1\160\1\141\1\50\1\145"+
-        "\1\50\1\uffff\1\50\1\164\1\uffff\1\50\1\144\1\157\1\162\1\uffff"+
-        "\1\50\1\uffff\1\50\1\151\1\uffff\1\147\1\144\1\157\2\uffff\1\157"+
-        "\2\145\1\160\1\156\3\50\1\137\3\uffff\1\145\1\144\1\157\1\162\1"+
-        "\147\1\144\1\157\2\145\1\160\3\55\3\uffff";
+        "\1\11\1\75\3\uffff\1\55\1\uffff\1\144\1\145\1\157\1\162\1\145\6"+
+        "\uffff\1\41\1\147\1\164\1\144\1\157\1\154\1\uffff\1\145\1\141\1"+
+        "\145\1\41\1\160\1\141\1\50\1\145\1\50\1\uffff\1\50\1\164\1\uffff"+
+        "\1\50\1\144\1\157\1\162\1\uffff\1\50\1\uffff\1\50\1\151\1\uffff"+
+        "\1\147\1\144\1\157\2\uffff\1\157\2\145\1\160\1\156\3\50\1\137\3"+
+        "\uffff\1\145\1\144\1\157\1\162\1\147\1\144\1\157\2\145\1\160\3\41"+
+        "\3\uffff";
     static final String DFA5_maxS =
-        "\1\172\6\uffff\1\144\1\145\1\157\1\162\1\145\5\uffff\1\147\2\164"+
-        "\1\157\1\154\1\145\1\141\1\145\1\172\1\160\1\141\1\170\1\160\1\170"+
-        "\1\uffff\1\170\1\164\1\uffff\1\50\1\144\1\157\1\162\1\uffff\1\50"+
-        "\1\uffff\1\50\1\151\1\uffff\1\147\1\144\1\157\2\uffff\1\157\2\145"+
-        "\1\160\1\156\3\50\1\137\3\uffff\1\160\1\144\1\157\1\162\1\147\1"+
-        "\144\1\157\2\145\1\160\3\172\3\uffff";
+        "\1\172\1\75\3\uffff\1\55\1\uffff\1\144\1\145\1\157\1\162\1\145\6"+
+        "\uffff\1\172\1\147\2\164\1\157\1\154\1\uffff\1\145\1\141\1\145\1"+
+        "\172\1\160\1\141\1\170\1\160\1\170\1\uffff\1\170\1\164\1\uffff\1"+
+        "\50\1\144\1\157\1\162\1\uffff\1\50\1\uffff\1\50\1\151\1\uffff\1"+
+        "\147\1\144\1\157\2\uffff\1\157\2\145\1\160\1\156\3\50\1\137\3\uffff"+
+        "\1\160\1\144\1\157\1\162\1\147\1\144\1\157\2\145\1\160\3\172\3\uffff";
     static final String DFA5_acceptS =
-        "\1\uffff\1\1\1\2\1\3\1\4\1\5\1\6\5\uffff\1\24\1\25\1\26\1\27\1\30"+
-        "\16\uffff\1\16\2\uffff\1\7\4\uffff\1\14\1\uffff\1\17\2\uffff\1\10"+
-        "\3\uffff\1\15\1\20\11\uffff\1\11\1\12\1\13\15\uffff\1\21\1\22\1"+
-        "\23";
+        "\2\uffff\1\2\1\3\1\4\1\uffff\1\6\5\uffff\1\24\1\25\1\26\1\27\1\30"+
+        "\1\1\6\uffff\1\5\11\uffff\1\16\2\uffff\1\7\4\uffff\1\14\1\uffff"+
+        "\1\17\2\uffff\1\10\3\uffff\1\15\1\20\11\uffff\1\11\1\12\1\13\15"+
+        "\uffff\1\21\1\22\1\23";
     static final String DFA5_specialS =
-        "\116\uffff}>";
+        "\121\uffff}>";
     static final String[] DFA5_transitionS = {
-            "\1\16\1\17\1\uffff\1\16\1\17\22\uffff\1\16\1\1\3\uffff\1\14"+
+            "\1\17\1\16\1\uffff\1\17\1\16\22\uffff\1\17\1\1\3\uffff\1\14"+
             "\2\uffff\1\20\1\2\2\uffff\1\3\1\15\1\4\1\uffff\12\15\1\5\2\uffff"+
             "\1\6\3\uffff\32\15\4\uffff\1\15\1\uffff\4\15\1\7\7\15\1\10\1"+
             "\11\1\15\1\12\1\15\1\13\10\15",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\21",
+            "",
+            "",
+            "",
             "\1\22",
+            "",
             "\1\23",
             "\1\24",
             "\1\25",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\26",
             "\1\27",
-            "\1\30\17\uffff\1\31",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\15\13\uffff\1\15\2\uffff\13\15\6\uffff\32\15\4\uffff\1\15"+
+            "\1\uffff\32\15",
+            "\1\31",
             "\1\32",
-            "\1\33",
-            "\1\34",
+            "\1\33\17\uffff\1\34",
             "\1\35",
             "\1\36",
-            "\1\15\2\uffff\12\15\7\uffff\32\15\4\uffff\1\15\1\uffff\32\15",
+            "",
+            "\1\37",
             "\1\40",
             "\1\41",
-            "\1\42\117\uffff\1\43",
-            "\1\44\10\uffff\1\45\1\uffff\1\46",
-            "\1\47\117\uffff\1\50",
+            "\1\15\13\uffff\1\15\2\uffff\13\15\6\uffff\32\15\4\uffff\1\15"+
+            "\1\uffff\32\15",
+            "\1\43",
+            "\1\44",
+            "\1\45\117\uffff\1\46",
+            "\1\47\10\uffff\1\50\1\uffff\1\51",
+            "\1\52\117\uffff\1\53",
             "",
-            "\1\51\117\uffff\1\52",
-            "\1\53",
-            "",
-            "\1\54",
-            "\1\55",
+            "\1\54\117\uffff\1\55",
             "\1\56",
+            "",
             "\1\57",
-            "",
             "\1\60",
-            "",
             "\1\61",
             "\1\62",
             "",
             "\1\63",
+            "",
             "\1\64",
             "\1\65",
-            "",
             "",
             "\1\66",
             "\1\67",
             "\1\70",
+            "",
+            "",
             "\1\71",
             "\1\72",
             "\1\73",
             "\1\74",
             "\1\75",
             "\1\76",
+            "\1\77",
+            "\1\100",
+            "\1\101",
             "",
             "",
             "",
-            "\1\77\10\uffff\1\100\1\uffff\1\101",
-            "\1\102",
-            "\1\103",
-            "\1\104",
+            "\1\102\10\uffff\1\103\1\uffff\1\104",
             "\1\105",
             "\1\106",
             "\1\107",
             "\1\110",
             "\1\111",
             "\1\112",
-            "\1\15\2\uffff\12\15\7\uffff\32\15\4\uffff\1\15\1\uffff\32\15",
-            "\1\15\2\uffff\12\15\7\uffff\32\15\4\uffff\1\15\1\uffff\32\15",
-            "\1\15\2\uffff\12\15\7\uffff\32\15\4\uffff\1\15\1\uffff\32\15",
+            "\1\113",
+            "\1\114",
+            "\1\115",
+            "\1\15\13\uffff\1\15\2\uffff\13\15\6\uffff\32\15\4\uffff\1\15"+
+            "\1\uffff\32\15",
+            "\1\15\13\uffff\1\15\2\uffff\13\15\6\uffff\32\15\4\uffff\1\15"+
+            "\1\uffff\32\15",
+            "\1\15\13\uffff\1\15\2\uffff\13\15\6\uffff\32\15\4\uffff\1\15"+
+            "\1\uffff\32\15",
             "",
             "",
             ""
@@ -1150,7 +1160,7 @@ public class ASPLexer extends Lexer {
             this.transition = DFA5_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | COMMENT | TEXT | WHITESPACE | LINEBREAK | QUOTED_40_41 );";
+            return "1:1: Tokens : ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | COMMENT | TEXT | LINEBREAK | WHITESPACE | QUOTED_40_41 );";
         }
     }
  

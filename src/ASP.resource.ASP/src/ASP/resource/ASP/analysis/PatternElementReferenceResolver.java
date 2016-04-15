@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 public class PatternElementReferenceResolver implements ASP.resource.ASP.IASPReferenceResolver<ASP.Pattern, ASP.Function> {
 	
+	@SuppressWarnings("unused")
 	private ASP.resource.ASP.analysis.ASPDefaultResolverDelegate<ASP.Pattern, ASP.Function> delegate = new ASP.resource.ASP.analysis.ASPDefaultResolverDelegate<ASP.Pattern, ASP.Function>();
 	
 	public void resolve(String identifier, ASP.Pattern container, org.eclipse.emf.ecore.EReference reference, int position, boolean resolveFuzzy, final ASP.resource.ASP.IASPReferenceResolveResult<ASP.Function> result) {
@@ -35,6 +36,7 @@ public class PatternElementReferenceResolver implements ASP.resource.ASP.IASPRef
 				EStructuralFeature l = element.eClass().getEStructuralFeature("literals");
 				
 				// Match the list of literals
+				@SuppressWarnings("unchecked")
 				EList<EObject> literals = (EList<EObject>) element.eGet(l);
 				if (literalsId.size() == literals.size()) {
 					boolean found = true;
@@ -60,6 +62,7 @@ public class PatternElementReferenceResolver implements ASP.resource.ASP.IASPRef
 	
 	public String deResolve(ASP.Function element, ASP.Pattern container, org.eclipse.emf.ecore.EReference reference) {
 		EStructuralFeature l = element.eClass().getEStructuralFeature("literals");
+		@SuppressWarnings("unchecked")
 		EList<EObject> literals = (EList<EObject>) element.eGet(l);
 		String elementPrint = "";
 		for (Iterator<EObject> it = literals.iterator(); it.hasNext();) {
@@ -70,8 +73,9 @@ public class PatternElementReferenceResolver implements ASP.resource.ASP.IASPRef
 				elementPrint += ", ";
 			}
 		}
+		// elementPrint += ", 0";
 		return elementPrint;
-		//return delegate.deResolve(element, container, reference);
+		// return delegate.deResolve(element, container, reference);
 	}
 	
 	public void setOptions(java.util.Map<?,?> options) {

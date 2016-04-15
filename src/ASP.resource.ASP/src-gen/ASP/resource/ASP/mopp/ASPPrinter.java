@@ -258,10 +258,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 		printCountingMap.put("type", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		boolean iterate = true;
-		java.io.StringWriter sWriter = null;
-		java.io.PrintWriter out1 = null;
-		java.util.Map<String, Integer> printCountingMap1 = null;
 		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("patterns");
 		if (count > 0) {
@@ -278,29 +274,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 			}
 			printCountingMap.put("patterns", count - 1);
 		}
-		// DEFINITION PART BEGINS (CompoundDefinition)
-		print_ASP_Relation_0(element, localtab, out, printCountingMap);
-		iterate = true;
-		while (iterate) {
-			sWriter = new java.io.StringWriter();
-			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.LinkedHashMap<String, Integer>(printCountingMap);
-			print_ASP_Relation_0(element, localtab, out1, printCountingMap1);
-			if (printCountingMap.equals(printCountingMap1)) {
-				iterate = false;
-				out1.close();
-			} else {
-				out1.flush();
-				out1.close();
-				out.print(sWriter.toString());
-				printCountingMap.putAll(printCountingMap1);
-			}
-		}
-	}
-	
-	public void print_ASP_Relation_0(ASP.Relation element, String outertab, java.io.PrintWriter out, java.util.Map<String, Integer> printCountingMap) {
-		String localtab = outertab;
-		int count;
 		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
