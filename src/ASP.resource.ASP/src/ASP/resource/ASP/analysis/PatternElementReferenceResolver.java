@@ -61,19 +61,23 @@ public class PatternElementReferenceResolver implements ASP.resource.ASP.IASPRef
 	}
 	
 	public String deResolve(ASP.Function element, ASP.Pattern container, org.eclipse.emf.ecore.EReference reference) {
+		// Get the relation ID from the name of the Relation element
+		EStructuralFeature id = container.eContainer().eClass().getEStructuralFeature("name");
+		String elementPrint = String.format("\"%s\", ", container.eContainer().eGet(id));
+		
+		// Implode the list of literals in a comma separated string
 		EStructuralFeature l = element.eClass().getEStructuralFeature("literals");
 		@SuppressWarnings("unchecked")
 		EList<EObject> literals = (EList<EObject>) element.eGet(l);
-		String elementPrint = "";
 		for (Iterator<EObject> it = literals.iterator(); it.hasNext();) {
 			EObject lit = it.next();
 			EStructuralFeature name = lit.eClass().getEStructuralFeature("name");
-			elementPrint += lit.eGet(name);
+			elementPrint += "x_" + lit.eGet(name);
 			if (it.hasNext()) {
 				elementPrint += ", ";
 			}
 		}
-		// elementPrint += ", 0";
+		elementPrint += ", 0";
 		return elementPrint;
 		// return delegate.deResolve(element, container, reference);
 	}

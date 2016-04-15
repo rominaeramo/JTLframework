@@ -6,6 +6,7 @@ import ASP.ASPPackage;
 import ASP.Function;
 import ASP.Pattern;
 
+import ASP.RelationType;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -68,7 +69,7 @@ public abstract class PatternImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TYPE_EDEFAULT = null;
+	protected static final RelationType TYPE_EDEFAULT = RelationType.NODE;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -78,7 +79,7 @@ public abstract class PatternImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 * @ordered
 	 */
-	protected String type = TYPE_EDEFAULT;
+	protected RelationType type = TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,7 +164,7 @@ public abstract class PatternImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getType() {
+	public RelationType getType() {
 		return type;
 	}
 
@@ -172,9 +173,9 @@ public abstract class PatternImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(String newType) {
-		String oldType = type;
-		type = newType;
+	public void setType(RelationType newType) {
+		RelationType oldType = type;
+		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ASPPackage.PATTERN__TYPE, oldType, type));
 	}
@@ -213,7 +214,7 @@ public abstract class PatternImpl extends MinimalEObjectImpl.Container implement
 				setName((String)newValue);
 				return;
 			case ASPPackage.PATTERN__TYPE:
-				setType((String)newValue);
+				setType((RelationType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -253,7 +254,7 @@ public abstract class PatternImpl extends MinimalEObjectImpl.Container implement
 			case ASPPackage.PATTERN__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ASPPackage.PATTERN__TYPE:
-				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+				return type != TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -22,12 +22,14 @@ import ASP.NotEq;
 import ASP.Pattern;
 import ASP.Prop;
 import ASP.Relation;
+import ASP.RelationType;
 import ASP.RightPattern;
 import ASP.Terminal;
 import ASP.Transformation;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -186,6 +188,13 @@ public class ASPPackageImpl extends EPackageImpl implements ASPPackage {
 	 * @generated
 	 */
 	private EClass metaedgeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum relationTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -667,6 +676,15 @@ public class ASPPackageImpl extends EPackageImpl implements ASPPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getRelationType() {
+		return relationTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ASPFactory getASPFactory() {
 		return (ASPFactory)getEFactoryInstance();
 	}
@@ -756,6 +774,9 @@ public class ASPPackageImpl extends EPackageImpl implements ASPPackage {
 		metapropEClass = createEClass(METAPROP);
 
 		metaedgeEClass = createEClass(METAEDGE);
+
+		// Create enums
+		relationTypeEEnum = createEEnum(RELATION_TYPE);
 	}
 
 	/**
@@ -817,7 +838,7 @@ public class ASPPackageImpl extends EPackageImpl implements ASPPackage {
 		initEClass(patternEClass, Pattern.class, "Pattern", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPattern_Element(), this.getFunction(), null, "element", null, 1, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPattern_Name(), ecorePackage.getEString(), "name", null, 1, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPattern_Type(), ecorePackage.getEString(), "type", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPattern_Type(), this.getRelationType(), "type", null, 1, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConstraint_Expressions(), this.getExpression(), null, "expressions", null, 1, -1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -870,6 +891,12 @@ public class ASPPackageImpl extends EPackageImpl implements ASPPackage {
 		initEClass(metapropEClass, Metaprop.class, "Metaprop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(metaedgeEClass, Metaedge.class, "Metaedge", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		// Initialize enums and add enum literals
+		initEEnum(relationTypeEEnum, RelationType.class, "RelationType");
+		addEEnumLiteral(relationTypeEEnum, RelationType.NODE);
+		addEEnumLiteral(relationTypeEEnum, RelationType.PROP);
+		addEEnumLiteral(relationTypeEEnum, RelationType.EDGE);
 
 		// Create resource
 		createResource(eNS_URI);

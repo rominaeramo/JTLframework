@@ -12,7 +12,7 @@ OPTIONS {
 
 TOKENS {
 	DEFINE COMMENT $'%'(~('\n'|'\r'|'\uffff'))*$;
-	DEFINE TEXT $('A'..'Z'|'a'..'z'|'0'..'9'|'_'|'-'|'!'|':')+$;
+	DEFINE TEXT $('A'..'Z'|'a'..'z'|'0'..'9'|'-'|'_'|'!'|':')+$;
 	DEFINE LINEBREAK $('\r\n'|'\r'|'\n')$;
 	DEFINE WHITESPACE $(' '|'\t'|'\f')$;
 }
@@ -26,11 +26,11 @@ RULES {
 //	Relation ::= patterns (!0 patterns)+;
 	
 	@SuppressWarnings(featureWithoutSyntax,explicitSyntaxChoice)
-	LeftPattern  ::= ("relation_node" | "relation_prop" | "relation_edge") element['(',')'] ".";
-//	LeftPattern  ::= "relation_" type[]? #0 "(" element[] #0 ").";
+//	LeftPattern  ::= ("relation_node" | "relation_prop" | "relation_edge") element['(',')'] ".";
+	LeftPattern  ::= type[node : "relation_node", prop : "relation_prop", edge : "relation_edge"] element['(',')'] ".";
 	@SuppressWarnings(featureWithoutSyntax,explicitSyntaxChoice)
-	RightPattern ::= ("relation_node" | "relation_prop" | "relation_edge") element['(',')'] ".";
-//	RightPattern ::= "relation_" type[]? #0 "(" element[] #0 ").";
+//	RightPattern ::= ("relation_node" | "relation_prop" | "relation_edge") element['(',')'] ".";
+	RightPattern ::= type[node : "relation_node", prop : "relation_prop", edge : "relation_edge"] element['(',')'] ".";
 	
 	@SuppressWarnings(featureWithoutSyntax,minOccurenceMismatch)
 	Metanode ::= "metanode(" literals[] "," #1 literals[] ")." !0;

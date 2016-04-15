@@ -297,7 +297,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 	
 	
 	public void print_ASP_LeftPattern(ASP.LeftPattern element, String outertab, java.io.PrintWriter out) {
-		String localtab = outertab;
 		// The printCountingMap contains a mapping from feature names to the number of
 		// remaining elements that still need to be printed. The map is initialized with
 		// the number of elements stored in each structural feature. For lists this is the
@@ -313,8 +312,14 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 		printCountingMap.put("type", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		// DEFINITION PART BEGINS (CompoundDefinition)
-		print_ASP_LeftPattern_0(element, localtab, out, printCountingMap);
+		// DEFINITION PART BEGINS (EnumTerminal)
+		count = printCountingMap.get("type");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.LEFT_PATTERN__TYPE));
+			if (o != null) {
+			}
+			printCountingMap.put("type", count - 1);
+		}
 		// DEFINITION PART BEGINS (PlaceholderInQuotes)
 		count = printCountingMap.get("element");
 		if (count > 0) {
@@ -332,43 +337,8 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 		out.print(" ");
 	}
 	
-	public void print_ASP_LeftPattern_0(ASP.LeftPattern element, String outertab, java.io.PrintWriter out, java.util.Map<String, Integer> printCountingMap) {
-		int alt = -1;
-		alt = 0;
-		int matches = 		0;
-		int tempMatchCount;
-		tempMatchCount = 		0;
-		if (tempMatchCount > matches) {
-			alt = 1;
-			matches = tempMatchCount;
-		}
-		tempMatchCount = 		0;
-		if (tempMatchCount > matches) {
-			alt = 2;
-			matches = tempMatchCount;
-		}
-		switch(alt) {
-			case 1:			{
-				// DEFINITION PART BEGINS (CsString)
-				out.print("relation_prop");
-				out.print(" ");
-			}
-			break;
-			case 2:			{
-				// DEFINITION PART BEGINS (CsString)
-				out.print("relation_edge");
-				out.print(" ");
-			}
-			break;
-			default:			// DEFINITION PART BEGINS (CsString)
-			out.print("relation_node");
-			out.print(" ");
-		}
-	}
-	
 	
 	public void print_ASP_RightPattern(ASP.RightPattern element, String outertab, java.io.PrintWriter out) {
-		String localtab = outertab;
 		// The printCountingMap contains a mapping from feature names to the number of
 		// remaining elements that still need to be printed. The map is initialized with
 		// the number of elements stored in each structural feature. For lists this is the
@@ -384,8 +354,14 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 		printCountingMap.put("type", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		// DEFINITION PART BEGINS (CompoundDefinition)
-		print_ASP_RightPattern_0(element, localtab, out, printCountingMap);
+		// DEFINITION PART BEGINS (EnumTerminal)
+		count = printCountingMap.get("type");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.RIGHT_PATTERN__TYPE));
+			if (o != null) {
+			}
+			printCountingMap.put("type", count - 1);
+		}
 		// DEFINITION PART BEGINS (PlaceholderInQuotes)
 		count = printCountingMap.get("element");
 		if (count > 0) {
@@ -401,40 +377,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 		// DEFINITION PART BEGINS (CsString)
 		out.print(".");
 		out.print(" ");
-	}
-	
-	public void print_ASP_RightPattern_0(ASP.RightPattern element, String outertab, java.io.PrintWriter out, java.util.Map<String, Integer> printCountingMap) {
-		int alt = -1;
-		alt = 0;
-		int matches = 		0;
-		int tempMatchCount;
-		tempMatchCount = 		0;
-		if (tempMatchCount > matches) {
-			alt = 1;
-			matches = tempMatchCount;
-		}
-		tempMatchCount = 		0;
-		if (tempMatchCount > matches) {
-			alt = 2;
-			matches = tempMatchCount;
-		}
-		switch(alt) {
-			case 1:			{
-				// DEFINITION PART BEGINS (CsString)
-				out.print("relation_prop");
-				out.print(" ");
-			}
-			break;
-			case 2:			{
-				// DEFINITION PART BEGINS (CsString)
-				out.print("relation_edge");
-				out.print(" ");
-			}
-			break;
-			default:			// DEFINITION PART BEGINS (CsString)
-			out.print("relation_node");
-			out.print(" ");
-		}
 	}
 	
 	

@@ -5,6 +5,11 @@
     complianceLevel="5.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
   <foreignModel>ASP.ecore</foreignModel>
   <genPackages prefix="ASP" disposableProviderFactory="true" ecorePackage="ASP.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ASP.ecore#//RelationType">
+      <genEnumLiterals ecoreEnumLiteral="ASP.ecore#//RelationType/node"/>
+      <genEnumLiterals ecoreEnumLiteral="ASP.ecore#//RelationType/prop"/>
+      <genEnumLiterals ecoreEnumLiteral="ASP.ecore#//RelationType/edge"/>
+    </genEnums>
     <genClasses ecoreClass="ASP.ecore#//Transformation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASP.ecore#//Transformation/elements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASP.ecore#//Transformation/relations"/>

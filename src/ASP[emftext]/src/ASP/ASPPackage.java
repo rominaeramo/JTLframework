@@ -4,6 +4,7 @@ package ASP;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -1231,6 +1232,17 @@ public interface ASPPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link ASP.RelationType <em>Relation Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ASP.RelationType
+	 * @see ASP.impl.ASPPackageImpl#getRelationType()
+	 * @generated
+	 */
+	int RELATION_TYPE = 21;
+
+
+	/**
 	 * Returns the meta object for class '{@link ASP.Transformation <em>Transformation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1716,6 +1728,16 @@ public interface ASPPackage extends EPackage {
 	EClass getMetaedge();
 
 	/**
+	 * Returns the meta object for enum '{@link ASP.RelationType <em>Relation Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Relation Type</em>'.
+	 * @see ASP.RelationType
+	 * @generated
+	 */
+	EEnum getRelationType();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2147,6 +2169,16 @@ public interface ASPPackage extends EPackage {
 		 * @generated
 		 */
 		EClass METAEDGE = eINSTANCE.getMetaedge();
+
+		/**
+		 * The meta object literal for the '{@link ASP.RelationType <em>Relation Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ASP.RelationType
+		 * @see ASP.impl.ASPPackageImpl#getRelationType()
+		 * @generated
+		 */
+		EEnum RELATION_TYPE = eINSTANCE.getRelationType();
 
 	}
 

@@ -77,6 +77,7 @@ public interface Pattern extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link ASP.RelationType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
@@ -84,21 +85,23 @@ public interface Pattern extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
-	 * @see #setType(String)
+	 * @see ASP.RelationType
+	 * @see #setType(RelationType)
 	 * @see ASP.ASPPackage#getPattern_Type()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
-	String getType();
+	RelationType getType();
 
 	/**
 	 * Sets the value of the '{@link ASP.Pattern#getType <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' attribute.
+	 * @see ASP.RelationType
 	 * @see #getType()
 	 * @generated
 	 */
-	void setType(String value);
+	void setType(RelationType value);
 
 } // Pattern
