@@ -80,18 +80,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 			print_ASP_Metaedge((ASP.Metaedge) element, globaltab, out);
 			return;
 		}
-		if (element instanceof ASP.Literal) {
-			print_ASP_Literal((ASP.Literal) element, globaltab, out);
-			return;
-		}
-		if (element instanceof ASP.Constraint) {
-			print_ASP_Constraint((ASP.Constraint) element, globaltab, out);
-			return;
-		}
-		if (element instanceof ASP.Terminal) {
-			print_ASP_Terminal((ASP.Terminal) element, globaltab, out);
-			return;
-		}
 		if (element instanceof ASP.Node) {
 			print_ASP_Node((ASP.Node) element, globaltab, out);
 			return;
@@ -102,6 +90,18 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 		}
 		if (element instanceof ASP.Edge) {
 			print_ASP_Edge((ASP.Edge) element, globaltab, out);
+			return;
+		}
+		if (element instanceof ASP.Constraint) {
+			print_ASP_Constraint((ASP.Constraint) element, globaltab, out);
+			return;
+		}
+		if (element instanceof ASP.Literal) {
+			print_ASP_Literal((ASP.Literal) element, globaltab, out);
+			return;
+		}
+		if (element instanceof ASP.Terminal) {
+			print_ASP_Terminal((ASP.Terminal) element, globaltab, out);
 			return;
 		}
 		if (element instanceof ASP.Not) {
@@ -320,6 +320,7 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 			}
 			printCountingMap.put("type", count - 1);
 		}
+		// DEFINITION PART BEGINS (WhiteSpaces)
 		// DEFINITION PART BEGINS (PlaceholderInQuotes)
 		count = printCountingMap.get("element");
 		if (count > 0) {
@@ -328,17 +329,16 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("QUOTED_40_41");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getPatternElementReferenceResolver().deResolve((ASP.Function) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.LEFT_PATTERN__ELEMENT)), element.eClass().getEStructuralFeature(ASP.ASPPackage.LEFT_PATTERN__ELEMENT), element));
-				out.print(" ");
 			}
 			printCountingMap.put("element", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
 		out.print(".");
-		out.print(" ");
 	}
 	
 	
 	public void print_ASP_RightPattern(ASP.RightPattern element, String outertab, java.io.PrintWriter out) {
+		String localtab = outertab;
 		// The printCountingMap contains a mapping from feature names to the number of
 		// remaining elements that still need to be printed. The map is initialized with
 		// the number of elements stored in each structural feature. For lists this is the
@@ -362,6 +362,7 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 			}
 			printCountingMap.put("type", count - 1);
 		}
+		// DEFINITION PART BEGINS (WhiteSpaces)
 		// DEFINITION PART BEGINS (PlaceholderInQuotes)
 		count = printCountingMap.get("element");
 		if (count > 0) {
@@ -370,13 +371,14 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("QUOTED_40_41");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getPatternElementReferenceResolver().deResolve((ASP.Function) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.RIGHT_PATTERN__ELEMENT)), element.eClass().getEStructuralFeature(ASP.ASPPackage.RIGHT_PATTERN__ELEMENT), element));
-				out.print(" ");
 			}
 			printCountingMap.put("element", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
 		out.print(".");
-		out.print(" ");
+		// DEFINITION PART BEGINS (LineBreak)
+		out.println();
+		out.print(localtab);
 	}
 	
 	
@@ -399,7 +401,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 		int count;
 		// DEFINITION PART BEGINS (CsString)
 		out.print("metanode(");
-		out.print(" ");
 		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("literals");
 		if (count > 0) {
@@ -415,7 +416,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.METANODE__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.METANODE__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
@@ -438,13 +438,11 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.METANODE__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.METANODE__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
 		out.print(").");
-		out.print(" ");
 		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
@@ -470,7 +468,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 		int count;
 		// DEFINITION PART BEGINS (CsString)
 		out.print("metaprop(");
-		out.print(" ");
 		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("literals");
 		if (count > 0) {
@@ -486,7 +483,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.METAPROP__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.METAPROP__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
@@ -509,7 +505,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.METAPROP__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.METAPROP__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
@@ -532,13 +527,11 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.METAPROP__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.METAPROP__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
 		out.print(").");
-		out.print(" ");
 		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
@@ -564,7 +557,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 		int count;
 		// DEFINITION PART BEGINS (CsString)
 		out.print("metaedge(");
-		out.print(" ");
 		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("literals");
 		if (count > 0) {
@@ -580,7 +572,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.METAEDGE__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.METAEDGE__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
@@ -603,7 +594,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.METAEDGE__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.METAEDGE__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
@@ -626,7 +616,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.METAEDGE__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.METAEDGE__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
@@ -649,193 +638,14 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.METAEDGE__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.METAEDGE__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
 		out.print(").");
-		out.print(" ");
 		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
-	}
-	
-	
-	public void print_ASP_Literal(ASP.Literal element, String outertab, java.io.PrintWriter out) {
-		String localtab = outertab;
-		// The printCountingMap contains a mapping from feature names to the number of
-		// remaining elements that still need to be printed. The map is initialized with
-		// the number of elements stored in each structural feature. For lists this is the
-		// list size. For non-multiple features it is either 1 (if the feature is set) or
-		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(2);
-		Object temp;
-		temp = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.LITERAL__NAME));
-		printCountingMap.put("name", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.LITERAL__TRANSFORMATION));
-		printCountingMap.put("transformation", temp == null ? 0 : 1);
-		// print collected hidden tokens
-		int count;
-		java.io.StringWriter sWriter = null;
-		java.io.PrintWriter out1 = null;
-		java.util.Map<String, Integer> printCountingMap1 = null;
-		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
-		count = printCountingMap.get("name");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.LITERAL__NAME));
-			if (o != null) {
-				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
-				resolver.setOptions(getOptions());
-				out.print(resolver.deResolve((Object) o, element.eClass().getEStructuralFeature(ASP.ASPPackage.LITERAL__NAME), element));
-				out.print(" ");
-			}
-			printCountingMap.put("name", count - 1);
-		}
-		// DEFINITION PART BEGINS (CompoundDefinition)
-		sWriter = new java.io.StringWriter();
-		out1 = new java.io.PrintWriter(sWriter);
-		printCountingMap1 = new java.util.LinkedHashMap<String, Integer>(printCountingMap);
-		print_ASP_Literal_0(element, localtab, out1, printCountingMap1);
-		if (printCountingMap.equals(printCountingMap1)) {
-			out1.close();
-		} else {
-			out1.flush();
-			out1.close();
-			out.print(sWriter.toString());
-			printCountingMap.putAll(printCountingMap1);
-		}
-		// DEFINITION PART BEGINS (LineBreak)
-		out.println();
-		out.print(localtab);
-	}
-	
-	public void print_ASP_Literal_0(ASP.Literal element, String outertab, java.io.PrintWriter out, java.util.Map<String, Integer> printCountingMap) {
-		// DEFINITION PART BEGINS (WhiteSpaces)
-		// DEFINITION PART BEGINS (CsString)
-		out.print(".");
-		out.print(" ");
-	}
-	
-	
-	public void print_ASP_Constraint(ASP.Constraint element, String outertab, java.io.PrintWriter out) {
-		String localtab = outertab;
-		// The printCountingMap contains a mapping from feature names to the number of
-		// remaining elements that still need to be printed. The map is initialized with
-		// the number of elements stored in each structural feature. For lists this is the
-		// list size. For non-multiple features it is either 1 (if the feature is set) or
-		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(3);
-		Object temp;
-		temp = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.CONSTRAINT__EXPRESSIONS));
-		printCountingMap.put("expressions", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.CONSTRAINT__NAME));
-		printCountingMap.put("name", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.CONSTRAINT__TRANSFORMATION));
-		printCountingMap.put("transformation", temp == null ? 0 : 1);
-		// print collected hidden tokens
-		int count;
-		boolean iterate = true;
-		java.io.StringWriter sWriter = null;
-		java.io.PrintWriter out1 = null;
-		java.util.Map<String, Integer> printCountingMap1 = null;
-		// DEFINITION PART BEGINS (CsString)
-		out.print(":-");
-		out.print(" ");
-		// DEFINITION PART BEGINS (Containment)
-		count = printCountingMap.get("expressions");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.CONSTRAINT__EXPRESSIONS));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("expressions", count - 1);
-		}
-		// DEFINITION PART BEGINS (CompoundDefinition)
-		iterate = true;
-		while (iterate) {
-			sWriter = new java.io.StringWriter();
-			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.LinkedHashMap<String, Integer>(printCountingMap);
-			print_ASP_Constraint_0(element, localtab, out1, printCountingMap1);
-			if (printCountingMap.equals(printCountingMap1)) {
-				iterate = false;
-				out1.close();
-			} else {
-				out1.flush();
-				out1.close();
-				out.print(sWriter.toString());
-				printCountingMap.putAll(printCountingMap1);
-			}
-		}
-		// DEFINITION PART BEGINS (CsString)
-		out.print(".");
-		out.print(" ");
-		// DEFINITION PART BEGINS (LineBreak)
-		out.println();
-		out.print(localtab);
-	}
-	
-	public void print_ASP_Constraint_0(ASP.Constraint element, String outertab, java.io.PrintWriter out, java.util.Map<String, Integer> printCountingMap) {
-		String localtab = outertab;
-		int count;
-		// DEFINITION PART BEGINS (CsString)
-		out.print(",");
-		out.print(" ");
-		// DEFINITION PART BEGINS (Containment)
-		count = printCountingMap.get("expressions");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.CONSTRAINT__EXPRESSIONS));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("expressions", count - 1);
-		}
-	}
-	
-	
-	public void print_ASP_Terminal(ASP.Terminal element, String outertab, java.io.PrintWriter out) {
-		// The printCountingMap contains a mapping from feature names to the number of
-		// remaining elements that still need to be printed. The map is initialized with
-		// the number of elements stored in each structural feature. For lists this is the
-		// list size. For non-multiple features it is either 1 (if the feature is set) or
-		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(3);
-		Object temp;
-		temp = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.TERMINAL__NAME));
-		printCountingMap.put("name", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.TERMINAL__TRANSFORMATION));
-		printCountingMap.put("transformation", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.TERMINAL__ELEMENT));
-		printCountingMap.put("element", temp == null ? 0 : 1);
-		// print collected hidden tokens
-		int count;
-		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
-		count = printCountingMap.get("element");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.TERMINAL__ELEMENT));
-			if (o != null) {
-				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
-				resolver.setOptions(getOptions());
-				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTerminalElementReferenceResolver().deResolve((ASP.Element) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.TERMINAL__ELEMENT)), element.eClass().getEStructuralFeature(ASP.ASPPackage.TERMINAL__ELEMENT), element));
-				out.print(" ");
-			}
-			printCountingMap.put("element", count - 1);
-		}
 	}
 	
 	
@@ -873,7 +683,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
@@ -896,7 +705,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
@@ -919,13 +727,11 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
 		out.print(").");
-		out.print(" ");
 		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
@@ -945,12 +751,10 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 			case 1:			{
 				// DEFINITION PART BEGINS (CsString)
 				out.print("nodex(");
-				out.print(" ");
 			}
 			break;
 			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("node(");
-			out.print(" ");
 		}
 	}
 	
@@ -989,7 +793,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
@@ -1012,7 +815,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
@@ -1035,7 +837,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
@@ -1058,13 +859,11 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
 		out.print(").");
-		out.print(" ");
 		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
@@ -1084,12 +883,10 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 			case 1:			{
 				// DEFINITION PART BEGINS (CsString)
 				out.print("propx(");
-				out.print(" ");
 			}
 			break;
 			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("prop(");
-			out.print(" ");
 		}
 	}
 	
@@ -1128,7 +925,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
@@ -1151,7 +947,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
@@ -1174,7 +969,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
@@ -1197,7 +991,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
@@ -1220,13 +1013,11 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS)), element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), element));
-				out.print(" ");
 			}
 			printCountingMap.put("literals", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
 		out.print(").");
-		out.print(" ");
 		// DEFINITION PART BEGINS (LineBreak)
 		out.println();
 		out.print(localtab);
@@ -1246,12 +1037,186 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 			case 1:			{
 				// DEFINITION PART BEGINS (CsString)
 				out.print("edgex(");
-				out.print(" ");
 			}
 			break;
 			default:			// DEFINITION PART BEGINS (CsString)
 			out.print("edge(");
-			out.print(" ");
+		}
+	}
+	
+	
+	public void print_ASP_Constraint(ASP.Constraint element, String outertab, java.io.PrintWriter out) {
+		String localtab = outertab;
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(3);
+		Object temp;
+		temp = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.CONSTRAINT__EXPRESSIONS));
+		printCountingMap.put("expressions", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.CONSTRAINT__NAME));
+		printCountingMap.put("name", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.CONSTRAINT__TRANSFORMATION));
+		printCountingMap.put("transformation", temp == null ? 0 : 1);
+		// print collected hidden tokens
+		int count;
+		boolean iterate = true;
+		java.io.StringWriter sWriter = null;
+		java.io.PrintWriter out1 = null;
+		java.util.Map<String, Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (CsString)
+		out.print(":-");
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		out.print(" ");
+		// DEFINITION PART BEGINS (Containment)
+		count = printCountingMap.get("expressions");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.CONSTRAINT__EXPRESSIONS));
+			java.util.List<?> list = (java.util.List<?>) o;
+			int index = list.size() - count;
+			if (index >= 0) {
+				o = list.get(index);
+			} else {
+				o = null;
+			}
+			if (o != null) {
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			}
+			printCountingMap.put("expressions", count - 1);
+		}
+		// DEFINITION PART BEGINS (CompoundDefinition)
+		iterate = true;
+		while (iterate) {
+			sWriter = new java.io.StringWriter();
+			out1 = new java.io.PrintWriter(sWriter);
+			printCountingMap1 = new java.util.LinkedHashMap<String, Integer>(printCountingMap);
+			print_ASP_Constraint_0(element, localtab, out1, printCountingMap1);
+			if (printCountingMap.equals(printCountingMap1)) {
+				iterate = false;
+				out1.close();
+			} else {
+				out1.flush();
+				out1.close();
+				out.print(sWriter.toString());
+				printCountingMap.putAll(printCountingMap1);
+			}
+		}
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		// DEFINITION PART BEGINS (CsString)
+		out.print(".");
+		// DEFINITION PART BEGINS (LineBreak)
+		out.println();
+		out.print(localtab);
+	}
+	
+	public void print_ASP_Constraint_0(ASP.Constraint element, String outertab, java.io.PrintWriter out, java.util.Map<String, Integer> printCountingMap) {
+		String localtab = outertab;
+		int count;
+		// DEFINITION PART BEGINS (CsString)
+		out.print(",");
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		out.print(" ");
+		// DEFINITION PART BEGINS (Containment)
+		count = printCountingMap.get("expressions");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.CONSTRAINT__EXPRESSIONS));
+			java.util.List<?> list = (java.util.List<?>) o;
+			int index = list.size() - count;
+			if (index >= 0) {
+				o = list.get(index);
+			} else {
+				o = null;
+			}
+			if (o != null) {
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			}
+			printCountingMap.put("expressions", count - 1);
+		}
+	}
+	
+	
+	public void print_ASP_Literal(ASP.Literal element, String outertab, java.io.PrintWriter out) {
+		String localtab = outertab;
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(2);
+		Object temp;
+		temp = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.LITERAL__NAME));
+		printCountingMap.put("name", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.LITERAL__TRANSFORMATION));
+		printCountingMap.put("transformation", temp == null ? 0 : 1);
+		// print collected hidden tokens
+		int count;
+		java.io.StringWriter sWriter = null;
+		java.io.PrintWriter out1 = null;
+		java.util.Map<String, Integer> printCountingMap1 = null;
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
+		count = printCountingMap.get("name");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.LITERAL__NAME));
+			if (o != null) {
+				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
+				resolver.setOptions(getOptions());
+				out.print(resolver.deResolve((Object) o, element.eClass().getEStructuralFeature(ASP.ASPPackage.LITERAL__NAME), element));
+			}
+			printCountingMap.put("name", count - 1);
+		}
+		// DEFINITION PART BEGINS (CompoundDefinition)
+		sWriter = new java.io.StringWriter();
+		out1 = new java.io.PrintWriter(sWriter);
+		printCountingMap1 = new java.util.LinkedHashMap<String, Integer>(printCountingMap);
+		print_ASP_Literal_0(element, localtab, out1, printCountingMap1);
+		if (printCountingMap.equals(printCountingMap1)) {
+			out1.close();
+		} else {
+			out1.flush();
+			out1.close();
+			out.print(sWriter.toString());
+			printCountingMap.putAll(printCountingMap1);
+		}
+		// DEFINITION PART BEGINS (LineBreak)
+		out.println();
+		out.print(localtab);
+	}
+	
+	public void print_ASP_Literal_0(ASP.Literal element, String outertab, java.io.PrintWriter out, java.util.Map<String, Integer> printCountingMap) {
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		// DEFINITION PART BEGINS (CsString)
+		out.print(".");
+	}
+	
+	
+	public void print_ASP_Terminal(ASP.Terminal element, String outertab, java.io.PrintWriter out) {
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(3);
+		Object temp;
+		temp = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.TERMINAL__NAME));
+		printCountingMap.put("name", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.TERMINAL__TRANSFORMATION));
+		printCountingMap.put("transformation", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.TERMINAL__ELEMENT));
+		printCountingMap.put("element", temp == null ? 0 : 1);
+		// print collected hidden tokens
+		int count;
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
+		count = printCountingMap.get("element");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(ASP.ASPPackage.TERMINAL__ELEMENT));
+			if (o != null) {
+				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
+				resolver.setOptions(getOptions());
+				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getTerminalElementReferenceResolver().deResolve((ASP.Element) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.TERMINAL__ELEMENT)), element.eClass().getEStructuralFeature(ASP.ASPPackage.TERMINAL__ELEMENT), element));
+			}
+			printCountingMap.put("element", count - 1);
 		}
 	}
 	
@@ -1274,6 +1239,7 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 		int count;
 		// DEFINITION PART BEGINS (CsString)
 		out.print("not");
+		// DEFINITION PART BEGINS (WhiteSpaces)
 		out.print(" ");
 		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("element");
@@ -1283,7 +1249,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getNotElementReferenceResolver().deResolve((ASP.Element) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.NOT__ELEMENT)), element.eClass().getEStructuralFeature(ASP.ASPPackage.NOT__ELEMENT), element));
-				out.print(" ");
 			}
 			printCountingMap.put("element", count - 1);
 		}
@@ -1316,12 +1281,14 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getEqLeftReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.EQ__LEFT)), element.eClass().getEStructuralFeature(ASP.ASPPackage.EQ__LEFT), element));
-				out.print(" ");
 			}
 			printCountingMap.put("left", count - 1);
 		}
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		out.print(" ");
 		// DEFINITION PART BEGINS (CsString)
 		out.print("==");
+		// DEFINITION PART BEGINS (WhiteSpaces)
 		out.print(" ");
 		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("right");
@@ -1331,7 +1298,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getEqRightReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.EQ__RIGHT)), element.eClass().getEStructuralFeature(ASP.ASPPackage.EQ__RIGHT), element));
-				out.print(" ");
 			}
 			printCountingMap.put("right", count - 1);
 		}
@@ -1364,12 +1330,14 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getNotEqLeftReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.NOT_EQ__LEFT)), element.eClass().getEStructuralFeature(ASP.ASPPackage.NOT_EQ__LEFT), element));
-				out.print(" ");
 			}
 			printCountingMap.put("left", count - 1);
 		}
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		out.print(" ");
 		// DEFINITION PART BEGINS (CsString)
 		out.print("!=");
+		// DEFINITION PART BEGINS (WhiteSpaces)
 		out.print(" ");
 		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("right");
@@ -1379,7 +1347,6 @@ public class ASPPrinter implements ASP.resource.ASP.IASPTextPrinter {
 				ASP.resource.ASP.IASPTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
 				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getNotEqRightReferenceResolver().deResolve((ASP.Literal) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.NOT_EQ__RIGHT)), element.eClass().getEStructuralFeature(ASP.ASPPackage.NOT_EQ__RIGHT), element));
-				out.print(" ");
 			}
 			printCountingMap.put("right", count - 1);
 		}

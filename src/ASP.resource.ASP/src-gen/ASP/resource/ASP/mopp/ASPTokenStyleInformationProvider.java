@@ -11,6 +11,9 @@ public class ASPTokenStyleInformationProvider {
 	public static String TASK_ITEM_TOKEN_NAME = "TASK_ITEM";
 	
 	public ASP.resource.ASP.IASPTokenStyle getDefaultTokenStyle(String tokenName) {
+		if ("COMMENT".equals(tokenName)) {
+			return new ASP.resource.ASP.mopp.ASPTokenStyle(new int[] {0x66, 0x66, 0x66}, null, false, false, false, false);
+		}
 		if ("relation_node".equals(tokenName)) {
 			return new ASP.resource.ASP.mopp.ASPTokenStyle(new int[] {0x80, 0x00, 0x55}, null, true, false, false, false);
 		}

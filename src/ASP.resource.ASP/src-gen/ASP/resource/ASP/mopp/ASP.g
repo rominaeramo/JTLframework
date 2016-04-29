@@ -255,15 +255,6 @@ options {
 			if (type.getInstanceClass() == ASP.Metaedge.class) {
 				return parse_ASP_Metaedge();
 			}
-			if (type.getInstanceClass() == ASP.Literal.class) {
-				return parse_ASP_Literal();
-			}
-			if (type.getInstanceClass() == ASP.Constraint.class) {
-				return parse_ASP_Constraint();
-			}
-			if (type.getInstanceClass() == ASP.Terminal.class) {
-				return parse_ASP_Terminal();
-			}
 			if (type.getInstanceClass() == ASP.Node.class) {
 				return parse_ASP_Node();
 			}
@@ -272,6 +263,15 @@ options {
 			}
 			if (type.getInstanceClass() == ASP.Edge.class) {
 				return parse_ASP_Edge();
+			}
+			if (type.getInstanceClass() == ASP.Constraint.class) {
+				return parse_ASP_Constraint();
+			}
+			if (type.getInstanceClass() == ASP.Literal.class) {
+				return parse_ASP_Literal();
+			}
+			if (type.getInstanceClass() == ASP.Terminal.class) {
+				return parse_ASP_Terminal();
 			}
 			if (type.getInstanceClass() == ASP.Not.class) {
 				return parse_ASP_Not();
@@ -818,7 +818,7 @@ parse_ASP_LeftPattern returns [ASP.LeftPattern element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_2_0_0_1, proxy, true);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_2_0_0_2, proxy, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a5, element);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a5, proxy);
 			}
@@ -835,7 +835,7 @@ parse_ASP_LeftPattern returns [ASP.LeftPattern element = null]
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_2_0_0_2, null, true);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_2_0_0_3, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a6, element);
 	}
 	{
@@ -926,7 +926,7 @@ parse_ASP_RightPattern returns [ASP.RightPattern element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_3_0_0_1, proxy, true);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_3_0_0_2, proxy, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a5, element);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a5, proxy);
 			}
@@ -943,7 +943,7 @@ parse_ASP_RightPattern returns [ASP.RightPattern element = null]
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_3_0_0_2, null, true);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_3_0_0_3, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a6, element);
 	}
 	{
@@ -1544,6 +1544,943 @@ parse_ASP_Metaedge returns [ASP.Metaedge element = null]
 	
 ;
 
+parse_ASP_Node returns [ASP.Node element = null]
+@init{
+}
+:
+	(
+		a0 = 'node(' {
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createNode();
+				startIncompleteElement(element);
+			}
+			collectHiddenTokens(element);
+			retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_7_0_0_0_0_0_0, null, true);
+			copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a0, element);
+		}
+		{
+			// expected elements (follow set)
+			addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[110]);
+		}
+		
+		
+		|		a1 = 'nodex(' {
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createNode();
+				startIncompleteElement(element);
+			}
+			collectHiddenTokens(element);
+			retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_7_0_0_0_0_1_0, null, true);
+			copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a1, element);
+		}
+		{
+			// expected elements (follow set)
+			addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[111]);
+		}
+		
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[112]);
+	}
+	
+	(
+		a2 = TEXT		
+		{
+			if (terminateParsing) {
+				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
+			}
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createNode();
+				startIncompleteElement(element);
+			}
+			if (a2 != null) {
+				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+				tokenResolver.setOptions(getOptions());
+				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
+				tokenResolver.resolve(a2.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS), result);
+				Object resolvedObject = result.getResolvedToken();
+				if (resolvedObject == null) {
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a2).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a2).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a2).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a2).getStopIndex());
+				}
+				String resolved = (String) resolvedObject;
+				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
+				collectHiddenTokens(element);
+				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS), resolved, proxy);
+				if (proxy != null) {
+					Object value = proxy;
+					addObjectToList(element, ASP.ASPPackage.NODE__LITERALS, value);
+					completedElement(value, false);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_7_0_0_1, proxy, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a2, element);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a2, proxy);
+			}
+		}
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[113]);
+	}
+	
+	a3 = ',' {
+		if (element == null) {
+			element = ASP.ASPFactory.eINSTANCE.createNode();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_7_0_0_2, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a3, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[114]);
+	}
+	
+	(
+		a4 = TEXT		
+		{
+			if (terminateParsing) {
+				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
+			}
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createNode();
+				startIncompleteElement(element);
+			}
+			if (a4 != null) {
+				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+				tokenResolver.setOptions(getOptions());
+				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
+				tokenResolver.resolve(a4.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS), result);
+				Object resolvedObject = result.getResolvedToken();
+				if (resolvedObject == null) {
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a4).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStopIndex());
+				}
+				String resolved = (String) resolvedObject;
+				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
+				collectHiddenTokens(element);
+				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS), resolved, proxy);
+				if (proxy != null) {
+					Object value = proxy;
+					addObjectToList(element, ASP.ASPPackage.NODE__LITERALS, value);
+					completedElement(value, false);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_7_0_0_4, proxy, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a4, element);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a4, proxy);
+			}
+		}
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[115]);
+	}
+	
+	a5 = ',' {
+		if (element == null) {
+			element = ASP.ASPFactory.eINSTANCE.createNode();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_7_0_0_5, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a5, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[116]);
+	}
+	
+	(
+		a6 = TEXT		
+		{
+			if (terminateParsing) {
+				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
+			}
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createNode();
+				startIncompleteElement(element);
+			}
+			if (a6 != null) {
+				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+				tokenResolver.setOptions(getOptions());
+				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
+				tokenResolver.resolve(a6.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS), result);
+				Object resolvedObject = result.getResolvedToken();
+				if (resolvedObject == null) {
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a6).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStopIndex());
+				}
+				String resolved = (String) resolvedObject;
+				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
+				collectHiddenTokens(element);
+				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS), resolved, proxy);
+				if (proxy != null) {
+					Object value = proxy;
+					addObjectToList(element, ASP.ASPPackage.NODE__LITERALS, value);
+					completedElement(value, false);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_7_0_0_7, proxy, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, element);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, proxy);
+			}
+		}
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[117]);
+	}
+	
+	a7 = ').' {
+		if (element == null) {
+			element = ASP.ASPFactory.eINSTANCE.createNode();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_7_0_0_8, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a7, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[118]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[119]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[120]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[121]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[122]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[123]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[124]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[125]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[126]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[127]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[128]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[129]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[130]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[131]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[132]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[133]);
+	}
+	
+;
+
+parse_ASP_Prop returns [ASP.Prop element = null]
+@init{
+}
+:
+	(
+		a0 = 'prop(' {
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createProp();
+				startIncompleteElement(element);
+			}
+			collectHiddenTokens(element);
+			retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_8_0_0_0_0_0_0, null, true);
+			copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a0, element);
+		}
+		{
+			// expected elements (follow set)
+			addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[134]);
+		}
+		
+		
+		|		a1 = 'propx(' {
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createProp();
+				startIncompleteElement(element);
+			}
+			collectHiddenTokens(element);
+			retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_8_0_0_0_0_1_0, null, true);
+			copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a1, element);
+		}
+		{
+			// expected elements (follow set)
+			addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[135]);
+		}
+		
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[136]);
+	}
+	
+	(
+		a2 = TEXT		
+		{
+			if (terminateParsing) {
+				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
+			}
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createProp();
+				startIncompleteElement(element);
+			}
+			if (a2 != null) {
+				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+				tokenResolver.setOptions(getOptions());
+				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
+				tokenResolver.resolve(a2.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), result);
+				Object resolvedObject = result.getResolvedToken();
+				if (resolvedObject == null) {
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a2).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a2).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a2).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a2).getStopIndex());
+				}
+				String resolved = (String) resolvedObject;
+				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
+				collectHiddenTokens(element);
+				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), resolved, proxy);
+				if (proxy != null) {
+					Object value = proxy;
+					addObjectToList(element, ASP.ASPPackage.PROP__LITERALS, value);
+					completedElement(value, false);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_8_0_0_1, proxy, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a2, element);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a2, proxy);
+			}
+		}
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[137]);
+	}
+	
+	a3 = ',' {
+		if (element == null) {
+			element = ASP.ASPFactory.eINSTANCE.createProp();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_8_0_0_2, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a3, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[138]);
+	}
+	
+	(
+		a4 = TEXT		
+		{
+			if (terminateParsing) {
+				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
+			}
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createProp();
+				startIncompleteElement(element);
+			}
+			if (a4 != null) {
+				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+				tokenResolver.setOptions(getOptions());
+				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
+				tokenResolver.resolve(a4.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), result);
+				Object resolvedObject = result.getResolvedToken();
+				if (resolvedObject == null) {
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a4).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStopIndex());
+				}
+				String resolved = (String) resolvedObject;
+				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
+				collectHiddenTokens(element);
+				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), resolved, proxy);
+				if (proxy != null) {
+					Object value = proxy;
+					addObjectToList(element, ASP.ASPPackage.PROP__LITERALS, value);
+					completedElement(value, false);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_8_0_0_4, proxy, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a4, element);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a4, proxy);
+			}
+		}
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[139]);
+	}
+	
+	a5 = ',' {
+		if (element == null) {
+			element = ASP.ASPFactory.eINSTANCE.createProp();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_8_0_0_5, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a5, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[140]);
+	}
+	
+	(
+		a6 = TEXT		
+		{
+			if (terminateParsing) {
+				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
+			}
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createProp();
+				startIncompleteElement(element);
+			}
+			if (a6 != null) {
+				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+				tokenResolver.setOptions(getOptions());
+				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
+				tokenResolver.resolve(a6.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), result);
+				Object resolvedObject = result.getResolvedToken();
+				if (resolvedObject == null) {
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a6).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStopIndex());
+				}
+				String resolved = (String) resolvedObject;
+				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
+				collectHiddenTokens(element);
+				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), resolved, proxy);
+				if (proxy != null) {
+					Object value = proxy;
+					addObjectToList(element, ASP.ASPPackage.PROP__LITERALS, value);
+					completedElement(value, false);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_8_0_0_7, proxy, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, element);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, proxy);
+			}
+		}
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[141]);
+	}
+	
+	a7 = ',' {
+		if (element == null) {
+			element = ASP.ASPFactory.eINSTANCE.createProp();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_8_0_0_8, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a7, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[142]);
+	}
+	
+	(
+		a8 = TEXT		
+		{
+			if (terminateParsing) {
+				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
+			}
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createProp();
+				startIncompleteElement(element);
+			}
+			if (a8 != null) {
+				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+				tokenResolver.setOptions(getOptions());
+				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
+				tokenResolver.resolve(a8.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), result);
+				Object resolvedObject = result.getResolvedToken();
+				if (resolvedObject == null) {
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a8).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStopIndex());
+				}
+				String resolved = (String) resolvedObject;
+				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
+				collectHiddenTokens(element);
+				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), resolved, proxy);
+				if (proxy != null) {
+					Object value = proxy;
+					addObjectToList(element, ASP.ASPPackage.PROP__LITERALS, value);
+					completedElement(value, false);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_8_0_0_10, proxy, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a8, element);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a8, proxy);
+			}
+		}
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[143]);
+	}
+	
+	a9 = ').' {
+		if (element == null) {
+			element = ASP.ASPFactory.eINSTANCE.createProp();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_8_0_0_11, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a9, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[144]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[145]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[146]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[147]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[148]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[149]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[150]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[151]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[152]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[153]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[154]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[155]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[156]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[157]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[158]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[159]);
+	}
+	
+;
+
+parse_ASP_Edge returns [ASP.Edge element = null]
+@init{
+}
+:
+	(
+		a0 = 'edge(' {
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createEdge();
+				startIncompleteElement(element);
+			}
+			collectHiddenTokens(element);
+			retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_9_0_0_0_0_0_0, null, true);
+			copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a0, element);
+		}
+		{
+			// expected elements (follow set)
+			addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[160]);
+		}
+		
+		
+		|		a1 = 'edgex(' {
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createEdge();
+				startIncompleteElement(element);
+			}
+			collectHiddenTokens(element);
+			retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_9_0_0_0_0_1_0, null, true);
+			copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a1, element);
+		}
+		{
+			// expected elements (follow set)
+			addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[161]);
+		}
+		
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[162]);
+	}
+	
+	(
+		a2 = TEXT		
+		{
+			if (terminateParsing) {
+				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
+			}
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createEdge();
+				startIncompleteElement(element);
+			}
+			if (a2 != null) {
+				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+				tokenResolver.setOptions(getOptions());
+				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
+				tokenResolver.resolve(a2.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), result);
+				Object resolvedObject = result.getResolvedToken();
+				if (resolvedObject == null) {
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a2).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a2).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a2).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a2).getStopIndex());
+				}
+				String resolved = (String) resolvedObject;
+				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
+				collectHiddenTokens(element);
+				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), resolved, proxy);
+				if (proxy != null) {
+					Object value = proxy;
+					addObjectToList(element, ASP.ASPPackage.EDGE__LITERALS, value);
+					completedElement(value, false);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_9_0_0_1, proxy, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a2, element);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a2, proxy);
+			}
+		}
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[163]);
+	}
+	
+	a3 = ',' {
+		if (element == null) {
+			element = ASP.ASPFactory.eINSTANCE.createEdge();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_9_0_0_2, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a3, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[164]);
+	}
+	
+	(
+		a4 = TEXT		
+		{
+			if (terminateParsing) {
+				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
+			}
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createEdge();
+				startIncompleteElement(element);
+			}
+			if (a4 != null) {
+				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+				tokenResolver.setOptions(getOptions());
+				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
+				tokenResolver.resolve(a4.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), result);
+				Object resolvedObject = result.getResolvedToken();
+				if (resolvedObject == null) {
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a4).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStopIndex());
+				}
+				String resolved = (String) resolvedObject;
+				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
+				collectHiddenTokens(element);
+				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), resolved, proxy);
+				if (proxy != null) {
+					Object value = proxy;
+					addObjectToList(element, ASP.ASPPackage.EDGE__LITERALS, value);
+					completedElement(value, false);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_9_0_0_4, proxy, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a4, element);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a4, proxy);
+			}
+		}
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[165]);
+	}
+	
+	a5 = ',' {
+		if (element == null) {
+			element = ASP.ASPFactory.eINSTANCE.createEdge();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_9_0_0_5, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a5, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[166]);
+	}
+	
+	(
+		a6 = TEXT		
+		{
+			if (terminateParsing) {
+				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
+			}
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createEdge();
+				startIncompleteElement(element);
+			}
+			if (a6 != null) {
+				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+				tokenResolver.setOptions(getOptions());
+				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
+				tokenResolver.resolve(a6.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), result);
+				Object resolvedObject = result.getResolvedToken();
+				if (resolvedObject == null) {
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a6).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStopIndex());
+				}
+				String resolved = (String) resolvedObject;
+				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
+				collectHiddenTokens(element);
+				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), resolved, proxy);
+				if (proxy != null) {
+					Object value = proxy;
+					addObjectToList(element, ASP.ASPPackage.EDGE__LITERALS, value);
+					completedElement(value, false);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_9_0_0_7, proxy, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, element);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, proxy);
+			}
+		}
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[167]);
+	}
+	
+	a7 = ',' {
+		if (element == null) {
+			element = ASP.ASPFactory.eINSTANCE.createEdge();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_9_0_0_8, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a7, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[168]);
+	}
+	
+	(
+		a8 = TEXT		
+		{
+			if (terminateParsing) {
+				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
+			}
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createEdge();
+				startIncompleteElement(element);
+			}
+			if (a8 != null) {
+				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+				tokenResolver.setOptions(getOptions());
+				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
+				tokenResolver.resolve(a8.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), result);
+				Object resolvedObject = result.getResolvedToken();
+				if (resolvedObject == null) {
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a8).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStopIndex());
+				}
+				String resolved = (String) resolvedObject;
+				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
+				collectHiddenTokens(element);
+				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), resolved, proxy);
+				if (proxy != null) {
+					Object value = proxy;
+					addObjectToList(element, ASP.ASPPackage.EDGE__LITERALS, value);
+					completedElement(value, false);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_9_0_0_10, proxy, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a8, element);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a8, proxy);
+			}
+		}
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[169]);
+	}
+	
+	a9 = ',' {
+		if (element == null) {
+			element = ASP.ASPFactory.eINSTANCE.createEdge();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_9_0_0_11, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a9, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[170]);
+	}
+	
+	(
+		a10 = TEXT		
+		{
+			if (terminateParsing) {
+				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
+			}
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createEdge();
+				startIncompleteElement(element);
+			}
+			if (a10 != null) {
+				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+				tokenResolver.setOptions(getOptions());
+				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
+				tokenResolver.resolve(a10.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), result);
+				Object resolvedObject = result.getResolvedToken();
+				if (resolvedObject == null) {
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a10).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a10).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a10).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a10).getStopIndex());
+				}
+				String resolved = (String) resolvedObject;
+				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
+				collectHiddenTokens(element);
+				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), resolved, proxy);
+				if (proxy != null) {
+					Object value = proxy;
+					addObjectToList(element, ASP.ASPPackage.EDGE__LITERALS, value);
+					completedElement(value, false);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_9_0_0_13, proxy, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a10, element);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a10, proxy);
+			}
+		}
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[171]);
+	}
+	
+	a11 = ').' {
+		if (element == null) {
+			element = ASP.ASPFactory.eINSTANCE.createEdge();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_9_0_0_14, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a11, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[172]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[173]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[174]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[175]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[176]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[177]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[178]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[179]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[180]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[181]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[182]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[183]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[184]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[185]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[186]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[187]);
+	}
+	
+;
+
+parse_ASP_Constraint returns [ASP.Constraint element = null]
+@init{
+}
+:
+	a0 = ':-' {
+		if (element == null) {
+			element = ASP.ASPFactory.eINSTANCE.createConstraint();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_10_0_0_0, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a0, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getConstraint(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[188]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getConstraint(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[189]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getConstraint(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[190]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getConstraint(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[191]);
+	}
+	
+	(
+		a1_0 = parse_ASP_Expression		{
+			if (terminateParsing) {
+				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
+			}
+			if (element == null) {
+				element = ASP.ASPFactory.eINSTANCE.createConstraint();
+				startIncompleteElement(element);
+			}
+			if (a1_0 != null) {
+				if (a1_0 != null) {
+					Object value = a1_0;
+					addObjectToList(element, ASP.ASPPackage.CONSTRAINT__EXPRESSIONS, value);
+					completedElement(value, true);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_10_0_0_2, a1_0, true);
+				copyLocalizationInfos(a1_0, element);
+			}
+		}
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[192]);
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[193]);
+	}
+	
+	(
+		(
+			a2 = ',' {
+				if (element == null) {
+					element = ASP.ASPFactory.eINSTANCE.createConstraint();
+					startIncompleteElement(element);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_10_0_0_3_0_0_0, null, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a2, element);
+			}
+			{
+				// expected elements (follow set)
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getConstraint(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[194]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getConstraint(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[195]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getConstraint(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[196]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getConstraint(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[197]);
+			}
+			
+			(
+				a3_0 = parse_ASP_Expression				{
+					if (terminateParsing) {
+						throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
+					}
+					if (element == null) {
+						element = ASP.ASPFactory.eINSTANCE.createConstraint();
+						startIncompleteElement(element);
+					}
+					if (a3_0 != null) {
+						if (a3_0 != null) {
+							Object value = a3_0;
+							addObjectToList(element, ASP.ASPPackage.CONSTRAINT__EXPRESSIONS, value);
+							completedElement(value, true);
+						}
+						collectHiddenTokens(element);
+						retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_10_0_0_3_0_0_2, a3_0, true);
+						copyLocalizationInfos(a3_0, element);
+					}
+				}
+			)
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[198]);
+				addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[199]);
+			}
+			
+		)
+		
+	)*	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[200]);
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[201]);
+	}
+	
+	a4 = '.' {
+		if (element == null) {
+			element = ASP.ASPFactory.eINSTANCE.createConstraint();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_10_0_0_5, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a4, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[202]);
+	}
+	
+;
+
 parse_ASP_Literal returns [ASP.Literal element = null]
 @init{
 }
@@ -1574,30 +2511,30 @@ parse_ASP_Literal returns [ASP.Literal element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_7_0_0_0, resolved, true);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_11_0_0_0, resolved, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a0, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[110]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[111]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[112]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[113]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[114]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[115]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[116]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[117]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[118]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[119]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[120]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[121]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[122]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[123]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[124]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[125]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[126]);
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[203]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[204]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[205]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[206]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[207]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[208]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[209]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[210]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[211]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[212]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[213]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[214]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[215]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[216]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[217]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[218]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[219]);
 	}
 	
 	(
@@ -1608,167 +2545,49 @@ parse_ASP_Literal returns [ASP.Literal element = null]
 					startIncompleteElement(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_7_0_0_1_0_0_1, null, true);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_11_0_0_1_0_0_1, null, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a1, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[127]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[128]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[129]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[130]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[131]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[132]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[133]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[134]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[135]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[136]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[137]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[138]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[139]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[140]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[141]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[142]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[220]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[221]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[222]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[223]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[224]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[225]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[226]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[227]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[228]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[229]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[230]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[231]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[232]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[233]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[234]);
+				addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[235]);
 			}
 			
 		)
 		
 	)?	{
 		// expected elements (follow set)
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[143]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[144]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[145]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[146]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[147]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[148]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[149]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[150]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[151]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[152]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[153]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[154]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[155]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[156]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[157]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[158]);
-	}
-	
-;
-
-parse_ASP_Constraint returns [ASP.Constraint element = null]
-@init{
-}
-:
-	a0 = ':-' {
-		if (element == null) {
-			element = ASP.ASPFactory.eINSTANCE.createConstraint();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_8_0_0_0, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a0, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getConstraint(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[159]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getConstraint(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[160]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getConstraint(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[161]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getConstraint(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[162]);
-	}
-	
-	(
-		a1_0 = parse_ASP_Expression		{
-			if (terminateParsing) {
-				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
-			}
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createConstraint();
-				startIncompleteElement(element);
-			}
-			if (a1_0 != null) {
-				if (a1_0 != null) {
-					Object value = a1_0;
-					addObjectToList(element, ASP.ASPPackage.CONSTRAINT__EXPRESSIONS, value);
-					completedElement(value, true);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_8_0_0_1, a1_0, true);
-				copyLocalizationInfos(a1_0, element);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[163]);
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[164]);
-	}
-	
-	(
-		(
-			a2 = ',' {
-				if (element == null) {
-					element = ASP.ASPFactory.eINSTANCE.createConstraint();
-					startIncompleteElement(element);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_8_0_0_2_0_0_0, null, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a2, element);
-			}
-			{
-				// expected elements (follow set)
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getConstraint(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[165]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getConstraint(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[166]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getConstraint(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[167]);
-				addExpectedElement(ASP.ASPPackage.eINSTANCE.getConstraint(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[168]);
-			}
-			
-			(
-				a3_0 = parse_ASP_Expression				{
-					if (terminateParsing) {
-						throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
-					}
-					if (element == null) {
-						element = ASP.ASPFactory.eINSTANCE.createConstraint();
-						startIncompleteElement(element);
-					}
-					if (a3_0 != null) {
-						if (a3_0 != null) {
-							Object value = a3_0;
-							addObjectToList(element, ASP.ASPPackage.CONSTRAINT__EXPRESSIONS, value);
-							completedElement(value, true);
-						}
-						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_8_0_0_2_0_0_1, a3_0, true);
-						copyLocalizationInfos(a3_0, element);
-					}
-				}
-			)
-			{
-				// expected elements (follow set)
-				addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[169]);
-				addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[170]);
-			}
-			
-		)
-		
-	)*	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[171]);
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[172]);
-	}
-	
-	a4 = '.' {
-		if (element == null) {
-			element = ASP.ASPFactory.eINSTANCE.createConstraint();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_8_0_0_3, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a4, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[173]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[236]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[237]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[238]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[239]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[240]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[241]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[242]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[243]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[244]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[245]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[246]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[247]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[248]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[249]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[250]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[251]);
 	}
 	
 ;
@@ -1806,7 +2625,7 @@ parse_ASP_Terminal returns [ASP.Terminal element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_9_0_0_0, proxy, true);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_12_0_0_0, proxy, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a0, element);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a0, proxy);
 			}
@@ -1814,827 +2633,8 @@ parse_ASP_Terminal returns [ASP.Terminal element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[174]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[175]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[176]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[177]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[178]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[179]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[180]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[181]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[182]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[183]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[184]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[185]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[186]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[187]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[188]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[189]);
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[190]);
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[191]);
-	}
-	
-;
-
-parse_ASP_Node returns [ASP.Node element = null]
-@init{
-}
-:
-	(
-		a0 = 'node(' {
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createNode();
-				startIncompleteElement(element);
-			}
-			collectHiddenTokens(element);
-			retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_10_0_0_0_0_0_0, null, true);
-			copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a0, element);
-		}
-		{
-			// expected elements (follow set)
-			addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[192]);
-		}
-		
-		
-		|		a1 = 'nodex(' {
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createNode();
-				startIncompleteElement(element);
-			}
-			collectHiddenTokens(element);
-			retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_10_0_0_0_0_1_0, null, true);
-			copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a1, element);
-		}
-		{
-			// expected elements (follow set)
-			addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[193]);
-		}
-		
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[194]);
-	}
-	
-	(
-		a2 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
-			}
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createNode();
-				startIncompleteElement(element);
-			}
-			if (a2 != null) {
-				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a2.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a2).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a2).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a2).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a2).getStopIndex());
-				}
-				String resolved = (String) resolvedObject;
-				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
-				collectHiddenTokens(element);
-				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS), resolved, proxy);
-				if (proxy != null) {
-					Object value = proxy;
-					addObjectToList(element, ASP.ASPPackage.NODE__LITERALS, value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_10_0_0_1, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a2, element);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a2, proxy);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[195]);
-	}
-	
-	a3 = ',' {
-		if (element == null) {
-			element = ASP.ASPFactory.eINSTANCE.createNode();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_10_0_0_2, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a3, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[196]);
-	}
-	
-	(
-		a4 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
-			}
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createNode();
-				startIncompleteElement(element);
-			}
-			if (a4 != null) {
-				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a4.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a4).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStopIndex());
-				}
-				String resolved = (String) resolvedObject;
-				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
-				collectHiddenTokens(element);
-				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS), resolved, proxy);
-				if (proxy != null) {
-					Object value = proxy;
-					addObjectToList(element, ASP.ASPPackage.NODE__LITERALS, value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_10_0_0_4, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a4, element);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a4, proxy);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[197]);
-	}
-	
-	a5 = ',' {
-		if (element == null) {
-			element = ASP.ASPFactory.eINSTANCE.createNode();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_10_0_0_5, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a5, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[198]);
-	}
-	
-	(
-		a6 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
-			}
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createNode();
-				startIncompleteElement(element);
-			}
-			if (a6 != null) {
-				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a6.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a6).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStopIndex());
-				}
-				String resolved = (String) resolvedObject;
-				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
-				collectHiddenTokens(element);
-				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.NODE__LITERALS), resolved, proxy);
-				if (proxy != null) {
-					Object value = proxy;
-					addObjectToList(element, ASP.ASPPackage.NODE__LITERALS, value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_10_0_0_7, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, element);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, proxy);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[199]);
-	}
-	
-	a7 = ').' {
-		if (element == null) {
-			element = ASP.ASPFactory.eINSTANCE.createNode();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_10_0_0_8, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a7, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[200]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[201]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[202]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[203]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[204]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[205]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[206]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[207]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[208]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[209]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[210]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[211]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[212]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[213]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[214]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[215]);
-	}
-	
-;
-
-parse_ASP_Prop returns [ASP.Prop element = null]
-@init{
-}
-:
-	(
-		a0 = 'prop(' {
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createProp();
-				startIncompleteElement(element);
-			}
-			collectHiddenTokens(element);
-			retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_11_0_0_0_0_0_0, null, true);
-			copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a0, element);
-		}
-		{
-			// expected elements (follow set)
-			addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[216]);
-		}
-		
-		
-		|		a1 = 'propx(' {
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createProp();
-				startIncompleteElement(element);
-			}
-			collectHiddenTokens(element);
-			retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_11_0_0_0_0_1_0, null, true);
-			copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a1, element);
-		}
-		{
-			// expected elements (follow set)
-			addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[217]);
-		}
-		
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[218]);
-	}
-	
-	(
-		a2 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
-			}
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createProp();
-				startIncompleteElement(element);
-			}
-			if (a2 != null) {
-				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a2.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a2).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a2).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a2).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a2).getStopIndex());
-				}
-				String resolved = (String) resolvedObject;
-				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
-				collectHiddenTokens(element);
-				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), resolved, proxy);
-				if (proxy != null) {
-					Object value = proxy;
-					addObjectToList(element, ASP.ASPPackage.PROP__LITERALS, value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_11_0_0_1, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a2, element);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a2, proxy);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[219]);
-	}
-	
-	a3 = ',' {
-		if (element == null) {
-			element = ASP.ASPFactory.eINSTANCE.createProp();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_11_0_0_2, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a3, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[220]);
-	}
-	
-	(
-		a4 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
-			}
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createProp();
-				startIncompleteElement(element);
-			}
-			if (a4 != null) {
-				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a4.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a4).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStopIndex());
-				}
-				String resolved = (String) resolvedObject;
-				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
-				collectHiddenTokens(element);
-				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), resolved, proxy);
-				if (proxy != null) {
-					Object value = proxy;
-					addObjectToList(element, ASP.ASPPackage.PROP__LITERALS, value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_11_0_0_4, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a4, element);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a4, proxy);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[221]);
-	}
-	
-	a5 = ',' {
-		if (element == null) {
-			element = ASP.ASPFactory.eINSTANCE.createProp();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_11_0_0_5, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a5, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[222]);
-	}
-	
-	(
-		a6 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
-			}
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createProp();
-				startIncompleteElement(element);
-			}
-			if (a6 != null) {
-				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a6.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a6).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStopIndex());
-				}
-				String resolved = (String) resolvedObject;
-				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
-				collectHiddenTokens(element);
-				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), resolved, proxy);
-				if (proxy != null) {
-					Object value = proxy;
-					addObjectToList(element, ASP.ASPPackage.PROP__LITERALS, value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_11_0_0_7, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, element);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, proxy);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[223]);
-	}
-	
-	a7 = ',' {
-		if (element == null) {
-			element = ASP.ASPFactory.eINSTANCE.createProp();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_11_0_0_8, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a7, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[224]);
-	}
-	
-	(
-		a8 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
-			}
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createProp();
-				startIncompleteElement(element);
-			}
-			if (a8 != null) {
-				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a8.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a8).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStopIndex());
-				}
-				String resolved = (String) resolvedObject;
-				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
-				collectHiddenTokens(element);
-				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.PROP__LITERALS), resolved, proxy);
-				if (proxy != null) {
-					Object value = proxy;
-					addObjectToList(element, ASP.ASPPackage.PROP__LITERALS, value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_11_0_0_10, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a8, element);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a8, proxy);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[225]);
-	}
-	
-	a9 = ').' {
-		if (element == null) {
-			element = ASP.ASPFactory.eINSTANCE.createProp();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_11_0_0_11, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a9, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[226]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[227]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[228]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[229]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[230]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[231]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[232]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[233]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[234]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[235]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[236]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[237]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[238]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[239]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[240]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[241]);
-	}
-	
-;
-
-parse_ASP_Edge returns [ASP.Edge element = null]
-@init{
-}
-:
-	(
-		a0 = 'edge(' {
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createEdge();
-				startIncompleteElement(element);
-			}
-			collectHiddenTokens(element);
-			retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_12_0_0_0_0_0_0, null, true);
-			copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a0, element);
-		}
-		{
-			// expected elements (follow set)
-			addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[242]);
-		}
-		
-		
-		|		a1 = 'edgex(' {
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createEdge();
-				startIncompleteElement(element);
-			}
-			collectHiddenTokens(element);
-			retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_12_0_0_0_0_1_0, null, true);
-			copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a1, element);
-		}
-		{
-			// expected elements (follow set)
-			addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[243]);
-		}
-		
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[244]);
-	}
-	
-	(
-		a2 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
-			}
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createEdge();
-				startIncompleteElement(element);
-			}
-			if (a2 != null) {
-				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a2.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a2).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a2).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a2).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a2).getStopIndex());
-				}
-				String resolved = (String) resolvedObject;
-				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
-				collectHiddenTokens(element);
-				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), resolved, proxy);
-				if (proxy != null) {
-					Object value = proxy;
-					addObjectToList(element, ASP.ASPPackage.EDGE__LITERALS, value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_12_0_0_1, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a2, element);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a2, proxy);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[245]);
-	}
-	
-	a3 = ',' {
-		if (element == null) {
-			element = ASP.ASPFactory.eINSTANCE.createEdge();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_12_0_0_2, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a3, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[246]);
-	}
-	
-	(
-		a4 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
-			}
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createEdge();
-				startIncompleteElement(element);
-			}
-			if (a4 != null) {
-				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a4.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a4).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStopIndex());
-				}
-				String resolved = (String) resolvedObject;
-				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
-				collectHiddenTokens(element);
-				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), resolved, proxy);
-				if (proxy != null) {
-					Object value = proxy;
-					addObjectToList(element, ASP.ASPPackage.EDGE__LITERALS, value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_12_0_0_4, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a4, element);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a4, proxy);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[247]);
-	}
-	
-	a5 = ',' {
-		if (element == null) {
-			element = ASP.ASPFactory.eINSTANCE.createEdge();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_12_0_0_5, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a5, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[248]);
-	}
-	
-	(
-		a6 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
-			}
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createEdge();
-				startIncompleteElement(element);
-			}
-			if (a6 != null) {
-				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a6.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a6).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStopIndex());
-				}
-				String resolved = (String) resolvedObject;
-				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
-				collectHiddenTokens(element);
-				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), resolved, proxy);
-				if (proxy != null) {
-					Object value = proxy;
-					addObjectToList(element, ASP.ASPPackage.EDGE__LITERALS, value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_12_0_0_7, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, element);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, proxy);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[249]);
-	}
-	
-	a7 = ',' {
-		if (element == null) {
-			element = ASP.ASPFactory.eINSTANCE.createEdge();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_12_0_0_8, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a7, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[250]);
-	}
-	
-	(
-		a8 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
-			}
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createEdge();
-				startIncompleteElement(element);
-			}
-			if (a8 != null) {
-				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a8.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a8).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStopIndex());
-				}
-				String resolved = (String) resolvedObject;
-				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
-				collectHiddenTokens(element);
-				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), resolved, proxy);
-				if (proxy != null) {
-					Object value = proxy;
-					addObjectToList(element, ASP.ASPPackage.EDGE__LITERALS, value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_12_0_0_10, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a8, element);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a8, proxy);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[251]);
-	}
-	
-	a9 = ',' {
-		if (element == null) {
-			element = ASP.ASPFactory.eINSTANCE.createEdge();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_12_0_0_11, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a9, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[252]);
-	}
-	
-	(
-		a10 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new ASP.resource.ASP.mopp.ASPTerminateParsingException();
-			}
-			if (element == null) {
-				element = ASP.ASPFactory.eINSTANCE.createEdge();
-				startIncompleteElement(element);
-			}
-			if (a10 != null) {
-				ASP.resource.ASP.IASPTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				ASP.resource.ASP.IASPTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a10.getText(), element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a10).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a10).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a10).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a10).getStopIndex());
-				}
-				String resolved = (String) resolvedObject;
-				ASP.Literal proxy = ASP.ASPFactory.eINSTANCE.createLiteral();
-				collectHiddenTokens(element);
-				registerContextDependentProxy(new ASP.resource.ASP.mopp.ASPContextDependentURIFragmentFactory<ASP.Function, ASP.Literal>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getFunctionLiteralsReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASP.ASPPackage.EDGE__LITERALS), resolved, proxy);
-				if (proxy != null) {
-					Object value = proxy;
-					addObjectToList(element, ASP.ASPPackage.EDGE__LITERALS, value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_12_0_0_13, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a10, element);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a10, proxy);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[253]);
-	}
-	
-	a11 = ').' {
-		if (element == null) {
-			element = ASP.ASPFactory.eINSTANCE.createEdge();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_12_0_0_14, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a11, element);
-	}
-	{
-		// expected elements (follow set)
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[252]);
+		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[253]);
 		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[254]);
 		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[255]);
 		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[256]);
@@ -2649,8 +2649,8 @@ parse_ASP_Edge returns [ASP.Edge element = null]
 		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[265]);
 		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[266]);
 		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[267]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[268]);
-		addExpectedElement(ASP.ASPPackage.eINSTANCE.getTransformation(), ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[269]);
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[268]);
+		addExpectedElement(null, ASP.resource.ASP.mopp.ASPExpectationConstants.EXPECTATIONS[269]);
 	}
 	
 ;
@@ -2702,7 +2702,7 @@ parse_ASP_Not returns [ASP.Not element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_13_0_0_1, proxy, true);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_13_0_0_2, proxy, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a1, element);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a1, proxy);
 			}
@@ -2782,7 +2782,7 @@ parse_ASP_Eq returns [ASP.Eq element = null]
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_14_0_0_1, null, true);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_14_0_0_2, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a1, element);
 	}
 	{
@@ -2819,7 +2819,7 @@ parse_ASP_Eq returns [ASP.Eq element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_14_0_0_2, proxy, true);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_14_0_0_4, proxy, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a2, element);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a2, proxy);
 			}
@@ -2899,7 +2899,7 @@ parse_ASP_NotEq returns [ASP.NotEq element = null]
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_15_0_0_1, null, true);
+		retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_15_0_0_2, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a1, element);
 	}
 	{
@@ -2936,7 +2936,7 @@ parse_ASP_NotEq returns [ASP.NotEq element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_15_0_0_2, proxy, true);
+				retrieveLayoutInformation(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_15_0_0_4, proxy, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a2, element);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a2, proxy);
 			}
@@ -2971,11 +2971,11 @@ parse_ASP_Element returns [ASP.Element element = null]
 	c0 = parse_ASP_Metanode{ element = c0; /* this is a subclass or primitive expression choice */ }
 	|	c1 = parse_ASP_Metaprop{ element = c1; /* this is a subclass or primitive expression choice */ }
 	|	c2 = parse_ASP_Metaedge{ element = c2; /* this is a subclass or primitive expression choice */ }
-	|	c3 = parse_ASP_Literal{ element = c3; /* this is a subclass or primitive expression choice */ }
-	|	c4 = parse_ASP_Terminal{ element = c4; /* this is a subclass or primitive expression choice */ }
-	|	c5 = parse_ASP_Node{ element = c5; /* this is a subclass or primitive expression choice */ }
-	|	c6 = parse_ASP_Prop{ element = c6; /* this is a subclass or primitive expression choice */ }
-	|	c7 = parse_ASP_Edge{ element = c7; /* this is a subclass or primitive expression choice */ }
+	|	c3 = parse_ASP_Node{ element = c3; /* this is a subclass or primitive expression choice */ }
+	|	c4 = parse_ASP_Prop{ element = c4; /* this is a subclass or primitive expression choice */ }
+	|	c5 = parse_ASP_Edge{ element = c5; /* this is a subclass or primitive expression choice */ }
+	|	c6 = parse_ASP_Literal{ element = c6; /* this is a subclass or primitive expression choice */ }
+	|	c7 = parse_ASP_Terminal{ element = c7; /* this is a subclass or primitive expression choice */ }
 	|	c8 = parse_ASP_Not{ element = c8; /* this is a subclass or primitive expression choice */ }
 	|	c9 = parse_ASP_Eq{ element = c9; /* this is a subclass or primitive expression choice */ }
 	|	c10 = parse_ASP_NotEq{ element = c10; /* this is a subclass or primitive expression choice */ }
@@ -3011,6 +3011,10 @@ LINEBREAK:
 ;
 WHITESPACE:
 	((' '|'\t'|'\f'))
+	{ _channel = 99; }
+;
+ELEMENT:
+	(('A'..'Z'|'a'..'z'|'0'..'9'|'-'|'_'|'!'|':')+('('))
 	{ _channel = 99; }
 ;
 QUOTED_40_41:

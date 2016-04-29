@@ -7,7 +7,7 @@ OPTIONS {
 //	disableTokenSorting = "true";
 	usePredefinedTokens = "false";
 //	useClassicPrinter = "true";
-//	tokenspace = "0";
+	tokenspace = "0";
 }
 
 TOKENS {
@@ -15,6 +15,11 @@ TOKENS {
 	DEFINE TEXT $('A'..'Z'|'a'..'z'|'0'..'9'|'-'|'_'|'!'|':')+$;
 	DEFINE LINEBREAK $('\r\n'|'\r'|'\n')$;
 	DEFINE WHITESPACE $(' '|'\t'|'\f')$;
+	DEFINE ELEMENT TEXT + $('(')$;
+}
+
+TOKENSTYLES {
+	"COMMENT" COLOR #666666;
 }
 
 RULES {
@@ -27,10 +32,10 @@ RULES {
 	
 	@SuppressWarnings(featureWithoutSyntax,explicitSyntaxChoice)
 //	LeftPattern  ::= ("relation_node" | "relation_prop" | "relation_edge") element['(',')'] ".";
-	LeftPattern  ::= type[node : "relation_node", prop : "relation_prop", edge : "relation_edge"] element['(',')'] ".";
+	LeftPattern  ::= type[node : "relation_node", prop : "relation_prop", edge : "relation_edge"] #0 element['(',')'] ".";
 	@SuppressWarnings(featureWithoutSyntax,explicitSyntaxChoice)
 //	RightPattern ::= ("relation_node" | "relation_prop" | "relation_edge") element['(',')'] ".";
-	RightPattern ::= type[node : "relation_node", prop : "relation_prop", edge : "relation_edge"] element['(',')'] ".";
+	RightPattern ::= type[node : "relation_node", prop : "relation_prop", edge : "relation_edge"] #0 element['(',')'] "." !0;
 	
 	@SuppressWarnings(featureWithoutSyntax,minOccurenceMismatch)
 	Metanode ::= "metanode(" literals[] "," #1 literals[] ")." !0;
@@ -38,17 +43,9 @@ RULES {
 	Metaprop ::= "metaprop(" literals[] "," #1 literals[] "," #1 literals[] ")." !0;
 	@SuppressWarnings(featureWithoutSyntax,minOccurenceMismatch)
 	Metaedge ::= "metaedge(" literals[] "," #1 literals[] "," #1 literals[] "," #1 literals[] ")." !0;
-	
-	@SuppressWarnings(featureWithoutSyntax,optionalKeyword)
-	Literal ::= name[] (#0 ".")? !0;
-
-	@SuppressWarnings(featureWithoutSyntax)
-	Constraint ::= ":-" expressions ("," expressions)* "." !0;
-
-	@SuppressWarnings(featureWithoutSyntax)
-	Terminal ::= element[];
 
 	@SuppressWarnings(featureWithoutSyntax,minOccurenceMismatch,explicitSyntaxChoice)
+//	Node ::= "node(" literals[] "," #1 literals[] "," #1 literals[] ")." !0;
 	Node ::= ("node(" | "nodex(") literals[] "," #1 literals[] "," #1 literals[] ")." !0;
 	@SuppressWarnings(featureWithoutSyntax,minOccurenceMismatch,explicitSyntaxChoice)
 	Prop ::= ("prop(" | "propx(") literals[] "," #1 literals[] "," #1 literals[] "," #1 literals[] ")." !0;
@@ -56,13 +53,22 @@ RULES {
 	Edge ::= ("edge(" | "edgex(") literals[] "," #1 literals[] "," #1 literals[] "," #1 literals[] "," #1 literals[] ")." !0;
 
 	@SuppressWarnings(featureWithoutSyntax)
-	Not ::= "not" element[];
-	
-	@SuppressWarnings(featureWithoutSyntax)
-	Eq ::= left[] "==" right[];
+	Constraint ::= ":-" #1 expressions ("," #1 expressions)* #0 "." !0;
+
+	@SuppressWarnings(featureWithoutSyntax,optionalKeyword)
+	Literal ::= name[] (#0 ".")? !0;
 
 	@SuppressWarnings(featureWithoutSyntax)
-	NotEq ::= left[] "!=" right[];
+	Terminal ::= element[];
+
+	@SuppressWarnings(featureWithoutSyntax)
+	Not ::= "not" #1 element[];
+	
+	@SuppressWarnings(featureWithoutSyntax)
+	Eq ::= left[] #1 "==" #1 right[];
+
+	@SuppressWarnings(featureWithoutSyntax)
+	NotEq ::= left[] #1 "!=" #1 right[];
 
 //	And ::= "And" "{" ("name" ":" name['"','"'] | "transformation" ":" transformation[] | "right" ":" right | "left" ":" left)* "}";
 //	@SuppressWarnings(featureWithoutSyntax)

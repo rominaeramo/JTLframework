@@ -127,8 +127,8 @@ public class ASPPrinter2 implements ASP.resource.ASP.IASPTextPrinter {
 	private String encoding = System.getProperty("file.encoding");
 	protected java.util.List<PrintToken> tokenOutputStream;
 	private ASP.resource.ASP.IASPTokenResolverFactory tokenResolverFactory = new ASP.resource.ASP.mopp.ASPTokenResolverFactory();
-	private boolean handleTokenSpaceAutomatically = true;
-	private int tokenSpace = 1;
+	private boolean handleTokenSpaceAutomatically = false;
+	private int tokenSpace = 0;
 	/**
 	 * A flag that indicates whether tokens have already been printed for some object.
 	 * The flag is set to false whenever printing of an EObject tree is started. The
@@ -220,27 +220,27 @@ public class ASPPrinter2 implements ASP.resource.ASP.IASPTextPrinter {
 			printInternal(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_6, foundFormattingElements);
 			return;
 		}
-		if (element instanceof ASP.Literal) {
+		if (element instanceof ASP.Node) {
 			printInternal(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_7, foundFormattingElements);
 			return;
 		}
-		if (element instanceof ASP.Constraint) {
+		if (element instanceof ASP.Prop) {
 			printInternal(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_8, foundFormattingElements);
 			return;
 		}
-		if (element instanceof ASP.Terminal) {
+		if (element instanceof ASP.Edge) {
 			printInternal(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_9, foundFormattingElements);
 			return;
 		}
-		if (element instanceof ASP.Node) {
+		if (element instanceof ASP.Constraint) {
 			printInternal(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_10, foundFormattingElements);
 			return;
 		}
-		if (element instanceof ASP.Prop) {
+		if (element instanceof ASP.Literal) {
 			printInternal(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_11, foundFormattingElements);
 			return;
 		}
-		if (element instanceof ASP.Edge) {
+		if (element instanceof ASP.Terminal) {
 			printInternal(element, ASP.resource.ASP.grammar.ASPGrammarInformationProvider.ASP_12, foundFormattingElements);
 			return;
 		}

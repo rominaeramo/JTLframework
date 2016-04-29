@@ -61,6 +61,7 @@ public class PatternElementReferenceResolver implements ASP.resource.ASP.IASPRef
 	}
 	
 	public String deResolve(ASP.Function element, ASP.Pattern container, org.eclipse.emf.ecore.EReference reference) {
+//		System.out.println("deResolve: " + element);
 		// Get the relation ID from the name of the Relation element
 		EStructuralFeature id = container.eContainer().eClass().getEStructuralFeature("name");
 		String elementPrint = String.format("\"%s\", ", container.eContainer().eGet(id));

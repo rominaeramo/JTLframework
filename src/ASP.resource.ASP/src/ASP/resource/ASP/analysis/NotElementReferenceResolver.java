@@ -15,7 +15,8 @@ public class NotElementReferenceResolver implements ASP.resource.ASP.IASPReferen
 	}
 	
 	public String deResolve(ASP.Element element, ASP.Not container, org.eclipse.emf.ecore.EReference reference) {
-		return delegate.deResolve(element, container, reference);
+		return ElementPrinter.printElement(element);
+		//return delegate.deResolve(element, container, reference);
 	}
 	
 	public void setOptions(java.util.Map<?,?> options) {
