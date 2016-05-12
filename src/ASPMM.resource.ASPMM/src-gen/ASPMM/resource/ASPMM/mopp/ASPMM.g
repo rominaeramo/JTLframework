@@ -636,7 +636,7 @@ parse_ASPMM_Metamodel returns [ASPMM.Metamodel element = null]
 						completedElement(value, true);
 					}
 					collectHiddenTokens(element);
-					retrieveLayoutInformation(element, ASPMM.resource.ASPMM.grammar.ASPMMGrammarInformationProvider.ASPMM_0_0_0_5, a5_0, true);
+					retrieveLayoutInformation(element, ASPMM.resource.ASPMM.grammar.ASPMMGrammarInformationProvider.ASPMM_0_0_0_6, a5_0, true);
 					copyLocalizationInfos(a5_0, element);
 				}
 			}
@@ -666,7 +666,7 @@ parse_ASPMM_Metamodel returns [ASPMM.Metamodel element = null]
 						completedElement(value, true);
 					}
 					collectHiddenTokens(element);
-					retrieveLayoutInformation(element, ASPMM.resource.ASPMM.grammar.ASPMMGrammarInformationProvider.ASPMM_0_0_0_6, a6_0, true);
+					retrieveLayoutInformation(element, ASPMM.resource.ASPMM.grammar.ASPMMGrammarInformationProvider.ASPMM_0_0_0_7, a6_0, true);
 					copyLocalizationInfos(a6_0, element);
 				}
 			}
@@ -695,7 +695,7 @@ parse_ASPMM_Metamodel returns [ASPMM.Metamodel element = null]
 						completedElement(value, true);
 					}
 					collectHiddenTokens(element);
-					retrieveLayoutInformation(element, ASPMM.resource.ASPMM.grammar.ASPMMGrammarInformationProvider.ASPMM_0_0_0_7, a7_0, true);
+					retrieveLayoutInformation(element, ASPMM.resource.ASPMM.grammar.ASPMMGrammarInformationProvider.ASPMM_0_0_0_8, a7_0, true);
 					copyLocalizationInfos(a7_0, element);
 				}
 			}

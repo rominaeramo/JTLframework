@@ -8,15 +8,15 @@ OPTIONS {
 
 RULES {
 
-	Metamodel ::= "metamodel" "(" name[] ")" "." metanodes* metaprops* metaedges*;
+	Metamodel ::= "metamodel" "(" name[] ")" "." !0 metanodes* metaprops* metaedges*;
 	
-	Metanode ::= "metanode" "(" metamodel[] "," name[] ")" "." ;
+	Metanode ::= "metanode" "(" metamodel[] "," name[] ")" "." !0;
 	
-	Metaprop ::= "metaprop" "(" metamodel[] "," name[] "," metanode[] ")" "." ;
+	Metaprop ::= "metaprop" "(" metamodel[] "," name[] "," metanode[] ")" "." !0;
 	
 	Metaedge ::= "metaedge" "(" metamodel[] "," 
 	                            type[association: "association", generalization:  "generalization", composition: "composition"] "," 
-	                            name[] "," source[] "," target[] ")" "." ;
+	                            name[] "," source[] "," target[] ")" "." !0;
 
 	//MetaedgeType ::=  "association" | "generalization" | "composition" ; 
 	

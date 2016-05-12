@@ -167,6 +167,9 @@ public class ASPMMPrinter implements ASPMM.resource.ASPMM.IASPMMTextPrinter {
 		// DEFINITION PART BEGINS (CsString)
 		out.print(".");
 		out.print(" ");
+		// DEFINITION PART BEGINS (LineBreak)
+		out.println();
+		out.print(localtab);
 		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("metanodes");
 		if (count > 0) {
@@ -216,6 +219,7 @@ public class ASPMMPrinter implements ASPMM.resource.ASPMM.IASPMMTextPrinter {
 	
 	
 	public void print_ASPMM_Metanode(ASPMM.Metanode element, String outertab, java.io.PrintWriter out) {
+		String localtab = outertab;
 		// The printCountingMap contains a mapping from feature names to the number of
 		// remaining elements that still need to be printed. The map is initialized with
 		// the number of elements stored in each structural feature. For lists this is the
@@ -274,10 +278,14 @@ public class ASPMMPrinter implements ASPMM.resource.ASPMM.IASPMMTextPrinter {
 		// DEFINITION PART BEGINS (CsString)
 		out.print(".");
 		out.print(" ");
+		// DEFINITION PART BEGINS (LineBreak)
+		out.println();
+		out.print(localtab);
 	}
 	
 	
 	public void print_ASPMM_Metaprop(ASPMM.Metaprop element, String outertab, java.io.PrintWriter out) {
+		String localtab = outertab;
 		// The printCountingMap contains a mapping from feature names to the number of
 		// remaining elements that still need to be printed. The map is initialized with
 		// the number of elements stored in each structural feature. For lists this is the
@@ -353,10 +361,14 @@ public class ASPMMPrinter implements ASPMM.resource.ASPMM.IASPMMTextPrinter {
 		// DEFINITION PART BEGINS (CsString)
 		out.print(".");
 		out.print(" ");
+		// DEFINITION PART BEGINS (LineBreak)
+		out.println();
+		out.print(localtab);
 	}
 	
 	
 	public void print_ASPMM_Metaedge(ASPMM.Metaedge element, String outertab, java.io.PrintWriter out) {
+		String localtab = outertab;
 		// The printCountingMap contains a mapping from feature names to the number of
 		// remaining elements that still need to be printed. The map is initialized with
 		// the number of elements stored in each structural feature. For lists this is the
@@ -462,6 +474,9 @@ public class ASPMMPrinter implements ASPMM.resource.ASPMM.IASPMMTextPrinter {
 		// DEFINITION PART BEGINS (CsString)
 		out.print(".");
 		out.print(" ");
+		// DEFINITION PART BEGINS (LineBreak)
+		out.println();
+		out.print(localtab);
 	}
 	
 	
