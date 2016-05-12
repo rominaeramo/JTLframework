@@ -179,7 +179,7 @@ public class ASPMPackageImpl extends EPackageImpl implements ASPMPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getModel_Model() {
+	public EAttribute getModel_Name() {
 		return (EAttribute)modelEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -242,7 +242,7 @@ public class ASPMPackageImpl extends EPackageImpl implements ASPMPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNode_Node() {
+	public EAttribute getNode_Name() {
 		return (EAttribute)nodeEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -287,7 +287,7 @@ public class ASPMPackageImpl extends EPackageImpl implements ASPMPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProp_Prop() {
+	public EAttribute getProp_Name() {
 		return (EAttribute)propEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -350,7 +350,7 @@ public class ASPMPackageImpl extends EPackageImpl implements ASPMPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEdge_Edge() {
+	public EAttribute getEdge_Name() {
 		return (EAttribute)edgeEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -416,7 +416,7 @@ public class ASPMPackageImpl extends EPackageImpl implements ASPMPackage {
 
 		modelEClass = createEClass(MODEL);
 		createEAttribute(modelEClass, MODEL__ID);
-		createEAttribute(modelEClass, MODEL__MODEL);
+		createEAttribute(modelEClass, MODEL__NAME);
 		createEReference(modelEClass, MODEL__NODES);
 		createEReference(modelEClass, MODEL__EDGES);
 		createEReference(modelEClass, MODEL__PROPS);
@@ -424,13 +424,13 @@ public class ASPMPackageImpl extends EPackageImpl implements ASPMPackage {
 		nodeEClass = createEClass(NODE);
 		createEAttribute(nodeEClass, NODE__ID);
 		createEAttribute(nodeEClass, NODE__IDTRACE);
-		createEAttribute(nodeEClass, NODE__NODE);
+		createEAttribute(nodeEClass, NODE__NAME);
 		createEReference(nodeEClass, NODE__MODEL);
 
 		propEClass = createEClass(PROP);
 		createEAttribute(propEClass, PROP__ID);
 		createEAttribute(propEClass, PROP__IDTRACE);
-		createEAttribute(propEClass, PROP__PROP);
+		createEAttribute(propEClass, PROP__NAME);
 		createEAttribute(propEClass, PROP__VALUE);
 		createEReference(propEClass, PROP__MODEL);
 		createEReference(propEClass, PROP__OWNER);
@@ -438,7 +438,7 @@ public class ASPMPackageImpl extends EPackageImpl implements ASPMPackage {
 		edgeEClass = createEClass(EDGE);
 		createEAttribute(edgeEClass, EDGE__ID);
 		createEAttribute(edgeEClass, EDGE__IDTRACE);
-		createEAttribute(edgeEClass, EDGE__EDGE);
+		createEAttribute(edgeEClass, EDGE__NAME);
 		createEReference(edgeEClass, EDGE__SOURCE);
 		createEReference(edgeEClass, EDGE__TARGET);
 		createEReference(edgeEClass, EDGE__MODEL);
@@ -477,7 +477,7 @@ public class ASPMPackageImpl extends EPackageImpl implements ASPMPackage {
 		propEClass.getESuperTypes().add(this.getLocatedElement());
 		edgeEClass.getESuperTypes().add(this.getLocatedElement());
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(locatedElementEClass, LocatedElement.class, "LocatedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLocatedElement_Location(), ecorePackage.getEString(), "location", null, 0, 1, LocatedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEAttribute(getLocatedElement_CommentsBefore(), ecorePackage.getEString(), "commentsBefore", null, 0, -1, LocatedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -485,29 +485,29 @@ public class ASPMPackageImpl extends EPackageImpl implements ASPMPackage {
 
 		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getModel_ID(), ecorePackage.getEString(), "ID", null, 1, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getModel_Model(), ecorePackage.getEString(), "model", null, 1, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getModel_Name(), ecorePackage.getEString(), "name", null, 1, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getModel_Nodes(), this.getNode(), this.getNode_Model(), "nodes", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getModel_Edges(), this.getEdge(), this.getEdge_Model(), "edges", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getModel_Props(), this.getProp(), this.getProp_Model(), "props", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(nodeEClass, Node.class, "Node", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNode_ID(), ecorePackage.getEString(), "ID", null, 1, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getNode_IDtrace(), ecorePackage.getEString(), "IDtrace", null, 1, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getNode_Node(), ecorePackage.getEString(), "node", null, 1, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getNode_IDtrace(), ecorePackage.getEString(), "IDtrace", null, 1, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getNode_Name(), ecorePackage.getEString(), "name", null, 1, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getNode_Model(), this.getModel(), this.getModel_Nodes(), "model", null, 1, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(propEClass, Prop.class, "Prop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProp_ID(), ecorePackage.getEString(), "ID", null, 1, 1, Prop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getProp_IDtrace(), ecorePackage.getEString(), "IDtrace", null, 1, 1, Prop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getProp_Prop(), ecorePackage.getEString(), "prop", null, 1, 1, Prop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getProp_IDtrace(), ecorePackage.getEString(), "IDtrace", null, 1, 1, Prop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getProp_Name(), ecorePackage.getEString(), "name", null, 1, 1, Prop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEAttribute(getProp_Value(), ecorePackage.getEString(), "value", null, 1, 1, Prop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getProp_Model(), this.getModel(), this.getModel_Props(), "model", null, 1, 1, Prop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getProp_Owner(), this.getNode(), null, "owner", null, 1, 1, Prop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(edgeEClass, Edge.class, "Edge", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEdge_ID(), ecorePackage.getEString(), "ID", null, 1, 1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getEdge_IDtrace(), ecorePackage.getEString(), "IDtrace", null, 1, 1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getEdge_Edge(), ecorePackage.getEString(), "edge", null, 1, 1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getEdge_IDtrace(), ecorePackage.getEString(), "IDtrace", null, 1, 1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getEdge_Name(), ecorePackage.getEString(), "name", null, 1, 1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getEdge_Source(), this.getNode(), null, "source", null, 1, 1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getEdge_Target(), this.getNode(), null, "target", null, 1, 1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getEdge_Model(), this.getModel(), this.getModel_Edges(), "model", null, 1, 1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);

@@ -37,6 +37,7 @@ public class ASPMBracketInformationProvider {
 	public java.util.Collection<ASPM.resource.ASPM.IASPMBracketPair> getBracketPairs() {
 		java.util.Collection<ASPM.resource.ASPM.IASPMBracketPair> result = new java.util.ArrayList<ASPM.resource.ASPM.IASPMBracketPair>();
 		result.add(new BracketPair("(", ")", true));
+		result.add(new BracketPair("\"", "\"", true));
 		return result;
 	}
 	

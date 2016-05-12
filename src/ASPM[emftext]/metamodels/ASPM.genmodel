@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ASPM[emftext]/src" modelPluginID="ASPMemftext"
-    modelName="ASPM" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
-    copyrightFields="false">
+    modelName="ASPM" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
   <foreignModel>ASPM.ecore</foreignModel>
   <genPackages prefix="ASPM" disposableProviderFactory="true" ecorePackage="ASPM.ecore#/">
     <genClasses image="false" ecoreClass="ASPM.ecore#//LocatedElement">
@@ -12,7 +13,7 @@
     </genClasses>
     <genClasses ecoreClass="ASPM.ecore#//Model">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASPM.ecore#//Model/ID"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASPM.ecore#//Model/model"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASPM.ecore#//Model/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASPM.ecore#//Model/nodes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASPM.ecore#//Model/edges"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ASPM.ecore#//Model/props"/>
@@ -20,13 +21,13 @@
     <genClasses ecoreClass="ASPM.ecore#//Node">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASPM.ecore#//Node/ID"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASPM.ecore#//Node/IDtrace"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASPM.ecore#//Node/node"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASPM.ecore#//Node/name"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ASPM.ecore#//Node/model"/>
     </genClasses>
     <genClasses ecoreClass="ASPM.ecore#//Prop">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASPM.ecore#//Prop/ID"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASPM.ecore#//Prop/IDtrace"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASPM.ecore#//Prop/prop"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASPM.ecore#//Prop/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASPM.ecore#//Prop/value"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ASPM.ecore#//Prop/model"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ASPM.ecore#//Prop/owner"/>
@@ -34,7 +35,7 @@
     <genClasses ecoreClass="ASPM.ecore#//Edge">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASPM.ecore#//Edge/ID"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASPM.ecore#//Edge/IDtrace"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASPM.ecore#//Edge/edge"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ASPM.ecore#//Edge/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ASPM.ecore#//Edge/source"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ASPM.ecore#//Edge/target"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ASPM.ecore#//Edge/model"/>

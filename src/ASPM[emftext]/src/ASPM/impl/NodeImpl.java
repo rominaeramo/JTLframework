@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <ul>
  *   <li>{@link ASPM.impl.NodeImpl#getID <em>ID</em>}</li>
  *   <li>{@link ASPM.impl.NodeImpl#getIDtrace <em>IDtrace</em>}</li>
- *   <li>{@link ASPM.impl.NodeImpl#getNode <em>Node</em>}</li>
+ *   <li>{@link ASPM.impl.NodeImpl#getName <em>Name</em>}</li>
  *   <li>{@link ASPM.impl.NodeImpl#getModel <em>Model</em>}</li>
  * </ul>
  *
@@ -74,24 +74,24 @@ public class NodeImpl extends LocatedElementImpl implements Node {
 	protected String iDtrace = IDTRACE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getNode() <em>Node</em>}' attribute.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNode()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NODE_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getNode() <em>Node</em>}' attribute.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNode()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String node = NODE_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,8 +159,8 @@ public class NodeImpl extends LocatedElementImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getNode() {
-		return node;
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -168,11 +168,11 @@ public class NodeImpl extends LocatedElementImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNode(String newNode) {
-		String oldNode = node;
-		node = newNode;
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ASPMPackage.NODE__NODE, oldNode, node));
+			eNotify(new ENotificationImpl(this, Notification.SET, ASPMPackage.NODE__NAME, oldName, name));
 	}
 
 	/**
@@ -272,8 +272,8 @@ public class NodeImpl extends LocatedElementImpl implements Node {
 				return getID();
 			case ASPMPackage.NODE__IDTRACE:
 				return getIDtrace();
-			case ASPMPackage.NODE__NODE:
-				return getNode();
+			case ASPMPackage.NODE__NAME:
+				return getName();
 			case ASPMPackage.NODE__MODEL:
 				return getModel();
 		}
@@ -294,8 +294,8 @@ public class NodeImpl extends LocatedElementImpl implements Node {
 			case ASPMPackage.NODE__IDTRACE:
 				setIDtrace((String)newValue);
 				return;
-			case ASPMPackage.NODE__NODE:
-				setNode((String)newValue);
+			case ASPMPackage.NODE__NAME:
+				setName((String)newValue);
 				return;
 			case ASPMPackage.NODE__MODEL:
 				setModel((Model)newValue);
@@ -318,8 +318,8 @@ public class NodeImpl extends LocatedElementImpl implements Node {
 			case ASPMPackage.NODE__IDTRACE:
 				setIDtrace(IDTRACE_EDEFAULT);
 				return;
-			case ASPMPackage.NODE__NODE:
-				setNode(NODE_EDEFAULT);
+			case ASPMPackage.NODE__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 			case ASPMPackage.NODE__MODEL:
 				setModel((Model)null);
@@ -340,8 +340,8 @@ public class NodeImpl extends LocatedElementImpl implements Node {
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case ASPMPackage.NODE__IDTRACE:
 				return IDTRACE_EDEFAULT == null ? iDtrace != null : !IDTRACE_EDEFAULT.equals(iDtrace);
-			case ASPMPackage.NODE__NODE:
-				return NODE_EDEFAULT == null ? node != null : !NODE_EDEFAULT.equals(node);
+			case ASPMPackage.NODE__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ASPMPackage.NODE__MODEL:
 				return getModel() != null;
 		}
@@ -362,8 +362,8 @@ public class NodeImpl extends LocatedElementImpl implements Node {
 		result.append(id);
 		result.append(", IDtrace: ");
 		result.append(iDtrace);
-		result.append(", node: ");
-		result.append(node);
+		result.append(", name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

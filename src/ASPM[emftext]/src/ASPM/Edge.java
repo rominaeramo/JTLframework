@@ -14,7 +14,7 @@ package ASPM;
  * <ul>
  *   <li>{@link ASPM.Edge#getID <em>ID</em>}</li>
  *   <li>{@link ASPM.Edge#getIDtrace <em>IDtrace</em>}</li>
- *   <li>{@link ASPM.Edge#getEdge <em>Edge</em>}</li>
+ *   <li>{@link ASPM.Edge#getName <em>Name</em>}</li>
  *   <li>{@link ASPM.Edge#getSource <em>Source</em>}</li>
  *   <li>{@link ASPM.Edge#getTarget <em>Target</em>}</li>
  *   <li>{@link ASPM.Edge#getModel <em>Model</em>}</li>
@@ -62,7 +62,7 @@ public interface Edge extends LocatedElement {
 	 * @return the value of the '<em>IDtrace</em>' attribute.
 	 * @see #setIDtrace(String)
 	 * @see ASPM.ASPMPackage#getEdge_IDtrace()
-	 * @model unique="false" required="true" ordered="false"
+	 * @model unique="false" id="true" required="true" ordered="false"
 	 * @generated
 	 */
 	String getIDtrace();
@@ -78,30 +78,30 @@ public interface Edge extends LocatedElement {
 	void setIDtrace(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Edge</b></em>' attribute.
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Edge</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Edge</em>' attribute.
-	 * @see #setEdge(String)
-	 * @see ASPM.ASPMPackage#getEdge_Edge()
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see ASPM.ASPMPackage#getEdge_Name()
 	 * @model unique="false" required="true" ordered="false"
 	 * @generated
 	 */
-	String getEdge();
+	String getName();
 
 	/**
-	 * Sets the value of the '{@link ASPM.Edge#getEdge <em>Edge</em>}' attribute.
+	 * Sets the value of the '{@link ASPM.Edge#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Edge</em>' attribute.
-	 * @see #getEdge()
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
 	 * @generated
 	 */
-	void setEdge(String value);
+	void setName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.

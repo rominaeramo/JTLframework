@@ -14,7 +14,7 @@ package ASPM;
  * <ul>
  *   <li>{@link ASPM.Node#getID <em>ID</em>}</li>
  *   <li>{@link ASPM.Node#getIDtrace <em>IDtrace</em>}</li>
- *   <li>{@link ASPM.Node#getNode <em>Node</em>}</li>
+ *   <li>{@link ASPM.Node#getName <em>Name</em>}</li>
  *   <li>{@link ASPM.Node#getModel <em>Model</em>}</li>
  * </ul>
  *
@@ -60,7 +60,7 @@ public interface Node extends LocatedElement {
 	 * @return the value of the '<em>IDtrace</em>' attribute.
 	 * @see #setIDtrace(String)
 	 * @see ASPM.ASPMPackage#getNode_IDtrace()
-	 * @model unique="false" required="true" ordered="false"
+	 * @model unique="false" id="true" required="true" ordered="false"
 	 * @generated
 	 */
 	String getIDtrace();
@@ -76,30 +76,30 @@ public interface Node extends LocatedElement {
 	void setIDtrace(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Node</b></em>' attribute.
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Node</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Node</em>' attribute.
-	 * @see #setNode(String)
-	 * @see ASPM.ASPMPackage#getNode_Node()
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see ASPM.ASPMPackage#getNode_Name()
 	 * @model unique="false" required="true" ordered="false"
 	 * @generated
 	 */
-	String getNode();
+	String getName();
 
 	/**
-	 * Sets the value of the '{@link ASPM.Node#getNode <em>Node</em>}' attribute.
+	 * Sets the value of the '{@link ASPM.Node#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Node</em>' attribute.
-	 * @see #getNode()
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
 	 * @generated
 	 */
-	void setNode(String value);
+	void setName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Model</b></em>' container reference.

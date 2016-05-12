@@ -135,8 +135,8 @@ public class ASPMPrinter implements ASPM.resource.ASPM.IASPMTextPrinter {
 		printCountingMap.put("commentsAfter", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.MODEL__ID));
 		printCountingMap.put("ID", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.MODEL__MODEL));
-		printCountingMap.put("model", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.MODEL__NAME));
+		printCountingMap.put("name", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.MODEL__NODES));
 		printCountingMap.put("nodes", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
 		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.MODEL__EDGES));
@@ -167,16 +167,16 @@ public class ASPMPrinter implements ASPM.resource.ASPM.IASPMTextPrinter {
 		out.print(",");
 		out.print(" ");
 		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
-		count = printCountingMap.get("model");
+		count = printCountingMap.get("name");
 		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.MODEL__MODEL));
+			Object o = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.MODEL__NAME));
 			if (o != null) {
 				ASPM.resource.ASPM.IASPMTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
-				out.print(resolver.deResolve((Object) o, element.eClass().getEStructuralFeature(ASPM.ASPMPackage.MODEL__MODEL), element));
+				out.print(resolver.deResolve((Object) o, element.eClass().getEStructuralFeature(ASPM.ASPMPackage.MODEL__NAME), element));
 				out.print(" ");
 			}
-			printCountingMap.put("model", count - 1);
+			printCountingMap.put("name", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
 		out.print(")");
@@ -184,6 +184,9 @@ public class ASPMPrinter implements ASPM.resource.ASPM.IASPMTextPrinter {
 		// DEFINITION PART BEGINS (CsString)
 		out.print(".");
 		out.print(" ");
+		// DEFINITION PART BEGINS (LineBreak)
+		out.println();
+		out.print(localtab);
 		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("nodes");
 		if (count > 0) {
@@ -233,6 +236,7 @@ public class ASPMPrinter implements ASPM.resource.ASPM.IASPMTextPrinter {
 	
 	
 	public void print_ASPM_Node(ASPM.Node element, String outertab, java.io.PrintWriter out) {
+		String localtab = outertab;
 		// The printCountingMap contains a mapping from feature names to the number of
 		// remaining elements that still need to be printed. The map is initialized with
 		// the number of elements stored in each structural feature. For lists this is the
@@ -250,8 +254,8 @@ public class ASPMPrinter implements ASPM.resource.ASPM.IASPMTextPrinter {
 		printCountingMap.put("ID", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__IDTRACE));
 		printCountingMap.put("IDtrace", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__NODE));
-		printCountingMap.put("node", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__NAME));
+		printCountingMap.put("name", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__MODEL));
 		printCountingMap.put("model", temp == null ? 0 : 1);
 		// print collected hidden tokens
@@ -292,6 +296,9 @@ public class ASPMPrinter implements ASPM.resource.ASPM.IASPMTextPrinter {
 		// DEFINITION PART BEGINS (CsString)
 		out.print(",");
 		out.print(" ");
+		// DEFINITION PART BEGINS (CsString)
+		out.print("\"");
+		out.print(" ");
 		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("IDtrace");
 		if (count > 0) {
@@ -305,19 +312,22 @@ public class ASPMPrinter implements ASPM.resource.ASPM.IASPMTextPrinter {
 			printCountingMap.put("IDtrace", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
+		out.print("\"");
+		out.print(" ");
+		// DEFINITION PART BEGINS (CsString)
 		out.print(",");
 		out.print(" ");
 		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
-		count = printCountingMap.get("node");
+		count = printCountingMap.get("name");
 		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__NODE));
+			Object o = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__NAME));
 			if (o != null) {
 				ASPM.resource.ASPM.IASPMTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
-				out.print(resolver.deResolve((Object) o, element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__NODE), element));
+				out.print(resolver.deResolve((Object) o, element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__NAME), element));
 				out.print(" ");
 			}
-			printCountingMap.put("node", count - 1);
+			printCountingMap.put("name", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
 		out.print(")");
@@ -325,10 +335,14 @@ public class ASPMPrinter implements ASPM.resource.ASPM.IASPMTextPrinter {
 		// DEFINITION PART BEGINS (CsString)
 		out.print(".");
 		out.print(" ");
+		// DEFINITION PART BEGINS (LineBreak)
+		out.println();
+		out.print(localtab);
 	}
 	
 	
 	public void print_ASPM_Prop(ASPM.Prop element, String outertab, java.io.PrintWriter out) {
+		String localtab = outertab;
 		// The printCountingMap contains a mapping from feature names to the number of
 		// remaining elements that still need to be printed. The map is initialized with
 		// the number of elements stored in each structural feature. For lists this is the
@@ -346,8 +360,8 @@ public class ASPMPrinter implements ASPM.resource.ASPM.IASPMTextPrinter {
 		printCountingMap.put("ID", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__IDTRACE));
 		printCountingMap.put("IDtrace", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__PROP));
-		printCountingMap.put("prop", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__NAME));
+		printCountingMap.put("name", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__VALUE));
 		printCountingMap.put("value", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__MODEL));
@@ -392,6 +406,9 @@ public class ASPMPrinter implements ASPM.resource.ASPM.IASPMTextPrinter {
 		// DEFINITION PART BEGINS (CsString)
 		out.print(",");
 		out.print(" ");
+		// DEFINITION PART BEGINS (CsString)
+		out.print("\"");
+		out.print(" ");
 		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("IDtrace");
 		if (count > 0) {
@@ -405,19 +422,43 @@ public class ASPMPrinter implements ASPM.resource.ASPM.IASPMTextPrinter {
 			printCountingMap.put("IDtrace", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
+		out.print("\"");
+		out.print(" ");
+		// DEFINITION PART BEGINS (CsString)
 		out.print(",");
 		out.print(" ");
+		// DEFINITION PART BEGINS (CsString)
+		out.print("\"");
+		out.print(" ");
 		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
-		count = printCountingMap.get("prop");
+		count = printCountingMap.get("owner");
 		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__PROP));
+			Object o = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__OWNER));
 			if (o != null) {
 				ASPM.resource.ASPM.IASPMTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
-				out.print(resolver.deResolve((Object) o, element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__PROP), element));
+				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getPropOwnerReferenceResolver().deResolve((ASPM.Node) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__OWNER)), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__OWNER), element));
 				out.print(" ");
 			}
-			printCountingMap.put("prop", count - 1);
+			printCountingMap.put("owner", count - 1);
+		}
+		// DEFINITION PART BEGINS (CsString)
+		out.print("\"");
+		out.print(" ");
+		// DEFINITION PART BEGINS (CsString)
+		out.print(",");
+		out.print(" ");
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
+		count = printCountingMap.get("name");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__NAME));
+			if (o != null) {
+				ASPM.resource.ASPM.IASPMTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
+				resolver.setOptions(getOptions());
+				out.print(resolver.deResolve((Object) o, element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__NAME), element));
+				out.print(" ");
+			}
+			printCountingMap.put("name", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
 		out.print(",");
@@ -435,30 +476,19 @@ public class ASPMPrinter implements ASPM.resource.ASPM.IASPMTextPrinter {
 			printCountingMap.put("value", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
-		out.print(",");
-		out.print(" ");
-		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
-		count = printCountingMap.get("owner");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__OWNER));
-			if (o != null) {
-				ASPM.resource.ASPM.IASPMTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
-				resolver.setOptions(getOptions());
-				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getPropOwnerReferenceResolver().deResolve((ASPM.Node) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__OWNER)), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__OWNER), element));
-				out.print(" ");
-			}
-			printCountingMap.put("owner", count - 1);
-		}
-		// DEFINITION PART BEGINS (CsString)
 		out.print(")");
 		out.print(" ");
 		// DEFINITION PART BEGINS (CsString)
 		out.print(".");
 		out.print(" ");
+		// DEFINITION PART BEGINS (LineBreak)
+		out.println();
+		out.print(localtab);
 	}
 	
 	
 	public void print_ASPM_Edge(ASPM.Edge element, String outertab, java.io.PrintWriter out) {
+		String localtab = outertab;
 		// The printCountingMap contains a mapping from feature names to the number of
 		// remaining elements that still need to be printed. The map is initialized with
 		// the number of elements stored in each structural feature. For lists this is the
@@ -476,8 +506,8 @@ public class ASPMPrinter implements ASPM.resource.ASPM.IASPMTextPrinter {
 		printCountingMap.put("ID", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__IDTRACE));
 		printCountingMap.put("IDtrace", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__EDGE));
-		printCountingMap.put("edge", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__NAME));
+		printCountingMap.put("name", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__SOURCE));
 		printCountingMap.put("source", temp == null ? 0 : 1);
 		temp = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__TARGET));
@@ -522,6 +552,9 @@ public class ASPMPrinter implements ASPM.resource.ASPM.IASPMTextPrinter {
 		// DEFINITION PART BEGINS (CsString)
 		out.print(",");
 		out.print(" ");
+		// DEFINITION PART BEGINS (CsString)
+		out.print("\"");
+		out.print(" ");
 		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("IDtrace");
 		if (count > 0) {
@@ -535,22 +568,28 @@ public class ASPMPrinter implements ASPM.resource.ASPM.IASPMTextPrinter {
 			printCountingMap.put("IDtrace", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
+		out.print("\"");
+		out.print(" ");
+		// DEFINITION PART BEGINS (CsString)
 		out.print(",");
 		out.print(" ");
 		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
-		count = printCountingMap.get("edge");
+		count = printCountingMap.get("name");
 		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__EDGE));
+			Object o = element.eGet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__NAME));
 			if (o != null) {
 				ASPM.resource.ASPM.IASPMTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
-				out.print(resolver.deResolve((Object) o, element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__EDGE), element));
+				out.print(resolver.deResolve((Object) o, element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__NAME), element));
 				out.print(" ");
 			}
-			printCountingMap.put("edge", count - 1);
+			printCountingMap.put("name", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
 		out.print(",");
+		out.print(" ");
+		// DEFINITION PART BEGINS (CsString)
+		out.print("\"");
 		out.print(" ");
 		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("source");
@@ -565,7 +604,13 @@ public class ASPMPrinter implements ASPM.resource.ASPM.IASPMTextPrinter {
 			printCountingMap.put("source", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
+		out.print("\"");
+		out.print(" ");
+		// DEFINITION PART BEGINS (CsString)
 		out.print(",");
+		out.print(" ");
+		// DEFINITION PART BEGINS (CsString)
+		out.print("\"");
 		out.print(" ");
 		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
 		count = printCountingMap.get("target");
@@ -580,11 +625,17 @@ public class ASPMPrinter implements ASPM.resource.ASPM.IASPMTextPrinter {
 			printCountingMap.put("target", count - 1);
 		}
 		// DEFINITION PART BEGINS (CsString)
+		out.print("\"");
+		out.print(" ");
+		// DEFINITION PART BEGINS (CsString)
 		out.print(")");
 		out.print(" ");
 		// DEFINITION PART BEGINS (CsString)
 		out.print(".");
 		out.print(" ");
+		// DEFINITION PART BEGINS (LineBreak)
+		out.println();
+		out.print(localtab);
 	}
 	
 	

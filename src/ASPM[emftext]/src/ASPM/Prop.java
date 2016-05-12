@@ -14,7 +14,7 @@ package ASPM;
  * <ul>
  *   <li>{@link ASPM.Prop#getID <em>ID</em>}</li>
  *   <li>{@link ASPM.Prop#getIDtrace <em>IDtrace</em>}</li>
- *   <li>{@link ASPM.Prop#getProp <em>Prop</em>}</li>
+ *   <li>{@link ASPM.Prop#getName <em>Name</em>}</li>
  *   <li>{@link ASPM.Prop#getValue <em>Value</em>}</li>
  *   <li>{@link ASPM.Prop#getModel <em>Model</em>}</li>
  *   <li>{@link ASPM.Prop#getOwner <em>Owner</em>}</li>
@@ -62,7 +62,7 @@ public interface Prop extends LocatedElement {
 	 * @return the value of the '<em>IDtrace</em>' attribute.
 	 * @see #setIDtrace(String)
 	 * @see ASPM.ASPMPackage#getProp_IDtrace()
-	 * @model unique="false" required="true" ordered="false"
+	 * @model unique="false" id="true" required="true" ordered="false"
 	 * @generated
 	 */
 	String getIDtrace();
@@ -78,30 +78,30 @@ public interface Prop extends LocatedElement {
 	void setIDtrace(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Prop</b></em>' attribute.
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Prop</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Prop</em>' attribute.
-	 * @see #setProp(String)
-	 * @see ASPM.ASPMPackage#getProp_Prop()
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see ASPM.ASPMPackage#getProp_Name()
 	 * @model unique="false" required="true" ordered="false"
 	 * @generated
 	 */
-	String getProp();
+	String getName();
 
 	/**
-	 * Sets the value of the '{@link ASPM.Prop#getProp <em>Prop</em>}' attribute.
+	 * Sets the value of the '{@link ASPM.Prop#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Prop</em>' attribute.
-	 * @see #getProp()
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
 	 * @generated
 	 */
-	void setProp(String value);
+	void setName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.

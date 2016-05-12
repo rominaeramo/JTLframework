@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link ASPM.impl.ModelImpl#getID <em>ID</em>}</li>
- *   <li>{@link ASPM.impl.ModelImpl#getModel <em>Model</em>}</li>
+ *   <li>{@link ASPM.impl.ModelImpl#getName <em>Name</em>}</li>
  *   <li>{@link ASPM.impl.ModelImpl#getNodes <em>Nodes</em>}</li>
  *   <li>{@link ASPM.impl.ModelImpl#getEdges <em>Edges</em>}</li>
  *   <li>{@link ASPM.impl.ModelImpl#getProps <em>Props</em>}</li>
@@ -62,24 +62,24 @@ public class ModelImpl extends LocatedElementImpl implements Model {
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getModel() <em>Model</em>}' attribute.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getModel()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String MODEL_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getModel() <em>Model</em>}' attribute.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getModel()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String model = MODEL_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getNodes() <em>Nodes</em>}' containment reference list.
@@ -156,8 +156,8 @@ public class ModelImpl extends LocatedElementImpl implements Model {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getModel() {
-		return model;
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -165,11 +165,11 @@ public class ModelImpl extends LocatedElementImpl implements Model {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setModel(String newModel) {
-		String oldModel = model;
-		model = newModel;
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ASPMPackage.MODEL__MODEL, oldModel, model));
+			eNotify(new ENotificationImpl(this, Notification.SET, ASPMPackage.MODEL__NAME, oldName, name));
 	}
 
 	/**
@@ -255,8 +255,8 @@ public class ModelImpl extends LocatedElementImpl implements Model {
 		switch (featureID) {
 			case ASPMPackage.MODEL__ID:
 				return getID();
-			case ASPMPackage.MODEL__MODEL:
-				return getModel();
+			case ASPMPackage.MODEL__NAME:
+				return getName();
 			case ASPMPackage.MODEL__NODES:
 				return getNodes();
 			case ASPMPackage.MODEL__EDGES:
@@ -279,8 +279,8 @@ public class ModelImpl extends LocatedElementImpl implements Model {
 			case ASPMPackage.MODEL__ID:
 				setID((String)newValue);
 				return;
-			case ASPMPackage.MODEL__MODEL:
-				setModel((String)newValue);
+			case ASPMPackage.MODEL__NAME:
+				setName((String)newValue);
 				return;
 			case ASPMPackage.MODEL__NODES:
 				getNodes().clear();
@@ -309,8 +309,8 @@ public class ModelImpl extends LocatedElementImpl implements Model {
 			case ASPMPackage.MODEL__ID:
 				setID(ID_EDEFAULT);
 				return;
-			case ASPMPackage.MODEL__MODEL:
-				setModel(MODEL_EDEFAULT);
+			case ASPMPackage.MODEL__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 			case ASPMPackage.MODEL__NODES:
 				getNodes().clear();
@@ -335,8 +335,8 @@ public class ModelImpl extends LocatedElementImpl implements Model {
 		switch (featureID) {
 			case ASPMPackage.MODEL__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case ASPMPackage.MODEL__MODEL:
-				return MODEL_EDEFAULT == null ? model != null : !MODEL_EDEFAULT.equals(model);
+			case ASPMPackage.MODEL__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ASPMPackage.MODEL__NODES:
 				return nodes != null && !nodes.isEmpty();
 			case ASPMPackage.MODEL__EDGES:
@@ -359,8 +359,8 @@ public class ModelImpl extends LocatedElementImpl implements Model {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (ID: ");
 		result.append(id);
-		result.append(", model: ");
-		result.append(model);
+		result.append(", name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

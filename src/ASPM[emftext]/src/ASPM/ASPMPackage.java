@@ -102,6 +102,15 @@ public interface ASPMPackage extends EPackage {
 	int LOCATED_ELEMENT_FEATURE_COUNT = 3;
 
 	/**
+	 * The number of operations of the '<em>Located Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATED_ELEMENT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link ASPM.impl.ModelImpl <em>Model</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -148,13 +157,13 @@ public interface ASPMPackage extends EPackage {
 	int MODEL__ID = LOCATED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Model</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL__MODEL = LOCATED_ELEMENT_FEATURE_COUNT + 1;
+	int MODEL__NAME = LOCATED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Nodes</b></em>' containment reference list.
@@ -191,6 +200,15 @@ public interface ASPMPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODEL_FEATURE_COUNT = LOCATED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of operations of the '<em>Model</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_OPERATION_COUNT = LOCATED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link ASPM.impl.NodeImpl <em>Node</em>}' class.
@@ -248,13 +266,13 @@ public interface ASPMPackage extends EPackage {
 	int NODE__IDTRACE = LOCATED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Node</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__NODE = LOCATED_ELEMENT_FEATURE_COUNT + 2;
+	int NODE__NAME = LOCATED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Model</b></em>' container reference.
@@ -273,6 +291,15 @@ public interface ASPMPackage extends EPackage {
 	 * @ordered
 	 */
 	int NODE_FEATURE_COUNT = LOCATED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_OPERATION_COUNT = LOCATED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link ASPM.impl.PropImpl <em>Prop</em>}' class.
@@ -330,13 +357,13 @@ public interface ASPMPackage extends EPackage {
 	int PROP__IDTRACE = LOCATED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Prop</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROP__PROP = LOCATED_ELEMENT_FEATURE_COUNT + 2;
+	int PROP__NAME = LOCATED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -373,6 +400,15 @@ public interface ASPMPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROP_FEATURE_COUNT = LOCATED_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The number of operations of the '<em>Prop</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROP_OPERATION_COUNT = LOCATED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link ASPM.impl.EdgeImpl <em>Edge</em>}' class.
@@ -430,13 +466,13 @@ public interface ASPMPackage extends EPackage {
 	int EDGE__IDTRACE = LOCATED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Edge</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EDGE__EDGE = LOCATED_ELEMENT_FEATURE_COUNT + 2;
+	int EDGE__NAME = LOCATED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -473,6 +509,16 @@ public interface ASPMPackage extends EPackage {
 	 * @ordered
 	 */
 	int EDGE_FEATURE_COUNT = LOCATED_ELEMENT_FEATURE_COUNT + 6;
+
+
+	/**
+	 * The number of operations of the '<em>Edge</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDGE_OPERATION_COUNT = LOCATED_ELEMENT_OPERATION_COUNT + 0;
 
 
 	/**
@@ -540,15 +586,15 @@ public interface ASPMPackage extends EPackage {
 	EAttribute getModel_ID();
 
 	/**
-	 * Returns the meta object for the attribute '{@link ASPM.Model#getModel <em>Model</em>}'.
+	 * Returns the meta object for the attribute '{@link ASPM.Model#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Model</em>'.
-	 * @see ASPM.Model#getModel()
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see ASPM.Model#getName()
 	 * @see #getModel()
 	 * @generated
 	 */
-	EAttribute getModel_Model();
+	EAttribute getModel_Name();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link ASPM.Model#getNodes <em>Nodes</em>}'.
@@ -616,15 +662,15 @@ public interface ASPMPackage extends EPackage {
 	EAttribute getNode_IDtrace();
 
 	/**
-	 * Returns the meta object for the attribute '{@link ASPM.Node#getNode <em>Node</em>}'.
+	 * Returns the meta object for the attribute '{@link ASPM.Node#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Node</em>'.
-	 * @see ASPM.Node#getNode()
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see ASPM.Node#getName()
 	 * @see #getNode()
 	 * @generated
 	 */
-	EAttribute getNode_Node();
+	EAttribute getNode_Name();
 
 	/**
 	 * Returns the meta object for the container reference '{@link ASPM.Node#getModel <em>Model</em>}'.
@@ -670,15 +716,15 @@ public interface ASPMPackage extends EPackage {
 	EAttribute getProp_IDtrace();
 
 	/**
-	 * Returns the meta object for the attribute '{@link ASPM.Prop#getProp <em>Prop</em>}'.
+	 * Returns the meta object for the attribute '{@link ASPM.Prop#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Prop</em>'.
-	 * @see ASPM.Prop#getProp()
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see ASPM.Prop#getName()
 	 * @see #getProp()
 	 * @generated
 	 */
-	EAttribute getProp_Prop();
+	EAttribute getProp_Name();
 
 	/**
 	 * Returns the meta object for the attribute '{@link ASPM.Prop#getValue <em>Value</em>}'.
@@ -746,15 +792,15 @@ public interface ASPMPackage extends EPackage {
 	EAttribute getEdge_IDtrace();
 
 	/**
-	 * Returns the meta object for the attribute '{@link ASPM.Edge#getEdge <em>Edge</em>}'.
+	 * Returns the meta object for the attribute '{@link ASPM.Edge#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Edge</em>'.
-	 * @see ASPM.Edge#getEdge()
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see ASPM.Edge#getName()
 	 * @see #getEdge()
 	 * @generated
 	 */
-	EAttribute getEdge_Edge();
+	EAttribute getEdge_Name();
 
 	/**
 	 * Returns the meta object for the reference '{@link ASPM.Edge#getSource <em>Source</em>}'.
@@ -864,12 +910,12 @@ public interface ASPMPackage extends EPackage {
 		EAttribute MODEL__ID = eINSTANCE.getModel_ID();
 
 		/**
-		 * The meta object literal for the '<em><b>Model</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MODEL__MODEL = eINSTANCE.getModel_Model();
+		EAttribute MODEL__NAME = eINSTANCE.getModel_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Nodes</b></em>' containment reference list feature.
@@ -922,12 +968,12 @@ public interface ASPMPackage extends EPackage {
 		EAttribute NODE__IDTRACE = eINSTANCE.getNode_IDtrace();
 
 		/**
-		 * The meta object literal for the '<em><b>Node</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute NODE__NODE = eINSTANCE.getNode_Node();
+		EAttribute NODE__NAME = eINSTANCE.getNode_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Model</b></em>' container reference feature.
@@ -964,12 +1010,12 @@ public interface ASPMPackage extends EPackage {
 		EAttribute PROP__IDTRACE = eINSTANCE.getProp_IDtrace();
 
 		/**
-		 * The meta object literal for the '<em><b>Prop</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROP__PROP = eINSTANCE.getProp_Prop();
+		EAttribute PROP__NAME = eINSTANCE.getProp_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -1022,12 +1068,12 @@ public interface ASPMPackage extends EPackage {
 		EAttribute EDGE__IDTRACE = eINSTANCE.getEdge_IDtrace();
 
 		/**
-		 * The meta object literal for the '<em><b>Edge</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EDGE__EDGE = eINSTANCE.getEdge_Edge();
+		EAttribute EDGE__NAME = eINSTANCE.getEdge_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.

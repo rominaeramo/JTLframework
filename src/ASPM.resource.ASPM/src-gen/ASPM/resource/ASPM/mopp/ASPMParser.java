@@ -13,7 +13,7 @@ import java.util.HashMap;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class ASPMParser extends ASPMANTLRParserBase {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "LINEBREAK", "TEXT", "WHITESPACE", "'('", "')'", "','", "'.'", "'edge'", "'model'", "'node'", "'prop'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "LINEBREAK", "TEXT", "WHITESPACE", "'('", "')'", "','", "'.'", "'\\\"'", "'edge'", "'model'", "'node'", "'prop'"
     };
 
     public static final int EOF=-1;
@@ -25,6 +25,7 @@ public class ASPMParser extends ASPMANTLRParserBase {
     public static final int T__12=12;
     public static final int T__13=13;
     public static final int T__14=14;
+    public static final int T__15=15;
     public static final int LINEBREAK=4;
     public static final int TEXT=5;
     public static final int WHITESPACE=6;
@@ -367,7 +368,7 @@ public class ASPMParser extends ASPMANTLRParserBase {
     				break;
     			}
     		}
-    		int followSetID = 52;
+    		int followSetID = 64;
     		int i;
     		for (i = tokenIndexOfLastCompleteElement; i < tokenStream.size(); i++) {
     			org.antlr.runtime3_4_0.CommonToken nextToken = (org.antlr.runtime3_4_0.CommonToken) tokenStream.get(i);
@@ -623,7 +624,7 @@ public class ASPMParser extends ASPMANTLRParserBase {
             // ASPM.g:527:2: (a0= 'model' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ')' a6= '.' ( (a7_0= parse_ASPM_Node ) )* ( (a8_0= parse_ASPM_Prop ) )* ( (a9_0= parse_ASPM_Edge ) )* )
             // ASPM.g:528:2: a0= 'model' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ')' a6= '.' ( (a7_0= parse_ASPM_Node ) )* ( (a8_0= parse_ASPM_Prop ) )* ( (a9_0= parse_ASPM_Edge ) )*
             {
-            a0=(Token)match(input,12,FOLLOW_12_in_parse_ASPM_Model115); if (state.failed) return element;
+            a0=(Token)match(input,13,FOLLOW_13_in_parse_ASPM_Model115); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -733,7 +734,7 @@ public class ASPMParser extends ASPMANTLRParserBase {
             				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
             				tokenResolver.setOptions(getOptions());
             				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-            				tokenResolver.resolve(a4.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.MODEL__MODEL), result);
+            				tokenResolver.resolve(a4.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.MODEL__NAME), result);
             				Object resolvedObject = result.getResolvedToken();
             				if (resolvedObject == null) {
             					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a4).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStopIndex());
@@ -741,7 +742,7 @@ public class ASPMParser extends ASPMANTLRParserBase {
             				java.lang.String resolved = (java.lang.String) resolvedObject;
             				if (resolved != null) {
             					Object value = resolved;
-            					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.MODEL__MODEL), value);
+            					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.MODEL__NAME), value);
             					completedElement(value, false);
             				}
             				collectHiddenTokens(element);
@@ -800,7 +801,7 @@ public class ASPMParser extends ASPMANTLRParserBase {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==13) ) {
+                if ( (LA1_0==14) ) {
                     alt1=1;
                 }
 
@@ -833,7 +834,7 @@ public class ASPMParser extends ASPMANTLRParserBase {
             	    						completedElement(value, true);
             	    					}
             	    					collectHiddenTokens(element);
-            	    					retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_0_0_0_7, a7_0, true);
+            	    					retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_0_0_0_8, a7_0, true);
             	    					copyLocalizationInfos(a7_0, element);
             	    				}
             	    			}
@@ -863,7 +864,7 @@ public class ASPMParser extends ASPMANTLRParserBase {
                 int alt2=2;
                 int LA2_0 = input.LA(1);
 
-                if ( (LA2_0==14) ) {
+                if ( (LA2_0==15) ) {
                     alt2=1;
                 }
 
@@ -896,7 +897,7 @@ public class ASPMParser extends ASPMANTLRParserBase {
             	    						completedElement(value, true);
             	    					}
             	    					collectHiddenTokens(element);
-            	    					retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_0_0_0_8, a8_0, true);
+            	    					retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_0_0_0_9, a8_0, true);
             	    					copyLocalizationInfos(a8_0, element);
             	    				}
             	    			}
@@ -925,7 +926,7 @@ public class ASPMParser extends ASPMANTLRParserBase {
                 int alt3=2;
                 int LA3_0 = input.LA(1);
 
-                if ( (LA3_0==11) ) {
+                if ( (LA3_0==12) ) {
                     alt3=1;
                 }
 
@@ -958,7 +959,7 @@ public class ASPMParser extends ASPMANTLRParserBase {
             	    						completedElement(value, true);
             	    					}
             	    					collectHiddenTokens(element);
-            	    					retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_0_0_0_9, a9_0, true);
+            	    					retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_0_0_0_10, a9_0, true);
             	    					copyLocalizationInfos(a9_0, element);
             	    				}
             	    			}
@@ -1000,7 +1001,7 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
 
     // $ANTLR start "parse_ASPM_Node"
-    // ASPM.g:761:1: parse_ASPM_Node returns [ASPM.Node element = null] : a0= 'node' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' (a6= TEXT ) a7= ',' (a8= TEXT ) a9= ')' a10= '.' ;
+    // ASPM.g:761:1: parse_ASPM_Node returns [ASPM.Node element = null] : a0= 'node' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' a6= '\\\"' (a7= TEXT ) a8= '\\\"' a9= ',' (a10= TEXT ) a11= ')' a12= '.' ;
     public final ASPM.Node parse_ASPM_Node() throws RecognitionException {
         ASPM.Node element =  null;
 
@@ -1017,16 +1018,18 @@ public class ASPMParser extends ASPMANTLRParserBase {
         Token a8=null;
         Token a9=null;
         Token a10=null;
+        Token a11=null;
+        Token a12=null;
 
 
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 3) ) { return element; }
 
-            // ASPM.g:764:2: (a0= 'node' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' (a6= TEXT ) a7= ',' (a8= TEXT ) a9= ')' a10= '.' )
-            // ASPM.g:765:2: a0= 'node' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' (a6= TEXT ) a7= ',' (a8= TEXT ) a9= ')' a10= '.'
+            // ASPM.g:764:2: (a0= 'node' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' a6= '\\\"' (a7= TEXT ) a8= '\\\"' a9= ',' (a10= TEXT ) a11= ')' a12= '.' )
+            // ASPM.g:765:2: a0= 'node' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' a6= '\\\"' (a7= TEXT ) a8= '\\\"' a9= ',' (a10= TEXT ) a11= ')' a12= '.'
             {
-            a0=(Token)match(input,13,FOLLOW_13_in_parse_ASPM_Node355); if (state.failed) return element;
+            a0=(Token)match(input,14,FOLLOW_14_in_parse_ASPM_Node355); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -1182,10 +1185,27 @@ public class ASPMParser extends ASPMANTLRParserBase {
             		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[21]);
             	}
 
-            // ASPM.g:897:2: (a6= TEXT )
-            // ASPM.g:898:3: a6= TEXT
+            a6=(Token)match(input,11,FOLLOW_11_in_parse_ASPM_Node461); if (state.failed) return element;
+
+            if ( state.backtracking==0 ) {
+            		if (element == null) {
+            			element = ASPM.ASPMFactory.eINSTANCE.createNode();
+            			startIncompleteElement(element);
+            		}
+            		collectHiddenTokens(element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_6, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a6, element);
+            	}
+
+            if ( state.backtracking==0 ) {
+            		// expected elements (follow set)
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[22]);
+            	}
+
+            // ASPM.g:911:2: (a7= TEXT )
+            // ASPM.g:912:3: a7= TEXT
             {
-            a6=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Node465); if (state.failed) return element;
+            a7=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Node479); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             			if (terminateParsing) {
@@ -1195,14 +1215,14 @@ public class ASPMParser extends ASPMANTLRParserBase {
             				element = ASPM.ASPMFactory.eINSTANCE.createNode();
             				startIncompleteElement(element);
             			}
-            			if (a6 != null) {
+            			if (a7 != null) {
             				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
             				tokenResolver.setOptions(getOptions());
             				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-            				tokenResolver.resolve(a6.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__IDTRACE), result);
+            				tokenResolver.resolve(a7.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__IDTRACE), result);
             				Object resolvedObject = result.getResolvedToken();
             				if (resolvedObject == null) {
-            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a6).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStopIndex());
+            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a7).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStopIndex());
             				}
             				java.lang.String resolved = (java.lang.String) resolvedObject;
             				if (resolved != null) {
@@ -1211,8 +1231,8 @@ public class ASPMParser extends ASPMANTLRParserBase {
             					completedElement(value, false);
             				}
             				collectHiddenTokens(element);
-            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_6, resolved, true);
-            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, element);
+            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_7, resolved, true);
+            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a7, element);
             			}
             		}
 
@@ -1221,10 +1241,10 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[22]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[23]);
             	}
 
-            a7=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Node486); if (state.failed) return element;
+            a8=(Token)match(input,11,FOLLOW_11_in_parse_ASPM_Node500); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -1232,58 +1252,16 @@ public class ASPMParser extends ASPMANTLRParserBase {
             			startIncompleteElement(element);
             		}
             		collectHiddenTokens(element);
-            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_7, null, true);
-            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a7, element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_8, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a8, element);
             	}
-
-            if ( state.backtracking==0 ) {
-            		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[23]);
-            	}
-
-            // ASPM.g:947:2: (a8= TEXT )
-            // ASPM.g:948:3: a8= TEXT
-            {
-            a8=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Node504); if (state.failed) return element;
-
-            if ( state.backtracking==0 ) {
-            			if (terminateParsing) {
-            				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
-            			}
-            			if (element == null) {
-            				element = ASPM.ASPMFactory.eINSTANCE.createNode();
-            				startIncompleteElement(element);
-            			}
-            			if (a8 != null) {
-            				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-            				tokenResolver.setOptions(getOptions());
-            				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-            				tokenResolver.resolve(a8.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__NODE), result);
-            				Object resolvedObject = result.getResolvedToken();
-            				if (resolvedObject == null) {
-            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a8).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStopIndex());
-            				}
-            				java.lang.String resolved = (java.lang.String) resolvedObject;
-            				if (resolved != null) {
-            					Object value = resolved;
-            					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__NODE), value);
-            					completedElement(value, false);
-            				}
-            				collectHiddenTokens(element);
-            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_8, resolved, true);
-            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a8, element);
-            			}
-            		}
-
-            }
-
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
             		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[24]);
             	}
 
-            a9=(Token)match(input,8,FOLLOW_8_in_parse_ASPM_Node525); if (state.failed) return element;
+            a9=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Node514); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -1300,7 +1278,49 @@ public class ASPMParser extends ASPMANTLRParserBase {
             		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[25]);
             	}
 
-            a10=(Token)match(input,10,FOLLOW_10_in_parse_ASPM_Node539); if (state.failed) return element;
+            // ASPM.g:975:2: (a10= TEXT )
+            // ASPM.g:976:3: a10= TEXT
+            {
+            a10=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Node532); if (state.failed) return element;
+
+            if ( state.backtracking==0 ) {
+            			if (terminateParsing) {
+            				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
+            			}
+            			if (element == null) {
+            				element = ASPM.ASPMFactory.eINSTANCE.createNode();
+            				startIncompleteElement(element);
+            			}
+            			if (a10 != null) {
+            				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+            				tokenResolver.setOptions(getOptions());
+            				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
+            				tokenResolver.resolve(a10.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__NAME), result);
+            				Object resolvedObject = result.getResolvedToken();
+            				if (resolvedObject == null) {
+            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a10).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a10).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a10).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a10).getStopIndex());
+            				}
+            				java.lang.String resolved = (java.lang.String) resolvedObject;
+            				if (resolved != null) {
+            					Object value = resolved;
+            					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__NAME), value);
+            					completedElement(value, false);
+            				}
+            				collectHiddenTokens(element);
+            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_10, resolved, true);
+            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a10, element);
+            			}
+            		}
+
+            }
+
+
+            if ( state.backtracking==0 ) {
+            		// expected elements (follow set)
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[26]);
+            	}
+
+            a11=(Token)match(input,8,FOLLOW_8_in_parse_ASPM_Node553); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -1308,15 +1328,32 @@ public class ASPMParser extends ASPMANTLRParserBase {
             			startIncompleteElement(element);
             		}
             		collectHiddenTokens(element);
-            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_10, null, true);
-            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a10, element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_11, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a11, element);
             	}
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[26]);
-            		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[27]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[27]);
+            	}
+
+            a12=(Token)match(input,10,FOLLOW_10_in_parse_ASPM_Node567); if (state.failed) return element;
+
+            if ( state.backtracking==0 ) {
+            		if (element == null) {
+            			element = ASPM.ASPMFactory.eINSTANCE.createNode();
+            			startIncompleteElement(element);
+            		}
+            		collectHiddenTokens(element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_12, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a12, element);
+            	}
+
+            if ( state.backtracking==0 ) {
+            		// expected elements (follow set)
             		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[28]);
+            		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[29]);
+            		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[30]);
             	}
 
             }
@@ -1339,7 +1376,7 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
 
     // $ANTLR start "parse_ASPM_Prop"
-    // ASPM.g:1015:1: parse_ASPM_Prop returns [ASPM.Prop element = null] : a0= 'prop' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' (a6= TEXT ) a7= ',' (a8= TEXT ) a9= ',' (a10= TEXT ) a11= ',' (a12= TEXT ) a13= ')' a14= '.' ;
+    // ASPM.g:1043:1: parse_ASPM_Prop returns [ASPM.Prop element = null] : a0= 'prop' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' a6= '\\\"' (a7= TEXT ) a8= '\\\"' a9= ',' a10= '\\\"' (a11= TEXT ) a12= '\\\"' a13= ',' (a14= TEXT ) a15= ',' (a16= TEXT ) a17= ')' a18= '.' ;
     public final ASPM.Prop parse_ASPM_Prop() throws RecognitionException {
         ASPM.Prop element =  null;
 
@@ -1360,16 +1397,20 @@ public class ASPMParser extends ASPMANTLRParserBase {
         Token a12=null;
         Token a13=null;
         Token a14=null;
+        Token a15=null;
+        Token a16=null;
+        Token a17=null;
+        Token a18=null;
 
 
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 4) ) { return element; }
 
-            // ASPM.g:1018:2: (a0= 'prop' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' (a6= TEXT ) a7= ',' (a8= TEXT ) a9= ',' (a10= TEXT ) a11= ',' (a12= TEXT ) a13= ')' a14= '.' )
-            // ASPM.g:1019:2: a0= 'prop' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' (a6= TEXT ) a7= ',' (a8= TEXT ) a9= ',' (a10= TEXT ) a11= ',' (a12= TEXT ) a13= ')' a14= '.'
+            // ASPM.g:1046:2: (a0= 'prop' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' a6= '\\\"' (a7= TEXT ) a8= '\\\"' a9= ',' a10= '\\\"' (a11= TEXT ) a12= '\\\"' a13= ',' (a14= TEXT ) a15= ',' (a16= TEXT ) a17= ')' a18= '.' )
+            // ASPM.g:1047:2: a0= 'prop' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' a6= '\\\"' (a7= TEXT ) a8= '\\\"' a9= ',' a10= '\\\"' (a11= TEXT ) a12= '\\\"' a13= ',' (a14= TEXT ) a15= ',' (a16= TEXT ) a17= ')' a18= '.'
             {
-            a0=(Token)match(input,14,FOLLOW_14_in_parse_ASPM_Prop568); if (state.failed) return element;
+            a0=(Token)match(input,15,FOLLOW_15_in_parse_ASPM_Prop596); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -1383,10 +1424,10 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[29]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[31]);
             	}
 
-            a1=(Token)match(input,7,FOLLOW_7_in_parse_ASPM_Prop582); if (state.failed) return element;
+            a1=(Token)match(input,7,FOLLOW_7_in_parse_ASPM_Prop610); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -1400,13 +1441,13 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[30]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[32]);
             	}
 
-            // ASPM.g:1047:2: (a2= TEXT )
-            // ASPM.g:1048:3: a2= TEXT
+            // ASPM.g:1075:2: (a2= TEXT )
+            // ASPM.g:1076:3: a2= TEXT
             {
-            a2=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Prop600); if (state.failed) return element;
+            a2=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Prop628); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             			if (terminateParsing) {
@@ -1446,10 +1487,10 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[31]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[33]);
             	}
 
-            a3=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Prop621); if (state.failed) return element;
+            a3=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Prop649); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -1463,13 +1504,13 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[32]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[34]);
             	}
 
-            // ASPM.g:1101:2: (a4= TEXT )
-            // ASPM.g:1102:3: a4= TEXT
+            // ASPM.g:1129:2: (a4= TEXT )
+            // ASPM.g:1130:3: a4= TEXT
             {
-            a4=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Prop639); if (state.failed) return element;
+            a4=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Prop667); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             			if (terminateParsing) {
@@ -1505,10 +1546,10 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[33]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[35]);
             	}
 
-            a5=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Prop660); if (state.failed) return element;
+            a5=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Prop688); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -1522,13 +1563,30 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[34]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[36]);
             	}
 
-            // ASPM.g:1151:2: (a6= TEXT )
-            // ASPM.g:1152:3: a6= TEXT
+            a6=(Token)match(input,11,FOLLOW_11_in_parse_ASPM_Prop702); if (state.failed) return element;
+
+            if ( state.backtracking==0 ) {
+            		if (element == null) {
+            			element = ASPM.ASPMFactory.eINSTANCE.createProp();
+            			startIncompleteElement(element);
+            		}
+            		collectHiddenTokens(element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_6, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a6, element);
+            	}
+
+            if ( state.backtracking==0 ) {
+            		// expected elements (follow set)
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[37]);
+            	}
+
+            // ASPM.g:1193:2: (a7= TEXT )
+            // ASPM.g:1194:3: a7= TEXT
             {
-            a6=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Prop678); if (state.failed) return element;
+            a7=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Prop720); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             			if (terminateParsing) {
@@ -1538,14 +1596,14 @@ public class ASPMParser extends ASPMANTLRParserBase {
             				element = ASPM.ASPMFactory.eINSTANCE.createProp();
             				startIncompleteElement(element);
             			}
-            			if (a6 != null) {
+            			if (a7 != null) {
             				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
             				tokenResolver.setOptions(getOptions());
             				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-            				tokenResolver.resolve(a6.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__IDTRACE), result);
+            				tokenResolver.resolve(a7.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__IDTRACE), result);
             				Object resolvedObject = result.getResolvedToken();
             				if (resolvedObject == null) {
-            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a6).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStopIndex());
+            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a7).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStopIndex());
             				}
             				java.lang.String resolved = (java.lang.String) resolvedObject;
             				if (resolved != null) {
@@ -1554,8 +1612,8 @@ public class ASPMParser extends ASPMANTLRParserBase {
             					completedElement(value, false);
             				}
             				collectHiddenTokens(element);
-            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_6, resolved, true);
-            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, element);
+            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_7, resolved, true);
+            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a7, element);
             			}
             		}
 
@@ -1564,10 +1622,10 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[35]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[38]);
             	}
 
-            a7=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Prop699); if (state.failed) return element;
+            a8=(Token)match(input,11,FOLLOW_11_in_parse_ASPM_Prop741); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -1575,58 +1633,16 @@ public class ASPMParser extends ASPMANTLRParserBase {
             			startIncompleteElement(element);
             		}
             		collectHiddenTokens(element);
-            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_7, null, true);
-            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a7, element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_8, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a8, element);
             	}
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[36]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[39]);
             	}
 
-            // ASPM.g:1201:2: (a8= TEXT )
-            // ASPM.g:1202:3: a8= TEXT
-            {
-            a8=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Prop717); if (state.failed) return element;
-
-            if ( state.backtracking==0 ) {
-            			if (terminateParsing) {
-            				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
-            			}
-            			if (element == null) {
-            				element = ASPM.ASPMFactory.eINSTANCE.createProp();
-            				startIncompleteElement(element);
-            			}
-            			if (a8 != null) {
-            				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-            				tokenResolver.setOptions(getOptions());
-            				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-            				tokenResolver.resolve(a8.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__PROP), result);
-            				Object resolvedObject = result.getResolvedToken();
-            				if (resolvedObject == null) {
-            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a8).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStopIndex());
-            				}
-            				java.lang.String resolved = (java.lang.String) resolvedObject;
-            				if (resolved != null) {
-            					Object value = resolved;
-            					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__PROP), value);
-            					completedElement(value, false);
-            				}
-            				collectHiddenTokens(element);
-            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_8, resolved, true);
-            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a8, element);
-            			}
-            		}
-
-            }
-
-
-            if ( state.backtracking==0 ) {
-            		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[37]);
-            	}
-
-            a9=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Prop738); if (state.failed) return element;
+            a9=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Prop755); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -1640,52 +1656,10 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[38]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[40]);
             	}
 
-            // ASPM.g:1251:2: (a10= TEXT )
-            // ASPM.g:1252:3: a10= TEXT
-            {
-            a10=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Prop756); if (state.failed) return element;
-
-            if ( state.backtracking==0 ) {
-            			if (terminateParsing) {
-            				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
-            			}
-            			if (element == null) {
-            				element = ASPM.ASPMFactory.eINSTANCE.createProp();
-            				startIncompleteElement(element);
-            			}
-            			if (a10 != null) {
-            				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-            				tokenResolver.setOptions(getOptions());
-            				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-            				tokenResolver.resolve(a10.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__VALUE), result);
-            				Object resolvedObject = result.getResolvedToken();
-            				if (resolvedObject == null) {
-            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a10).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a10).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a10).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a10).getStopIndex());
-            				}
-            				java.lang.String resolved = (java.lang.String) resolvedObject;
-            				if (resolved != null) {
-            					Object value = resolved;
-            					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__VALUE), value);
-            					completedElement(value, false);
-            				}
-            				collectHiddenTokens(element);
-            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_10, resolved, true);
-            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a10, element);
-            			}
-            		}
-
-            }
-
-
-            if ( state.backtracking==0 ) {
-            		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[39]);
-            	}
-
-            a11=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Prop777); if (state.failed) return element;
+            a10=(Token)match(input,11,FOLLOW_11_in_parse_ASPM_Prop769); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -1693,19 +1667,19 @@ public class ASPMParser extends ASPMANTLRParserBase {
             			startIncompleteElement(element);
             		}
             		collectHiddenTokens(element);
-            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_11, null, true);
-            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a11, element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_10, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a10, element);
             	}
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[40]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[41]);
             	}
 
-            // ASPM.g:1301:2: (a12= TEXT )
-            // ASPM.g:1302:3: a12= TEXT
+            // ASPM.g:1271:2: (a11= TEXT )
+            // ASPM.g:1272:3: a11= TEXT
             {
-            a12=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Prop795); if (state.failed) return element;
+            a11=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Prop787); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             			if (terminateParsing) {
@@ -1715,14 +1689,14 @@ public class ASPMParser extends ASPMANTLRParserBase {
             				element = ASPM.ASPMFactory.eINSTANCE.createProp();
             				startIncompleteElement(element);
             			}
-            			if (a12 != null) {
+            			if (a11 != null) {
             				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
             				tokenResolver.setOptions(getOptions());
             				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-            				tokenResolver.resolve(a12.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__OWNER), result);
+            				tokenResolver.resolve(a11.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__OWNER), result);
             				Object resolvedObject = result.getResolvedToken();
             				if (resolvedObject == null) {
-            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a12).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a12).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a12).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a12).getStopIndex());
+            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a11).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a11).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a11).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a11).getStopIndex());
             				}
             				String resolved = (String) resolvedObject;
             				ASPM.Node proxy = ASPM.ASPMFactory.eINSTANCE.createNode();
@@ -1734,9 +1708,9 @@ public class ASPMParser extends ASPMANTLRParserBase {
             					completedElement(value, false);
             				}
             				collectHiddenTokens(element);
-            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_12, proxy, true);
-            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a12, element);
-            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a12, proxy);
+            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_11, proxy, true);
+            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a11, element);
+            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a11, proxy);
             			}
             		}
 
@@ -1745,10 +1719,27 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[41]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[42]);
             	}
 
-            a13=(Token)match(input,8,FOLLOW_8_in_parse_ASPM_Prop816); if (state.failed) return element;
+            a12=(Token)match(input,11,FOLLOW_11_in_parse_ASPM_Prop808); if (state.failed) return element;
+
+            if ( state.backtracking==0 ) {
+            		if (element == null) {
+            			element = ASPM.ASPMFactory.eINSTANCE.createProp();
+            			startIncompleteElement(element);
+            		}
+            		collectHiddenTokens(element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_12, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a12, element);
+            	}
+
+            if ( state.backtracking==0 ) {
+            		// expected elements (follow set)
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[43]);
+            	}
+
+            a13=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Prop822); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -1762,10 +1753,52 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[42]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[44]);
             	}
 
-            a14=(Token)match(input,10,FOLLOW_10_in_parse_ASPM_Prop830); if (state.failed) return element;
+            // ASPM.g:1339:2: (a14= TEXT )
+            // ASPM.g:1340:3: a14= TEXT
+            {
+            a14=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Prop840); if (state.failed) return element;
+
+            if ( state.backtracking==0 ) {
+            			if (terminateParsing) {
+            				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
+            			}
+            			if (element == null) {
+            				element = ASPM.ASPMFactory.eINSTANCE.createProp();
+            				startIncompleteElement(element);
+            			}
+            			if (a14 != null) {
+            				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+            				tokenResolver.setOptions(getOptions());
+            				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
+            				tokenResolver.resolve(a14.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__NAME), result);
+            				Object resolvedObject = result.getResolvedToken();
+            				if (resolvedObject == null) {
+            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a14).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a14).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a14).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a14).getStopIndex());
+            				}
+            				java.lang.String resolved = (java.lang.String) resolvedObject;
+            				if (resolved != null) {
+            					Object value = resolved;
+            					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__NAME), value);
+            					completedElement(value, false);
+            				}
+            				collectHiddenTokens(element);
+            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_14, resolved, true);
+            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a14, element);
+            			}
+            		}
+
+            }
+
+
+            if ( state.backtracking==0 ) {
+            		// expected elements (follow set)
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[45]);
+            	}
+
+            a15=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Prop861); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -1773,14 +1806,90 @@ public class ASPMParser extends ASPMANTLRParserBase {
             			startIncompleteElement(element);
             		}
             		collectHiddenTokens(element);
-            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_14, null, true);
-            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a14, element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_15, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a15, element);
             	}
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[43]);
-            		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[44]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[46]);
+            	}
+
+            // ASPM.g:1389:2: (a16= TEXT )
+            // ASPM.g:1390:3: a16= TEXT
+            {
+            a16=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Prop879); if (state.failed) return element;
+
+            if ( state.backtracking==0 ) {
+            			if (terminateParsing) {
+            				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
+            			}
+            			if (element == null) {
+            				element = ASPM.ASPMFactory.eINSTANCE.createProp();
+            				startIncompleteElement(element);
+            			}
+            			if (a16 != null) {
+            				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+            				tokenResolver.setOptions(getOptions());
+            				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
+            				tokenResolver.resolve(a16.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__VALUE), result);
+            				Object resolvedObject = result.getResolvedToken();
+            				if (resolvedObject == null) {
+            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a16).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a16).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a16).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a16).getStopIndex());
+            				}
+            				java.lang.String resolved = (java.lang.String) resolvedObject;
+            				if (resolved != null) {
+            					Object value = resolved;
+            					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__VALUE), value);
+            					completedElement(value, false);
+            				}
+            				collectHiddenTokens(element);
+            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_16, resolved, true);
+            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a16, element);
+            			}
+            		}
+
+            }
+
+
+            if ( state.backtracking==0 ) {
+            		// expected elements (follow set)
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[47]);
+            	}
+
+            a17=(Token)match(input,8,FOLLOW_8_in_parse_ASPM_Prop900); if (state.failed) return element;
+
+            if ( state.backtracking==0 ) {
+            		if (element == null) {
+            			element = ASPM.ASPMFactory.eINSTANCE.createProp();
+            			startIncompleteElement(element);
+            		}
+            		collectHiddenTokens(element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_17, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a17, element);
+            	}
+
+            if ( state.backtracking==0 ) {
+            		// expected elements (follow set)
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[48]);
+            	}
+
+            a18=(Token)match(input,10,FOLLOW_10_in_parse_ASPM_Prop914); if (state.failed) return element;
+
+            if ( state.backtracking==0 ) {
+            		if (element == null) {
+            			element = ASPM.ASPMFactory.eINSTANCE.createProp();
+            			startIncompleteElement(element);
+            		}
+            		collectHiddenTokens(element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_18, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a18, element);
+            	}
+
+            if ( state.backtracking==0 ) {
+            		// expected elements (follow set)
+            		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[49]);
+            		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[50]);
             	}
 
             }
@@ -1803,7 +1912,7 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
 
     // $ANTLR start "parse_ASPM_Edge"
-    // ASPM.g:1372:1: parse_ASPM_Edge returns [ASPM.Edge element = null] : a0= 'edge' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' (a6= TEXT ) a7= ',' (a8= TEXT ) a9= ',' (a10= TEXT ) a11= ',' (a12= TEXT ) a13= ')' a14= '.' ;
+    // ASPM.g:1456:1: parse_ASPM_Edge returns [ASPM.Edge element = null] : a0= 'edge' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' a6= '\\\"' (a7= TEXT ) a8= '\\\"' a9= ',' (a10= TEXT ) a11= ',' a12= '\\\"' (a13= TEXT ) a14= '\\\"' a15= ',' a16= '\\\"' (a17= TEXT ) a18= '\\\"' a19= ')' a20= '.' ;
     public final ASPM.Edge parse_ASPM_Edge() throws RecognitionException {
         ASPM.Edge element =  null;
 
@@ -1824,16 +1933,22 @@ public class ASPMParser extends ASPMANTLRParserBase {
         Token a12=null;
         Token a13=null;
         Token a14=null;
+        Token a15=null;
+        Token a16=null;
+        Token a17=null;
+        Token a18=null;
+        Token a19=null;
+        Token a20=null;
 
 
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 5) ) { return element; }
 
-            // ASPM.g:1375:2: (a0= 'edge' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' (a6= TEXT ) a7= ',' (a8= TEXT ) a9= ',' (a10= TEXT ) a11= ',' (a12= TEXT ) a13= ')' a14= '.' )
-            // ASPM.g:1376:2: a0= 'edge' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' (a6= TEXT ) a7= ',' (a8= TEXT ) a9= ',' (a10= TEXT ) a11= ',' (a12= TEXT ) a13= ')' a14= '.'
+            // ASPM.g:1459:2: (a0= 'edge' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' a6= '\\\"' (a7= TEXT ) a8= '\\\"' a9= ',' (a10= TEXT ) a11= ',' a12= '\\\"' (a13= TEXT ) a14= '\\\"' a15= ',' a16= '\\\"' (a17= TEXT ) a18= '\\\"' a19= ')' a20= '.' )
+            // ASPM.g:1460:2: a0= 'edge' a1= '(' (a2= TEXT ) a3= ',' (a4= TEXT ) a5= ',' a6= '\\\"' (a7= TEXT ) a8= '\\\"' a9= ',' (a10= TEXT ) a11= ',' a12= '\\\"' (a13= TEXT ) a14= '\\\"' a15= ',' a16= '\\\"' (a17= TEXT ) a18= '\\\"' a19= ')' a20= '.'
             {
-            a0=(Token)match(input,11,FOLLOW_11_in_parse_ASPM_Edge859); if (state.failed) return element;
+            a0=(Token)match(input,12,FOLLOW_12_in_parse_ASPM_Edge943); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -1847,10 +1962,10 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[45]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[51]);
             	}
 
-            a1=(Token)match(input,7,FOLLOW_7_in_parse_ASPM_Edge873); if (state.failed) return element;
+            a1=(Token)match(input,7,FOLLOW_7_in_parse_ASPM_Edge957); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -1864,13 +1979,13 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[46]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[52]);
             	}
 
-            // ASPM.g:1404:2: (a2= TEXT )
-            // ASPM.g:1405:3: a2= TEXT
+            // ASPM.g:1488:2: (a2= TEXT )
+            // ASPM.g:1489:3: a2= TEXT
             {
-            a2=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Edge891); if (state.failed) return element;
+            a2=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Edge975); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             			if (terminateParsing) {
@@ -1910,10 +2025,10 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[47]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[53]);
             	}
 
-            a3=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Edge912); if (state.failed) return element;
+            a3=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Edge996); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -1927,13 +2042,13 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[48]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[54]);
             	}
 
-            // ASPM.g:1458:2: (a4= TEXT )
-            // ASPM.g:1459:3: a4= TEXT
+            // ASPM.g:1542:2: (a4= TEXT )
+            // ASPM.g:1543:3: a4= TEXT
             {
-            a4=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Edge930); if (state.failed) return element;
+            a4=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Edge1014); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             			if (terminateParsing) {
@@ -1969,10 +2084,10 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[49]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[55]);
             	}
 
-            a5=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Edge951); if (state.failed) return element;
+            a5=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Edge1035); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -1986,13 +2101,30 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[50]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[56]);
             	}
 
-            // ASPM.g:1508:2: (a6= TEXT )
-            // ASPM.g:1509:3: a6= TEXT
+            a6=(Token)match(input,11,FOLLOW_11_in_parse_ASPM_Edge1049); if (state.failed) return element;
+
+            if ( state.backtracking==0 ) {
+            		if (element == null) {
+            			element = ASPM.ASPMFactory.eINSTANCE.createEdge();
+            			startIncompleteElement(element);
+            		}
+            		collectHiddenTokens(element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_6, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a6, element);
+            	}
+
+            if ( state.backtracking==0 ) {
+            		// expected elements (follow set)
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[57]);
+            	}
+
+            // ASPM.g:1606:2: (a7= TEXT )
+            // ASPM.g:1607:3: a7= TEXT
             {
-            a6=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Edge969); if (state.failed) return element;
+            a7=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Edge1067); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             			if (terminateParsing) {
@@ -2002,14 +2134,14 @@ public class ASPMParser extends ASPMANTLRParserBase {
             				element = ASPM.ASPMFactory.eINSTANCE.createEdge();
             				startIncompleteElement(element);
             			}
-            			if (a6 != null) {
+            			if (a7 != null) {
             				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
             				tokenResolver.setOptions(getOptions());
             				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-            				tokenResolver.resolve(a6.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__IDTRACE), result);
+            				tokenResolver.resolve(a7.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__IDTRACE), result);
             				Object resolvedObject = result.getResolvedToken();
             				if (resolvedObject == null) {
-            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a6).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStopIndex());
+            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a7).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStopIndex());
             				}
             				java.lang.String resolved = (java.lang.String) resolvedObject;
             				if (resolved != null) {
@@ -2018,8 +2150,8 @@ public class ASPMParser extends ASPMANTLRParserBase {
             					completedElement(value, false);
             				}
             				collectHiddenTokens(element);
-            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_6, resolved, true);
-            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, element);
+            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_7, resolved, true);
+            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a7, element);
             			}
             		}
 
@@ -2028,10 +2160,10 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[51]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[58]);
             	}
 
-            a7=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Edge990); if (state.failed) return element;
+            a8=(Token)match(input,11,FOLLOW_11_in_parse_ASPM_Edge1088); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -2039,58 +2171,16 @@ public class ASPMParser extends ASPMANTLRParserBase {
             			startIncompleteElement(element);
             		}
             		collectHiddenTokens(element);
-            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_7, null, true);
-            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a7, element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_8, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a8, element);
             	}
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[52]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[59]);
             	}
 
-            // ASPM.g:1558:2: (a8= TEXT )
-            // ASPM.g:1559:3: a8= TEXT
-            {
-            a8=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Edge1008); if (state.failed) return element;
-
-            if ( state.backtracking==0 ) {
-            			if (terminateParsing) {
-            				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
-            			}
-            			if (element == null) {
-            				element = ASPM.ASPMFactory.eINSTANCE.createEdge();
-            				startIncompleteElement(element);
-            			}
-            			if (a8 != null) {
-            				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-            				tokenResolver.setOptions(getOptions());
-            				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-            				tokenResolver.resolve(a8.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__EDGE), result);
-            				Object resolvedObject = result.getResolvedToken();
-            				if (resolvedObject == null) {
-            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a8).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStopIndex());
-            				}
-            				java.lang.String resolved = (java.lang.String) resolvedObject;
-            				if (resolved != null) {
-            					Object value = resolved;
-            					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__EDGE), value);
-            					completedElement(value, false);
-            				}
-            				collectHiddenTokens(element);
-            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_8, resolved, true);
-            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a8, element);
-            			}
-            		}
-
-            }
-
-
-            if ( state.backtracking==0 ) {
-            		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[53]);
-            	}
-
-            a9=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Edge1029); if (state.failed) return element;
+            a9=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Edge1102); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -2104,13 +2194,13 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[54]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[60]);
             	}
 
-            // ASPM.g:1608:2: (a10= TEXT )
-            // ASPM.g:1609:3: a10= TEXT
+            // ASPM.g:1670:2: (a10= TEXT )
+            // ASPM.g:1671:3: a10= TEXT
             {
-            a10=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Edge1047); if (state.failed) return element;
+            a10=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Edge1120); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             			if (terminateParsing) {
@@ -2124,24 +2214,20 @@ public class ASPMParser extends ASPMANTLRParserBase {
             				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
             				tokenResolver.setOptions(getOptions());
             				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-            				tokenResolver.resolve(a10.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__SOURCE), result);
+            				tokenResolver.resolve(a10.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__NAME), result);
             				Object resolvedObject = result.getResolvedToken();
             				if (resolvedObject == null) {
             					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a10).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a10).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a10).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a10).getStopIndex());
             				}
-            				String resolved = (String) resolvedObject;
-            				ASPM.Node proxy = ASPM.ASPMFactory.eINSTANCE.createNode();
-            				collectHiddenTokens(element);
-            				registerContextDependentProxy(new ASPM.resource.ASPM.mopp.ASPMContextDependentURIFragmentFactory<ASPM.Edge, ASPM.Node>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getEdgeSourceReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__SOURCE), resolved, proxy);
-            				if (proxy != null) {
-            					Object value = proxy;
-            					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__SOURCE), value);
+            				java.lang.String resolved = (java.lang.String) resolvedObject;
+            				if (resolved != null) {
+            					Object value = resolved;
+            					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__NAME), value);
             					completedElement(value, false);
             				}
             				collectHiddenTokens(element);
-            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_10, proxy, true);
+            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_10, resolved, true);
             				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a10, element);
-            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a10, proxy);
             			}
             		}
 
@@ -2150,10 +2236,10 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[55]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[61]);
             	}
 
-            a11=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Edge1068); if (state.failed) return element;
+            a11=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Edge1141); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -2167,13 +2253,30 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[56]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[62]);
             	}
 
-            // ASPM.g:1662:2: (a12= TEXT )
-            // ASPM.g:1663:3: a12= TEXT
+            a12=(Token)match(input,11,FOLLOW_11_in_parse_ASPM_Edge1155); if (state.failed) return element;
+
+            if ( state.backtracking==0 ) {
+            		if (element == null) {
+            			element = ASPM.ASPMFactory.eINSTANCE.createEdge();
+            			startIncompleteElement(element);
+            		}
+            		collectHiddenTokens(element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_12, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a12, element);
+            	}
+
+            if ( state.backtracking==0 ) {
+            		// expected elements (follow set)
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[63]);
+            	}
+
+            // ASPM.g:1734:2: (a13= TEXT )
+            // ASPM.g:1735:3: a13= TEXT
             {
-            a12=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Edge1086); if (state.failed) return element;
+            a13=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Edge1173); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             			if (terminateParsing) {
@@ -2183,28 +2286,28 @@ public class ASPMParser extends ASPMANTLRParserBase {
             				element = ASPM.ASPMFactory.eINSTANCE.createEdge();
             				startIncompleteElement(element);
             			}
-            			if (a12 != null) {
+            			if (a13 != null) {
             				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
             				tokenResolver.setOptions(getOptions());
             				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-            				tokenResolver.resolve(a12.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__TARGET), result);
+            				tokenResolver.resolve(a13.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__SOURCE), result);
             				Object resolvedObject = result.getResolvedToken();
             				if (resolvedObject == null) {
-            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a12).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a12).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a12).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a12).getStopIndex());
+            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a13).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a13).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a13).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a13).getStopIndex());
             				}
             				String resolved = (String) resolvedObject;
             				ASPM.Node proxy = ASPM.ASPMFactory.eINSTANCE.createNode();
             				collectHiddenTokens(element);
-            				registerContextDependentProxy(new ASPM.resource.ASPM.mopp.ASPMContextDependentURIFragmentFactory<ASPM.Edge, ASPM.Node>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getEdgeTargetReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__TARGET), resolved, proxy);
+            				registerContextDependentProxy(new ASPM.resource.ASPM.mopp.ASPMContextDependentURIFragmentFactory<ASPM.Edge, ASPM.Node>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getEdgeSourceReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__SOURCE), resolved, proxy);
             				if (proxy != null) {
             					Object value = proxy;
-            					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__TARGET), value);
+            					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__SOURCE), value);
             					completedElement(value, false);
             				}
             				collectHiddenTokens(element);
-            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_12, proxy, true);
-            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a12, element);
-            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a12, proxy);
+            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_13, proxy, true);
+            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a13, element);
+            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a13, proxy);
             			}
             		}
 
@@ -2213,27 +2316,10 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[57]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[64]);
             	}
 
-            a13=(Token)match(input,8,FOLLOW_8_in_parse_ASPM_Edge1107); if (state.failed) return element;
-
-            if ( state.backtracking==0 ) {
-            		if (element == null) {
-            			element = ASPM.ASPMFactory.eINSTANCE.createEdge();
-            			startIncompleteElement(element);
-            		}
-            		collectHiddenTokens(element);
-            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_13, null, true);
-            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a13, element);
-            	}
-
-            if ( state.backtracking==0 ) {
-            		// expected elements (follow set)
-            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[58]);
-            	}
-
-            a14=(Token)match(input,10,FOLLOW_10_in_parse_ASPM_Edge1121); if (state.failed) return element;
+            a14=(Token)match(input,11,FOLLOW_11_in_parse_ASPM_Edge1194); if (state.failed) return element;
 
             if ( state.backtracking==0 ) {
             		if (element == null) {
@@ -2247,7 +2333,138 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
             if ( state.backtracking==0 ) {
             		// expected elements (follow set)
-            		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[59]);
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[65]);
+            	}
+
+            a15=(Token)match(input,9,FOLLOW_9_in_parse_ASPM_Edge1208); if (state.failed) return element;
+
+            if ( state.backtracking==0 ) {
+            		if (element == null) {
+            			element = ASPM.ASPMFactory.eINSTANCE.createEdge();
+            			startIncompleteElement(element);
+            		}
+            		collectHiddenTokens(element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_15, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a15, element);
+            	}
+
+            if ( state.backtracking==0 ) {
+            		// expected elements (follow set)
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[66]);
+            	}
+
+            a16=(Token)match(input,11,FOLLOW_11_in_parse_ASPM_Edge1222); if (state.failed) return element;
+
+            if ( state.backtracking==0 ) {
+            		if (element == null) {
+            			element = ASPM.ASPMFactory.eINSTANCE.createEdge();
+            			startIncompleteElement(element);
+            		}
+            		collectHiddenTokens(element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_16, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a16, element);
+            	}
+
+            if ( state.backtracking==0 ) {
+            		// expected elements (follow set)
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[67]);
+            	}
+
+            // ASPM.g:1816:2: (a17= TEXT )
+            // ASPM.g:1817:3: a17= TEXT
+            {
+            a17=(Token)match(input,TEXT,FOLLOW_TEXT_in_parse_ASPM_Edge1240); if (state.failed) return element;
+
+            if ( state.backtracking==0 ) {
+            			if (terminateParsing) {
+            				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
+            			}
+            			if (element == null) {
+            				element = ASPM.ASPMFactory.eINSTANCE.createEdge();
+            				startIncompleteElement(element);
+            			}
+            			if (a17 != null) {
+            				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+            				tokenResolver.setOptions(getOptions());
+            				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
+            				tokenResolver.resolve(a17.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__TARGET), result);
+            				Object resolvedObject = result.getResolvedToken();
+            				if (resolvedObject == null) {
+            					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a17).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a17).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a17).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a17).getStopIndex());
+            				}
+            				String resolved = (String) resolvedObject;
+            				ASPM.Node proxy = ASPM.ASPMFactory.eINSTANCE.createNode();
+            				collectHiddenTokens(element);
+            				registerContextDependentProxy(new ASPM.resource.ASPM.mopp.ASPMContextDependentURIFragmentFactory<ASPM.Edge, ASPM.Node>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getEdgeTargetReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__TARGET), resolved, proxy);
+            				if (proxy != null) {
+            					Object value = proxy;
+            					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__TARGET), value);
+            					completedElement(value, false);
+            				}
+            				collectHiddenTokens(element);
+            				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_17, proxy, true);
+            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a17, element);
+            				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a17, proxy);
+            			}
+            		}
+
+            }
+
+
+            if ( state.backtracking==0 ) {
+            		// expected elements (follow set)
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[68]);
+            	}
+
+            a18=(Token)match(input,11,FOLLOW_11_in_parse_ASPM_Edge1261); if (state.failed) return element;
+
+            if ( state.backtracking==0 ) {
+            		if (element == null) {
+            			element = ASPM.ASPMFactory.eINSTANCE.createEdge();
+            			startIncompleteElement(element);
+            		}
+            		collectHiddenTokens(element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_18, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a18, element);
+            	}
+
+            if ( state.backtracking==0 ) {
+            		// expected elements (follow set)
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[69]);
+            	}
+
+            a19=(Token)match(input,8,FOLLOW_8_in_parse_ASPM_Edge1275); if (state.failed) return element;
+
+            if ( state.backtracking==0 ) {
+            		if (element == null) {
+            			element = ASPM.ASPMFactory.eINSTANCE.createEdge();
+            			startIncompleteElement(element);
+            		}
+            		collectHiddenTokens(element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_19, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a19, element);
+            	}
+
+            if ( state.backtracking==0 ) {
+            		// expected elements (follow set)
+            		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[70]);
+            	}
+
+            a20=(Token)match(input,10,FOLLOW_10_in_parse_ASPM_Edge1289); if (state.failed) return element;
+
+            if ( state.backtracking==0 ) {
+            		if (element == null) {
+            			element = ASPM.ASPMFactory.eINSTANCE.createEdge();
+            			startIncompleteElement(element);
+            		}
+            		collectHiddenTokens(element);
+            		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_20, null, true);
+            		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a20, element);
+            	}
+
+            if ( state.backtracking==0 ) {
+            		// expected elements (follow set)
+            		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[71]);
             	}
 
             }
@@ -2274,56 +2491,68 @@ public class ASPMParser extends ASPMANTLRParserBase {
 
     public static final BitSet FOLLOW_parse_ASPM_Model_in_start82 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_start89 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_12_in_parse_ASPM_Model115 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_13_in_parse_ASPM_Model115 = new BitSet(new long[]{0x0000000000000080L});
     public static final BitSet FOLLOW_7_in_parse_ASPM_Model129 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Model147 = new BitSet(new long[]{0x0000000000000200L});
     public static final BitSet FOLLOW_9_in_parse_ASPM_Model168 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Model186 = new BitSet(new long[]{0x0000000000000100L});
     public static final BitSet FOLLOW_8_in_parse_ASPM_Model207 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_10_in_parse_ASPM_Model221 = new BitSet(new long[]{0x0000000000006802L});
-    public static final BitSet FOLLOW_parse_ASPM_Node_in_parse_ASPM_Model244 = new BitSet(new long[]{0x0000000000006802L});
-    public static final BitSet FOLLOW_parse_ASPM_Prop_in_parse_ASPM_Model279 = new BitSet(new long[]{0x0000000000004802L});
-    public static final BitSet FOLLOW_parse_ASPM_Edge_in_parse_ASPM_Model314 = new BitSet(new long[]{0x0000000000000802L});
-    public static final BitSet FOLLOW_13_in_parse_ASPM_Node355 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_10_in_parse_ASPM_Model221 = new BitSet(new long[]{0x000000000000D002L});
+    public static final BitSet FOLLOW_parse_ASPM_Node_in_parse_ASPM_Model244 = new BitSet(new long[]{0x000000000000D002L});
+    public static final BitSet FOLLOW_parse_ASPM_Prop_in_parse_ASPM_Model279 = new BitSet(new long[]{0x0000000000009002L});
+    public static final BitSet FOLLOW_parse_ASPM_Edge_in_parse_ASPM_Model314 = new BitSet(new long[]{0x0000000000001002L});
+    public static final BitSet FOLLOW_14_in_parse_ASPM_Node355 = new BitSet(new long[]{0x0000000000000080L});
     public static final BitSet FOLLOW_7_in_parse_ASPM_Node369 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Node387 = new BitSet(new long[]{0x0000000000000200L});
     public static final BitSet FOLLOW_9_in_parse_ASPM_Node408 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Node426 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_9_in_parse_ASPM_Node447 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Node465 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_9_in_parse_ASPM_Node486 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Node504 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_8_in_parse_ASPM_Node525 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_10_in_parse_ASPM_Node539 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_parse_ASPM_Prop568 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_7_in_parse_ASPM_Prop582 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Prop600 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_9_in_parse_ASPM_Prop621 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Prop639 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_9_in_parse_ASPM_Prop660 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Prop678 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_9_in_parse_ASPM_Prop699 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Prop717 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_9_in_parse_ASPM_Prop738 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Prop756 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_9_in_parse_ASPM_Prop777 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Prop795 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_8_in_parse_ASPM_Prop816 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_10_in_parse_ASPM_Prop830 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_11_in_parse_ASPM_Edge859 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_7_in_parse_ASPM_Edge873 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Edge891 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_9_in_parse_ASPM_Edge912 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Edge930 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_9_in_parse_ASPM_Edge951 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Edge969 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_9_in_parse_ASPM_Edge990 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Edge1008 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_9_in_parse_ASPM_Edge1029 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Edge1047 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_9_in_parse_ASPM_Edge1068 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Edge1086 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_8_in_parse_ASPM_Edge1107 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_10_in_parse_ASPM_Edge1121 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_9_in_parse_ASPM_Node447 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_11_in_parse_ASPM_Node461 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Node479 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_11_in_parse_ASPM_Node500 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_9_in_parse_ASPM_Node514 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Node532 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_8_in_parse_ASPM_Node553 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_10_in_parse_ASPM_Node567 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_parse_ASPM_Prop596 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_7_in_parse_ASPM_Prop610 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Prop628 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_9_in_parse_ASPM_Prop649 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Prop667 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_9_in_parse_ASPM_Prop688 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_11_in_parse_ASPM_Prop702 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Prop720 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_11_in_parse_ASPM_Prop741 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_9_in_parse_ASPM_Prop755 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_11_in_parse_ASPM_Prop769 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Prop787 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_11_in_parse_ASPM_Prop808 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_9_in_parse_ASPM_Prop822 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Prop840 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_9_in_parse_ASPM_Prop861 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Prop879 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_8_in_parse_ASPM_Prop900 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_10_in_parse_ASPM_Prop914 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_12_in_parse_ASPM_Edge943 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_7_in_parse_ASPM_Edge957 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Edge975 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_9_in_parse_ASPM_Edge996 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Edge1014 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_9_in_parse_ASPM_Edge1035 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_11_in_parse_ASPM_Edge1049 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Edge1067 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_11_in_parse_ASPM_Edge1088 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_9_in_parse_ASPM_Edge1102 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Edge1120 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_9_in_parse_ASPM_Edge1141 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_11_in_parse_ASPM_Edge1155 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Edge1173 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_11_in_parse_ASPM_Edge1194 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_9_in_parse_ASPM_Edge1208 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_11_in_parse_ASPM_Edge1222 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_TEXT_in_parse_ASPM_Edge1240 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_11_in_parse_ASPM_Edge1261 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_8_in_parse_ASPM_Edge1275 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_10_in_parse_ASPM_Edge1289 = new BitSet(new long[]{0x0000000000000002L});
 
 }

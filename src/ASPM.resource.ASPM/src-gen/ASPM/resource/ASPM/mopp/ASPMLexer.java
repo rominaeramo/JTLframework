@@ -19,6 +19,7 @@ public class ASPMLexer extends Lexer {
     public static final int T__12=12;
     public static final int T__13=13;
     public static final int T__14=14;
+    public static final int T__15=15;
     public static final int LINEBREAK=4;
     public static final int TEXT=5;
     public static final int WHITESPACE=6;
@@ -136,12 +137,10 @@ public class ASPMLexer extends Lexer {
         try {
             int _type = T__11;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ASPM.g:19:7: ( 'edge' )
-            // ASPM.g:19:9: 'edge'
+            // ASPM.g:19:7: ( '\\\"' )
+            // ASPM.g:19:9: '\\\"'
             {
-            match("edge"); 
-
-
+            match('\"'); 
 
             }
 
@@ -159,10 +158,10 @@ public class ASPMLexer extends Lexer {
         try {
             int _type = T__12;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ASPM.g:20:7: ( 'model' )
-            // ASPM.g:20:9: 'model'
+            // ASPM.g:20:7: ( 'edge' )
+            // ASPM.g:20:9: 'edge'
             {
-            match("model"); 
+            match("edge"); 
 
 
 
@@ -182,10 +181,10 @@ public class ASPMLexer extends Lexer {
         try {
             int _type = T__13;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ASPM.g:21:7: ( 'node' )
-            // ASPM.g:21:9: 'node'
+            // ASPM.g:21:7: ( 'model' )
+            // ASPM.g:21:9: 'model'
             {
-            match("node"); 
+            match("model"); 
 
 
 
@@ -205,10 +204,10 @@ public class ASPMLexer extends Lexer {
         try {
             int _type = T__14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ASPM.g:22:7: ( 'prop' )
-            // ASPM.g:22:9: 'prop'
+            // ASPM.g:22:7: ( 'node' )
+            // ASPM.g:22:9: 'node'
             {
-            match("prop"); 
+            match("node"); 
 
 
 
@@ -223,25 +222,48 @@ public class ASPMLexer extends Lexer {
     }
     // $ANTLR end "T__14"
 
+    // $ANTLR start "T__15"
+    public final void mT__15() throws RecognitionException {
+        try {
+            int _type = T__15;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ASPM.g:23:7: ( 'prop' )
+            // ASPM.g:23:9: 'prop'
+            {
+            match("prop"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__15"
+
     // $ANTLR start "TEXT"
     public final void mTEXT() throws RecognitionException {
         try {
             int _type = TEXT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ASPM.g:1732:5: ( ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ ) )
-            // ASPM.g:1733:2: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ )
+            // ASPM.g:1900:5: ( ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '-' | '_' | '/' | '@' | '.' )+ ) )
+            // ASPM.g:1901:2: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '-' | '_' | '/' | '@' | '.' )+ )
             {
-            // ASPM.g:1733:2: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ )
-            // ASPM.g:1733:3: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
+            // ASPM.g:1901:2: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '-' | '_' | '/' | '@' | '.' )+ )
+            // ASPM.g:1901:3: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '-' | '_' | '/' | '@' | '.' )+
             {
-            // ASPM.g:1733:3: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
+            // ASPM.g:1901:3: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '-' | '_' | '/' | '@' | '.' )+
             int cnt1=0;
             loop1:
             do {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0=='-'||(LA1_0 >= '0' && LA1_0 <= '9')||(LA1_0 >= 'A' && LA1_0 <= 'Z')||LA1_0=='_'||(LA1_0 >= 'a' && LA1_0 <= 'z')) ) {
+                if ( ((LA1_0 >= '-' && LA1_0 <= '9')||(LA1_0 >= '@' && LA1_0 <= 'Z')||LA1_0=='_'||(LA1_0 >= 'a' && LA1_0 <= 'z')) ) {
                     alt1=1;
                 }
 
@@ -250,7 +272,7 @@ public class ASPMLexer extends Lexer {
             	case 1 :
             	    // ASPM.g:
             	    {
-            	    if ( input.LA(1)=='-'||(input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
+            	    if ( (input.LA(1) >= '-' && input.LA(1) <= '9')||(input.LA(1) >= '@' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
             	        input.consume();
             	    }
             	    else {
@@ -287,49 +309,18 @@ public class ASPMLexer extends Lexer {
     }
     // $ANTLR end "TEXT"
 
-    // $ANTLR start "WHITESPACE"
-    public final void mWHITESPACE() throws RecognitionException {
-        try {
-            int _type = WHITESPACE;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ASPM.g:1735:11: ( ( ( ' ' | '\\t' | '\\f' ) ) )
-            // ASPM.g:1736:2: ( ( ' ' | '\\t' | '\\f' ) )
-            {
-            if ( input.LA(1)=='\t'||input.LA(1)=='\f'||input.LA(1)==' ' ) {
-                input.consume();
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                recover(mse);
-                throw mse;
-            }
-
-
-             _channel = 99; 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "WHITESPACE"
-
     // $ANTLR start "LINEBREAK"
     public final void mLINEBREAK() throws RecognitionException {
         try {
             int _type = LINEBREAK;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ASPM.g:1739:10: ( ( ( '\\r\\n' | '\\r' | '\\n' ) ) )
-            // ASPM.g:1740:2: ( ( '\\r\\n' | '\\r' | '\\n' ) )
+            // ASPM.g:1903:10: ( ( ( '\\r\\n' | '\\r' | '\\n' ) ) )
+            // ASPM.g:1904:2: ( ( '\\r\\n' | '\\r' | '\\n' ) )
             {
-            // ASPM.g:1740:2: ( ( '\\r\\n' | '\\r' | '\\n' ) )
-            // ASPM.g:1740:3: ( '\\r\\n' | '\\r' | '\\n' )
+            // ASPM.g:1904:2: ( ( '\\r\\n' | '\\r' | '\\n' ) )
+            // ASPM.g:1904:3: ( '\\r\\n' | '\\r' | '\\n' )
             {
-            // ASPM.g:1740:3: ( '\\r\\n' | '\\r' | '\\n' )
+            // ASPM.g:1904:3: ( '\\r\\n' | '\\r' | '\\n' )
             int alt2=3;
             int LA2_0 = input.LA(1);
 
@@ -355,7 +346,7 @@ public class ASPMLexer extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // ASPM.g:1740:4: '\\r\\n'
+                    // ASPM.g:1904:4: '\\r\\n'
                     {
                     match("\r\n"); 
 
@@ -364,14 +355,14 @@ public class ASPMLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ASPM.g:1740:13: '\\r'
+                    // ASPM.g:1904:11: '\\r'
                     {
                     match('\r'); 
 
                     }
                     break;
                 case 3 :
-                    // ASPM.g:1740:20: '\\n'
+                    // ASPM.g:1904:16: '\\n'
                     {
                     match('\n'); 
 
@@ -397,9 +388,40 @@ public class ASPMLexer extends Lexer {
     }
     // $ANTLR end "LINEBREAK"
 
+    // $ANTLR start "WHITESPACE"
+    public final void mWHITESPACE() throws RecognitionException {
+        try {
+            int _type = WHITESPACE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ASPM.g:1907:11: ( ( ( ' ' | '\\t' | '\\f' ) ) )
+            // ASPM.g:1908:2: ( ( ' ' | '\\t' | '\\f' ) )
+            {
+            if ( input.LA(1)=='\t'||input.LA(1)=='\f'||input.LA(1)==' ' ) {
+                input.consume();
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;
+            }
+
+
+             _channel = 99; 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "WHITESPACE"
+
     public void mTokens() throws RecognitionException {
-        // ASPM.g:1:8: ( T__7 | T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | TEXT | WHITESPACE | LINEBREAK )
-        int alt3=11;
+        // ASPM.g:1:8: ( T__7 | T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | TEXT | LINEBREAK | WHITESPACE )
+        int alt3=12;
         switch ( input.LA(1) ) {
         case '(':
             {
@@ -418,149 +440,162 @@ public class ASPMLexer extends Lexer {
             break;
         case '.':
             {
-            alt3=4;
+            int LA3_4 = input.LA(2);
+
+            if ( ((LA3_4 >= '-' && LA3_4 <= '9')||(LA3_4 >= '@' && LA3_4 <= 'Z')||LA3_4=='_'||(LA3_4 >= 'a' && LA3_4 <= 'z')) ) {
+                alt3=10;
+            }
+            else {
+                alt3=4;
+            }
+            }
+            break;
+        case '\"':
+            {
+            alt3=5;
             }
             break;
         case 'e':
             {
-            int LA3_5 = input.LA(2);
-
-            if ( (LA3_5=='d') ) {
-                int LA3_12 = input.LA(3);
-
-                if ( (LA3_12=='g') ) {
-                    int LA3_16 = input.LA(4);
-
-                    if ( (LA3_16=='e') ) {
-                        int LA3_20 = input.LA(5);
-
-                        if ( (LA3_20=='-'||(LA3_20 >= '0' && LA3_20 <= '9')||(LA3_20 >= 'A' && LA3_20 <= 'Z')||LA3_20=='_'||(LA3_20 >= 'a' && LA3_20 <= 'z')) ) {
-                            alt3=9;
-                        }
-                        else {
-                            alt3=5;
-                        }
-                    }
-                    else {
-                        alt3=9;
-                    }
-                }
-                else {
-                    alt3=9;
-                }
-            }
-            else {
-                alt3=9;
-            }
-            }
-            break;
-        case 'm':
-            {
             int LA3_6 = input.LA(2);
 
-            if ( (LA3_6=='o') ) {
-                int LA3_13 = input.LA(3);
-
-                if ( (LA3_13=='d') ) {
-                    int LA3_17 = input.LA(4);
-
-                    if ( (LA3_17=='e') ) {
-                        int LA3_21 = input.LA(5);
-
-                        if ( (LA3_21=='l') ) {
-                            int LA3_25 = input.LA(6);
-
-                            if ( (LA3_25=='-'||(LA3_25 >= '0' && LA3_25 <= '9')||(LA3_25 >= 'A' && LA3_25 <= 'Z')||LA3_25=='_'||(LA3_25 >= 'a' && LA3_25 <= 'z')) ) {
-                                alt3=9;
-                            }
-                            else {
-                                alt3=6;
-                            }
-                        }
-                        else {
-                            alt3=9;
-                        }
-                    }
-                    else {
-                        alt3=9;
-                    }
-                }
-                else {
-                    alt3=9;
-                }
-            }
-            else {
-                alt3=9;
-            }
-            }
-            break;
-        case 'n':
-            {
-            int LA3_7 = input.LA(2);
-
-            if ( (LA3_7=='o') ) {
+            if ( (LA3_6=='d') ) {
                 int LA3_14 = input.LA(3);
 
-                if ( (LA3_14=='d') ) {
+                if ( (LA3_14=='g') ) {
                     int LA3_18 = input.LA(4);
 
                     if ( (LA3_18=='e') ) {
                         int LA3_22 = input.LA(5);
 
-                        if ( (LA3_22=='-'||(LA3_22 >= '0' && LA3_22 <= '9')||(LA3_22 >= 'A' && LA3_22 <= 'Z')||LA3_22=='_'||(LA3_22 >= 'a' && LA3_22 <= 'z')) ) {
-                            alt3=9;
+                        if ( ((LA3_22 >= '-' && LA3_22 <= '9')||(LA3_22 >= '@' && LA3_22 <= 'Z')||LA3_22=='_'||(LA3_22 >= 'a' && LA3_22 <= 'z')) ) {
+                            alt3=10;
                         }
                         else {
-                            alt3=7;
+                            alt3=6;
                         }
                     }
                     else {
-                        alt3=9;
+                        alt3=10;
                     }
                 }
                 else {
-                    alt3=9;
+                    alt3=10;
                 }
             }
             else {
-                alt3=9;
+                alt3=10;
             }
             }
             break;
-        case 'p':
+        case 'm':
+            {
+            int LA3_7 = input.LA(2);
+
+            if ( (LA3_7=='o') ) {
+                int LA3_15 = input.LA(3);
+
+                if ( (LA3_15=='d') ) {
+                    int LA3_19 = input.LA(4);
+
+                    if ( (LA3_19=='e') ) {
+                        int LA3_23 = input.LA(5);
+
+                        if ( (LA3_23=='l') ) {
+                            int LA3_27 = input.LA(6);
+
+                            if ( ((LA3_27 >= '-' && LA3_27 <= '9')||(LA3_27 >= '@' && LA3_27 <= 'Z')||LA3_27=='_'||(LA3_27 >= 'a' && LA3_27 <= 'z')) ) {
+                                alt3=10;
+                            }
+                            else {
+                                alt3=7;
+                            }
+                        }
+                        else {
+                            alt3=10;
+                        }
+                    }
+                    else {
+                        alt3=10;
+                    }
+                }
+                else {
+                    alt3=10;
+                }
+            }
+            else {
+                alt3=10;
+            }
+            }
+            break;
+        case 'n':
             {
             int LA3_8 = input.LA(2);
 
-            if ( (LA3_8=='r') ) {
-                int LA3_15 = input.LA(3);
+            if ( (LA3_8=='o') ) {
+                int LA3_16 = input.LA(3);
 
-                if ( (LA3_15=='o') ) {
-                    int LA3_19 = input.LA(4);
+                if ( (LA3_16=='d') ) {
+                    int LA3_20 = input.LA(4);
 
-                    if ( (LA3_19=='p') ) {
-                        int LA3_23 = input.LA(5);
+                    if ( (LA3_20=='e') ) {
+                        int LA3_24 = input.LA(5);
 
-                        if ( (LA3_23=='-'||(LA3_23 >= '0' && LA3_23 <= '9')||(LA3_23 >= 'A' && LA3_23 <= 'Z')||LA3_23=='_'||(LA3_23 >= 'a' && LA3_23 <= 'z')) ) {
-                            alt3=9;
+                        if ( ((LA3_24 >= '-' && LA3_24 <= '9')||(LA3_24 >= '@' && LA3_24 <= 'Z')||LA3_24=='_'||(LA3_24 >= 'a' && LA3_24 <= 'z')) ) {
+                            alt3=10;
                         }
                         else {
                             alt3=8;
                         }
                     }
                     else {
-                        alt3=9;
+                        alt3=10;
                     }
                 }
                 else {
-                    alt3=9;
+                    alt3=10;
                 }
             }
             else {
-                alt3=9;
+                alt3=10;
+            }
+            }
+            break;
+        case 'p':
+            {
+            int LA3_9 = input.LA(2);
+
+            if ( (LA3_9=='r') ) {
+                int LA3_17 = input.LA(3);
+
+                if ( (LA3_17=='o') ) {
+                    int LA3_21 = input.LA(4);
+
+                    if ( (LA3_21=='p') ) {
+                        int LA3_25 = input.LA(5);
+
+                        if ( ((LA3_25 >= '-' && LA3_25 <= '9')||(LA3_25 >= '@' && LA3_25 <= 'Z')||LA3_25=='_'||(LA3_25 >= 'a' && LA3_25 <= 'z')) ) {
+                            alt3=10;
+                        }
+                        else {
+                            alt3=9;
+                        }
+                    }
+                    else {
+                        alt3=10;
+                    }
+                }
+                else {
+                    alt3=10;
+                }
+            }
+            else {
+                alt3=10;
             }
             }
             break;
         case '-':
+        case '/':
         case '0':
         case '1':
         case '2':
@@ -571,6 +606,7 @@ public class ASPMLexer extends Lexer {
         case '7':
         case '8':
         case '9':
+        case '@':
         case 'A':
         case 'B':
         case 'C':
@@ -621,13 +657,6 @@ public class ASPMLexer extends Lexer {
         case 'y':
         case 'z':
             {
-            alt3=9;
-            }
-            break;
-        case '\t':
-        case '\f':
-        case ' ':
-            {
             alt3=10;
             }
             break;
@@ -635,6 +664,13 @@ public class ASPMLexer extends Lexer {
         case '\r':
             {
             alt3=11;
+            }
+            break;
+        case '\t':
+        case '\f':
+        case ' ':
+            {
+            alt3=12;
             }
             break;
         default:
@@ -711,25 +747,33 @@ public class ASPMLexer extends Lexer {
                 }
                 break;
             case 9 :
-                // ASPM.g:1:55: TEXT
+                // ASPM.g:1:55: T__15
+                {
+                mT__15(); 
+
+
+                }
+                break;
+            case 10 :
+                // ASPM.g:1:61: TEXT
                 {
                 mTEXT(); 
 
 
                 }
                 break;
-            case 10 :
-                // ASPM.g:1:60: WHITESPACE
+            case 11 :
+                // ASPM.g:1:66: LINEBREAK
                 {
-                mWHITESPACE(); 
+                mLINEBREAK(); 
 
 
                 }
                 break;
-            case 11 :
-                // ASPM.g:1:71: LINEBREAK
+            case 12 :
+                // ASPM.g:1:76: WHITESPACE
                 {
-                mLINEBREAK(); 
+                mWHITESPACE(); 
 
 
                 }

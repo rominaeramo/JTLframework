@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <ul>
  *   <li>{@link ASPM.impl.EdgeImpl#getID <em>ID</em>}</li>
  *   <li>{@link ASPM.impl.EdgeImpl#getIDtrace <em>IDtrace</em>}</li>
- *   <li>{@link ASPM.impl.EdgeImpl#getEdge <em>Edge</em>}</li>
+ *   <li>{@link ASPM.impl.EdgeImpl#getName <em>Name</em>}</li>
  *   <li>{@link ASPM.impl.EdgeImpl#getSource <em>Source</em>}</li>
  *   <li>{@link ASPM.impl.EdgeImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link ASPM.impl.EdgeImpl#getModel <em>Model</em>}</li>
@@ -77,24 +77,24 @@ public class EdgeImpl extends LocatedElementImpl implements Edge {
 	protected String iDtrace = IDTRACE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getEdge() <em>Edge</em>}' attribute.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEdge()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String EDGE_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getEdge() <em>Edge</em>}' attribute.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEdge()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String edge = EDGE_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
@@ -182,8 +182,8 @@ public class EdgeImpl extends LocatedElementImpl implements Edge {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getEdge() {
-		return edge;
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -191,11 +191,11 @@ public class EdgeImpl extends LocatedElementImpl implements Edge {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setEdge(String newEdge) {
-		String oldEdge = edge;
-		edge = newEdge;
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ASPMPackage.EDGE__EDGE, oldEdge, edge));
+			eNotify(new ENotificationImpl(this, Notification.SET, ASPMPackage.EDGE__NAME, oldName, name));
 	}
 
 	/**
@@ -371,8 +371,8 @@ public class EdgeImpl extends LocatedElementImpl implements Edge {
 				return getID();
 			case ASPMPackage.EDGE__IDTRACE:
 				return getIDtrace();
-			case ASPMPackage.EDGE__EDGE:
-				return getEdge();
+			case ASPMPackage.EDGE__NAME:
+				return getName();
 			case ASPMPackage.EDGE__SOURCE:
 				if (resolve) return getSource();
 				return basicGetSource();
@@ -399,8 +399,8 @@ public class EdgeImpl extends LocatedElementImpl implements Edge {
 			case ASPMPackage.EDGE__IDTRACE:
 				setIDtrace((String)newValue);
 				return;
-			case ASPMPackage.EDGE__EDGE:
-				setEdge((String)newValue);
+			case ASPMPackage.EDGE__NAME:
+				setName((String)newValue);
 				return;
 			case ASPMPackage.EDGE__SOURCE:
 				setSource((Node)newValue);
@@ -429,8 +429,8 @@ public class EdgeImpl extends LocatedElementImpl implements Edge {
 			case ASPMPackage.EDGE__IDTRACE:
 				setIDtrace(IDTRACE_EDEFAULT);
 				return;
-			case ASPMPackage.EDGE__EDGE:
-				setEdge(EDGE_EDEFAULT);
+			case ASPMPackage.EDGE__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 			case ASPMPackage.EDGE__SOURCE:
 				setSource((Node)null);
@@ -457,8 +457,8 @@ public class EdgeImpl extends LocatedElementImpl implements Edge {
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case ASPMPackage.EDGE__IDTRACE:
 				return IDTRACE_EDEFAULT == null ? iDtrace != null : !IDTRACE_EDEFAULT.equals(iDtrace);
-			case ASPMPackage.EDGE__EDGE:
-				return EDGE_EDEFAULT == null ? edge != null : !EDGE_EDEFAULT.equals(edge);
+			case ASPMPackage.EDGE__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ASPMPackage.EDGE__SOURCE:
 				return source != null;
 			case ASPMPackage.EDGE__TARGET:
@@ -483,8 +483,8 @@ public class EdgeImpl extends LocatedElementImpl implements Edge {
 		result.append(id);
 		result.append(", IDtrace: ");
 		result.append(iDtrace);
-		result.append(", edge: ");
-		result.append(edge);
+		result.append(", name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

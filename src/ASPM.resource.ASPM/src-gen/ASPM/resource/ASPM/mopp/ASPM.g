@@ -340,7 +340,7 @@ options {
 				break;
 			}
 		}
-		int followSetID = 52;
+		int followSetID = 64;
 		int i;
 		for (i = tokenIndexOfLastCompleteElement; i < tokenStream.size(); i++) {
 			org.antlr.runtime3_4_0.CommonToken nextToken = (org.antlr.runtime3_4_0.CommonToken) tokenStream.get(i);
@@ -617,7 +617,7 @@ parse_ASPM_Model returns [ASPM.Model element = null]
 				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
 				tokenResolver.setOptions(getOptions());
 				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a4.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.MODEL__MODEL), result);
+				tokenResolver.resolve(a4.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.MODEL__NAME), result);
 				Object resolvedObject = result.getResolvedToken();
 				if (resolvedObject == null) {
 					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a4).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStopIndex());
@@ -625,7 +625,7 @@ parse_ASPM_Model returns [ASPM.Model element = null]
 				java.lang.String resolved = (java.lang.String) resolvedObject;
 				if (resolved != null) {
 					Object value = resolved;
-					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.MODEL__MODEL), value);
+					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.MODEL__NAME), value);
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
@@ -686,7 +686,7 @@ parse_ASPM_Model returns [ASPM.Model element = null]
 						completedElement(value, true);
 					}
 					collectHiddenTokens(element);
-					retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_0_0_0_7, a7_0, true);
+					retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_0_0_0_8, a7_0, true);
 					copyLocalizationInfos(a7_0, element);
 				}
 			}
@@ -716,7 +716,7 @@ parse_ASPM_Model returns [ASPM.Model element = null]
 						completedElement(value, true);
 					}
 					collectHiddenTokens(element);
-					retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_0_0_0_8, a8_0, true);
+					retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_0_0_0_9, a8_0, true);
 					copyLocalizationInfos(a8_0, element);
 				}
 			}
@@ -745,7 +745,7 @@ parse_ASPM_Model returns [ASPM.Model element = null]
 						completedElement(value, true);
 					}
 					collectHiddenTokens(element);
-					retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_0_0_0_9, a9_0, true);
+					retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_0_0_0_10, a9_0, true);
 					copyLocalizationInfos(a9_0, element);
 				}
 			}
@@ -894,8 +894,22 @@ parse_ASPM_Node returns [ASPM.Node element = null]
 		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[21]);
 	}
 	
+	a6 = '\"' {
+		if (element == null) {
+			element = ASPM.ASPMFactory.eINSTANCE.createNode();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_6, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a6, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[22]);
+	}
+	
 	(
-		a6 = TEXT		
+		a7 = TEXT		
 		{
 			if (terminateParsing) {
 				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
@@ -904,14 +918,14 @@ parse_ASPM_Node returns [ASPM.Node element = null]
 				element = ASPM.ASPMFactory.eINSTANCE.createNode();
 				startIncompleteElement(element);
 			}
-			if (a6 != null) {
+			if (a7 != null) {
 				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
 				tokenResolver.setOptions(getOptions());
 				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a6.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__IDTRACE), result);
+				tokenResolver.resolve(a7.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__IDTRACE), result);
 				Object resolvedObject = result.getResolvedToken();
 				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a6).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStopIndex());
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a7).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStopIndex());
 				}
 				java.lang.String resolved = (java.lang.String) resolvedObject;
 				if (resolved != null) {
@@ -920,67 +934,31 @@ parse_ASPM_Node returns [ASPM.Node element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_6, resolved, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, element);
+				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_7, resolved, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a7, element);
 			}
 		}
 	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[22]);
-	}
-	
-	a7 = ',' {
-		if (element == null) {
-			element = ASPM.ASPMFactory.eINSTANCE.createNode();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_7, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a7, element);
-	}
 	{
 		// expected elements (follow set)
 		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[23]);
 	}
 	
-	(
-		a8 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
-			}
-			if (element == null) {
-				element = ASPM.ASPMFactory.eINSTANCE.createNode();
-				startIncompleteElement(element);
-			}
-			if (a8 != null) {
-				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a8.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__NODE), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a8).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStopIndex());
-				}
-				java.lang.String resolved = (java.lang.String) resolvedObject;
-				if (resolved != null) {
-					Object value = resolved;
-					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__NODE), value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_8, resolved, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a8, element);
-			}
+	a8 = '\"' {
+		if (element == null) {
+			element = ASPM.ASPMFactory.eINSTANCE.createNode();
+			startIncompleteElement(element);
 		}
-	)
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_8, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a8, element);
+	}
 	{
 		// expected elements (follow set)
 		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[24]);
 	}
 	
-	a9 = ')' {
+	a9 = ',' {
 		if (element == null) {
 			element = ASPM.ASPMFactory.eINSTANCE.createNode();
 			startIncompleteElement(element);
@@ -994,20 +972,70 @@ parse_ASPM_Node returns [ASPM.Node element = null]
 		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[25]);
 	}
 	
-	a10 = '.' {
+	(
+		a10 = TEXT		
+		{
+			if (terminateParsing) {
+				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
+			}
+			if (element == null) {
+				element = ASPM.ASPMFactory.eINSTANCE.createNode();
+				startIncompleteElement(element);
+			}
+			if (a10 != null) {
+				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+				tokenResolver.setOptions(getOptions());
+				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
+				tokenResolver.resolve(a10.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__NAME), result);
+				Object resolvedObject = result.getResolvedToken();
+				if (resolvedObject == null) {
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a10).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a10).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a10).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a10).getStopIndex());
+				}
+				java.lang.String resolved = (java.lang.String) resolvedObject;
+				if (resolved != null) {
+					Object value = resolved;
+					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.NODE__NAME), value);
+					completedElement(value, false);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_10, resolved, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a10, element);
+			}
+		}
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[26]);
+	}
+	
+	a11 = ')' {
 		if (element == null) {
 			element = ASPM.ASPMFactory.eINSTANCE.createNode();
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_10, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a10, element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_11, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a11, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[26]);
-		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[27]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[27]);
+	}
+	
+	a12 = '.' {
+		if (element == null) {
+			element = ASPM.ASPMFactory.eINSTANCE.createNode();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_1_0_0_12, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a12, element);
+	}
+	{
+		// expected elements (follow set)
 		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[28]);
+		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[29]);
+		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[30]);
 	}
 	
 ;
@@ -1027,7 +1055,7 @@ parse_ASPM_Prop returns [ASPM.Prop element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[29]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[31]);
 	}
 	
 	a1 = '(' {
@@ -1041,7 +1069,7 @@ parse_ASPM_Prop returns [ASPM.Prop element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[30]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[32]);
 	}
 	
 	(
@@ -1081,7 +1109,7 @@ parse_ASPM_Prop returns [ASPM.Prop element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[31]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[33]);
 	}
 	
 	a3 = ',' {
@@ -1095,7 +1123,7 @@ parse_ASPM_Prop returns [ASPM.Prop element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[32]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[34]);
 	}
 	
 	(
@@ -1131,7 +1159,7 @@ parse_ASPM_Prop returns [ASPM.Prop element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[33]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[35]);
 	}
 	
 	a5 = ',' {
@@ -1145,11 +1173,25 @@ parse_ASPM_Prop returns [ASPM.Prop element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[34]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[36]);
+	}
+	
+	a6 = '\"' {
+		if (element == null) {
+			element = ASPM.ASPMFactory.eINSTANCE.createProp();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_6, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a6, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[37]);
 	}
 	
 	(
-		a6 = TEXT		
+		a7 = TEXT		
 		{
 			if (terminateParsing) {
 				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
@@ -1158,14 +1200,14 @@ parse_ASPM_Prop returns [ASPM.Prop element = null]
 				element = ASPM.ASPMFactory.eINSTANCE.createProp();
 				startIncompleteElement(element);
 			}
-			if (a6 != null) {
+			if (a7 != null) {
 				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
 				tokenResolver.setOptions(getOptions());
 				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a6.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__IDTRACE), result);
+				tokenResolver.resolve(a7.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__IDTRACE), result);
 				Object resolvedObject = result.getResolvedToken();
 				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a6).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStopIndex());
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a7).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStopIndex());
 				}
 				java.lang.String resolved = (java.lang.String) resolvedObject;
 				if (resolved != null) {
@@ -1174,64 +1216,28 @@ parse_ASPM_Prop returns [ASPM.Prop element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_6, resolved, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, element);
+				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_7, resolved, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a7, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[35]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[38]);
 	}
 	
-	a7 = ',' {
+	a8 = '\"' {
 		if (element == null) {
 			element = ASPM.ASPMFactory.eINSTANCE.createProp();
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_7, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a7, element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_8, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a8, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[36]);
-	}
-	
-	(
-		a8 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
-			}
-			if (element == null) {
-				element = ASPM.ASPMFactory.eINSTANCE.createProp();
-				startIncompleteElement(element);
-			}
-			if (a8 != null) {
-				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a8.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__PROP), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a8).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStopIndex());
-				}
-				java.lang.String resolved = (java.lang.String) resolvedObject;
-				if (resolved != null) {
-					Object value = resolved;
-					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__PROP), value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_8, resolved, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a8, element);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[37]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[39]);
 	}
 	
 	a9 = ',' {
@@ -1245,61 +1251,25 @@ parse_ASPM_Prop returns [ASPM.Prop element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[38]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[40]);
 	}
 	
-	(
-		a10 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
-			}
-			if (element == null) {
-				element = ASPM.ASPMFactory.eINSTANCE.createProp();
-				startIncompleteElement(element);
-			}
-			if (a10 != null) {
-				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a10.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__VALUE), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a10).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a10).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a10).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a10).getStopIndex());
-				}
-				java.lang.String resolved = (java.lang.String) resolvedObject;
-				if (resolved != null) {
-					Object value = resolved;
-					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__VALUE), value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_10, resolved, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a10, element);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[39]);
-	}
-	
-	a11 = ',' {
+	a10 = '\"' {
 		if (element == null) {
 			element = ASPM.ASPMFactory.eINSTANCE.createProp();
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_11, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a11, element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_10, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a10, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[40]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[41]);
 	}
 	
 	(
-		a12 = TEXT		
+		a11 = TEXT		
 		{
 			if (terminateParsing) {
 				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
@@ -1308,14 +1278,14 @@ parse_ASPM_Prop returns [ASPM.Prop element = null]
 				element = ASPM.ASPMFactory.eINSTANCE.createProp();
 				startIncompleteElement(element);
 			}
-			if (a12 != null) {
+			if (a11 != null) {
 				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
 				tokenResolver.setOptions(getOptions());
 				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a12.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__OWNER), result);
+				tokenResolver.resolve(a11.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__OWNER), result);
 				Object resolvedObject = result.getResolvedToken();
 				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a12).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a12).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a12).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a12).getStopIndex());
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a11).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a11).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a11).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a11).getStopIndex());
 				}
 				String resolved = (String) resolvedObject;
 				ASPM.Node proxy = ASPM.ASPMFactory.eINSTANCE.createNode();
@@ -1327,18 +1297,32 @@ parse_ASPM_Prop returns [ASPM.Prop element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_12, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a12, element);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a12, proxy);
+				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_11, proxy, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a11, element);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a11, proxy);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[41]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[42]);
 	}
 	
-	a13 = ')' {
+	a12 = '\"' {
+		if (element == null) {
+			element = ASPM.ASPMFactory.eINSTANCE.createProp();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_12, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a12, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[43]);
+	}
+	
+	a13 = ',' {
 		if (element == null) {
 			element = ASPM.ASPMFactory.eINSTANCE.createProp();
 			startIncompleteElement(element);
@@ -1349,22 +1333,122 @@ parse_ASPM_Prop returns [ASPM.Prop element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[42]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[44]);
 	}
 	
-	a14 = '.' {
+	(
+		a14 = TEXT		
+		{
+			if (terminateParsing) {
+				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
+			}
+			if (element == null) {
+				element = ASPM.ASPMFactory.eINSTANCE.createProp();
+				startIncompleteElement(element);
+			}
+			if (a14 != null) {
+				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+				tokenResolver.setOptions(getOptions());
+				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
+				tokenResolver.resolve(a14.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__NAME), result);
+				Object resolvedObject = result.getResolvedToken();
+				if (resolvedObject == null) {
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a14).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a14).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a14).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a14).getStopIndex());
+				}
+				java.lang.String resolved = (java.lang.String) resolvedObject;
+				if (resolved != null) {
+					Object value = resolved;
+					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__NAME), value);
+					completedElement(value, false);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_14, resolved, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a14, element);
+			}
+		}
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[45]);
+	}
+	
+	a15 = ',' {
 		if (element == null) {
 			element = ASPM.ASPMFactory.eINSTANCE.createProp();
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_14, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a14, element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_15, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a15, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[43]);
-		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[44]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[46]);
+	}
+	
+	(
+		a16 = TEXT		
+		{
+			if (terminateParsing) {
+				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
+			}
+			if (element == null) {
+				element = ASPM.ASPMFactory.eINSTANCE.createProp();
+				startIncompleteElement(element);
+			}
+			if (a16 != null) {
+				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+				tokenResolver.setOptions(getOptions());
+				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
+				tokenResolver.resolve(a16.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__VALUE), result);
+				Object resolvedObject = result.getResolvedToken();
+				if (resolvedObject == null) {
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a16).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a16).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a16).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a16).getStopIndex());
+				}
+				java.lang.String resolved = (java.lang.String) resolvedObject;
+				if (resolved != null) {
+					Object value = resolved;
+					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.PROP__VALUE), value);
+					completedElement(value, false);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_16, resolved, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a16, element);
+			}
+		}
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[47]);
+	}
+	
+	a17 = ')' {
+		if (element == null) {
+			element = ASPM.ASPMFactory.eINSTANCE.createProp();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_17, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a17, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[48]);
+	}
+	
+	a18 = '.' {
+		if (element == null) {
+			element = ASPM.ASPMFactory.eINSTANCE.createProp();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_2_0_0_18, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a18, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[49]);
+		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[50]);
 	}
 	
 ;
@@ -1384,7 +1468,7 @@ parse_ASPM_Edge returns [ASPM.Edge element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[45]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[51]);
 	}
 	
 	a1 = '(' {
@@ -1398,7 +1482,7 @@ parse_ASPM_Edge returns [ASPM.Edge element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[46]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[52]);
 	}
 	
 	(
@@ -1438,7 +1522,7 @@ parse_ASPM_Edge returns [ASPM.Edge element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[47]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[53]);
 	}
 	
 	a3 = ',' {
@@ -1452,7 +1536,7 @@ parse_ASPM_Edge returns [ASPM.Edge element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[48]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[54]);
 	}
 	
 	(
@@ -1488,7 +1572,7 @@ parse_ASPM_Edge returns [ASPM.Edge element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[49]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[55]);
 	}
 	
 	a5 = ',' {
@@ -1502,11 +1586,25 @@ parse_ASPM_Edge returns [ASPM.Edge element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[50]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[56]);
+	}
+	
+	a6 = '\"' {
+		if (element == null) {
+			element = ASPM.ASPMFactory.eINSTANCE.createEdge();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_6, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a6, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[57]);
 	}
 	
 	(
-		a6 = TEXT		
+		a7 = TEXT		
 		{
 			if (terminateParsing) {
 				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
@@ -1515,14 +1613,14 @@ parse_ASPM_Edge returns [ASPM.Edge element = null]
 				element = ASPM.ASPMFactory.eINSTANCE.createEdge();
 				startIncompleteElement(element);
 			}
-			if (a6 != null) {
+			if (a7 != null) {
 				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
 				tokenResolver.setOptions(getOptions());
 				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a6.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__IDTRACE), result);
+				tokenResolver.resolve(a7.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__IDTRACE), result);
 				Object resolvedObject = result.getResolvedToken();
 				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a6).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a6).getStopIndex());
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a7).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStopIndex());
 				}
 				java.lang.String resolved = (java.lang.String) resolvedObject;
 				if (resolved != null) {
@@ -1531,64 +1629,28 @@ parse_ASPM_Edge returns [ASPM.Edge element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_6, resolved, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a6, element);
+				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_7, resolved, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a7, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[51]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[58]);
 	}
 	
-	a7 = ',' {
+	a8 = '\"' {
 		if (element == null) {
 			element = ASPM.ASPMFactory.eINSTANCE.createEdge();
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_7, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a7, element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_8, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a8, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[52]);
-	}
-	
-	(
-		a8 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
-			}
-			if (element == null) {
-				element = ASPM.ASPMFactory.eINSTANCE.createEdge();
-				startIncompleteElement(element);
-			}
-			if (a8 != null) {
-				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a8.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__EDGE), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a8).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a8).getStopIndex());
-				}
-				java.lang.String resolved = (java.lang.String) resolvedObject;
-				if (resolved != null) {
-					Object value = resolved;
-					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__EDGE), value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_8, resolved, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a8, element);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[53]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[59]);
 	}
 	
 	a9 = ',' {
@@ -1602,7 +1664,7 @@ parse_ASPM_Edge returns [ASPM.Edge element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[54]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[60]);
 	}
 	
 	(
@@ -1619,30 +1681,26 @@ parse_ASPM_Edge returns [ASPM.Edge element = null]
 				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
 				tokenResolver.setOptions(getOptions());
 				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a10.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__SOURCE), result);
+				tokenResolver.resolve(a10.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__NAME), result);
 				Object resolvedObject = result.getResolvedToken();
 				if (resolvedObject == null) {
 					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a10).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a10).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a10).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a10).getStopIndex());
 				}
-				String resolved = (String) resolvedObject;
-				ASPM.Node proxy = ASPM.ASPMFactory.eINSTANCE.createNode();
-				collectHiddenTokens(element);
-				registerContextDependentProxy(new ASPM.resource.ASPM.mopp.ASPMContextDependentURIFragmentFactory<ASPM.Edge, ASPM.Node>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getEdgeSourceReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__SOURCE), resolved, proxy);
-				if (proxy != null) {
-					Object value = proxy;
-					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__SOURCE), value);
+				java.lang.String resolved = (java.lang.String) resolvedObject;
+				if (resolved != null) {
+					Object value = resolved;
+					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__NAME), value);
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_10, proxy, true);
+				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_10, resolved, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a10, element);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a10, proxy);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[55]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[61]);
 	}
 	
 	a11 = ',' {
@@ -1656,11 +1714,25 @@ parse_ASPM_Edge returns [ASPM.Edge element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[56]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[62]);
+	}
+	
+	a12 = '\"' {
+		if (element == null) {
+			element = ASPM.ASPMFactory.eINSTANCE.createEdge();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_12, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a12, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[63]);
 	}
 	
 	(
-		a12 = TEXT		
+		a13 = TEXT		
 		{
 			if (terminateParsing) {
 				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
@@ -1669,14 +1741,96 @@ parse_ASPM_Edge returns [ASPM.Edge element = null]
 				element = ASPM.ASPMFactory.eINSTANCE.createEdge();
 				startIncompleteElement(element);
 			}
-			if (a12 != null) {
+			if (a13 != null) {
 				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
 				tokenResolver.setOptions(getOptions());
 				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a12.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__TARGET), result);
+				tokenResolver.resolve(a13.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__SOURCE), result);
 				Object resolvedObject = result.getResolvedToken();
 				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a12).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a12).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a12).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a12).getStopIndex());
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a13).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a13).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a13).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a13).getStopIndex());
+				}
+				String resolved = (String) resolvedObject;
+				ASPM.Node proxy = ASPM.ASPMFactory.eINSTANCE.createNode();
+				collectHiddenTokens(element);
+				registerContextDependentProxy(new ASPM.resource.ASPM.mopp.ASPMContextDependentURIFragmentFactory<ASPM.Edge, ASPM.Node>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getEdgeSourceReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__SOURCE), resolved, proxy);
+				if (proxy != null) {
+					Object value = proxy;
+					element.eSet(element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__SOURCE), value);
+					completedElement(value, false);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_13, proxy, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a13, element);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a13, proxy);
+			}
+		}
+	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[64]);
+	}
+	
+	a14 = '\"' {
+		if (element == null) {
+			element = ASPM.ASPMFactory.eINSTANCE.createEdge();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_14, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a14, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[65]);
+	}
+	
+	a15 = ',' {
+		if (element == null) {
+			element = ASPM.ASPMFactory.eINSTANCE.createEdge();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_15, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a15, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[66]);
+	}
+	
+	a16 = '\"' {
+		if (element == null) {
+			element = ASPM.ASPMFactory.eINSTANCE.createEdge();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_16, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a16, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[67]);
+	}
+	
+	(
+		a17 = TEXT		
+		{
+			if (terminateParsing) {
+				throw new ASPM.resource.ASPM.mopp.ASPMTerminateParsingException();
+			}
+			if (element == null) {
+				element = ASPM.ASPMFactory.eINSTANCE.createEdge();
+				startIncompleteElement(element);
+			}
+			if (a17 != null) {
+				ASPM.resource.ASPM.IASPMTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+				tokenResolver.setOptions(getOptions());
+				ASPM.resource.ASPM.IASPMTokenResolveResult result = getFreshTokenResolveResult();
+				tokenResolver.resolve(a17.getText(), element.eClass().getEStructuralFeature(ASPM.ASPMPackage.EDGE__TARGET), result);
+				Object resolvedObject = result.getResolvedToken();
+				if (resolvedObject == null) {
+					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a17).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a17).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a17).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a17).getStopIndex());
 				}
 				String resolved = (String) resolvedObject;
 				ASPM.Node proxy = ASPM.ASPMFactory.eINSTANCE.createNode();
@@ -1688,56 +1842,70 @@ parse_ASPM_Edge returns [ASPM.Edge element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_12, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a12, element);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a12, proxy);
+				retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_17, proxy, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a17, element);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a17, proxy);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[57]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[68]);
 	}
 	
-	a13 = ')' {
+	a18 = '\"' {
 		if (element == null) {
 			element = ASPM.ASPMFactory.eINSTANCE.createEdge();
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_13, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a13, element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_18, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a18, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[58]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[69]);
 	}
 	
-	a14 = '.' {
+	a19 = ')' {
 		if (element == null) {
 			element = ASPM.ASPMFactory.eINSTANCE.createEdge();
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_14, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a14, element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_19, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a19, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[59]);
+		addExpectedElement(null, ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[70]);
+	}
+	
+	a20 = '.' {
+		if (element == null) {
+			element = ASPM.ASPMFactory.eINSTANCE.createEdge();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, ASPM.resource.ASPM.grammar.ASPMGrammarInformationProvider.ASPM_3_0_0_20, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a20, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(ASPM.ASPMPackage.eINSTANCE.getModel(), ASPM.resource.ASPM.mopp.ASPMExpectationConstants.EXPECTATIONS[71]);
 	}
 	
 ;
 
 TEXT:
-	(('A'..'Z' | 'a'..'z' | '0'..'9' | '_' | '-' )+)
-;
-WHITESPACE:
-	((' ' | '\t' | '\f'))
-	{ _channel = 99; }
+	(('A'..'Z'|'a'..'z'|'0'..'9'|'-'|'_'|'/'|'@'|'.')+)
 ;
 LINEBREAK:
-	(('\r\n' | '\r' | '\n'))
+	(('\r\n'|'\r'|'\n'))
+	{ _channel = 99; }
+;
+WHITESPACE:
+	((' '|'\t'|'\f'))
 	{ _channel = 99; }
 ;
 

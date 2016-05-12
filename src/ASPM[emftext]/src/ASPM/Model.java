@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link ASPM.Model#getID <em>ID</em>}</li>
- *   <li>{@link ASPM.Model#getModel <em>Model</em>}</li>
+ *   <li>{@link ASPM.Model#getName <em>Name</em>}</li>
  *   <li>{@link ASPM.Model#getNodes <em>Nodes</em>}</li>
  *   <li>{@link ASPM.Model#getEdges <em>Edges</em>}</li>
  *   <li>{@link ASPM.Model#getProps <em>Props</em>}</li>
@@ -52,30 +52,30 @@ public interface Model extends LocatedElement {
 	void setID(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Model</b></em>' attribute.
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Model</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Model</em>' attribute.
-	 * @see #setModel(String)
-	 * @see ASPM.ASPMPackage#getModel_Model()
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see ASPM.ASPMPackage#getModel_Name()
 	 * @model unique="false" required="true" ordered="false"
 	 * @generated
 	 */
-	String getModel();
+	String getName();
 
 	/**
-	 * Sets the value of the '{@link ASPM.Model#getModel <em>Model</em>}' attribute.
+	 * Sets the value of the '{@link ASPM.Model#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Model</em>' attribute.
-	 * @see #getModel()
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
 	 * @generated
 	 */
-	void setModel(String value);
+	void setName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Nodes</b></em>' containment reference list.

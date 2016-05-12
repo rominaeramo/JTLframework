@@ -4,16 +4,27 @@ START Model
 
 OPTIONS {
 	reloadGeneratorModel = "true";
+	usePredefinedTokens = "false";
+}
+
+TOKENS {
+	DEFINE TEXT $('A'..'Z'|'a'..'z'|'0'..'9'|'-'|'_'|'/'|'@'|'.')+$;
+	DEFINE LINEBREAK $('\r\n'|'\r'|'\n')$;
+	DEFINE WHITESPACE $(' '|'\t'|'\f')$;
 }
 
 RULES {
 	
-	Model ::= "model" "(" ID[] "," model[] ")" "." nodes* props* edges*;
+	@SuppressWarnings(featureWithoutSyntax)
+	Model ::= "model" "(" ID[] "," name[] ")" "." !0 nodes* props* edges*;
 	
-	Node ::= "node" "(" model[] "," ID[] "," IDtrace[] "," node[] ")" "." ;
+	@SuppressWarnings(featureWithoutSyntax)
+	Node ::= "node" "(" model[] "," ID[] "," "\"" IDtrace[] "\"" "," name[] ")" "." !0;
 	
-	Prop ::= "prop" "(" model[] "," ID[] "," IDtrace[] "," prop[] "," value[] "," owner[] ")" "." ;
+	@SuppressWarnings(featureWithoutSyntax)
+	Prop ::= "prop" "(" model[] "," ID[] "," "\"" IDtrace[] "\"" "," "\"" owner[] "\"" "," name[] "," value[] ")" "." !0;
 	
-	Edge ::= "edge" "(" model[] "," ID[] "," IDtrace[] "," edge[] "," source[] "," target[] ")" "." ;
+	@SuppressWarnings(featureWithoutSyntax)
+	Edge ::= "edge" "(" model[] "," ID[] "," "\"" IDtrace[] "\"" "," name[] "," "\"" source[] "\"" "," "\"" target[] "\"" ")" "." !0;
 	
 }

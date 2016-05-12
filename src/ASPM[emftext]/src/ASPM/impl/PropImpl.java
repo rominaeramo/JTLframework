@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <ul>
  *   <li>{@link ASPM.impl.PropImpl#getID <em>ID</em>}</li>
  *   <li>{@link ASPM.impl.PropImpl#getIDtrace <em>IDtrace</em>}</li>
- *   <li>{@link ASPM.impl.PropImpl#getProp <em>Prop</em>}</li>
+ *   <li>{@link ASPM.impl.PropImpl#getName <em>Name</em>}</li>
  *   <li>{@link ASPM.impl.PropImpl#getValue <em>Value</em>}</li>
  *   <li>{@link ASPM.impl.PropImpl#getModel <em>Model</em>}</li>
  *   <li>{@link ASPM.impl.PropImpl#getOwner <em>Owner</em>}</li>
@@ -77,24 +77,24 @@ public class PropImpl extends LocatedElementImpl implements Prop {
 	protected String iDtrace = IDTRACE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getProp() <em>Prop</em>}' attribute.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProp()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PROP_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getProp() <em>Prop</em>}' attribute.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProp()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String prop = PROP_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -192,8 +192,8 @@ public class PropImpl extends LocatedElementImpl implements Prop {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getProp() {
-		return prop;
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -201,11 +201,11 @@ public class PropImpl extends LocatedElementImpl implements Prop {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProp(String newProp) {
-		String oldProp = prop;
-		prop = newProp;
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ASPMPackage.PROP__PROP, oldProp, prop));
+			eNotify(new ENotificationImpl(this, Notification.SET, ASPMPackage.PROP__NAME, oldName, name));
 	}
 
 	/**
@@ -364,8 +364,8 @@ public class PropImpl extends LocatedElementImpl implements Prop {
 				return getID();
 			case ASPMPackage.PROP__IDTRACE:
 				return getIDtrace();
-			case ASPMPackage.PROP__PROP:
-				return getProp();
+			case ASPMPackage.PROP__NAME:
+				return getName();
 			case ASPMPackage.PROP__VALUE:
 				return getValue();
 			case ASPMPackage.PROP__MODEL:
@@ -391,8 +391,8 @@ public class PropImpl extends LocatedElementImpl implements Prop {
 			case ASPMPackage.PROP__IDTRACE:
 				setIDtrace((String)newValue);
 				return;
-			case ASPMPackage.PROP__PROP:
-				setProp((String)newValue);
+			case ASPMPackage.PROP__NAME:
+				setName((String)newValue);
 				return;
 			case ASPMPackage.PROP__VALUE:
 				setValue((String)newValue);
@@ -421,8 +421,8 @@ public class PropImpl extends LocatedElementImpl implements Prop {
 			case ASPMPackage.PROP__IDTRACE:
 				setIDtrace(IDTRACE_EDEFAULT);
 				return;
-			case ASPMPackage.PROP__PROP:
-				setProp(PROP_EDEFAULT);
+			case ASPMPackage.PROP__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 			case ASPMPackage.PROP__VALUE:
 				setValue(VALUE_EDEFAULT);
@@ -449,8 +449,8 @@ public class PropImpl extends LocatedElementImpl implements Prop {
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case ASPMPackage.PROP__IDTRACE:
 				return IDTRACE_EDEFAULT == null ? iDtrace != null : !IDTRACE_EDEFAULT.equals(iDtrace);
-			case ASPMPackage.PROP__PROP:
-				return PROP_EDEFAULT == null ? prop != null : !PROP_EDEFAULT.equals(prop);
+			case ASPMPackage.PROP__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ASPMPackage.PROP__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 			case ASPMPackage.PROP__MODEL:
@@ -475,8 +475,8 @@ public class PropImpl extends LocatedElementImpl implements Prop {
 		result.append(id);
 		result.append(", IDtrace: ");
 		result.append(iDtrace);
-		result.append(", prop: ");
-		result.append(prop);
+		result.append(", name: ");
+		result.append(name);
 		result.append(", value: ");
 		result.append(value);
 		result.append(')');
